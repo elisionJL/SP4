@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         MouseControls();
         SetMouseCursor();
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+            Debug.Log("player update");
             if (ShopUI.activeSelf == false)
                 ShopUI.SetActive(true);
             else if (ShopUI.activeSelf == true)
