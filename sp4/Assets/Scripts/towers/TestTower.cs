@@ -16,13 +16,12 @@ class TestTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
     }
 
-   public override void Fire()
+    public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-<
+
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
-
     }
     public override void OnUpdate()
     {
@@ -30,17 +29,13 @@ class TestTower : TowerBase
         {
             Fire();
         }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(NameOfAttack) && !CanShoot)
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Fireball Shoot") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= FrameToReleaseAttack)
-            {
-                
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            {                
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
                 CanShoot = true;
-
-                Debug.Log("fire called2");
-                Fire();
             }
         }
     }

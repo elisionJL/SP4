@@ -1456,6 +1456,9 @@ MonoBehaviour:
   tower_AI: {fileID: 3158826034366642089}
   projectilePrefab: {fileID: 574451210064883334, guid: 00798e868345bda45b6603530e31dd29, type: 3}
   rootObject: {fileID: 4154479509809497714}
+  CanShoot: 0
+  NameOfAttack: Fireball Shoot
+  FrameToReleaseAttack: 0.5
 --- !u!114 &3158826034366642089
 MonoBehaviour:
   m_ObjectHideFlags: 0

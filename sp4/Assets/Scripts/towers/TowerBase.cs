@@ -22,8 +22,6 @@ abstract class TowerBase : MonoBehaviour
     //reference for the center of the model will be used to 
     public GameObject rootObject;
     public bool CanShoot;
-    public string NameOfAttack;
-    public float FrameToReleaseAttack;
     // Start is called before the first frame update
     void Start()
     {
