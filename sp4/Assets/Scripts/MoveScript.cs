@@ -44,17 +44,19 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("called update");
+        //Get player inputs
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = (transform.right * x + transform.forward * z) * Spd * Time.deltaTime;
+        //Apply inputs to move
+        Vector3 move = (transform.right * x + transform.forward * z) * Spd * Time.deltaTime; 
 
+        //Change player position according to move
         gameObject.transform.position += move;
 
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true)
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true) //Check if user can jump
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250, 0));
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250, 0)); //If yes, push player upwards
         }
     }
 }

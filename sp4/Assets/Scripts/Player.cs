@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform PlayerBox;
-    public GameObject ShopUI;
+    public GameObject ShopUI, Crosshair;
     float RotationX = 0f;
 
     // Start is called before the first frame update
@@ -21,17 +21,24 @@ public class Player : MonoBehaviour
         MouseControls();
         SetMouseCursor();
 
+        //If user wants to open the shop
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("player update");
+            //If shop isn't active, set it to active, otherwise if it is active, set it to inactive
             if (ShopUI.activeSelf == false)
+            {
                 ShopUI.SetActive(true);
+                Crosshair.SetActive(false);
+            }
             else if (ShopUI.activeSelf == true)
+            {
                 ShopUI.SetActive(false);
+                Crosshair.SetActive(true);
+            }
         }
     }
 
-    public void SetMouseCursor()
+    public void SetMouseCursor() //Sets cursor to locked when in play mode, unlocked when in shop
     {
         if (ShopUI.activeSelf == true)
             Cursor.lockState = CursorLockMode.Confined;
@@ -40,13 +47,19 @@ public class Player : MonoBehaviour
     }
     private void MouseControls()
     {
-        float MouseX = Input.GetAxis("Mouse X") * 300f * Time.deltaTime;
-        float MouseY = Input.GetAxis("Mouse Y") * 300f * Time.deltaTime;
+        if(Cursor.lockState == CursorLockMode.Locked) //Only when cursor mode is locked to center
+        {
+            //Get the X and Y movement
+            float MouseX = Input.GetAxis("Mouse X") * 300f * Time.deltaTime;
+            float MouseY = Input.GetAxis("Mouse Y") * 300f * Time.deltaTime;
 
-        RotationX -= MouseY;
-        RotationX = Mathf.Clamp(RotationX, -90f, 90f);
+            //Get the Rotation
+            RotationX -= MouseY;
+            RotationX = Mathf.Clamp(RotationX, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(RotationX, 0f, 0f);
-        PlayerBox.Rotate(Vector3.up * MouseX);
+            //Set local rotation of camera
+            transform.localRotation = Quaternion.Euler(RotationX, 0f, 0f);
+            PlayerBox.Rotate(Vector3.up * MouseX);
+        }
     }
 }
