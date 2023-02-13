@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1737100284}
-  maxAngle: 360
+  maxAngle: 180
   maxRadius: 10
 --- !u!1 &705507993
 GameObject:

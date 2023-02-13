@@ -48,9 +48,9 @@ public class Tower_AI : MonoBehaviour
 
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
-    }
+    } //Draw field of view for debugging purposes
 
-    public static bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    public static bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[10];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -59,19 +59,25 @@ public class Tower_AI : MonoBehaviour
         {
             if(overlaps[i] != null)
             {
-                if(overlaps[i].transform == target)
+                if(overlaps[i].transform == target) //If Target enters field of view
                 {
                     Vector3 directionBetween = (target.position - checkingObject.position).normalized;
                     directionBetween.y *= 0;
 
-                    float angle = Vector3.Angle(checkingObject.forward, directionBetween);
+                    float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                    Vector3 TargetXZ = new Vector3(target.position.x, checkingObject.position.y, target.position.z);
+
+                    checkingObject.LookAt(TargetXZ);
+
+                    
 
                     if(angle <= maxAngle)
                     {
                         Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
                         RaycastHit hit;
 
-                        if(Physics.Raycast(ray, out hit, maxRadius))
+                        if(Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
                             if (hit.transform == target)
                                 return true;

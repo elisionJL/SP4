@@ -30,6 +30,5 @@ public class Player : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(RotationX, 0f, 0f);
         PlayerBox.Rotate(Vector3.up * MouseX);
-
     }
 }
