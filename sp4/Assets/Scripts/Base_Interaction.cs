@@ -36,7 +36,7 @@ public class Base_Interaction : MonoBehaviour
                 {
                     Debug.Log("Hit");
                     Towers[0].transform.position = new Vector3(hit.point.x, hit.point.y + (Towers[0].transform.localScale.y / 2), hit.point.z);
-                    
+                    Towers[0].gameObject.GetComponent<Tower_AI>().enabled = true;
                     Instantiate(Towers[0]);
                     CanPlace = true;
                 }

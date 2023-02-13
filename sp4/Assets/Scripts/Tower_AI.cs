@@ -10,16 +10,21 @@ public class Tower_AI : MonoBehaviour
 
     private bool isInFov = false;
 
+    private Transform objectRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player").transform;
+
     }
 
     // Update is called once per frame
     private void Update()
     {
-        isInFov = inFov(transform, Player, maxAngle, maxRadius);
+        if(Player == null)
+            Player = GameObject.Find("Player").transform;
+        else
+            isInFov = inFov(transform, Player, maxAngle, maxRadius);
     }
 
     private void OnDrawGizmos()
@@ -50,9 +55,9 @@ public class Tower_AI : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
     } //Draw field of view for debugging purposes
 
-    public static bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
+    public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
-        Collider[] overlaps = new Collider[10];
+        Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
         for (int i = 0; i < count + 1; i++)
@@ -70,8 +75,7 @@ public class Tower_AI : MonoBehaviour
 
                     checkingObject.LookAt(TargetXZ);
 
-                    
-
+                    setRotation(checkingObject);
                     if(angle <= maxAngle)
                     {
                         Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
@@ -87,5 +91,15 @@ public class Tower_AI : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void setRotation(Transform currRotate)
+    {
+        objectRotation = currRotate;
+    }
+
+    public Transform getRotation()
+    {
+        return objectRotation;
     }
 }
