@@ -1,29 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 class TestTower : TowerBase
 {
-    public GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
         CanShoot = true;
+
+        damage = 10;
+
         attackSpd = 1;
+        radius = 10;
+        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
     }
 
-    // Update is called once per frame
-    void fixedUpdate()
-    {
-        
-    }
    public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
+<
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
+
     }
     public override void OnUpdate()
     {
@@ -35,8 +34,13 @@ class TestTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= FrameToReleaseAttack)
             {
-                Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+                
+                GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+                test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
                 CanShoot = true;
+
+                Debug.Log("fire called2");
+                Fire();
             }
         }
     }

@@ -9,12 +9,12 @@ abstract class TowerBase : MonoBehaviour
 
     }
     public PROJECTILE projectileType;
-    public int damage;
-    public int hp;
-    public float attackSpd;
-    public float radius;
-    public int cost;
-    public int sellValue;
+    protected  int damage;
+    protected int hp;
+    protected float attackSpd;
+    protected float radius;
+    protected int cost;
+    protected int sellValue;
     public Animator m_Animator;
     public Tower_AI tower_AI;
     //prefab for the projectile model
