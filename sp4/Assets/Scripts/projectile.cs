@@ -14,7 +14,8 @@ public class projectile : MonoBehaviour
     void Update()
     {
         Debug.Log("projectile forward: " + transform.forward);
-        transform.Translate(transform.forward * 10 *Time.deltaTime); 
+      //  transform.Translate(transform.forward * 10 * Time.deltaTime);
+        transform.position += transform.forward * Time.deltaTime * 10.0f;
     }
 
 }
