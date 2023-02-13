@@ -7,13 +7,13 @@ public class Base_Interaction : MonoBehaviour
     public float maxDistance = 5.0f;
     // Start is called before the first frame update
     public List<GameObject> Towers;
-    GameObject TowerToSpawn; //What player decides that they want to spawn
+    public GameObject TowerToSpawn; //What player decides that they want to spawn
 
-    bool CanPlace = false;
+    private bool CanPlace = false;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,19 +30,7 @@ public class Base_Interaction : MonoBehaviour
 
             Debug.DrawRay(origin, direction * distance, Color.red);
 
-            if (Input.GetKeyDown(KeyCode.P)) //Debug Test Spawn
-            {
-                if (!CanPlace) //
-                {
-                    Debug.Log("Hit");
-                    Towers[0].transform.position = new Vector3(hit.point.x, hit.point.y + (Towers[0].transform.localScale.y / 2), hit.point.z);
-                    Towers[0].gameObject.GetComponent<Tower_AI>().enabled = true;
-                    Instantiate(Towers[0]);
-                    CanPlace = true;
-                }
-                else
-                    CanPlace = false;
-            }
+            SpawnObject(hit);
 
             if (!CanPlace) //Not Place Object
             {
@@ -52,10 +40,38 @@ public class Base_Interaction : MonoBehaviour
             }
             else //If Place Object
             {
+
             }
-            
+
         }
         else
             Debug.DrawRay(origin, direction * maxDistance, Color.red);
+    }
+
+    public void SpawnObject(RaycastHit hit)
+    {
+        if (TowerToSpawn != null && CanPlace == false)
+        {
+            TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
+                TowerToSpawn.gameObject.GetComponent<TestTower>().enabled = true;
+                CanPlace = true;
+                TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
+                TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
+                if(TowerToSpawn.gameObject.GetComponent<MeshRenderer>() != null)
+                    TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color = new Color(TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.r, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.g, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.b, 1);
+                else
+                {
+                    if(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>() != null)
+                        TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                }
+                Instantiate(TowerToSpawn);
+                Destroy(TowerToSpawn);
+            }
+        }
+        else if (TowerToSpawn == null)
+            CanPlace = false;
     }
 }
