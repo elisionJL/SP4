@@ -9,6 +9,7 @@ class TestTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
+        CanShoot = true;
         attackSpd = 1;
         tower_AI = GetComponent<Tower_AI>();
     }
@@ -21,23 +22,22 @@ class TestTower : TowerBase
    public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-       // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
-       Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+        CanShoot = false;
+        // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, radius) == true && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
         {
-            attackSpd -= 0.1f;
+            Fire();
         }
-        else
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(NameOfAttack) && !CanShoot)
         {
-            if(tower_AI.GetQuaternionTarget(rootObject.transform, radius) == true)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= FrameToReleaseAttack)
             {
-                Fire();
+                Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+                CanShoot = true;
             }
-           
-            attackSpd = 1;
         }
     }
 }
