@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
 
     private void MouseControls()
     {
-        float MouseX = Input.GetAxis("Mouse X") * 100f * Time.deltaTime;
-        float MouseY = Input.GetAxis("Mouse Y") * 100f * Time.deltaTime;
+        float MouseX = Input.GetAxis("Mouse X") * 300f * Time.deltaTime;
+        float MouseY = Input.GetAxis("Mouse Y") * 300f * Time.deltaTime;
 
         RotationX -= MouseY;
         RotationX = Mathf.Clamp(RotationX, -90f, 90f);
