@@ -13,6 +13,7 @@ public class projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("projectile forward: " + transform.forward);
         transform.Translate(transform.forward * 10 *Time.deltaTime); 
     }
 

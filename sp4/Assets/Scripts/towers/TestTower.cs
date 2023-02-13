@@ -4,6 +4,7 @@ using UnityEngine;
 
 class TestTower : TowerBase
 {
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,13 @@ class TestTower : TowerBase
     }
    public override void Fire()
     {
-        //Quaternion direction = Quaternion.LookRotation(transform.forward, transform.up);
-        Instantiate(projectilePrefab, transform.position,Quaternion.Euler(transform.forward));
+       // Vector3 look = Quaternion.Lookat()
+       // projectilePrefab.transform.position = transform.position;   
+        Instantiate(projectilePrefab, transform.position, transform.rotation);
     }
     public override void OnUpdate()
     {
+        Debug.Log(transform.forward);
         if (attackSpd > 0)
         {
             attackSpd -= 0.1f;
