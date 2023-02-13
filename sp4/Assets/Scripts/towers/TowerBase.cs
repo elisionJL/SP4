@@ -15,7 +15,12 @@ abstract class TowerBase : MonoBehaviour
     public float radius;
     public int cost;
     public int sellValue;
+    public Animator m_Animator;
+    public Tower_AI tower_AI;
+    //prefab for the projectile model
     public GameObject projectilePrefab;
+    //reference for the center of the model will be used to 
+    public GameObject rootObject;
     // Start is called before the first frame update
     void Start()
     {

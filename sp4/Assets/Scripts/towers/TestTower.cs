@@ -10,7 +10,7 @@ class TestTower : TowerBase
     void Start()
     {
         attackSpd = 1;
-
+        tower_AI = GetComponent<Tower_AI>();
     }
 
     // Update is called once per frame
@@ -20,20 +20,23 @@ class TestTower : TowerBase
     }
    public override void Fire()
     {
-       // Vector3 look = Quaternion.Lookat()
-       // projectilePrefab.transform.position = transform.position;   
-        Instantiate(projectilePrefab, transform.position, transform.rotation);
+        m_Animator.SetTrigger("shoot");
+       // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
+       Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
     }
     public override void OnUpdate()
     {
-        Debug.Log(transform.forward);
         if (attackSpd > 0)
         {
             attackSpd -= 0.1f;
         }
         else
         {
-            Fire();
+            if(tower_AI.GetQuaternionTarget(rootObject.transform, radius) == true)
+            {
+                Fire();
+            }
+           
             attackSpd = 1;
         }
     }

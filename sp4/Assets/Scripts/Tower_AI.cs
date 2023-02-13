@@ -92,7 +92,44 @@ public class Tower_AI : MonoBehaviour
         }
         return false;
     }
+    //return the quaternion from point of attack to target
+    public bool GetQuaternionTarget(Transform checkingObject, float maxRadius)
+    {
+        Collider[] overlaps = new Collider[999];
+        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
+        for (int i = 0; i < count + 1; i++)
+        {
+            if (overlaps[i] != null)
+            {
+                if (overlaps[i].transform == Player) //If Target enters field of view
+                {
+                    Vector3 directionBetween = (Player.position - checkingObject.position).normalized;
+                    directionBetween.y *= 0;
+
+                    float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                   // Vector3 TargetXZ = new Vector3(Player.position.x, checkingObject.position.y, Player.position.z);
+
+                    checkingObject.LookAt(Player);
+
+                    setRotation(checkingObject);
+                    if (angle <= maxAngle)
+                    {
+                        Ray ray = new Ray(checkingObject.position, Player.position - checkingObject.position);
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                        {
+                            if (hit.transform == Player)
+                                return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
     public void setRotation(Transform currRotate)
     {
         objectRotation = currRotate;
