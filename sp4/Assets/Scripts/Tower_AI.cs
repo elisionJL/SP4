@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower_AI : MonoBehaviour
 {
-    public Transform Player;
+    protected Transform Player;
     public float maxAngle;
     public float maxRadius;
 

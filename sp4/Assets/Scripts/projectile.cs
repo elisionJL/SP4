@@ -21,6 +21,11 @@ public class projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distance -= Time.deltaTime * speed;
+        if (distance  < 0)
+        {
+            Destroy(gameObject);
+        }
         transform.position += transform.forward * Time.deltaTime * 10.0f;
     }
     private void OnTriggerEnter(Collider other)
