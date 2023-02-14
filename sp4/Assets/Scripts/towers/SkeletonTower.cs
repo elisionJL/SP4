@@ -12,6 +12,9 @@ class SkeletonTower : TowerBase
         radius = 10;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+
+        Name = "Skeleton";
+        cost = 200;
     }
 
     public override void Fire()

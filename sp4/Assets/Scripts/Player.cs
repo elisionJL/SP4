@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public Transform PlayerBox;
     public GameObject Crosshair;
-    public bool LockCursorBool = true;
     float RotationX = 0f;
     public int Health = 0;
     public int Mana = 0;
@@ -24,7 +23,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Souls);
         if (Health > 0)
         {
             Health -= 1;
@@ -38,15 +36,15 @@ public class Player : MonoBehaviour
             //Souls -= 100;
         }
         MouseControls();
-        SetMouseCursor();
     }
 
-    public void SetMouseCursor() //Sets cursor to locked when in play mode, unlocked when in shop
+    public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
     {
-        if (LockCursorBool == false)
-            Cursor.lockState = CursorLockMode.Confined;
-        else if (LockCursorBool == true)
-            Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void UnlockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
+    {
+        Cursor.lockState = CursorLockMode.Confined;
     }
     private void MouseControls()
     {
