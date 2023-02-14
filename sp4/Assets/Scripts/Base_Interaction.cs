@@ -56,8 +56,9 @@ public class Base_Interaction : MonoBehaviour
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
                 //Until user presses Left Mouse Trigger to place it down
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetMouseButtonDown(0))
                 {
+                    Debug.Log("pressed click");
                     //Set it's final position from when user pressed E
                     TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
