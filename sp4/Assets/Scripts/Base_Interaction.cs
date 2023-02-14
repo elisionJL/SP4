@@ -36,10 +36,10 @@ public class Base_Interaction : MonoBehaviour
                 if (hit.transform.gameObject.tag == "interactable"
                 && distance <= 3.0f && upgrade == false) //If object tag is Interactable and it's close to the player
                 {
-                    if(UpgradePrompt.activeSelf == false)
+                    if (UpgradePrompt.activeSelf == false)
                         UpgradePrompt.SetActive(true);
 
-                    if(Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
                         UpgradeUI.SetActive(true);
                         UpgradePrompt.SetActive(false);
@@ -49,7 +49,7 @@ public class Base_Interaction : MonoBehaviour
                         gameObject.GetComponent<Player>().UnlockMouse();
                     }
                 }
-                else
+                if ((distance > 3.0f) || (upgrade == true) || (hit.transform.gameObject.tag != "interactable"))
                 {
                     UpgradePrompt.SetActive(false);
                 }
