@@ -15,6 +15,7 @@ class SkeletonTower : TowerBase
         tower_AI.HP = 10;
         Name = "Skeleton";
         cost = 200;
+        UpgradeCost = 100;
     }
 
     public override void Fire()

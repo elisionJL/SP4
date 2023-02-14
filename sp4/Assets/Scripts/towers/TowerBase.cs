@@ -15,6 +15,7 @@ abstract class TowerBase : MonoBehaviour
     protected float attackSpd;
     protected float radius;
     protected int cost;
+    protected int UpgradeCost;
     protected int sellValue;
     public Animator m_Animator;
     public Tower_AI tower_AI;
@@ -49,5 +50,15 @@ abstract class TowerBase : MonoBehaviour
     public  int GetSellValue()
     {
         return sellValue;
+    }
+
+    public int GetUpgradeCost()
+    {
+        return UpgradeCost;
+    }
+
+    public void NewUpgradeCost()
+    {
+        UpgradeCost = (int)Mathf.Ceil(UpgradeCost * 1.5f);
     }
 }

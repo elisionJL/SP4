@@ -9,11 +9,11 @@ class DemonGirlTower : TowerBase
     {
         damage = 10;
         attackSpd = 1;
-        cost = 100;
+        cost = 300;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
-
+        UpgradeCost = 150;
     }
 
     public override void Fire()
