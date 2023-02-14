@@ -61,7 +61,8 @@ public class Base_Interaction : MonoBehaviour
 
                     //Enable the AI Code to start finding enemy
                     TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
-                    TowerToSpawn.gameObject.GetComponent<TestTower>().enabled = true;
+                    if(TowerToSpawn.gameObject.GetComponent<MageTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<MageTower>().enabled = true;
 
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;

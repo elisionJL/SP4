@@ -420,6 +420,9 @@ MonoBehaviour:
   PlayerBox: {fileID: 1737100284}
   Crosshair: {fileID: 1834542247}
   LockCursorBool: 1
+  Health: 0
+  Mana: 0
+  Souls: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +438,7 @@ MonoBehaviour:
   maxDistance: 5
   Towers:
   - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
-  - {fileID: 9147632522748613656, guid: 5fc94257ed3921c40ad34c2c75d3503f, type: 3}
+  - {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
   TowerToSpawn: {fileID: 0}
 --- !u!114 &963194231
 MonoBehaviour:
