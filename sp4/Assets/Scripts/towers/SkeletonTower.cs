@@ -20,22 +20,25 @@ class SkeletonTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        CanShoot = false;
         //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
         //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
     }
     public override void OnUpdate()
     {
-        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
-        if (target != null)
+        //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)
         {
-            if (attackSpd > 0)
+            Debug.Log("Attacking");
+            Fire();
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
             {
-                attackSpd -= Time.deltaTime;
-            }
-            else
-            {
-                Fire();
-                attackSpd = 1;
+                //hit the enemy here
+                tower_AI.MinusHP(10);
+                CanShoot = true;
             }
         }
     }

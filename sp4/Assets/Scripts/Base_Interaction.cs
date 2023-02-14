@@ -10,6 +10,8 @@ public class Base_Interaction : MonoBehaviour
     public List<GameObject> Towers;
     public GameObject TowerToSpawn; //What player decides that they want to spawn
 
+    GameObject CanvasToGet;
+
     private bool CanPlace = false;
 
     public GameObject UpgradePrompt, UpgradeUI;
@@ -40,6 +42,7 @@ public class Base_Interaction : MonoBehaviour
                     {
                         UpgradePrompt.SetActive(true);
                         hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true);
+                        CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
                     }
 
                     if (Input.GetKeyDown(KeyCode.E))
@@ -52,10 +55,12 @@ public class Base_Interaction : MonoBehaviour
                         gameObject.GetComponent<Player>().UnlockMouse();
                     }
                 }
-                if ((distance > 3.0f) || (upgrade == true) || (hit.transform.gameObject.tag != "interactable"))
+                else if (((distance > 3.0f) && (hit.transform.gameObject.tag != "interactable")) || (upgrade == true))
                 {
                     UpgradePrompt.SetActive(false);
-                    hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
+
+                    if (CanvasToGet != null && CanvasToGet.activeSelf == true)
+                        CanvasToGet.SetActive(false);
                 }
             }
         }

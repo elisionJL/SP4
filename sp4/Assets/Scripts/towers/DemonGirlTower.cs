@@ -24,14 +24,19 @@ class DemonGirlTower : TowerBase
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle00") && CanShoot)
         {
-            attackSpd -= Time.deltaTime;
-        }
-        else
-        {
+            Debug.Log("fire1");
             Fire();
-            attackSpd = 1;
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            {
+                //hit the enemy here
+                tower_AI.MinusHP(10);
+                CanShoot = true;
+            }
         }
     }
 }
