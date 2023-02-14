@@ -12,6 +12,7 @@ class SkeletonTower : TowerBase
         radius = 10;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+        tower_AI.maxRadius = 7.5f;
     }
 
     public override void Fire()
