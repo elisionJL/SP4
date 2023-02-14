@@ -41,6 +41,9 @@ public class Base_Interaction : MonoBehaviour
         }
         else
             Debug.DrawRay(origin, direction * maxDistance, Color.red);
+
+        if(CanPlace == true && TowerToSpawn != null)
+            Destroy(TowerToSpawn);
     }
 
     public void SpawnObject(RaycastHit hit, float distance)
