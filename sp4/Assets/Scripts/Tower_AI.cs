@@ -109,7 +109,8 @@ public class Tower_AI : MonoBehaviour
         }
         return false;
     }
-    //return the quaternion from point of attack to target
+
+    //get the target that the tower is aiming for
     public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
     {
         Collider[] overlaps = new Collider[999];

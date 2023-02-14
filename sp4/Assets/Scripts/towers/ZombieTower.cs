@@ -7,19 +7,18 @@ class ZombieTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
-        damage = 10;
+        damage = 1;
         attackSpd = 1;
         radius = 10;
-        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
-        tower_AI.maxRadius = 5;
+        tower_AI.maxRadius = 2;
+        tower_AI.HP = 1000;
+        cost = 250;
     }
 
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
-        //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
     }
     public override void OnUpdate()
     {
@@ -27,10 +26,15 @@ class ZombieTower : TowerBase
         {
             attackSpd -= Time.deltaTime;
         }
-        else
+        //get the target that the tower is aiming for
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (target != null)
         {
-            Fire();
-            attackSpd = 1;
+            if(attackSpd < 0)
+            {
+                Fire();
+                attackSpd = 1;
+            }
         }
     }
 }

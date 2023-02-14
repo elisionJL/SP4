@@ -99,6 +99,8 @@ public class Base_Interaction : MonoBehaviour
                         TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
                     else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null)
                         TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<ZombieTower>().enabled = true;
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
 
@@ -141,7 +143,8 @@ public class Base_Interaction : MonoBehaviour
                         Instantiate(TowerToSpawn);
                     else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
                         Instantiate(TowerToSpawn);
-
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
+                        Instantiate(TowerToSpawn);
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
 

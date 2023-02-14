@@ -25,27 +25,18 @@ class SkeletonTower : TowerBase
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (target != null)
         {
-            attackSpd -= Time.deltaTime;
+            if (attackSpd > 0)
+            {
+                attackSpd -= Time.deltaTime;
+            }
+            else
+            {
+                Fire();
+                attackSpd = 1;
+            }
         }
-        else
-        {
-            Fire();
-            attackSpd = 1;
-        }
-    }
-
-    public override string GetName()
-    {
-        return Name;
-    }
-    public override int GetCost()
-    {
-        return cost;
-    }
-    public override int GetSellValue()
-    {
-        return sellValue;
     }
 }
