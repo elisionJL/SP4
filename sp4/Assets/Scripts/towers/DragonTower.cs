@@ -19,8 +19,6 @@ class DragonTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-        GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
 
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);

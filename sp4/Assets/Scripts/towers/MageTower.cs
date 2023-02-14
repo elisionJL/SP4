@@ -11,9 +11,10 @@ class MageTower : TowerBase
         damage = 10;
 
         attackSpd = 1;
-        radius = 10;
+
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+        radius = tower_AI.maxRadius; 
     }
 
     public override void Fire()
