@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public Transform PlayerBox;
     public GameObject Crosshair;
-    public bool LockCursorBool = true;
     float RotationX = 0f;
     public int Health = 0;
     public int Mana = 0;
@@ -18,6 +17,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Health = 100;
         Mana = 100;
+        Souls = 1000;
     }
 
     // Update is called once per frame
@@ -27,24 +27,24 @@ public class Player : MonoBehaviour
         {
             Health -= 1;
             Mana -= 1;
-            Souls += 10;
+            //Souls += 10;
         }
         else
         {
             Health = 100;
             Mana = 100;
-            Souls -= 100;
+            //Souls -= 100;
         }
         MouseControls();
-        SetMouseCursor();
     }
 
-    public void SetMouseCursor() //Sets cursor to locked when in play mode, unlocked when in shop
+    public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
     {
-        if (LockCursorBool == false)
-            Cursor.lockState = CursorLockMode.Confined;
-        else if (LockCursorBool == true)
-            Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void UnlockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
+    {
+        Cursor.lockState = CursorLockMode.Confined;
     }
     private void MouseControls()
     {
@@ -62,5 +62,16 @@ public class Player : MonoBehaviour
             transform.localRotation = Quaternion.Euler(RotationX, 0f, 0f);
             PlayerBox.Rotate(Vector3.up * MouseX);
         }
+    }
+
+    public bool MinusSouls(int SoulsNeeded)
+    {
+        if(SoulsNeeded <= Souls)
+        {
+            Souls -= SoulsNeeded;
+            return true;
+        }
+
+        return false;
     }
 }

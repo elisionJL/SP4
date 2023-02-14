@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Base_Interaction : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Base_Interaction : MonoBehaviour
     public GameObject TowerToSpawn; //What player decides that they want to spawn
 
     private bool CanPlace = false;
+
+    public GameObject UpgradePrompt, UpgradeUI;
+    bool upgrade = false;
 
     // Update is called once per frame
     void Update()
@@ -30,19 +34,44 @@ public class Base_Interaction : MonoBehaviour
             if (!CanPlace) //Not Place Object
             {
                 if (hit.transform.gameObject.tag == "interactable"
-                && distance <= 3.0f) //If object tag is Interactable and it's close to the player
-                    Debug.Log("Press E to Interact");
-            }
-            else //If Place Object
-            {
+                && distance <= 3.0f && upgrade == false) //If object tag is Interactable and it's close to the player
+                {
+                    if(UpgradePrompt.activeSelf == false)
+                        UpgradePrompt.SetActive(true);
 
-            }
+                    if(Input.GetKeyDown(KeyCode.E))
+                    {
+                        UpgradeUI.SetActive(true);
+                        UpgradePrompt.SetActive(false);
 
+                        UpgradeUI.GetComponent<Upgrade_Tower>().GetTowerInfo(hit.collider.gameObject);
+                        upgrade = true;
+                        gameObject.GetComponent<Player>().UnlockMouse();
+                    }
+                }
+                else
+                {
+                    UpgradePrompt.SetActive(false);
+                }
+            }
         }
         else
             Debug.DrawRay(origin, direction * maxDistance, Color.red);
+
+        if(CanPlace == true && TowerToSpawn != null)
+            Destroy(TowerToSpawn);
+
+        //if(UpgradeUI.activeSelf == true && upgrade == true)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //        UpgradeUI.SetActive(false);
+        //}
     }
 
+    public void CloseShopUI()
+    {
+        upgrade = false;
+    }
     public void SpawnObject(RaycastHit hit, float distance)
     {
         if (TowerToSpawn != null && CanPlace == false) //If there is an object to place and user didn't place it down yet
@@ -61,11 +90,15 @@ public class Base_Interaction : MonoBehaviour
 
                     //Enable the AI Code to start finding enemy
                     TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
+
                     if(TowerToSpawn.gameObject.GetComponent<MageTower>() != null)
                         TowerToSpawn.gameObject.GetComponent<MageTower>().enabled = true;
                     else if(TowerToSpawn.gameObject.GetComponent<DragonTower>() != null)
                         TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
-
+                    else if(TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
+                    else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
 
@@ -85,10 +118,29 @@ public class Base_Interaction : MonoBehaviour
                             TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
                             SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material);
                         }
+
+                        else if (TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>() != null)
+                        {
+                            //If Object has skinned mesh renderer, do th same as mesh renderer and change alpha material to 255 and rendering mode to opaque
+                            TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                        }
+
+                        else if (TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>() != null)
+                        {
+                            //If Object has skinned mesh renderer, do th same as mesh renderer and change alpha material to 255 and rendering mode to opaque
+                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                        }
                     }
 
                     //Lastly, instantiate a clone of the "ghost" object
-                    Instantiate(TowerToSpawn);
+                    if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(400) == true)
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true)
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
+                        Instantiate(TowerToSpawn);
 
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);

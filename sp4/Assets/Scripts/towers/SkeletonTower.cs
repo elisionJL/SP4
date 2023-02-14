@@ -10,9 +10,11 @@ class SkeletonTower : TowerBase
         damage = 10;
         attackSpd = 1;
         radius = 10;
-        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;
+        tower_AI.HP = 10;
+        Name = "Skeleton";
+        cost = 200;
     }
 
     public override void Fire()
@@ -32,5 +34,18 @@ class SkeletonTower : TowerBase
             Fire();
             attackSpd = 1;
         }
+    }
+
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override int GetCost()
+    {
+        return cost;
+    }
+    public override int GetSellValue()
+    {
+        return sellValue;
     }
 }

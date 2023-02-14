@@ -11,9 +11,14 @@ class MageTower : TowerBase
         damage = 10;
 
         attackSpd = 1;
-        radius = 10;
+
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+        radius = tower_AI.maxRadius;
+        tower_AI.HP = 100;
+
+        Name = "Lich";
+        cost = 400;
     }
 
     public override void Fire()
@@ -31,12 +36,26 @@ class MageTower : TowerBase
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
-            {                
-                GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            {
+                GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
+                tower_AI.MinusHP(10);
                 CanShoot = true;
             }
         }
+    }
+
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override int GetCost()
+    {
+        return cost;
+    }
+    public override int GetSellValue()
+    {
+        return sellValue;
     }
 }
