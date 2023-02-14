@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform PlayerBox;
-    public GameObject ShopUI, Crosshair;
+    public GameObject Crosshair;
+    public bool LockCursorBool = true;
     float RotationX = 0f;
 
     // Start is called before the first frame update
@@ -17,32 +18,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         MouseControls();
         SetMouseCursor();
-
-        //If user wants to open the shop
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //If shop isn't active, set it to active, otherwise if it is active, set it to inactive
-            if (ShopUI.activeSelf == false)
-            {
-                ShopUI.SetActive(true);
-                Crosshair.SetActive(false);
-            }
-            else if (ShopUI.activeSelf == true)
-            {
-                ShopUI.SetActive(false);
-                Crosshair.SetActive(true);
-            }
-        }
     }
 
     public void SetMouseCursor() //Sets cursor to locked when in play mode, unlocked when in shop
     {
-        if (ShopUI.activeSelf == true)
+        if (LockCursorBool == false)
             Cursor.lockState = CursorLockMode.Confined;
-        else if (ShopUI.activeSelf == false)
+        else if (LockCursorBool == true)
             Cursor.lockState = CursorLockMode.Locked;
     }
     private void MouseControls()

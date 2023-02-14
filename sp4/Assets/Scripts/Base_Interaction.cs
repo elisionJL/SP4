@@ -53,8 +53,8 @@ public class Base_Interaction : MonoBehaviour
                 //Move the objects position to wherever the raycast has hit
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
-                //Until user presses E to place it down
-                if (Input.GetKeyDown(KeyCode.E))
+                //Until user presses Left Mouse Trigger to place it down
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     //Set it's final position from when user pressed E
                     TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
@@ -93,6 +93,14 @@ public class Base_Interaction : MonoBehaviour
                     //Before setting CanPlace bool to true
                     CanPlace = true;
                 }
+                
+                //Otherwise if user presses right mouse trigger instead
+                else if(Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    //Then delete the Ghost object
+                    Destroy(TowerToSpawn);
+                }
+
             }
         }
         else if (TowerToSpawn == null)
