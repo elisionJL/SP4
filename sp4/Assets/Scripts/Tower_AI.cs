@@ -35,6 +35,21 @@ public class Tower_AI : MonoBehaviour
         Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
         Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
 
+        GL.PushMatrix();
+        GL.Begin(GL.LINES);
+        GL.Color(Color.yellow);
+        GL.MultMatrix(transform.localToWorldMatrix);
+        float a = 1 / (float)1;
+        float angle = a * Mathf.PI * 2;
+        // Vertex colors change from red to green
+        GL.Color(new Color(a, 1 - a, 0, 0.8F));
+        // One vertex at transform position
+        GL.Vertex3(0, 0, 0);
+        // Another vertex at edge of circle
+        GL.Vertex3(Mathf.Cos(angle) * maxRadius, Mathf.Sin(angle) * maxRadius, 0);
+        GL.End();
+        GL.PopMatrix();
+
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, fovLine1);
         Gizmos.DrawRay(transform.position, fovLine2);

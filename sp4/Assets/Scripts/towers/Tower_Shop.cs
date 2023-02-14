@@ -6,6 +6,21 @@ public class Tower_Shop : MonoBehaviour
 {
     public GameObject Player;
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Tower1Select();
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            Tower2Select();
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            Tower3Select();
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            Tower4Select();
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+            Tower5Select();
+    }
+
     //Dragon Tower
     public void Tower1Select()
     {
@@ -18,9 +33,6 @@ public class Tower_Shop : MonoBehaviour
 
         //Instantiate the dragon tower and get its reference
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Instantiate(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
-
-        //Disable the shop menu UI
-        Player.gameObject.GetComponent<Player>().ShopUI.SetActive(false);
     }
 
     public void Tower2Select()
@@ -32,9 +44,6 @@ public class Tower_Shop : MonoBehaviour
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Player.gameObject.GetComponent<Base_Interaction>().Towers[1];
 
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Instantiate(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
-
-        //Disable the shop menu UI
-        Player.gameObject.GetComponent<Player>().ShopUI.SetActive(false);
     }
 
     public void Tower3Select()
@@ -45,9 +54,6 @@ public class Tower_Shop : MonoBehaviour
 
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Player.gameObject.GetComponent<Base_Interaction>().Towers[2];
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Instantiate(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
-
-        //Disable the shop menu UI
-        Player.gameObject.GetComponent<Player>().ShopUI.SetActive(false);
     }
 
     public void Tower4Select()
@@ -58,9 +64,6 @@ public class Tower_Shop : MonoBehaviour
 
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Player.gameObject.GetComponent<Base_Interaction>().Towers[3];
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Instantiate(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
-
-        //Disable the shop menu UI
-        Player.gameObject.GetComponent<Player>().ShopUI.SetActive(false);
     }
 
     public void Tower5Select()
@@ -71,8 +74,5 @@ public class Tower_Shop : MonoBehaviour
 
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Player.gameObject.GetComponent<Base_Interaction>().Towers[4];
         Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn = Instantiate(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
-
-        //Disable the shop menu UI
-        Player.gameObject.GetComponent<Player>().ShopUI.SetActive(false);
     }
 }
