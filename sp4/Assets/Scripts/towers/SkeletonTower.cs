@@ -7,12 +7,13 @@ class SkeletonTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
+        CanShoot = true;
         damage = 10;
         attackSpd = 1;
         radius = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;
-        tower_AI.HP = 10;
+        tower_AI.HP = 100;
         Name = "Skeleton";
         cost = 200;
         UpgradeCost = 100;

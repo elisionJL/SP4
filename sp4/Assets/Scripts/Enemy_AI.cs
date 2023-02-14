@@ -12,6 +12,8 @@ public class Enemy_AI : MonoBehaviour
     public int HP;
     public Slider HPSlider;
     private bool isInFov = false;
+    public Animator m_Animator;
+    public bool CanShoot;
 
     private Transform objectRotation;
 
@@ -19,6 +21,8 @@ public class Enemy_AI : MonoBehaviour
     void Start()
     {
         HP = 100;
+
+        CanShoot = true;
     }
 
     // Update is called once per frame
@@ -72,7 +76,13 @@ public class Enemy_AI : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
     } //Draw field of view for debugging purposes
-
+    public void Fire()
+    {
+        m_Animator.SetTrigger("Attack");
+        CanShoot = false;
+        //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+        //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
+    }
     public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];

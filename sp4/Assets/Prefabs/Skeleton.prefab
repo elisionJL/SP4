@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngle: 180
-  maxRadius: 5
+  maxRadius: 7.5
   HP: 0
   Canvas: {fileID: 5075480895399103868}
   HPSlider: {fileID: 8418684083927190118}
