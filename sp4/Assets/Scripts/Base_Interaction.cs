@@ -37,7 +37,10 @@ public class Base_Interaction : MonoBehaviour
                 && distance <= 3.0f && upgrade == false) //If object tag is Interactable and it's close to the player
                 {
                     if (UpgradePrompt.activeSelf == false)
+                    {
                         UpgradePrompt.SetActive(true);
+                        hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true);
+                    }
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -52,6 +55,7 @@ public class Base_Interaction : MonoBehaviour
                 if ((distance > 3.0f) || (upgrade == true) || (hit.transform.gameObject.tag != "interactable"))
                 {
                     UpgradePrompt.SetActive(false);
+                    hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
                 }
             }
         }

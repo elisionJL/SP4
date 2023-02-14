@@ -9,6 +9,7 @@ public class Tower_AI : MonoBehaviour
     public float maxAngle;
     public float maxRadius;
     public int HP;
+    public GameObject Canvas;
     public Slider HPSlider;
     private bool isInFov = false;
 
@@ -17,6 +18,7 @@ public class Tower_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Canvas.SetActive(false);
         HP = 100;
     }
 
@@ -27,7 +29,6 @@ public class Tower_AI : MonoBehaviour
             Player = GameObject.Find("Player").transform;
         else
             isInFov = inFov(transform, Player, maxAngle, maxRadius);
-
         GL.PushMatrix();
         GL.Begin(GL.LINES);
         GL.Color(Color.yellow);

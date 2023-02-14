@@ -2484,6 +2484,7 @@ MonoBehaviour:
   maxAngle: 360
   maxRadius: 10
   HP: 0
+  Canvas: {fileID: 174411740375533197}
   HPSlider: {fileID: 8415598849061276425}
 --- !u!114 &3725078334642832456
 MonoBehaviour:
@@ -2498,6 +2499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 0
+  Name: 
   m_Animator: {fileID: 472858282145054604}
   tower_AI: {fileID: 3725078334642832459}
   projectilePrefab: {fileID: 906990218797040019, guid: 088d3e978d071a24eaf44d8fd63b9035, type: 3}

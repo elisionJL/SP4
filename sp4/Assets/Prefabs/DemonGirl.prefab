@@ -2068,6 +2068,7 @@ MonoBehaviour:
   maxAngle: 180
   maxRadius: 5
   HP: 0
+  Canvas: {fileID: 3946821103339840748}
   HPSlider: {fileID: 3572004304680674497}
 --- !u!114 &1228154970037044957
 MonoBehaviour:
