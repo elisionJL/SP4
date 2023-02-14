@@ -9,9 +9,11 @@ class DemonGirlTower : TowerBase
     {
         damage = 10;
         attackSpd = 1;
-        radius = 10;
+        cost = 100;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+        radius = tower_AI.maxRadius;
+
     }
 
     public override void Fire()
@@ -31,5 +33,18 @@ class DemonGirlTower : TowerBase
             Fire();
             attackSpd = 1;
         }
+    }
+
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override int GetCost()
+    {
+        return cost;
+    }
+    public override int GetSellValue()
+    {
+        return sellValue;
     }
 }

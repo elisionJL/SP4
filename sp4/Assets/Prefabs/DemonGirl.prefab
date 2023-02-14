@@ -2005,8 +2005,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4104614698926284}
+  - component: {fileID: 6802079902881673450}
   - component: {fileID: 4911115295505305145}
-  - component: {fileID: 1119247782311475617}
+  - component: {fileID: 1228154970037044957}
   - component: {fileID: 6826819230612365284}
   m_Layer: 0
   m_Name: DemonGirl
@@ -2032,6 +2033,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6802079902881673450
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639818050706832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d3b617d4c5387004fa355973611faee7, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5e53106831023b7499983b1d67f806f9, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &4911115295505305145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2048,7 +2069,7 @@ MonoBehaviour:
   maxRadius: 5
   HP: 0
   HPSlider: {fileID: 3572004304680674497}
---- !u!114 &1119247782311475617
+--- !u!114 &1228154970037044957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2057,11 +2078,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639818050706832}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1bfc3da79ab95e45bafa0fea678bb37, type: 3}
+  m_Script: {fileID: 11500000, guid: d73c2550711c5e04ea44850659272c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 0
-  m_Animator: {fileID: 95531330028331018}
+  Name: DemonGirl
+  m_Animator: {fileID: 6802079902881673450}
   tower_AI: {fileID: 4911115295505305145}
   projectilePrefab: {fileID: 0}
   rootObject: {fileID: 0}
@@ -2848,7 +2870,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4007570355682014}
-  - component: {fileID: 95531330028331018}
   m_Layer: 0
   m_Name: DemonGirlMesh
   m_TagString: Untagged
@@ -2880,26 +2901,6 @@ Transform:
   m_Father: {fileID: 4104614698926284}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95531330028331018
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836169572417686}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d3b617d4c5387004fa355973611faee7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5e53106831023b7499983b1d67f806f9, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1913574669139202
 GameObject:
   m_ObjectHideFlags: 0

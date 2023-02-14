@@ -70,6 +70,8 @@ public class Base_Interaction : MonoBehaviour
                         TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
                     else if(TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null)
                         TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
+                    else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
 
