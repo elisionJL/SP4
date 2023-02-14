@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower_AI : MonoBehaviour
 {
     protected Transform Player;
     public float maxAngle;
     public float maxRadius;
-
+    public int HP;
+    public Slider HPSlider;
     private bool isInFov = false;
 
     private Transform objectRotation;
@@ -15,7 +17,7 @@ public class Tower_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        HP = 100;
     }
 
     // Update is called once per frame
@@ -153,5 +155,15 @@ public class Tower_AI : MonoBehaviour
     public Transform getRotation()
     {
         return objectRotation;
+    }
+
+    public void MinusHP(int MinusBy)
+    {
+        HP -= MinusBy;
+        HPSlider.value = HP;
+        if (HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

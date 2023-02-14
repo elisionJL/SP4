@@ -12,8 +12,9 @@ class DragonTower : TowerBase
 
         attackSpd = 1;
         radius = 10;
-        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
+
+        tower_AI.HP = 100;
     }
 
     public override void Fire()
@@ -35,6 +36,7 @@ class DragonTower : TowerBase
             {
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
+                tower_AI.MinusHP(10);
                 CanShoot = true;
             }
         }
