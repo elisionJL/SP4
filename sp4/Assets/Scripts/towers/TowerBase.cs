@@ -9,7 +9,8 @@ abstract class TowerBase : MonoBehaviour
 
     }
     public PROJECTILE projectileType;
-    protected  int damage;
+    public string Name;
+    protected int damage;
     protected int hp;
     protected float attackSpd;
     protected float radius;
@@ -35,4 +36,10 @@ abstract class TowerBase : MonoBehaviour
     }
     public abstract void Fire();
     public abstract void OnUpdate();
+
+    public abstract string GetName();
+
+    public abstract int GetCost();
+
+    public abstract int GetSellValue();
 }

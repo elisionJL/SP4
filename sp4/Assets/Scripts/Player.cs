@@ -18,22 +18,24 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Health = 100;
         Mana = 100;
+        Souls = 1000;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Souls);
         if (Health > 0)
         {
             Health -= 1;
             Mana -= 1;
-            Souls += 10;
+            //Souls += 10;
         }
         else
         {
             Health = 100;
             Mana = 100;
-            Souls -= 100;
+            //Souls -= 100;
         }
         MouseControls();
         SetMouseCursor();
@@ -62,5 +64,16 @@ public class Player : MonoBehaviour
             transform.localRotation = Quaternion.Euler(RotationX, 0f, 0f);
             PlayerBox.Rotate(Vector3.up * MouseX);
         }
+    }
+
+    public bool MinusSouls(int SoulsNeeded)
+    {
+        if(SoulsNeeded <= Souls)
+        {
+            Souls -= SoulsNeeded;
+            return true;
+        }
+
+        return false;
     }
 }

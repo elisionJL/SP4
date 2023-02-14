@@ -89,10 +89,35 @@ public class Base_Interaction : MonoBehaviour
                             TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
                             SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material);
                         }
+
+                        else if (TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>() != null)
+                        {
+                            //If Object has skinned mesh renderer, do th same as mesh renderer and change alpha material to 255 and rendering mode to opaque
+                            TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                        }
+
+                        else if (TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>() != null)
+                        {
+                            //If Object has skinned mesh renderer, do th same as mesh renderer and change alpha material to 255 and rendering mode to opaque
+                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                        }
                     }
 
                     //Lastly, instantiate a clone of the "ghost" object
-                    Instantiate(TowerToSpawn);
+                    if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(TowerToSpawn.gameObject.GetComponent<MageTower>().GetCost()) == true)
+                    {
+                        Instantiate(TowerToSpawn);
+                    }
+                    else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(TowerToSpawn.gameObject.GetComponent<DragonTower>().GetCost()) == true)
+                    {
+                        Instantiate(TowerToSpawn);
+                    }
+                    else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(TowerToSpawn.gameObject.GetComponent<SkeletonTower>().GetCost()) == true)
+                    {
+                        Instantiate(TowerToSpawn);
+                    }
 
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
