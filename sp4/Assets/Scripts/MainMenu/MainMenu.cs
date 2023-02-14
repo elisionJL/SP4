@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TowerTestScene");
     }
     public void SettingsButton()
     {

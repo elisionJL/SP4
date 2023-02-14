@@ -44,7 +44,6 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Get player inputs
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
