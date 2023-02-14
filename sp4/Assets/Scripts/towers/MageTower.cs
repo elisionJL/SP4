@@ -34,12 +34,25 @@ class MageTower : TowerBase
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
-            {                
-                GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+            {
+                GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
                 tower_AI.MinusHP(10);
                 CanShoot = true;
             }
         }
+    }
+
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override int GetCost()
+    {
+        return cost;
+    }
+    public override int GetSellValue()
+    {
+        return sellValue;
     }
 }

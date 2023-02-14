@@ -41,4 +41,17 @@ class DragonTower : TowerBase
             }
         }
     }
+
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override int GetCost()
+    {
+        return cost;
+    }
+    public override int GetSellValue()
+    {
+        return sellValue;
+    }
 }
