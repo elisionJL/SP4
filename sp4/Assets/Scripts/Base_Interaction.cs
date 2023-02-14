@@ -50,9 +50,6 @@ public class Base_Interaction : MonoBehaviour
             //If distance of tower from player is less than 5.0f and is a place that can be placed down onto
             if(distance <= 5.0f && hit.collider.gameObject.tag == "PlaceableArea")
             {
-                TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
-                TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
-                CanPlace = true;
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
                 //Until user presses Left Mouse Trigger to place it down
