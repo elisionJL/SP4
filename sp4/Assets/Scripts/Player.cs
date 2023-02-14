@@ -40,10 +40,7 @@ public class Player : MonoBehaviour
         //If user wants to open the shop
         if (Input.GetKeyDown(KeyCode.P))
         {
-<<<<<<< Updated upstream
             //If shop isn't active, set it to active, otherwise if it is active, set it to inactive
-=======
->>>>>>> Stashed changes
             if (ShopUI.activeSelf == false)
             {
                 ShopUI.SetActive(true);
