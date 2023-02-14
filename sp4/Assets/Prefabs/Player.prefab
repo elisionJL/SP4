@@ -350,7 +350,7 @@ MonoBehaviour:
   Towers:
   - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
   - {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  - {fileID: 2803820806472684270, guid: fcc7e72ef9922724c9dbe91fe1141293, type: 3}
+  - {fileID: 2803820806472684270, guid: 58baab9f3d6663340bcc8e520484c9a6, type: 3}
   - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
   TowerToSpawn: {fileID: 0}
   UpgradePrompt: {fileID: 0}

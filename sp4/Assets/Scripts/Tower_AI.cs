@@ -15,6 +15,10 @@ public class Tower_AI : MonoBehaviour
 
     private Transform objectRotation;
 
+    //private void OnEnable()
+    //{
+    //    Canvas = gameObject.transform.GetChild(2).gameObject;
+    //}
     // Start is called before the first frame update
     void Start()
     {
