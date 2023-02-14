@@ -56,7 +56,7 @@ public class Base_Interaction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
-                TowerToSpawn.gameObject.GetComponent<TestTower>().enabled = true;
+                TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
                 CanPlace = true;
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
                 TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
