@@ -8,13 +8,11 @@ class DragonTower : TowerBase
     {
         cost = 500;
         CanShoot = true;
-
         damage = 10;
-
         attackSpd = 1;
-        radius = 10;
+        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
-
+        tower_AI.maxRadius = 10;
         tower_AI.HP = 100;
 
         Name = "Dragon";
@@ -28,8 +26,10 @@ class DragonTower : TowerBase
     }
     public override void OnUpdate()
     {
-       if (tower_AI.GetQuaternionTarget(rootObject.transform, radius) == true && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
         {
+            Debug.Log("fire1");
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Fireball Shoot") && !CanShoot)
@@ -44,16 +44,4 @@ class DragonTower : TowerBase
         }
     }
 
-    public override string GetName()
-    {
-        return Name;
-    }
-    public override int GetCost()
-    {
-        return cost;
-    }
-    public override int GetSellValue()
-    {
-        return sellValue;
-    }
 }

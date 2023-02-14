@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5255722807018501871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50eac2544e69f494c821fc1c2da684fe, type: 3}
   m_Name: 
@@ -1457,8 +1457,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 574451210064883334, guid: 00798e868345bda45b6603530e31dd29, type: 3}
   rootObject: {fileID: 4154479509809497714}
   CanShoot: 0
-  NameOfAttack: Fireball Shoot
-  FrameToReleaseAttack: 0.5
 --- !u!114 &3158826034366642089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1466,12 +1464,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5255722807018501871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   maxAngle: 180.6
   maxRadius: 10.03
 --- !u!1 &5499769848897183931

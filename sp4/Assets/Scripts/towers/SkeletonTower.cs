@@ -10,9 +10,9 @@ class SkeletonTower : TowerBase
         damage = 10;
         attackSpd = 1;
         radius = 10;
-        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
-
+        tower_AI.maxRadius = 7.5f;
+        tower_AI.HP = 10;
         Name = "Skeleton";
         cost = 200;
     }
@@ -25,27 +25,18 @@ class SkeletonTower : TowerBase
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (target != null)
         {
-            attackSpd -= Time.deltaTime;
+            if (attackSpd > 0)
+            {
+                attackSpd -= Time.deltaTime;
+            }
+            else
+            {
+                Fire();
+                attackSpd = 1;
+            }
         }
-        else
-        {
-            Fire();
-            attackSpd = 1;
-        }
-    }
-
-    public override string GetName()
-    {
-        return Name;
-    }
-    public override int GetCost()
-    {
-        return cost;
-    }
-    public override int GetSellValue()
-    {
-        return sellValue;
     }
 }

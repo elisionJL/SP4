@@ -37,9 +37,17 @@ abstract class TowerBase : MonoBehaviour
     public abstract void Fire();
     public abstract void OnUpdate();
 
-    public abstract string GetName();
+    public string GetName()
+    {
+        return name;
+    }
+    public int GetCost()
+    {
+        return cost;
+    }
 
-    public abstract int GetCost();
-
-    public abstract int GetSellValue();
+    public  int GetSellValue()
+    {
+        return sellValue;
+    }
 }

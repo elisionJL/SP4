@@ -82,8 +82,9 @@ public class Base_Interaction : MonoBehaviour
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
                 //Until user presses Left Mouse Trigger to place it down
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetMouseButtonDown(0))
                 {
+                    Debug.Log("pressed click");
                     //Set it's final position from when user pressed E
                     TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
@@ -98,6 +99,8 @@ public class Base_Interaction : MonoBehaviour
                         TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
                     else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null)
                         TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null)
+                        TowerToSpawn.gameObject.GetComponent<ZombieTower>().enabled = true;
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
 
@@ -157,6 +160,8 @@ public class Base_Interaction : MonoBehaviour
                     else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true)
                         Instantiate(TowerToSpawn);
                     else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
                         Instantiate(TowerToSpawn);
                     else if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null && gameObject.GetComponent<Player>().MinusSouls(100) == true)
                         Instantiate(TowerToSpawn);

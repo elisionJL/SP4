@@ -109,8 +109,9 @@ public class Tower_AI : MonoBehaviour
         }
         return false;
     }
-    //return the quaternion from point of attack to target
-    public bool GetQuaternionTarget(Transform checkingObject, float maxRadius)
+
+    //get the target that the tower is aiming for
+    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -139,13 +140,13 @@ public class Tower_AI : MonoBehaviour
                         if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
                             if (hit.transform == Player)
-                                return true;
+                                return hit.transform;
                         }
                     }
                 }
             }
         }
-        return false;
+        return null;
     }
     public void setRotation(Transform currRotate)
     {
