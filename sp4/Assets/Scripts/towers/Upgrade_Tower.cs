@@ -8,6 +8,8 @@ public class Upgrade_Tower : MonoBehaviour
     public TextMeshProUGUI Name, Cost;
     public GameObject Player;
 
+    private GameObject TowerGotten;
+
     private void OnEnable()
     {
         
@@ -32,6 +34,14 @@ public class Upgrade_Tower : MonoBehaviour
             Name.text = "" + Tower.gameObject.GetComponent<SkeletonTower>().GetName();
             Cost.text = "" + Tower.gameObject.GetComponent<SkeletonTower>().GetCost();
         }
+
+        else if (Tower.gameObject.GetComponent<DemonGirlTower>() != null)
+        {
+            Name.text = "" + Tower.gameObject.GetComponent<DemonGirlTower>().GetName();
+            Cost.text = "" + Tower.gameObject.GetComponent<DemonGirlTower>().GetCost();
+        }
+
+        TowerGotten = Tower;
     }
 
     public void CloseUI()
@@ -39,5 +49,18 @@ public class Upgrade_Tower : MonoBehaviour
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+    }
+
+    public void SellTower()
+    {
+        Destroy(TowerGotten);
+        gameObject.SetActive(false);
+        Player.gameObject.GetComponent<Player>().LockMouse();
+        Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+    }
+
+    public void UpgradeTower()
+    {
+
     }
 }
