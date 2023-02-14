@@ -14,7 +14,8 @@ class MageTower : TowerBase
 
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
-        radius = tower_AI.maxRadius; 
+        radius = tower_AI.maxRadius;
+        tower_AI.HP = 100;
     }
 
     public override void Fire()
@@ -32,10 +33,11 @@ class MageTower : TowerBase
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {                
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
+                tower_AI.MinusHP(10);
                 CanShoot = true;
             }
         }
