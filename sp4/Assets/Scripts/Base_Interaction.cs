@@ -24,8 +24,14 @@ public class Base_Interaction : MonoBehaviour
             float distance = hit.distance; //Get the distance from the ray to the hit object
 
             Debug.DrawRay(origin, direction * distance, Color.red);
+<<<<<<< Updated upstream
 
             SpawnObject(hit, distance);
+=======
+            
+            
+            SpawnObject(hit);
+>>>>>>> Stashed changes
 
             if (!CanPlace) //Not Place Object
             {

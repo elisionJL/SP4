@@ -7,24 +7,43 @@ public class Player : MonoBehaviour
     public Transform PlayerBox;
     public GameObject ShopUI, Crosshair;
     float RotationX = 0f;
+    public int Health = 0;
+    public int Mana = 0;
+    public int Souls = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Health = 100;
+        Mana = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Health > 0)
+        {
+            Health -= 1;
+            Mana -= 1;
+            Souls += 10;
+        }
+        else
+        {
+            Health = 100;
+            Mana = 100;
+            Souls -= 100;
+        }
         MouseControls();
         SetMouseCursor();
 
         //If user wants to open the shop
         if (Input.GetKeyDown(KeyCode.P))
         {
+<<<<<<< Updated upstream
             //If shop isn't active, set it to active, otherwise if it is active, set it to inactive
+=======
+>>>>>>> Stashed changes
             if (ShopUI.activeSelf == false)
             {
                 ShopUI.SetActive(true);
