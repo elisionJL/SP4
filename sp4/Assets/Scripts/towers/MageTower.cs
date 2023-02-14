@@ -16,6 +16,9 @@ class MageTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
         tower_AI.HP = 100;
+
+        Name = "Lich";
+        cost = 400;
     }
 
     public override void Fire()

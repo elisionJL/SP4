@@ -6,6 +6,7 @@ class DragonTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
+        cost = 500;
         CanShoot = true;
 
         damage = 10;
@@ -15,12 +16,13 @@ class DragonTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
 
         tower_AI.HP = 100;
+
+        Name = "Dragon";
     }
 
     public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
     }
