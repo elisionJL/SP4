@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Health = 100;
         Mana = 100;
-        Souls = 1000;
+        Souls = 100000;
     }
 
     // Update is called once per frame
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
             //Souls -= 100;
         }
         MouseControls();
+
     }
 
     public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop

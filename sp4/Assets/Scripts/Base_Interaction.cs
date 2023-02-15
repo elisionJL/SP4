@@ -7,11 +7,13 @@ public class Base_Interaction : MonoBehaviour
 {
     public float maxDistance = 5.0f;
     // Start is called before the first frame update
+
     #region Towers
-    private bool CanPlace = false;
     public List<GameObject> Towers;
     public GameObject TowerToSpawn, CurrentTowerLookAt; //What player decides that they want to spawn
+    public GameObject EnemyToSpawn;
     GameObject CanvasToGet;
+    private bool CanPlace = false;
     #endregion
 
     #region Tower Upgrade
@@ -88,6 +90,12 @@ public class Base_Interaction : MonoBehaviour
         if (TowerToSpawn == null && CanPlace == false)
             Player_Attack();
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            EnemyToSpawn.transform.position = new Vector3(0, 0, 0);
+            Instantiate(EnemyToSpawn);
+        }
+
         //if(UpgradeUI.activeSelf == true && upgrade == true)
         //{
         //    if (Input.GetKeyDown(KeyCode.E))
@@ -112,7 +120,7 @@ public class Base_Interaction : MonoBehaviour
                 //Until user presses Left Mouse Trigger to place it down
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("pressed click");
+                    //Debug.Log("pressed click");
                     //Set it's final position from when user pressed E
                     TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 

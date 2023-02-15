@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Tower_AI : MonoBehaviour
 {
-    protected Transform Player;
+    [SerializeField]
+    protected Transform playerTransform;
     public float maxAngle;
     public float maxRadius;
     public int HP;
@@ -29,10 +30,11 @@ public class Tower_AI : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Player == null)
-            Player = GameObject.Find("Player").transform;
+        if(playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+            playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
         else
-            isInFov = inFov(transform, Player, maxAngle, maxRadius);
+            isInFov = inFov(transform, playerTransform, maxAngle, maxRadius);
+
         GL.PushMatrix();
         GL.Begin(GL.LINES);
         GL.Color(Color.yellow);
@@ -61,7 +63,7 @@ public class Tower_AI : MonoBehaviour
         Gizmos.DrawRay(transform.position, fovLine1);
         Gizmos.DrawRay(transform.position, fovLine2);
 
-        if(!isInFov)
+        if (!isInFov)
         {
             Gizmos.color = Color.red;
         }
@@ -71,22 +73,21 @@ public class Tower_AI : MonoBehaviour
             Gizmos.color = Color.green;
         }
 
-        Gizmos.DrawRay(transform.position, (Player.position - transform.position).normalized * maxRadius);
-
+        Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * maxRadius);
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
     } //Draw field of view for debugging purposes
 
-    public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
+    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
         for (int i = 0; i < count + 1; i++)
         {
-            if(overlaps[i] != null)
+            if (overlaps[i] != null)
             {
-                if(overlaps[i].transform == target) //If Target enters field of view
+                if (overlaps[i].transform == target) //If Target enters field of view
                 {
                     Vector3 directionBetween = (target.position - checkingObject.position).normalized;
                     directionBetween.y *= 0;
@@ -98,15 +99,17 @@ public class Tower_AI : MonoBehaviour
                     checkingObject.LookAt(TargetXZ);
 
                     setRotation(checkingObject);
-                    if(angle <= maxAngle)
+                    if (angle <= maxAngle)
                     {
                         Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
                         RaycastHit hit;
 
-                        if(Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                        if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
                             if (hit.transform == target)
+                            {
                                 return true;
+                            }
                         }
                     }
                 }
@@ -125,27 +128,29 @@ public class Tower_AI : MonoBehaviour
         {
             if (overlaps[i] != null)
             {
-                if (overlaps[i].transform == Player) //If Target enters field of view
+                if (overlaps[i].transform == playerTransform) //If Target enters field of view
                 {
-                    Vector3 directionBetween = (Player.position - checkingObject.position).normalized;
+                    Vector3 directionBetween = (playerTransform.position - checkingObject.position).normalized;
                     directionBetween.y *= 0;
 
                     float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
 
-                   // Vector3 TargetXZ = new Vector3(Player.position.x, checkingObject.position.y, Player.position.z);
+                    // Vector3 TargetXZ = new Vector3(Player.position.x, checkingObject.position.y, Player.position.z);
 
-                    checkingObject.LookAt(Player);
+                    checkingObject.LookAt(playerTransform);
 
                     setRotation(checkingObject);
                     if (angle <= maxAngle)
                     {
-                        Ray ray = new Ray(checkingObject.position, Player.position - checkingObject.position);
+                        Ray ray = new Ray(checkingObject.position, playerTransform.position - checkingObject.position);
                         RaycastHit hit;
 
                         if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
-                            if (hit.transform == Player)
+                            if (hit.transform == playerTransform)
+                            {
                                 return hit.transform;
+                            }
                         }
                     }
                 }
@@ -171,5 +176,9 @@ public class Tower_AI : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+    public Transform getPlayer()
+    {
+        return playerTransform;
     }
 }
