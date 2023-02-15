@@ -259,6 +259,7 @@ MonoBehaviour:
   - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
   TowerToSpawn: {fileID: 0}
   CurrentTowerLookAt: {fileID: 0}
+  EnemyToSpawn: {fileID: 0}
   UpgradePrompt: {fileID: 0}
   UpgradeUI: {fileID: 0}
   PlayerSword: {fileID: 2508148065116050486}
@@ -383,6 +384,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.4049425, y: 24.739103, z: 2.2225904}
   m_Center: {x: 0.0000008940697, y: -0.331313, z: 0}
+--- !u!114 &2355250824379459909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508148065116050486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33488bc4677c0de4692ebca50cc1014c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2510825011009891046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4544055715682306, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}

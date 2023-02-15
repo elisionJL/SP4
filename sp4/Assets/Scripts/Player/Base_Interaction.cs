@@ -259,6 +259,7 @@ public class Base_Interaction : MonoBehaviour
         {
             OriginalSwordPos = PlayerSword.transform;
             PlayerSword.SetActive(true);
+            PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
         }
 
