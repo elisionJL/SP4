@@ -7,13 +7,16 @@ class DemonGirlTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
+        CanShoot = true;
         damage = 10;
         attackSpd = 1;
-        cost = 100;
+        cost = 300;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
-
+        UpgradeCost = 150;
+        tower_AI.HP = 100;
+        Name = "Demon Girl";
     }
 
     public override void Fire()
@@ -24,14 +27,18 @@ class DemonGirlTower : TowerBase
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
-        {
-            attackSpd -= Time.deltaTime;
-        }
-        else
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle00") && CanShoot)
         {
             Fire();
-            attackSpd = 1;
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            {
+                //hit the enemy here
+                tower_AI.MinusHP(10);
+                CanShoot = true;
+            }
         }
     }
 }

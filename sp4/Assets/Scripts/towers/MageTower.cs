@@ -19,6 +19,7 @@ class MageTower : TowerBase
 
         Name = "Lich";
         cost = 400;
+        UpgradeCost = 300;
     }
 
     public override void Fire()

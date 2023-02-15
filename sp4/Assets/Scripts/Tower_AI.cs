@@ -9,14 +9,20 @@ public class Tower_AI : MonoBehaviour
     public float maxAngle;
     public float maxRadius;
     public int HP;
+    public GameObject Canvas;
     public Slider HPSlider;
     private bool isInFov = false;
 
     private Transform objectRotation;
 
+    //private void OnEnable()
+    //{
+    //    Canvas = gameObject.transform.GetChild(2).gameObject;
+    //}
     // Start is called before the first frame update
     void Start()
     {
+        Canvas.SetActive(false);
         HP = 100;
     }
 

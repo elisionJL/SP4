@@ -10,6 +10,8 @@ public class Base_Interaction : MonoBehaviour
     public List<GameObject> Towers;
     public GameObject TowerToSpawn; //What player decides that they want to spawn
 
+    GameObject CanvasToGet;
+
     private bool CanPlace = false;
 
     public GameObject UpgradePrompt, UpgradeUI;
@@ -36,10 +38,14 @@ public class Base_Interaction : MonoBehaviour
                 if (hit.transform.gameObject.tag == "interactable"
                 && distance <= 3.0f && upgrade == false) //If object tag is Interactable and it's close to the player
                 {
-                    if(UpgradePrompt.activeSelf == false)
+                    if (UpgradePrompt.activeSelf == false)
+                    {
                         UpgradePrompt.SetActive(true);
+                        hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true);
+                        CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
+                    }
 
-                    if(Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
                         UpgradeUI.SetActive(true);
                         UpgradePrompt.SetActive(false);
@@ -49,9 +55,12 @@ public class Base_Interaction : MonoBehaviour
                         gameObject.GetComponent<Player>().UnlockMouse();
                     }
                 }
-                else
+                else if (((distance > 3.0f) && (hit.transform.gameObject.tag != "interactable")) || (upgrade == true))
                 {
                     UpgradePrompt.SetActive(false);
+
+                    if (CanvasToGet != null && CanvasToGet.activeSelf == true)
+                        CanvasToGet.SetActive(false);
                 }
             }
         }
