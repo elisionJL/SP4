@@ -54,6 +54,7 @@ class Villager : MonoBehaviour
         if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") || 
             m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walking")) && CanShoot)
         {
+            Debug.Log(enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius));
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)
