@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class Enemy_AI : MonoBehaviour
 {
-    [SerializeField]
-    protected Transform Player;
+    public Transform TargetObject;
     public float maxAngle;
     public float maxRadius;
     public int HP;
     public Slider HPSlider;
     private bool isInFov = false;
-    public Animator m_Animator;
-    public bool CanShoot;
 
     private Transform objectRotation;
 
@@ -21,32 +18,28 @@ public class Enemy_AI : MonoBehaviour
     void Start()
     {
         HP = 100;
-
-        CanShoot = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if(Player == null && GameObject.FindGameObjectsWithTag("interactable").Length > 0)
-            Player = GameObject.FindGameObjectsWithTag("interactable")[0].transform;
-        else
-            isInFov = inFov(transform, Player, maxAngle, maxRadius);
+        if (TargetObject != null && Vector3.Distance(transform.position, TargetObject.position) > maxRadius)
+        {
+            TargetObject = null;
+        }
 
-        GL.PushMatrix();
-        GL.Begin(GL.LINES);
-        GL.Color(Color.yellow);
-        GL.MultMatrix(transform.localToWorldMatrix);
-        float a = 1 / (float)1;
-        float angle = a * Mathf.PI * 2;
-        // Vertex colors change from red to green
-        GL.Color(new Color(a, 1 - a, 0, 0.8F));
-        // One vertex at transform position
-        GL.Vertex3(0, 0, 0);
-        // Another vertex at edge of circle
-        GL.Vertex3(Mathf.Cos(angle) * maxRadius, Mathf.Sin(angle) * maxRadius, 0);
-        GL.End();
-        GL.PopMatrix();
+        if (TargetObject == null && GameObject.FindGameObjectsWithTag("interactable").Length > 0)
+        {
+            TargetObject = GameObject.FindGameObjectsWithTag("interactable")[0].transform;
+            if (Vector3.Distance(TargetObject.position, this.transform.position) > maxRadius)
+            {
+                TargetObject = null;
+            }
+        }
+        else
+        {
+            isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
+        }
     }
 
     private void OnDrawGizmos()
@@ -71,18 +64,11 @@ public class Enemy_AI : MonoBehaviour
             Gizmos.color = Color.green;
         }
 
-        Gizmos.DrawRay(transform.position, (Player.position - transform.position).normalized * maxRadius);
+        Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
 
         Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
+        Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
     } //Draw field of view for debugging purposes
-    public void Fire()
-    {
-        m_Animator.SetTrigger("Attack");
-        CanShoot = false;
-        //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
-    }
     public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
@@ -112,7 +98,9 @@ public class Enemy_AI : MonoBehaviour
                         if(Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
                             if (hit.transform == target)
+                            {
                                 return true;
+                            }    
                         }
                     }
                 }
@@ -121,7 +109,7 @@ public class Enemy_AI : MonoBehaviour
         return false;
     }
     //return the quaternion from point of attack to target
-    public bool GetQuaternionTarget(Transform checkingObject, float maxRadius)
+    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -130,33 +118,33 @@ public class Enemy_AI : MonoBehaviour
         {
             if (overlaps[i] != null)
             {
-                if (overlaps[i].transform == Player) //If Target enters field of view
+                if (overlaps[i].transform == TargetObject) //If Target enters field of view
                 {
-                    Vector3 directionBetween = (Player.position - checkingObject.position).normalized;
+                    Vector3 directionBetween = (TargetObject.position - checkingObject.position).normalized;
                     directionBetween.y *= 0;
 
                     float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
 
-                   // Vector3 TargetXZ = new Vector3(Player.position.x, checkingObject.position.y, Player.position.z);
+                    // Vector3 TargetXZ = new Vector3(TargetObject.position.x, checkingObject.position.y, TargetObject.position.z);
 
-                    checkingObject.LookAt(Player);
+                    checkingObject.LookAt(TargetObject);
 
                     setRotation(checkingObject);
                     if (angle <= maxAngle)
                     {
-                        Ray ray = new Ray(checkingObject.position, Player.position - checkingObject.position);
+                        Ray ray = new Ray(checkingObject.position, TargetObject.position - checkingObject.position);
                         RaycastHit hit;
 
                         if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                         {
-                            if (hit.transform == Player)
-                                return true;
+                            if (hit.transform == TargetObject)
+                                return hit.transform;
                         }
                     }
                 }
             }
         }
-        return false;
+        return null;
     }
     public void setRotation(Transform currRotate)
     {
