@@ -8,6 +8,7 @@ public class MoveScript : MonoBehaviour
     public bool Jump = false;
 
     public float GroundDistance = 0.0f;
+    public Animator Player_Anim;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,12 @@ public class MoveScript : MonoBehaviour
 
         //Change player position according to move
         gameObject.transform.position += move;
+        if (x != 0 || z != 0)
+            Player_Anim.SetBool("isWalking", true);
+        else
+            Player_Anim.SetBool("isWalking", false);
 
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true) //Check if user can jump
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true) //Check if user can jump
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250, 0)); //If yes, push player upwards
         }

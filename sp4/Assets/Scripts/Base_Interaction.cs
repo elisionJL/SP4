@@ -7,15 +7,24 @@ public class Base_Interaction : MonoBehaviour
 {
     public float maxDistance = 5.0f;
     // Start is called before the first frame update
-    public List<GameObject> Towers;
-    public GameObject TowerToSpawn; //What player decides that they want to spawn
-
-    GameObject CanvasToGet;
-
+    #region Towers
     private bool CanPlace = false;
+    public List<GameObject> Towers;
+    public GameObject TowerToSpawn, CurrentTowerLookAt; //What player decides that they want to spawn
+    GameObject CanvasToGet;
+    #endregion
 
+    #region Tower Upgrade
     public GameObject UpgradePrompt, UpgradeUI;
     bool upgrade = false;
+    #endregion
+
+    #region Player Attack
+    public GameObject PlayerSword, PlayerCharacter;
+    private bool Attack = false, Attack_Dir;
+    private float AttackTime;
+    private Transform OriginalSwordPos;
+    #endregion
 
     // Update is called once per frame
     void Update()
@@ -40,11 +49,19 @@ public class Base_Interaction : MonoBehaviour
                 {
                     if (UpgradePrompt.activeSelf == false)
                     {
+                        CurrentTowerLookAt = hit.collider.gameObject;
+
                         UpgradePrompt.SetActive(true);
                         hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true);
                         CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
                     }
 
+                    if(CurrentTowerLookAt != hit.collider.gameObject)
+                    {
+                        UpgradePrompt.SetActive(false);
+                        CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
+                        UpgradePrompt.SetActive(false);
+                    }
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         UpgradeUI.SetActive(true);
@@ -55,20 +72,21 @@ public class Base_Interaction : MonoBehaviour
                         gameObject.GetComponent<Player>().UnlockMouse();
                     }
                 }
-                else if (((distance > 3.0f) && (hit.transform.gameObject.tag != "interactable")) || (upgrade == true))
-                {
-                    UpgradePrompt.SetActive(false);
-
-                    if (CanvasToGet != null && CanvasToGet.activeSelf == true)
-                        CanvasToGet.SetActive(false);
-                }
             }
         }
         else
-            Debug.DrawRay(origin, direction * maxDistance, Color.red);
+        {
+            UpgradePrompt.SetActive(false);
+
+            if (CanvasToGet != null && CanvasToGet.activeSelf == true)
+                CanvasToGet.SetActive(false);
+        }
 
         if(CanPlace == true && TowerToSpawn != null)
             Destroy(TowerToSpawn);
+
+        if (TowerToSpawn == null && CanPlace == false)
+            Player_Attack();
 
         //if(UpgradeUI.activeSelf == true && upgrade == true)
         //{
@@ -81,6 +99,7 @@ public class Base_Interaction : MonoBehaviour
     {
         upgrade = false;
     }
+
     public void SpawnObject(RaycastHit hit, float distance)
     {
         if (TowerToSpawn != null && CanPlace == false) //If there is an object to place and user didn't place it down yet
@@ -224,5 +243,37 @@ public class Base_Interaction : MonoBehaviour
         // Disable the "_ALPHAPREMULTIPLY_ON" keyword for the material, which indicates that
         // the material should not use alpha premultiplication.
         ObjectToOpaque.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+    }
+
+    private void Player_Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Attack == false)
+        {
+            OriginalSwordPos = PlayerSword.transform;
+            PlayerSword.SetActive(true);
+            Attack = true;
+        }
+
+        if(Attack == true)
+        {
+            if(Attack_Dir == false)
+                PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
+            else if(Attack_Dir == true)
+                PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, 360 * Time.deltaTime);
+
+            AttackTime += 1f * Time.deltaTime;
+
+            if (AttackTime >= 0.495f)
+            {
+                AttackTime = 0;
+                Attack = false;
+                PlayerSword.SetActive(false);
+
+                if (Attack_Dir == false)
+                    Attack_Dir = true;
+                else if (Attack_Dir == true)
+                    Attack_Dir = false;
+            }
+        }
     }
 }
