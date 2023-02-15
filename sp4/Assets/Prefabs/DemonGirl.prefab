@@ -2011,7 +2011,7 @@ GameObject:
   - component: {fileID: 6826819230612365284}
   m_Layer: 0
   m_Name: DemonGirl
-  m_TagString: interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2065,6 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   maxAngle: 180
   maxRadius: 5
   HP: 0

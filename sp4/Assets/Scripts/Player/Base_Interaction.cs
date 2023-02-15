@@ -190,6 +190,8 @@ public class Base_Interaction : MonoBehaviour
                         }
                     }
 
+                    TowerToSpawn.gameObject.tag = "interactable";
+
                     //Lastly, instantiate a clone of the "ghost" object
                     if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(400) == true)
                         Instantiate(TowerToSpawn);

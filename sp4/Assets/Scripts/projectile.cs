@@ -18,7 +18,7 @@ public class projectile : MonoBehaviour
         damage = dmg;
         speed = spd;
         distance = dist;
-        Type = 0;
+        Type = 0; //0 is from tower and 1 is from enemy
     }
     public void Set(int dmg, float spd,float dist, int From)
     {
