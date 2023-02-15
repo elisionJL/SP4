@@ -37,7 +37,7 @@ class DragonTower : TowerBase
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
             {
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-                test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
+                test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f);
                 tower_AI.MinusHP(10);
                 CanShoot = true;
             }

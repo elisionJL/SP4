@@ -31,7 +31,7 @@ public class projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag != "Player" && other.tag != "interactable")
-        {
+        {       
             Destroy(gameObject);
         }
     }

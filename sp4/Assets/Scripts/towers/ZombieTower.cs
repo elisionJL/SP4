@@ -14,6 +14,8 @@ class ZombieTower : TowerBase
         tower_AI.maxRadius = 2;
         tower_AI.HP = 1000;
         cost = 250;
+
+        Name = "Zombie";
     }
 
     public override void Fire()
