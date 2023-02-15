@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
             //Souls -= 100;
         }
         MouseControls();
-
     }
 
     public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop

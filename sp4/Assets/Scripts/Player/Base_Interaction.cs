@@ -122,7 +122,7 @@ public class Base_Interaction : MonoBehaviour
                 {
                     //Debug.Log("pressed click");
                     //Set it's final position from when user pressed E
-                    TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
+                    TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
                     //Enable the AI Code to start finding enemy
                     TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
