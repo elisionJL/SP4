@@ -25,7 +25,7 @@ class Villager : MonoBehaviour
         }
         current = 0;
         CanShoot = true;
-        enemy_AI.HP = 100;
+        //enemy_AI.HP = 100;
     }
 
     public void Fire()

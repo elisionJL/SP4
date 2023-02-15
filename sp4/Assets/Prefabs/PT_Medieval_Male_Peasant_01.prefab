@@ -1283,7 +1283,7 @@ MonoBehaviour:
   TargetObject: {fileID: 0}
   maxAngle: 360
   maxRadius: 10
-  HP: 0
+  HP: 10000
   HPSlider: {fileID: 4930571175071079130}
 --- !u!114 &1390207199657732143
 MonoBehaviour:
