@@ -35,6 +35,7 @@ class ZombieTower : TowerBase
             if(attackSpd < 0)
             {
                 Fire();
+                target.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
                 attackSpd = 1;
             }
         }

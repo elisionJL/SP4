@@ -41,7 +41,7 @@ public class Enemy_AI : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, maxRadius);
@@ -64,10 +64,9 @@ public class Enemy_AI : MonoBehaviour
         }
 
         Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
-
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
-    } //Draw field of view for debugging purposes
+    }*/ //Draw field of view for debugging purposes
     public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];

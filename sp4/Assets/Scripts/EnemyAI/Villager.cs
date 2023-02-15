@@ -49,14 +49,14 @@ class Villager : MonoBehaviour
         }
     }
     public void Update()
-    {
-        //Transform target = Enemy_AI.GetQuaternionTarget(rootObject.transform, Enemy_AI.maxRadius);
+    {  
+        //check if there is an enemy in the radius ,if there is ,trigger animation 
         if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") || 
             m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walking")) && CanShoot)
         {
-            Debug.Log(enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius));
             Fire();
         }
+        //finish the animtion
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
@@ -66,6 +66,7 @@ class Villager : MonoBehaviour
                 CanShoot = true;
             }
         }
+        //else walk to the next waypoint
         else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
         {
             m_Animator.SetTrigger("Walking");

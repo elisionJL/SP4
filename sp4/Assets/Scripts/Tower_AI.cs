@@ -13,9 +13,16 @@ public class Tower_AI : MonoBehaviour
     public GameObject Canvas;
     public Slider HPSlider;
     private bool isInFov = false;
-
+    public int countt;
     private Transform objectRotation;
-
+    public Transform targetObject;
+    public enum TARGETING
+    {
+        CLOSEST,
+        STRONGEST,
+        FIRST
+    }
+    public TARGETING targetingMode = TARGETING.STRONGEST;
     //private void OnEnable()
     //{
     //    Canvas = gameObject.transform.GetChild(2).gameObject;
@@ -30,10 +37,11 @@ public class Tower_AI : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         if(playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
         else
-            isInFov = inFov(transform, playerTransform, maxAngle, maxRadius);
+            isInFov = inFov(transform, playerTransform, maxAngle, maxRadius, targetingMode);
 
         GL.PushMatrix();
         GL.Begin(GL.LINES);
@@ -117,32 +125,223 @@ public class Tower_AI : MonoBehaviour
         }
         return false;
     }
-
-    //get the target that the tower is aiming for
-    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
+    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius, TARGETING targeting) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
-        for (int i = 0; i < count + 1; i++)
+        if (targeting == TARGETING.CLOSEST)
+        {
+            float nearestDistance = maxRadius;
+            Transform nearestTarget = null;
+            for (int i = 0; i < count + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+                    if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {
+                        if (Vector3.Distance(overlaps[i].transform.position, checkingObject.position) < nearestDistance)
+                        {
+                            nearestDistance = Vector3.Distance(overlaps[i].transform.position, checkingObject.position);
+                            nearestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            if (nearestTarget != null)
+            {
+                Vector3 directionBetween = (nearestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                Vector3 TargetXZ = new Vector3(nearestTarget.position.x, checkingObject.position.y, nearestTarget.position.z);
+
+                checkingObject.LookAt(TargetXZ);
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Ray ray = new Ray(checkingObject.position, nearestTarget.transform.position - checkingObject.position);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == nearestTarget.transform)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        if (targeting == TARGETING.STRONGEST)
+        {
+            int highestHP = 0;
+            Transform strongestTarget = null;
+            for (int i = 0; i < countt + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+
+                    if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {                        
+                        int enemyHP = overlaps[i].gameObject.GetComponent<Enemy_AI>().HP;
+                        if (enemyHP > highestHP)
+                        {
+                            highestHP = enemyHP;
+                            strongestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            Debug.Log(strongestTarget);
+            if (strongestTarget != null)
+            {
+                Vector3 directionBetween = (strongestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                Vector3 TargetXZ = new Vector3(strongestTarget.position.x, checkingObject.position.y, strongestTarget.position.z);
+
+                checkingObject.LookAt(TargetXZ);
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Ray ray = new Ray(checkingObject.position, strongestTarget.transform.position - checkingObject.position);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == strongestTarget.transform)
+                        {
+                            return hit.transform;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    //get the target that the tower is aiming for
+    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius,TARGETING targeting)
+    {
+        Collider[] overlaps = new Collider[999];
+        countt = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+        if (targeting == TARGETING.CLOSEST)
+        {
+            float nearestDistance = maxRadius;
+            Transform nearestTarget = null;
+            for (int i = 0; i < countt + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+                    if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {
+                        if (Vector3.Distance(overlaps[i].transform.position, checkingObject.position) < nearestDistance)
+                        {
+                            nearestDistance = Vector3.Distance(overlaps[i].transform.position, checkingObject.position);
+                            nearestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            if (nearestTarget != null)
+            {
+                Vector3 directionBetween = (nearestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                checkingObject.LookAt(nearestTarget);
+
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Ray ray = new Ray(checkingObject.position, nearestTarget.transform.position - checkingObject.position);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == nearestTarget.transform)
+                        {
+                            return hit.transform;
+                        }
+                    }
+                }
+            }
+        }
+        if (targeting == TARGETING.STRONGEST)
+        {
+            int highestHP = 0;
+            Transform strongestTarget = null;
+            for (int i = 0; i < countt + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+                    if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {
+                        int enemyHP = overlaps[i].gameObject.GetComponent<Enemy_AI>().HP;
+                        if (enemyHP > highestHP)
+                        {
+                            highestHP = enemyHP;
+                            strongestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            if (strongestTarget != null)
+            {
+                Vector3 directionBetween = (strongestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                checkingObject.LookAt(strongestTarget);
+
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Ray ray = new Ray(checkingObject.position, strongestTarget.transform.position - checkingObject.position);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == strongestTarget.transform)
+                        {
+                            return hit.transform;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
+    {
+        Collider[] overlaps = new Collider[999];
+        countt = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+
+            float nearestDistance = maxRadius;
+            Transform nearestTarget;
+        for (int i = 0; i < countt + 1; i++)
         {
             if (overlaps[i] != null)
             {
-                if (overlaps[i].transform == playerTransform) //If Target enters field of view
+                if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
                 {
-                    Vector3 directionBetween = (playerTransform.position - checkingObject.position).normalized;
+                    Vector3 directionBetween = (overlaps[i].transform.position - checkingObject.position).normalized;
                     directionBetween.y *= 0;
 
                     float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
 
-                    // Vector3 TargetXZ = new Vector3(Player.position.x, checkingObject.position.y, Player.position.z);
-
-                    checkingObject.LookAt(playerTransform);
+                    checkingObject.LookAt(overlaps[i].transform);
 
                     setRotation(checkingObject);
                     if (angle <= maxAngle)
                     {
-                        Ray ray = new Ray(checkingObject.position, playerTransform.position - checkingObject.position);
+                        Ray ray = new Ray(checkingObject.position, overlaps[i].transform.position - checkingObject.position);
                         RaycastHit hit;
 
                         if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
@@ -155,7 +354,7 @@ public class Tower_AI : MonoBehaviour
                     }
                 }
             }
-        }
+        }        
         return null;
     }
     public void setRotation(Transform currRotate)

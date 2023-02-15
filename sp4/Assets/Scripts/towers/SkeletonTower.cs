@@ -14,6 +14,7 @@ class SkeletonTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;
         tower_AI.HP = 100;
+        tower_AI.targetingMode = Tower_AI.TARGETING.STRONGEST;
         Name = "Skeleton";
         cost = 200;
         UpgradeCost = 100;
@@ -23,13 +24,13 @@ class SkeletonTower : TowerBase
     {
         m_Animator.SetTrigger("Attack");
         CanShoot = false;
-        //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
     }
     public override void OnUpdate()
     {
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius, Tower_AI.TARGETING.STRONGEST);
         //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
-        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)
+        Debug.Log(target);
+        if (target != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)
         {
             Debug.Log("Attacking");
             Fire();
@@ -38,8 +39,10 @@ class SkeletonTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
             {
-                //hit the enemy here
-                tower_AI.MinusHP(10);
+                if (target != null)
+                {
+                    target.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                }
                 CanShoot = true;
             }
         }
