@@ -2466,6 +2466,7 @@ MonoBehaviour:
   speed: 6
   ArmorType: 0
   Damage: 3
+  HealingFX: {fileID: 9059300568293874952, guid: f6db09fcd51be1a42b8d33e52b3f5b92, type: 3}
 --- !u!1 &1956949540428108
 GameObject:
   m_ObjectHideFlags: 0

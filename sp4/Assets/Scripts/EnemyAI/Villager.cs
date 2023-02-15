@@ -101,7 +101,6 @@ class Villager : MonoBehaviour
         else
         {
             m_Animator.SetTrigger("Idle");
-            Debug.Log(enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius));
         }
     }
 }
