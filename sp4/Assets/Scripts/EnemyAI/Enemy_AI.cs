@@ -22,27 +22,27 @@ public class Enemy_AI : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (TargetObject != null && Vector3.Distance(transform.position, TargetObject.position) > maxRadius)
+        Collider[] overlaps = new Collider[999];
+        int count = Physics.OverlapSphereNonAlloc(this.transform.position, maxRadius, overlaps);
+        if (TargetObject == null && count > 0)
         {
-            TargetObject = null;
-        }
-
-        if (TargetObject == null && GameObject.FindGameObjectsWithTag("interactable").Length > 0)
-        {
-            TargetObject = GameObject.FindGameObjectsWithTag("interactable")[0].transform;
-            if (Vector3.Distance(TargetObject.position, this.transform.position) > maxRadius)
+            for (int i = 0; i < count + 1; i++)
             {
-                TargetObject = null;
+                if (overlaps[i] != null)
+                {
+                    if (overlaps[i].tag == "interactable") //If Target enters field of view
+                    {
+                        if (Vector3.Distance(overlaps[i].transform.position, transform.position) < maxRadius)
+                        {
+                            TargetObject = overlaps[i].transform;
+                        }
+                    }
+                }
             }
         }
         else
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
-        }
-
-        if (Vector3.Distance(TargetObject.position, this.transform.position) > maxRadius)
-        {
-            TargetObject = null;
         }
     }
 
