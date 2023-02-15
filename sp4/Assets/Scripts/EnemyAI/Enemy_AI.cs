@@ -39,6 +39,11 @@ public class Enemy_AI : MonoBehaviour
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
         }
+
+        if (Vector3.Distance(TargetObject.position, this.transform.position) > maxRadius)
+        {
+            TargetObject = null;
+        }
     }
 
     private void OnDrawGizmos()
@@ -131,7 +136,7 @@ public class Enemy_AI : MonoBehaviour
                     setRotation(checkingObject);
                     if (angle <= maxAngle)
                     {
-                        Ray ray = new Ray(checkingObject.position, TargetObject.position - checkingObject.position);
+                        Ray ray = new Ray(checkingObject.position + new Vector3(0, 0.5f, 0), TargetObject.position - checkingObject.position);
                         RaycastHit hit;
 
                         if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target

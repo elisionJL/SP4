@@ -1261,7 +1261,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f893d78148eef4541b5a78c4b4571608, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   maxAngle: 360
-  maxRadius: 10
+  maxRadius: 3
   HP: 10000
   HPSlider: {fileID: 4930571175071079130}
 --- !u!114 &1390207199657732143

@@ -5,6 +5,9 @@ using UnityEngine;
 class Villager : MonoBehaviour
 {
     public List<Transform> target;
+    public float totaldistance = 0;
+    public float percentageofdistance = 0;
+    public float currentdistanceontrack = 0;
     public int current;
     public Animator m_Animator;
     public bool CanShoot;
@@ -22,6 +25,10 @@ class Villager : MonoBehaviour
         foreach (Transform child in Waypoint.transform)
         {
             target.Add(child.transform);
+        }
+        for (int i = 0; i < target.Count - 1; ++i)
+        {
+            totaldistance += Vector3.Distance(target[i].position, target[i + 1].position);
         }
         current = 0;
         CanShoot = true;
@@ -44,7 +51,6 @@ class Villager : MonoBehaviour
         }
         else
         {
-            Debug.Log(Vector3.Distance(Object1.position, Object2.position));
             return Vector3.Distance(Object1.position, Object2.position);
         }
     }
@@ -54,7 +60,6 @@ class Villager : MonoBehaviour
         if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") || 
             m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walking")) && CanShoot)
         {
-            Debug.Log(enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius));
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)
@@ -66,13 +71,23 @@ class Villager : MonoBehaviour
                 CanShoot = true;
             }
         }
-        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
+        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius) //if there is no enemy and the distance
         {
             m_Animator.SetTrigger("Walking");
-            if (Vector3.Distance(transform.position, target[current].position) > 1)
+            if (Vector3.Distance(transform.position, target[current].position) > 0.1f) //target is waypoints
             {
                 transform.LookAt(target[current]);
                 transform.position += transform.forward * Time.deltaTime * speed;
+                if (current > 0)
+                {
+                    currentdistanceontrack += Time.deltaTime * speed;
+                    percentageofdistance = (currentdistanceontrack / totaldistance) * 100;
+                }
+                else
+                {
+                    currentdistanceontrack = 0;
+                    percentageofdistance = 0;
+                }
             }
             else
             {
