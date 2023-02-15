@@ -1219,10 +1219,11 @@ GameObject:
   - component: {fileID: 1244539903904952439}
   - component: {fileID: 1244539903914237919}
   - component: {fileID: 7983781730023472819}
+  - component: {fileID: 1390207199657732143}
   - component: {fileID: 8355903623598300223}
   m_Layer: 0
   m_Name: PT_Medieval_Male_Peasant_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1274,18 +1275,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244539903904722007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6a4e040560a85740bc1f6615e4a7053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  TargetObject: {fileID: 0}
   maxAngle: 360
   maxRadius: 10
-  HP: 0
+  HP: 10000
   HPSlider: {fileID: 4930571175071079130}
+--- !u!114 &1390207199657732143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244539903904722007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc3f5eff755a94599cf359532e9610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: []
+  current: 0
   m_Animator: {fileID: 1244539903914237919}
   CanShoot: 0
+  enemy_AI: {fileID: 7983781730023472819}
+  Name: Villager
+  CashDrop: 100
+  rootObject: {fileID: 1244539903904722007}
+  speed: 5
+  ArmorType: 0
+  Damage: 10
 --- !u!65 &8355903623598300223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1295,7 +1317,7 @@ BoxCollider:
   m_GameObject: {fileID: 1244539903904722007}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.81015825, y: 1.8112895, z: 1}
   m_Center: {x: -0.011180863, y: 0.9146904, z: 0}

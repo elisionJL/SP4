@@ -8,7 +8,7 @@ class DragonTower : TowerBase
     {
         cost = 500;
         CanShoot = true;
-        damage = 10;
+        damage = 30;
         attackSpd = 1;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
@@ -35,9 +35,8 @@ class DragonTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
             {
-                Debug.Log("fire1");
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-                test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f);
+                test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f, 0);
                 tower_AI.MinusHP(10);
                 CanShoot = true;
             }
