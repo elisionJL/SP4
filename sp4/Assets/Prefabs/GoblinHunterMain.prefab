@@ -1258,9 +1258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   maxAngle: 0
   maxRadius: 180
   HP: 0
+  Canvas: {fileID: 0}
   HPSlider: {fileID: 0}
 --- !u!114 &8753298340429351052
 MonoBehaviour:

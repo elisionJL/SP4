@@ -37,7 +37,6 @@ class DragonTower : TowerBase
             {
                 GameObject test =Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f, 0);
-                tower_AI.MinusHP(10);
                 CanShoot = true;
             }
         }
