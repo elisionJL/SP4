@@ -14,6 +14,8 @@ public class Destroy_Base : MonoBehaviour
     public TextMeshProUGUI YouSuck;
     private float alphaColour_B, alphaColour_TXT;
 
+    public GameObject[] Explosions;
+
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +47,22 @@ public class Destroy_Base : MonoBehaviour
 
         if (transform.position.y < -5f)
             castleFinished = true;
+
+        if (gameObject.transform.position.y < 5.92f && Explosions[0].activeSelf == false)
+        {
+            Explosions[0].SetActive(true);
+            Explosions[0].GetComponent<AudioSource>().enabled = true;
+        }
+        if (gameObject.transform.position.y < 3.88f && Explosions[1].activeSelf == false)
+        {
+            Explosions[1].SetActive(true);
+            Explosions[1].GetComponent<AudioSource>().enabled = true;
+        }
+        if (gameObject.transform.position.y < 1.16f && Explosions[2].activeSelf == false)
+        {
+            Explosions[2].SetActive(true);
+            Explosions[2].GetComponent<AudioSource>().enabled = true;
+        }
     }
 
     public void DisplayUI()
@@ -62,6 +80,7 @@ public class Destroy_Base : MonoBehaviour
                 alphaColour_B = 255;
                 Background.color = new Color(Background.color.r, Background.color.g, Background.color.b, alphaColour_B / 255);
                 BackgroundDone = true;
+                Background.GetComponent<AudioSource>().enabled = true;
             }
         }
 
