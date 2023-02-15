@@ -71,7 +71,7 @@ class Villager : MonoBehaviour
                 CanShoot = true;
             }
         }
-        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius) //if there is no enemy and the distance
+        else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius) //if there is no enemy and the distance
         {
             m_Animator.SetTrigger("Walking");
             if (Vector3.Distance(transform.position, target[current].position) > 0.1f) //target is waypoints
@@ -97,6 +97,11 @@ class Villager : MonoBehaviour
                     current = 0;
                 }
             }
+        }
+        else
+        {
+            m_Animator.SetTrigger("Idle");
+            Debug.Log(enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius));
         }
     }
 }
