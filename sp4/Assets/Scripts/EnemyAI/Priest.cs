@@ -18,6 +18,7 @@ class Priest : MonoBehaviour
     public int speed = 6;
     public int ArmorType = 0;
     public int Damage = 3;
+    public GameObject HealingFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +70,8 @@ class Priest : MonoBehaviour
                     {
                         if (Vector3.Distance(overlaps[i].transform.position, transform.position) < enemy_AI.maxRadius)
                         {
-                            Debug.Log(overlaps[i].gameObject);
+                            HealingFX.transform.position = overlaps[i].gameObject.transform.position;
+                            Instantiate(HealingFX);
                             overlaps[i].gameObject.GetComponent<Enemy_AI>().MinusHP(-10);
                         }
                     }
@@ -87,7 +89,7 @@ class Priest : MonoBehaviour
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && !CanShoot)
             {
                 HealAll();
                 CanShoot = true;

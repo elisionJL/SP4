@@ -25,7 +25,6 @@ public class Base_Interaction : MonoBehaviour
     public GameObject PlayerSword, PlayerCharacter;
     private bool Attack = false, Attack_Dir;
     private float AttackTime;
-    private Transform OriginalSwordPos;
     #endregion
 
     // Update is called once per frame
@@ -259,7 +258,6 @@ public class Base_Interaction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Attack == false)
         {
-            OriginalSwordPos = PlayerSword.transform;
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
