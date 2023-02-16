@@ -5,13 +5,12 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemyList = new List<Enemy>();
-    public int wave;
     private float baseTime;
     public float valueScalar;
-    public int maxWave;
     public int waveValue;
     public float TimeBetweenSpawn;
     public List<GameObject> EnemiesToSpawn = new List<GameObject>();
+    public bool allSpawned;
     int spawn;
     // Start is called before the first frame update
     void Start()
@@ -30,16 +29,13 @@ public class EnemySpawner : MonoBehaviour
         List<Enemy> tempEnemyList = enemyList;
         int ValueToSpend = waveValue;
         int randomEnemy;
-        Debug.Log("variables initialised");
         while (ValueToSpend > 0)
         {
-            Debug.Log("randomize");
             //since its minInclusive to maxExclusive it will generate a number between 0 - (count-1)
             randomEnemy = Random.Range(0, tempEnemyList.Count);
             //in the future if cannot afford the enemy remove from temp list to reduce processing speed
             if (ValueToSpend - enemyList[randomEnemy].cost >= 0)
             {
-                Debug.Log("Add Enemy");
                 GeneratedEnemies.Add(tempEnemyList[randomEnemy].enemyPrefab);
                 ValueToSpend -= enemyList[randomEnemy].cost;
             }
@@ -52,13 +48,13 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Enemies Generated");
+        allSpawned = false;
         EnemiesToSpawn.Clear();
         EnemiesToSpawn = GeneratedEnemies;
         baseTime = TimeBetweenSpawn;
         spawn = 0;
-    }
-    public void SpawnEnemy()
+    } 
+    public GameObject SpawnEnemy()
     {
         if (spawn < EnemiesToSpawn.Count)
         {
@@ -68,11 +64,16 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                Instantiate(EnemiesToSpawn[spawn], transform.position, transform.rotation);
                 ++spawn;
                 TimeBetweenSpawn = baseTime;
+                return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
             }
         }
+        else
+        {
+            allSpawned = true;
+        }
+        return null;
     }
 }
 
@@ -81,5 +82,5 @@ public class Enemy
 {
     public GameObject enemyPrefab;
     public int cost;
-
+    public int waveRequired;
 }
