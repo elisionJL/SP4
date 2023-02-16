@@ -749,6 +749,7 @@ Transform:
   - {fileID: 2112072353838285804}
   - {fileID: 2112190617066377540}
   - {fileID: 6016506767970037390}
+  - {fileID: 5344449913754182501}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -784,10 +785,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   maxAngle: 360
   maxRadius: 0
   HP: 0
+  Canvas: {fileID: 0}
   HPSlider: {fileID: 3672978611968212841}
+  countt: 0
+  targetObject: {fileID: 0}
+  targetingMode: 0
 --- !u!114 &1150267064198255642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +811,7 @@ MonoBehaviour:
   m_Animator: {fileID: 2023220158725741834}
   tower_AI: {fileID: 760579146268853725}
   projectilePrefab: {fileID: 0}
-  rootObject: {fileID: 2109361366178841800}
+  rootObject: {fileID: 3943993516852765303}
   CanShoot: 0
 --- !u!1 &2109750863326854246
 GameObject:
@@ -1099,6 +1105,37 @@ Transform:
   - {fileID: 2111831985165695910}
   m_Father: {fileID: 2112190617066377540}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3943993516852765303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5344449913754182501}
+  m_Layer: 0
+  m_Name: PointOfAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5344449913754182501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943993516852765303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.458, z: 0}
+  m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2112264869776023836}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4114384128603145510
 GameObject:

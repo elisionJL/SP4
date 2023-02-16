@@ -14,7 +14,7 @@ class SkeletonTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;
         tower_AI.HP = 100;
-        tower_AI.targetingMode = Tower_AI.TARGETING.STRONGEST;
+        tower_AI.targetingMode = Tower_AI.TARGETING.CLOSEST;
         Name = "Skeleton";
         cost = 200;
         UpgradeCost = 100;
@@ -27,7 +27,7 @@ class SkeletonTower : TowerBase
     }
     public override void OnUpdate()
     {
-        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius, Tower_AI.TARGETING.STRONGEST);
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         Debug.Log(target);
         if (target != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)

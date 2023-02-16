@@ -983,6 +983,7 @@ Transform:
   - {fileID: 8020212946955959257}
   - {fileID: 1311441859923691135}
   - {fileID: 6710033128349282349}
+  - {fileID: 1675307473334825987}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1024,6 +1025,9 @@ MonoBehaviour:
   HP: 0
   Canvas: {fileID: 5075480895399103868}
   HPSlider: {fileID: 8418684083927190118}
+  countt: 0
+  targetObject: {fileID: 0}
+  targetingMode: 0
 --- !u!114 &3256987369972712441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,7 +1045,7 @@ MonoBehaviour:
   m_Animator: {fileID: 8881890470304338478}
   tower_AI: {fileID: 1444986013507318474}
   projectilePrefab: {fileID: 0}
-  rootObject: {fileID: 2803820806472684270}
+  rootObject: {fileID: 8656895545624272993}
   CanShoot: 0
 --- !u!65 &6006048321703762119
 BoxCollider:
@@ -2515,6 +2519,37 @@ Transform:
   - {fileID: 8411099706706454376}
   m_Father: {fileID: 8892916866956956560}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8656895545624272993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675307473334825987}
+  m_Layer: 0
+  m_Name: PointOfAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1675307473334825987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656895545624272993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3288468337185982548}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8873456566682810974
 GameObject:

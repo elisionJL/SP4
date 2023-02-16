@@ -1264,6 +1264,9 @@ MonoBehaviour:
   HP: 0
   Canvas: {fileID: 0}
   HPSlider: {fileID: 0}
+  countt: 0
+  targetObject: {fileID: 0}
+  targetingMode: 0
 --- !u!114 &8753298340429351052
 MonoBehaviour:
   m_ObjectHideFlags: 0

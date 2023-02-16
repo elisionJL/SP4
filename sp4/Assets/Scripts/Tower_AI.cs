@@ -22,7 +22,7 @@ public class Tower_AI : MonoBehaviour
         STRONGEST,
         FIRST
     }
-    public TARGETING targetingMode = TARGETING.STRONGEST;
+    public TARGETING targetingMode = TARGETING.CLOSEST;
     //private void OnEnable()
     //{
     //    Canvas = gameObject.transform.GetChild(2).gameObject;
@@ -41,7 +41,7 @@ public class Tower_AI : MonoBehaviour
         if(playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
         else
-            isInFov = inFov(transform, playerTransform, maxAngle, maxRadius, targetingMode);
+            isInFov = inFov(transform, playerTransform, maxAngle, maxRadius);
 
         GL.PushMatrix();
         GL.Begin(GL.LINES);
@@ -85,8 +85,8 @@ public class Tower_AI : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
     } //Draw field of view for debugging purposes
-
-    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
+    //back up
+/*    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -124,13 +124,12 @@ public class Tower_AI : MonoBehaviour
             }
         }
         return false;
-    }
-    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius, TARGETING targeting) //Detection Range
+    }*/
+    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
-
-        if (targeting == TARGETING.CLOSEST)
+        if (targetingMode == TARGETING.CLOSEST)
         {
             float nearestDistance = maxRadius;
             Transform nearestTarget = null;
@@ -162,7 +161,9 @@ public class Tower_AI : MonoBehaviour
                 setRotation(checkingObject);
                 if (angle <= maxAngle)
                 {
-                    Ray ray = new Ray(checkingObject.position, nearestTarget.transform.position - checkingObject.position);
+                    Vector3 direction = nearestTarget.transform.position - checkingObject.position;
+                    direction.y = 0;
+                    Ray ray = new Ray(checkingObject.position, direction);
                     RaycastHit hit;
 
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
@@ -175,7 +176,7 @@ public class Tower_AI : MonoBehaviour
                 }
             }
         }
-        if (targeting == TARGETING.STRONGEST)
+        if (targetingMode == TARGETING.STRONGEST)
         {
             int highestHP = 0;
             Transform strongestTarget = null;
@@ -195,7 +196,6 @@ public class Tower_AI : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(strongestTarget);
             if (strongestTarget != null)
             {
                 Vector3 directionBetween = (strongestTarget.position - checkingObject.position).normalized;
@@ -225,11 +225,11 @@ public class Tower_AI : MonoBehaviour
         return false;
     }
     //get the target that the tower is aiming for
-    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius,TARGETING targeting)
+    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
     {
         Collider[] overlaps = new Collider[999];
         countt = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
-        if (targeting == TARGETING.CLOSEST)
+        if (targetingMode == TARGETING.CLOSEST)
         {
             float nearestDistance = maxRadius;
             Transform nearestTarget = null;
@@ -260,19 +260,24 @@ public class Tower_AI : MonoBehaviour
                 setRotation(checkingObject);
                 if (angle <= maxAngle)
                 {
-                    Ray ray = new Ray(checkingObject.position, nearestTarget.transform.position - checkingObject.position);
+                    Debug.Log("nearestTarget: " + nearestTarget);
+                    Vector3 direction = nearestTarget.transform.position - checkingObject.position;
+                    Ray ray = new Ray(checkingObject.position, direction);
                     RaycastHit hit;
+                    Debug.Log("ray: " + Physics.Raycast(ray, out hit, maxRadius));
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                     {
+                        Debug.Log("rayHit: " + hit.transform);
                         if (hit.transform == nearestTarget.transform)
                         {
+                            Debug.Log("returnTarget: " + hit.transform);
                             return hit.transform;
                         }
                     }
                 }
             }
         }
-        if (targeting == TARGETING.STRONGEST)
+        if (targetingMode == TARGETING.STRONGEST)
         {
             int highestHP = 0;
             Transform strongestTarget = null;
@@ -318,7 +323,8 @@ public class Tower_AI : MonoBehaviour
         }
         return null;
     }
-    public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
+    //backup
+    /*public Transform GetQuaternionTarget(Transform checkingObject, float maxRadius)
     {
         Collider[] overlaps = new Collider[999];
         countt = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -356,7 +362,7 @@ public class Tower_AI : MonoBehaviour
             }
         }        
         return null;
-    }
+    }*/
     public void setRotation(Transform currRotate)
     {
         objectRotation = currRotate;
