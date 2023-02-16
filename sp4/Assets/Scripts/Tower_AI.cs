@@ -57,33 +57,7 @@ public class Tower_AI : MonoBehaviour
         GL.End();
         GL.PopMatrix();
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, maxRadius);
-
-        Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, fovLine2);
-
-        if (!isInFov)
-        {
-            Gizmos.color = Color.red;
-        }
-
-        else
-        {
-            Gizmos.color = Color.green;
-        }
-
-        Gizmos.DrawRay(transform.position, (playerTransform.position - transform.position).normalized * maxRadius);
-        Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
-    } //Draw field of view for debugging purposes
+ //Draw field of view for debugging purposes
     //back up
 /*    public bool inFov(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {

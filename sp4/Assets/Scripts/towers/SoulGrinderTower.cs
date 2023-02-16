@@ -19,7 +19,7 @@ class SoulGrinderTower : TowerBase
     }
     public override void Fire()
     {
-        tower_AI.getPlayer().GetChild(0).GetComponent<Player>().Souls += soulsGenerated;
+       GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Player>().Souls += soulsGenerated;
     }
     public override void OnUpdate()
     {

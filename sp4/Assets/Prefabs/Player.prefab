@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 904287302079543453}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   Spd: 12
   Jump: 0
   GroundDistance: 0
-  Player_Anim: {fileID: 0}
+  Player_Anim: {fileID: 4554813032055269446}
 --- !u!1 &904287302924885530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb9b67869093f544998912a65364c8a, type: 3}
+--- !u!95 &4554813032055269446 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8957132909189254778, guid: 4eb9b67869093f544998912a65364c8a, type: 3}
+  m_PrefabInstance: {fileID: 4862711933810681404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7106132835155896454 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2442600903646269114, guid: 4eb9b67869093f544998912a65364c8a, type: 3}

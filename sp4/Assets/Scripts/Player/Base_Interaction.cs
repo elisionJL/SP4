@@ -25,6 +25,7 @@ public class Base_Interaction : MonoBehaviour
     public GameObject PlayerSword, PlayerCharacter;
     private bool Attack = false, Attack_Dir;
     private float AttackTime;
+    private int random = 0;
     #endregion
 
     // Update is called once per frame
@@ -91,7 +92,7 @@ public class Base_Interaction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            EnemyToSpawn.transform.position = new Vector3(0, 0, 0);
+            EnemyToSpawn.transform.position = new Vector3(0, 0, 133);
             Instantiate(EnemyToSpawn);
         }
 
@@ -283,14 +284,19 @@ public class Base_Interaction : MonoBehaviour
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
+
         }
 
         if(Attack == true)
         {
             if(Attack_Dir == false)
+            {
                 PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
+            }
             else if(Attack_Dir == true)
+            {
                 PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, 360 * Time.deltaTime);
+            }
 
             AttackTime += 1f * Time.deltaTime;
 
