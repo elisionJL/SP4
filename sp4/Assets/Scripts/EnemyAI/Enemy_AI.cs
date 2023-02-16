@@ -9,6 +9,7 @@ public class Enemy_AI : MonoBehaviour
     public float maxAngle;
     public float maxRadius;
     public int HP;
+    public int ArmorType = 0;
     public Slider HPSlider;
     private bool isInFov = false;
 

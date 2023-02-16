@@ -16,7 +16,6 @@ class Heroine : MonoBehaviour
     public int CashDrop = 1000;
     public GameObject rootObject;
     public int speed = 10;
-    public int ArmorType = 2;
     public int Damage = 30;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +32,7 @@ class Heroine : MonoBehaviour
         current = 0;
         CanShoot = true;
         //enemy_AI.HP = 100;
+        enemy_AI.ArmorType = 2;
     }
 
     public void Fire()

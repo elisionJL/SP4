@@ -266,7 +266,7 @@ public class Tower_AI : MonoBehaviour
                     Debug.Log("ray: " + Physics.Raycast(ray, out hit, maxRadius));
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                     {
-                        Debug.Log("rayHit: " + hit.transform);
+                        //Debug.Log("rayHit: " + hit.transform);
                         if (hit.transform == nearestTarget.transform)
                         {
                             Debug.Log("returnTarget: " + hit.transform);

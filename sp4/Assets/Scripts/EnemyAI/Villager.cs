@@ -16,7 +16,6 @@ class Villager : MonoBehaviour
     public int CashDrop = 100;
     public GameObject rootObject;
     public int speed = 5;
-    public int ArmorType = 0;
     public int Damage = 10;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +32,7 @@ class Villager : MonoBehaviour
         current = 0;
         CanShoot = true;
         //enemy_AI.HP = 100;
+        enemy_AI.ArmorType = 0;
     }
 
     public void Fire()
