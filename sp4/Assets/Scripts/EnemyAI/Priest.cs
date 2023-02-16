@@ -34,6 +34,7 @@ class Priest : MonoBehaviour
         current = 0;
         CanShoot = true;
         //enemy_AI.HP = 100;
+        enemy_AI.ArmorType = 0;
     }
 
     public void Fire()
