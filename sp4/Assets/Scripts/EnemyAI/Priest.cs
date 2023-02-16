@@ -82,21 +82,24 @@ class Priest : MonoBehaviour
     public void Update()
     {
         //Transform target = Enemy_AI.GetQuaternionTarget(rootObject.transform, Enemy_AI.maxRadius);
-        if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle01") || 
-            m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk")) && CanShoot && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal"))
+        if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") || 
+            m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle01")) && CanShoot)
         {
+            Debug.Log("Firing");
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null)
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && !CanShoot)
             {
+                Debug.Log("Heal");
                 HealAll();
                 CanShoot = true;
             }
         }
         else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal")) //if there is no enemy and the distance
         {
+            CanShoot = true;
             m_Animator.SetTrigger("Walking");
             if (Vector3.Distance(transform.position, target[current].position) > 0.1f) //target is waypoints
             {
@@ -121,10 +124,6 @@ class Priest : MonoBehaviour
                     current = 0;
                 }
             }
-        }
-        else if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) == null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal"))
-        {
-            m_Animator.SetTrigger("Walking");
         }
     }
 }
