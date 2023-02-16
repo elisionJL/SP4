@@ -14,6 +14,7 @@ public class Base_Interaction : MonoBehaviour
     public GameObject EnemyToSpawn;
     GameObject CanvasToGet;
     private bool CanPlace = false;
+    public GameObject Particlewhenplaced;
     #endregion
 
     #region Tower Upgrade
@@ -225,7 +226,8 @@ public class Base_Interaction : MonoBehaviour
                         Instantiate(TowerToSpawn);
                     else if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Money Maker
                         Instantiate(TowerToSpawn);
-
+                    Particlewhenplaced.transform.position = TowerToSpawn.transform.position;
+                    Instantiate(Particlewhenplaced);
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
 

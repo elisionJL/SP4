@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 7983781730023472819}
   - component: {fileID: 1390207199657732143}
   - component: {fileID: 8355903623598300223}
+  - component: {fileID: 1991931803507937507}
   m_Layer: 0
   m_Name: PT_Medieval_Male_Peasant_01
   m_TagString: Enemy
@@ -1284,6 +1285,7 @@ MonoBehaviour:
   maxAngle: 360
   maxRadius: 3
   HP: 10000
+  ArmorType: 0
   HPSlider: {fileID: 4930571175071079130}
 --- !u!114 &1390207199657732143
 MonoBehaviour:
@@ -1298,6 +1300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: []
+  totaldistance: 0
+  percentageofdistance: 0
+  currentdistanceontrack: 0
   current: 0
   m_Animator: {fileID: 1244539903914237919}
   CanShoot: 0
@@ -1306,7 +1311,6 @@ MonoBehaviour:
   CashDrop: 100
   rootObject: {fileID: 1244539903904722007}
   speed: 5
-  ArmorType: 0
   Damage: 10
 --- !u!65 &8355903623598300223
 BoxCollider:
@@ -1321,6 +1325,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.81015825, y: 1.8112895, z: 1}
   m_Center: {x: -0.011180863, y: 0.9146904, z: 0}
+--- !u!54 &1991931803507937507
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244539903904722007}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &1244539903904722009
 GameObject:
   m_ObjectHideFlags: 0
