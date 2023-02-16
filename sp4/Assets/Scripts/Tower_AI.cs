@@ -36,8 +36,11 @@ public class Tower_AI : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Canvas.activeSelf)
+            Canvas.transform.LookAt(Camera.main.transform.position);
 
-        if(playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+
+        if (playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
         else
             isInFov = inFov(transform, playerTransform, maxAngle, maxRadius);
