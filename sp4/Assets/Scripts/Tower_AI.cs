@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class Tower_AI : MonoBehaviour
 {
-    [SerializeField]
-    protected Transform playerTransform;
+    public Transform playerTransform;
     public float maxAngle;
     public float maxRadius;
     public int HP;

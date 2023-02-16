@@ -10,33 +10,47 @@ class GroundDragonTower : TowerBase
         damage = 25;
         attackSpd = 2;
         tower_AI = GetComponent<Tower_AI>();
-        tower_AI.maxRadius = 5;
+        tower_AI.maxRadius = 10;
         tower_AI.HP = 750;
         cost = 500;
 
+        CanShoot = true;
         Name = "GroundDragon";
     }
 
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        CanShoot = false;
     }
     public override void OnUpdate()
     {
-        if (attackSpd > 0)
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
         {
-            attackSpd -= Time.deltaTime;
+            Fire();
         }
-        //get the target that the tower is aiming for
-        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
-        if (target != null)
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
         {
-            if (attackSpd < 0)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
-                Fire();
-                target.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
-                attackSpd = 1;
+                //hit the enemy here
+                tower_AI.playerTransform.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                CanShoot = true;
             }
         }
+        //if (attackSpd > 0)
+        //{
+        //    attackSpd -= Time.deltaTime;
+        //}
+        ////get the target that the tower is aiming for
+        //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        //if (target != null)
+        //{
+        //    if (attackSpd < 0)
+        //    {
+        //        Fire();
+        //        attackSpd = 1;
+        //    }
+        //}
     }
 }

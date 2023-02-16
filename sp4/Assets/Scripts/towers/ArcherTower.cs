@@ -22,6 +22,9 @@ class ArcherTower : TowerBase
 
     public override void Fire()
     {
+        //m_Animator.SetTrigger("Attack");
+        //CanShoot = false;
+        // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
         m_Animator.SetTrigger("Attack");
         GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
         test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f);
@@ -36,17 +39,21 @@ class ArcherTower : TowerBase
         {
             Fire();
         }
-        else if(attackSpd > 0)
+        else if (attackSpd > 0)
         {
             attackSpd -= Time.deltaTime;
         }
-        //else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Fireball Shoot") && !CanShoot)
+        //if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
+        //{
+        //    Debug.Log("GOBLIN SHOOT");
+        //    Fire();
+        //}
+        //else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
         //{
         //    if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
         //    {
         //        GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        //        test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f);
-        //        tower_AI.MinusHP(10);
+        //        test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f, 0);
         //        CanShoot = true;
         //    }
         //}
