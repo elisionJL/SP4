@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 public class Player : MonoBehaviour
 {
     public Transform PlayerBox;
     public GameObject Crosshair;
+    public PostProcessLayer CameraPPL;
+    public MoveScript PlayerMoveScript;
+    public Base_Interaction PlayerBaseInteraction;
+    public Tower_Shop PlayerTowerShop;
+    public GameObject RespawnText;
+    public GameObject PlayerModel;
+    private float RespawnCount;
     float RotationX = 0f;
     public int Health = 0;
     public int Mana = 0;
     public int Souls = 0;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,22 +27,45 @@ public class Player : MonoBehaviour
         Health = 100;
         Mana = 100;
         Souls = 100000;
+        RespawnText.SetActive(false);
+        CameraPPL.enabled = false;
+        RespawnCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Health > 0)
+        if(Health < 0 && RespawnCount <= 0)
         {
-            Health -= 1;
-            Mana -= 1;
-            //Souls += 10;
+            PlayerModel.SetActive(false);
+            RespawnText.SetActive(true);
+            Crosshair.SetActive(false);
+            PlayerMoveScript.enabled = false;
+            PlayerBaseInteraction.enabled = false;
+            PlayerTowerShop.enabled = false;
+            CameraPPL.enabled = true;
+            RespawnCount = 5;
+            RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
+            Health = 0;
+
+        }
+        else if(RespawnCount > 0)
+        {
+            RespawnCount -= Time.deltaTime;
+            RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
         }
         else
         {
+            RespawnText.SetActive(false);
+            PlayerModel.SetActive(true);
+            Crosshair.SetActive(true);
+            PlayerMoveScript.enabled = true;
+            CameraPPL.enabled = false;
+            PlayerBaseInteraction.enabled = true;
+            PlayerTowerShop.enabled = true;
             Health = 100;
             Mana = 100;
-            //Souls -= 100;
+            RespawnCount = 0;
         }
         MouseControls();
     }
