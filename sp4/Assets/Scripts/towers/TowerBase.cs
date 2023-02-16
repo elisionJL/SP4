@@ -47,6 +47,16 @@ abstract class TowerBase : MonoBehaviour
         return cost;
     }
 
+    public int GetHP()
+    {
+        return hp;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     public  int GetSellValue()
     {
         return sellValue;
@@ -57,8 +67,16 @@ abstract class TowerBase : MonoBehaviour
         return UpgradeCost;
     }
 
-    public void NewUpgradeCost()
+    //public void NewUpgradeCost()
+    //{
+    //    UpgradeCost = (int)Mathf.Ceil(UpgradeCost * 1.5f);
+    //}
+
+    public void UpgradeStats()
     {
-        UpgradeCost = (int)Mathf.Ceil(UpgradeCost * 1.5f);
+        hp = Mathf.RoundToInt(hp * 1.5f);
+        damage = Mathf.RoundToInt(damage * 1.5f);
+
+        UpgradeCost = Mathf.RoundToInt(UpgradeCost * 1.5f);
     }
 }

@@ -15,7 +15,7 @@ class SoulGrinderTower : TowerBase
         tower_AI.HP = 10;
         Name = "SoulGrinder";
         cost = 450;
-
+        UpgradeCost = 225;
     }
     public override void Fire()
     {
