@@ -40,7 +40,7 @@ abstract class TowerBase : MonoBehaviour
 
     public string GetName()
     {
-        return name;
+        return Name;
     }
     public int GetCost()
     {

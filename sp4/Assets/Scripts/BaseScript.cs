@@ -26,6 +26,7 @@ public class BaseScript : MonoBehaviour
         {
             HP -= 10;
             HP_Bar.GetComponent<Slider>().value = HP;
+            Destroy(other);
         }
     }
 }

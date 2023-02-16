@@ -19,6 +19,7 @@ public class Upgrade_Tower : MonoBehaviour
     {
         if (Tower.gameObject.GetComponent<DragonTower>() != null)
         {
+            Debug.Log(Tower.gameObject.GetComponent<DragonTower>().GetName());
             Name.text = "" + Tower.gameObject.GetComponent<DragonTower>().GetName();
             Cost.text = "" + Tower.gameObject.GetComponent<DragonTower>().GetCost();
         }
@@ -41,6 +42,30 @@ public class Upgrade_Tower : MonoBehaviour
             Cost.text = "" + Tower.gameObject.GetComponent<DemonGirlTower>().GetCost();
         }
 
+        else if (Tower.gameObject.GetComponent<ZombieTower>() != null)
+        {
+            Name.text = "" + Tower.gameObject.GetComponent<ZombieTower>().GetName();
+            Cost.text = "" + Tower.gameObject.GetComponent<ZombieTower>().GetCost();
+        }
+
+        else if (Tower.gameObject.GetComponent<ArcherTower>() != null)
+        {
+            Name.text = "" + Tower.gameObject.GetComponent<ArcherTower>().GetName();
+            Cost.text = "" + Tower.gameObject.GetComponent<ArcherTower>().GetCost();
+        }
+
+        else if (Tower.gameObject.GetComponent<GroundDragonTower>() != null)
+        {
+            Name.text = "" + Tower.gameObject.GetComponent<GroundDragonTower>().GetName();
+            Cost.text = "" + Tower.gameObject.GetComponent<GroundDragonTower>().GetCost();
+        }
+
+        else if (Tower.gameObject.GetComponent<SoulGrinderTower>() != null)
+        {
+            Name.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetName();
+            Cost.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetCost();
+        }
+
         TowerGotten = Tower;
     }
 
@@ -51,7 +76,7 @@ public class Upgrade_Tower : MonoBehaviour
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
     }
 
-    public void SellTower()
+    public void SellTower() //Give back some souls to destroy tower
     {
         Destroy(TowerGotten);
         gameObject.SetActive(false);
@@ -69,6 +94,14 @@ public class Upgrade_Tower : MonoBehaviour
             Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<SkeletonTower>().GetUpgradeCost());
         else if (TowerGotten.gameObject.GetComponent<DemonGirlTower>() != null)
             Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<DemonGirlTower>().GetUpgradeCost());
+        else if (TowerGotten.gameObject.GetComponent<ZombieTower>() != null)
+            Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<ZombieTower>().GetUpgradeCost());
+        else if (TowerGotten.gameObject.GetComponent<ArcherTower>() != null)
+            Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<ArcherTower>().GetUpgradeCost());
+        else if (TowerGotten.gameObject.GetComponent<GroundDragonTower>() != null)
+            Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<GroundDragonTower>().GetUpgradeCost());
+        else if (TowerGotten.gameObject.GetComponent<SoulGrinderTower>() != null)
+            Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost());
 
         Debug.Log("Upgraded!"); //To be changed when we finally get stat upgrades decided
 

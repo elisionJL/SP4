@@ -1349,6 +1349,22 @@ PrefabInstance:
       propertyPath: UpgradePrompt
       value: 
       objectReference: {fileID: 2017489455}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: Towers.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: Towers.Array.data[2]
+      value: 
+      objectReference: {fileID: 6944860262563252257, guid: 7dd74b9c48fe76b45bc2a6009982ec9e, type: 3}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: Towers.Array.data[3]
+      value: 
+      objectReference: {fileID: 5493680483164348897, guid: 0fb46963577f26e49956fb4437739d82, type: 3}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: Towers.Array.data[4]
+      value: 
+      objectReference: {fileID: 2304546843680361707, guid: 41eaecfe6e12eac46b48111aa057c7f0, type: 3}
     - target: {fileID: 1050929935625095155, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 7.437446
@@ -2810,6 +2826,61 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4554813032055269446, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
   m_PrefabInstance: {fileID: 1217600828}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1629499045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629499047}
+  - component: {fileID: 1629499046}
+  m_Layer: 0
+  m_Name: TowersToGivePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1629499046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629499045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422701f4b7ef66a48b346cdef0eb6341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Towers:
+  - {fileID: 6944860262563252257, guid: 7dd74b9c48fe76b45bc2a6009982ec9e, type: 3}
+  - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
+  - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
+  - {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
+  - {fileID: 2304546843680361707, guid: 41eaecfe6e12eac46b48111aa057c7f0, type: 3}
+  - {fileID: 5493680483164348897, guid: 0fb46963577f26e49956fb4437739d82, type: 3}
+  - {fileID: 2803820806472684270, guid: 58baab9f3d6663340bcc8e520484c9a6, type: 3}
+  - {fileID: 2109361366178841800, guid: 1352130327e565b4a8db2a393ff908ff, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &1629499047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629499045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.157174, y: 0.19618368, z: -9.973572}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723153016
 GameObject:
   m_ObjectHideFlags: 0
