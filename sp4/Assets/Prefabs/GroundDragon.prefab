@@ -1446,6 +1446,7 @@ GameObject:
   - component: {fileID: 5493680483157053949}
   - component: {fileID: 4456488108892896079}
   - component: {fileID: 7920674632012169435}
+  - component: {fileID: 659044541638709475}
   m_Layer: 0
   m_Name: GroundDragon
   m_TagString: Untagged
@@ -1499,7 +1500,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5493680483164348897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
@@ -1520,7 +1521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5493680483164348897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b58fb65726234747b93b7e2af2ddee0, type: 3}
   m_Name: 
@@ -1532,6 +1533,19 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   rootObject: {fileID: 5493680483164348897}
   CanShoot: 0
+--- !u!65 &659044541638709475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493680483164348897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 7.370477, y: 5.3997717, z: 11.313155}
+  m_Center: {x: -0.051211845, y: 2.199885, z: -0.86534816}
 --- !u!1 &5493680483164349189
 GameObject:
   m_ObjectHideFlags: 0

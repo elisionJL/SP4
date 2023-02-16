@@ -25,6 +25,7 @@ public class Base_Interaction : MonoBehaviour
     public GameObject PlayerSword, PlayerCharacter;
     private bool Attack = false, Attack_Dir;
     private float AttackTime;
+    private int random = 0;
     #endregion
 
     // Update is called once per frame
@@ -91,7 +92,7 @@ public class Base_Interaction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            EnemyToSpawn.transform.position = new Vector3(0, 0, 0);
+            EnemyToSpawn.transform.position = new Vector3(0, 0, 133);
             Instantiate(EnemyToSpawn);
         }
 
@@ -126,16 +127,23 @@ public class Base_Interaction : MonoBehaviour
                     //Enable the AI Code to start finding enemy
                     TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
 
-                    if(TowerToSpawn.gameObject.GetComponent<MageTower>() != null)
+                    if(TowerToSpawn.gameObject.GetComponent<MageTower>() != null) //Mage
                         TowerToSpawn.gameObject.GetComponent<MageTower>().enabled = true;
-                    else if(TowerToSpawn.gameObject.GetComponent<DragonTower>() != null)
+                    else if(TowerToSpawn.gameObject.GetComponent<DragonTower>() != null) //Dragon
                         TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
-                    else if(TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null)
+                    else if(TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null) //Skeleton
                         TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
-                    else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null)
+                    else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null) //Succubus
                         TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
-                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null)
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null) //Zombie
                         TowerToSpawn.gameObject.GetComponent<ZombieTower>().enabled = true;
+                    else if (TowerToSpawn.gameObject.GetComponent<ArcherTower>() != null) //Archer
+                        TowerToSpawn.gameObject.GetComponent<ArcherTower>().enabled = true;
+                    else if (TowerToSpawn.gameObject.GetComponent<GroundDragonTower>() != null) //Ground Dragon
+                        TowerToSpawn.gameObject.GetComponent<GroundDragonTower>().enabled = true;
+                    else if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null) //Money Maker
+                        TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>().enabled = true;
+
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
 
@@ -145,6 +153,12 @@ public class Base_Interaction : MonoBehaviour
                         //If Yes, set material alpha of mesh renderer from 128 to 255 then set it's rendering mode to opaque
                         TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color = new Color(TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.r, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.g, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.b, 1);
                         SetTransparentToOpaque(TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material);
+
+                        if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null)
+                        {
+                            TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.b, 1);
+                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material);
+                        }
                     }
                     else //Otherwise
                     {
@@ -172,35 +186,44 @@ public class Base_Interaction : MonoBehaviour
 
                         else if(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).GetComponent<SkinnedMeshRenderer>() != null)
                         {
-                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
-                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                            if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null) //Succubus
+                            {
+                                TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                                SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material);
 
-                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
-                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                                TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                                SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().material);
 
-                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
-                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                                TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                                SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().material);
 
-                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
-                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                                TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                                SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(7).gameObject.GetComponent<SkinnedMeshRenderer>().material);
 
-                            TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
-                            SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                                TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
+                                SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(8).gameObject.GetComponent<SkinnedMeshRenderer>().material);
+                            }
                         }
                     }
 
                     TowerToSpawn.gameObject.tag = "interactable";
 
                     //Lastly, instantiate a clone of the "ghost" object
-                    if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(400) == true)
+                    if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(400) == true) //Mage 
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true)
+                    else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Dragon
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
+                    else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Skeleton
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true)
+                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Zombie
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null && gameObject.GetComponent<Player>().MinusSouls(100) == true)
+                    else if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null && gameObject.GetComponent<Player>().MinusSouls(100) == true) //Succubus
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<ArcherTower>() != null && gameObject.GetComponent<Player>().MinusSouls(250) == true) //Archer
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<GroundDragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(300) == true) //Ground Dragon
+                        Instantiate(TowerToSpawn);
+                    else if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Money Maker
                         Instantiate(TowerToSpawn);
 
                     //Then delete the Ghost object
@@ -261,14 +284,19 @@ public class Base_Interaction : MonoBehaviour
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
+
         }
 
         if(Attack == true)
         {
             if(Attack_Dir == false)
+            {
                 PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
+            }
             else if(Attack_Dir == true)
+            {
                 PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, 360 * Time.deltaTime);
+            }
 
             AttackTime += 1f * Time.deltaTime;
 

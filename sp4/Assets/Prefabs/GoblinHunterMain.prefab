@@ -1313,6 +1313,7 @@ GameObject:
   - component: {fileID: 2304546843670986617}
   - component: {fileID: 5059516013951895561}
   - component: {fileID: 8753298340429351052}
+  - component: {fileID: 3810521628057273898}
   m_Layer: 0
   m_Name: GoblinHunterMain
   m_TagString: Untagged
@@ -1367,7 +1368,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304546843680361707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
@@ -1378,6 +1379,9 @@ MonoBehaviour:
   HP: 0
   Canvas: {fileID: 8930233606985009391}
   HPSlider: {fileID: 918193942291020762}
+  countt: 0
+  targetObject: {fileID: 0}
+  targetingMode: 0
 --- !u!114 &8753298340429351052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1389,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304546843680361707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c049ce99d08c024c9a6fcf239d2d579, type: 3}
   m_Name: 
@@ -1398,6 +1402,19 @@ MonoBehaviour:
   rootObject: {fileID: 7466644020818641333}
   CanShoot: 0
   target: {fileID: 0}
+--- !u!65 &3810521628057273898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304546843680361707}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4169786, y: 1.553, z: 1}
+  m_Center: {x: 0.029017687, y: 0.73490024, z: 0}
 --- !u!1 &2304546843680361709
 GameObject:
   m_ObjectHideFlags: 0
