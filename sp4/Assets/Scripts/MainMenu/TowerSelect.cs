@@ -48,14 +48,32 @@ public class TowerSelect : MonoBehaviour
                 Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
                 Monster_ID[i] = 0;
 
-                if(i > 0 && i < 4)
+                for (int NewObj = i; NewObj < Selected_Towers.Length; NewObj++)
                 {
-                    for(int NewObj = i; NewObj < Selected_Towers.Length; NewObj++)
+                    Debug.Log("NewObj: " + NewObj);
+                    Debug.Log("Selected Towers: " + (Selected_Towers.Length - 1));
+
+                    if((NewObj + 1) < Selected_Towers.Length)
                     {
-                        if(Selected_Towers[NewObj + 1] != null)
+                        if (Selected_Towers[NewObj + 1] != null)
                         {
-                            Selected_Towers[NewObj] = Selected_Towers[NewObj + 1]; 
+                            Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Selected_Towers[NewObj + 1].transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
+                            Monster_ID[NewObj] = Monster_ID[NewObj + 1];
                         }
+
+                        else if (Selected_Towers[NewObj + 1] == null)
+                        {
+                            Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
+                            Monster_ID[NewObj] = 0;
+                            break;
+                        }
+                    }
+
+                    else if (NewObj == Selected_Towers.Length - 1)
+                    {
+                        Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
+                        Monster_ID[NewObj] = 0;
+                        break;
                     }
                 }
             }
