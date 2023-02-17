@@ -5,7 +5,7 @@ using TMPro;
 
 public class Upgrade_Tower : MonoBehaviour
 {
-    public TextMeshProUGUI Name, Cost;
+    public TextMeshProUGUI Name, Cost, AttackDetails, HPDetails;
     public GameObject Player;
 
     private GameObject TowerGotten;
@@ -21,49 +21,68 @@ public class Upgrade_Tower : MonoBehaviour
         {
             Debug.Log(Tower.gameObject.GetComponent<DragonTower>().GetName());
             Name.text = "" + Tower.gameObject.GetComponent<DragonTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<DragonTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<DragonTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<DragonTower>().GetHP() + "->" + Tower.gameObject.GetComponent<DragonTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<DragonTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<DragonTower>().GetDamageUpgraded();
+
+            Debug.Log(Tower.gameObject.GetComponent<DragonTower>().GetHP());
+            Debug.Log(Tower.gameObject.GetComponent<DragonTower>().GetDamage());
         }
 
         else if (Tower.gameObject.GetComponent<MageTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<MageTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<MageTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<MageTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<MageTower>().GetHP() + "->" + Tower.gameObject.GetComponent<MageTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<MageTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<MageTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<SkeletonTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<SkeletonTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<SkeletonTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<SkeletonTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<SkeletonTower>().GetHP() + "->" + Tower.gameObject.GetComponent<SkeletonTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<SkeletonTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<SkeletonTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<DemonGirlTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<DemonGirlTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<DemonGirlTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<DemonGirlTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<DemonGirlTower>().GetHP() + "->" + Tower.gameObject.GetComponent<DemonGirlTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<DemonGirlTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<DemonGirlTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<ZombieTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<ZombieTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<ZombieTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<ZombieTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<ZombieTower>().GetHP() + "->" + Tower.gameObject.GetComponent<ZombieTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<ZombieTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<ZombieTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<ArcherTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<ArcherTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<ArcherTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<ArcherTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<ArcherTower>().GetHP() + "->" + Tower.gameObject.GetComponent<ArcherTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<ArcherTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<ArcherTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<GroundDragonTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<GroundDragonTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<GroundDragonTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<GroundDragonTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<GroundDragonTower>().GetHP() + "->" + Tower.gameObject.GetComponent<GroundDragonTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<GroundDragonTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<GroundDragonTower>().GetDamageUpgraded();
         }
 
         else if (Tower.gameObject.GetComponent<SoulGrinderTower>() != null)
         {
             Name.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetName();
-            Cost.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost();
+            Cost.text = "Cost: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost();
+            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetHP() + "->" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetHPUpgraded();
+            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetDamage() + "->" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetDamageUpgraded();
         }
 
         TowerGotten = Tower;
