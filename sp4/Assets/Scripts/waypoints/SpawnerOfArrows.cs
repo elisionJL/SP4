@@ -7,6 +7,7 @@ public class SpawnerOfArrows : MonoBehaviour
     public List<Transform> Waypoints;
     private float timer;
     public GameObject Arrows;
+    public GameObject ArrowContainer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class SpawnerOfArrows : MonoBehaviour
             {
                 Arrows.transform.position = Waypoints[i].position;
                 Arrows.GetComponent<Arrow>().AssignWaypoints(Waypoints[i + 1]);
-                Instantiate(Arrows);
+                Instantiate(Arrows).transform.SetParent(ArrowContainer.transform);
             }
             timer = 0;
         }

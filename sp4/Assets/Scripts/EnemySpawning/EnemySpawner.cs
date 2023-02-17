@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> EnemiesToSpawn = new List<GameObject>();
     public bool allSpawned;
     int spawn;
+    private GameObject EnemyContainer;
     public GameObject Waypoints;
     // Start is called before the first frame update
     void Start()
@@ -83,6 +84,10 @@ public class EnemySpawner : MonoBehaviour
             allSpawned = true;
         }
         return null;
+    }
+    public void setContainer(GameObject container)
+    {
+        EnemyContainer = container;
     }
 }
 
