@@ -52,11 +52,19 @@ abstract class TowerBase : MonoBehaviour
         return hp;
     }
 
+    public int GetHPUpgraded()
+    {
+        return Mathf.RoundToInt(hp * 1.5f);
+    }
     public int GetDamage()
     {
         return damage;
     }
 
+    public int GetDamageUpgraded()
+    {
+        return Mathf.RoundToInt(damage * 1.5f);
+    }
     public  int GetSellValue()
     {
         return sellValue;

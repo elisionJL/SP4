@@ -351,6 +351,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5784877847517285852, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770305504511349566, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
 --- !u!1 &237740321
@@ -633,7 +641,7 @@ PrefabInstance:
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: Waypoints
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1213198419}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
 --- !u!1 &397029737 stripped
@@ -1292,6 +1300,11 @@ PrefabInstance:
       objectReference: {fileID: 397029737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+--- !u!1 &1213198419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8022753713460629749, guid: a6cba5348e046c441ac5d20fa89160dd, type: 3}
+  m_PrefabInstance: {fileID: 960602424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292407801
 GameObject:
   m_ObjectHideFlags: 0

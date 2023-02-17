@@ -75,12 +75,13 @@ public class DemonLordKill : MonoBehaviour
 
         else if(TimeLeftToAttack <= 0f) //When Timer hits 0, turn king to skeleton
         {
-            if (PlayerSword.gameObject.activeSelf == true)
+            if (PlayerSword.gameObject.activeSelf == true || TimeFinished == false)
             {
-                PlayerSword.gameObject.SetActive(false);
                 DemonAnim.SetTrigger("die");
                 King.gameObject.GetComponent<Animation>().Play("die");
                 YouWin.SetActive(true);
+                PlayerSword.gameObject.SetActive(false);
+                TimeFinished = true;
             }
 
             TimeCount.gameObject.SetActive(false);
