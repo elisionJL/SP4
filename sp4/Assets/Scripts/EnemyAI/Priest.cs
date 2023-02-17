@@ -106,6 +106,7 @@ class Priest : MonoBehaviour
                 {
                     currentdistanceontrack += Time.deltaTime * speed;
                     percentageofdistance = (currentdistanceontrack / totaldistance) * 100;
+                    enemy_AI.CurrentPercentage = percentageofdistance;
                 }
                 else
                 {
