@@ -81,8 +81,7 @@ public class Upgrade_Tower : MonoBehaviour
         {
             Name.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetName();
             Cost.text = "Cost: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost();
-            HPDetails.text = "HP: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetHP() + "  ->  <color=green>" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetHPUpgraded() + "</color>";
-            AttackDetails.text = "Atk: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetDamage() + "  ->  <color=green>" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetDamageUpgraded() + "</color>";
+            AttackDetails.text = "Souls Generated: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsGeneration() + "  ->  <color=green>" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsUpgraded() + "</color>";
         }
 
         TowerGotten = Tower;
@@ -128,7 +127,7 @@ public class Upgrade_Tower : MonoBehaviour
             TowerGotten.gameObject.GetComponent<GroundDragonTower>().UpgradeStats();
         else if (TowerGotten.gameObject.GetComponent<SoulGrinderTower>() != null &&
             Player.gameObject.GetComponent<Player>().MinusSouls(TowerGotten.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost()) == true)
-            TowerGotten.gameObject.GetComponent<SoulGrinderTower>().UpgradeStats();
+            TowerGotten.gameObject.GetComponent<SoulGrinderTower>().UpgradeSouldGrinder();
 
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();

@@ -9,6 +9,8 @@ TagManager:
   - PlaceableArea
   - Enemy
   - Arrow
+  - Fire
+  - Fireball
   layers:
   - Default
   - TransparentFX
