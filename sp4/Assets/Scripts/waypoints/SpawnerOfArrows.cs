@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnerOfArrows : MonoBehaviour
 {
     public List<Transform> Waypoints;
+    private float timer;
+    public GameObject Arrows;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,16 @@ public class SpawnerOfArrows : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer > 2)
+        {
+            for (int i = 0; i < Waypoints.Count - 1; ++i)
+            {
+                Arrows.transform.position = Waypoints[i].position;
+                Arrows.GetComponent<Arrow>().AssignWaypoints(Waypoints[i + 1]);
+                Instantiate(Arrows);
+            }
+            timer = 0;
+        }
     }
 }
