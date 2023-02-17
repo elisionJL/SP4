@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> EnemiesToSpawn = new List<GameObject>();
     public bool allSpawned;
     int spawn;
+    public GameObject arrow;
+    private float Timerforarrow;
+    public GameObject Waypoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,14 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Timerforarrow += Time.deltaTime;
+        if (Timerforarrow > 1)
+        {
+            Timerforarrow = 0;
+            arrow.GetComponent<Arrow>().AssignWaypoints(Waypoints);
+            arrow.transform.position = this.transform.position;
+            Instantiate(arrow);
+        }
     }
     public void GenerateWave()
     {
@@ -66,6 +76,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 ++spawn;
                 TimeBetweenSpawn = baseTime;
+                EnemiesToSpawn[spawn - 1].gameObject.GetComponent<Enemy_AI>().GetWaypoints(Waypoints);
                 return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
             }
         }

@@ -28,5 +28,9 @@ public class BaseScript : MonoBehaviour
             HP_Bar.GetComponent<Slider>().value = HP;
             Destroy(other.gameObject);
         }
+        else if (other.tag == "Arrow")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
