@@ -12,6 +12,7 @@ abstract class TowerBase : MonoBehaviour
     public string Name;
     protected int damage;
     protected int hp;
+    protected int Lvl;
     protected float attackSpd;
     protected float radius;
     protected int cost;
@@ -84,7 +85,7 @@ abstract class TowerBase : MonoBehaviour
     {
         hp = Mathf.RoundToInt(hp * 1.5f);
         damage = Mathf.RoundToInt(damage * 1.5f);
-
+        Lvl += 1;
         UpgradeCost = Mathf.RoundToInt(UpgradeCost * 1.5f);
     }
 }

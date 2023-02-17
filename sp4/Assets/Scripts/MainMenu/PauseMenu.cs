@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         if (VolumeSlider == null)
-        {
+        {   
             VolumeSlider = transform.GetChild(1).GetComponent<Slider>();
         }
         if (VolumePercentageText == null)

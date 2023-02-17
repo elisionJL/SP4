@@ -29,6 +29,7 @@ public class Base_Interaction : MonoBehaviour
     private int random = 0;
     #endregion
 
+
     // Update is called once per frame
     void Update()
     {
@@ -97,11 +98,7 @@ public class Base_Interaction : MonoBehaviour
         if (TowerToSpawn == null && CanPlace == false)
             Player_Attack();
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            EnemyToSpawn.transform.position = new Vector3(0, 0, 133);
-            Instantiate(EnemyToSpawn);
-        }
+        
 
         //if(UpgradeUI.activeSelf == true && upgrade == true)
         //{

@@ -64,26 +64,24 @@ public class Player : MonoBehaviour
                 RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
                 Health = 0;
 
-            }
-            else if (RespawnCount > 0)
-            {
-                RespawnCount -= Time.deltaTime;
-                RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
-            }
-            else
-            {
-                RespawnText.SetActive(false);
-                PlayerModel.SetActive(true);
-                Crosshair.SetActive(true);
-                PlayerMoveScript.enabled = true;
-                CameraPPL.enabled = false;
-                PlayerBaseInteraction.enabled = true;
-                PlayerTowerShop.enabled = true;
-                Health = 100;
-                Mana = 100;
-                RespawnCount = 0;
-            }
-            MouseControls();
+        }
+        else if(RespawnCount > 0)
+        {
+            RespawnCount -= Time.deltaTime;
+            RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
+        }
+        else
+        {
+            RespawnText.SetActive(false);
+            PlayerModel.SetActive(true);
+            Crosshair.SetActive(true);
+            PlayerMoveScript.enabled = true;
+            CameraPPL.enabled = false;
+            PlayerBaseInteraction.enabled = true;
+            PlayerTowerShop.enabled = true;
+            RespawnCount = 0;
+        }
+        MouseControls();
     }
     public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
     {
