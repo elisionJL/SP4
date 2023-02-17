@@ -22,11 +22,19 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
     }
-    public void GenerateWave()
+    public void GenerateWave(int waveNum)
     {
         waveValue = (int)Mathf.Ceil(waveValue * valueScalar);
         List<GameObject> GeneratedEnemies = new List<GameObject>();
-        List<Enemy> tempEnemyList = enemyList;
+
+        List<Enemy> tempEnemyList = new List<Enemy>();
+        for(int i = 0; i < enemyList.Count; ++i)
+        {
+            if(enemyList[i].waveRequired <= waveNum)
+            {
+                tempEnemyList.Add(enemyList[i]);
+            }
+        }
         int ValueToSpend = waveValue;
         int randomEnemy;
         while (ValueToSpend > 0)

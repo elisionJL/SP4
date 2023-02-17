@@ -33,7 +33,7 @@ public class WaveManager : MonoBehaviour
             //generate the waves for the spawnpoints
             for (int i = 0; i < SpawnPoints.Count; ++i)
             {
-                SpawnPoints[i].GenerateWave();
+                SpawnPoints[i].GenerateWave(wave);
             }
             waveDone = false;
             enemies.Clear();
