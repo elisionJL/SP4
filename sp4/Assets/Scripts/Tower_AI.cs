@@ -187,13 +187,60 @@ public class Tower_AI : MonoBehaviour
                 setRotation(checkingObject);
                 if (angle <= maxAngle)
                 {
-                    Ray ray = new Ray(checkingObject.position, strongestTarget.transform.position - checkingObject.position);
+                    Vector3 direction = strongestTarget.transform.position - checkingObject.position;
+                    direction.y = 0;
+                    Ray ray = new Ray(checkingObject.position, direction);
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                     {
                         if (hit.transform == strongestTarget.transform)
                         {
-                            return hit.transform;
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        if (targetingMode == TARGETING.FIRST)
+        {
+            float FurthestDistance = 0;
+            Transform FurthestTarget = null;
+            for (int i = 0; i < countt + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+                     if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {
+                        float enemyDistance = overlaps[i].gameObject.GetComponent<Enemy_AI>().CurrentPercentage;
+                        if (enemyDistance > FurthestDistance)
+                        {
+                           FurthestDistance = enemyDistance;
+                            FurthestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            if (FurthestTarget != null)
+            {
+                Vector3 directionBetween = (FurthestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+
+                checkingObject.LookAt(FurthestTarget);
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Vector3 direction = FurthestTarget.transform.position - checkingObject.position;
+                    direction.y = 0;
+                    Ray ray = new Ray(checkingObject.position, direction);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == FurthestTarget.transform)
+                        {
+                            return true;
                         }
                     }
                 }
@@ -230,24 +277,21 @@ public class Tower_AI : MonoBehaviour
                 directionBetween.y *= 0;
 
                 float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
-
-                checkingObject.LookAt(nearestTarget);
+                Vector3 LookatPosition = nearestTarget.position;
+                LookatPosition.y += nearestTarget.localScale.y/2;
+                checkingObject.LookAt(LookatPosition);
 
 
                 setRotation(checkingObject);
                 if (angle <= maxAngle)
                 {
-                    Debug.Log("nearestTarget: " + nearestTarget);
                     Vector3 direction = nearestTarget.transform.position - checkingObject.position;
                     Ray ray = new Ray(checkingObject.position, direction);
                     RaycastHit hit;
-                    Debug.Log("ray: " + Physics.Raycast(ray, out hit, maxRadius));
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                     {
-                        //Debug.Log("rayHit: " + hit.transform);
                         if (hit.transform == nearestTarget.transform)
                         {
-                            Debug.Log("returnTarget: " + hit.transform);
                             return hit.transform;
                         }
                     }
@@ -279,18 +323,65 @@ public class Tower_AI : MonoBehaviour
                 directionBetween.y *= 0;
 
                 float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
-
-                checkingObject.LookAt(strongestTarget);
+                Vector3 LookatPosition = strongestTarget.position;
+                LookatPosition.y += strongestTarget.localScale.y / 2;
+                checkingObject.LookAt(LookatPosition);
 
 
                 setRotation(checkingObject);
                 if (angle <= maxAngle)
                 {
-                    Ray ray = new Ray(checkingObject.position, strongestTarget.transform.position - checkingObject.position);
+                    Vector3 direction = strongestTarget.transform.position - checkingObject.position;
+                    Ray ray = new Ray(checkingObject.position, direction);
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
                     {
                         if (hit.transform == strongestTarget.transform)
+                        {
+                            return hit.transform;
+                        }
+                    }
+                }
+            }
+        }
+        if (targetingMode == TARGETING.FIRST)
+        {
+            float FurthestDistance = 0;
+            Transform FurthestTarget = null;
+            for (int i = 0; i < countt + 1; i++)
+            {
+                if (overlaps[i] != null)
+                {
+                    if (overlaps[i].gameObject.tag == "Enemy") //If Target enters field of view
+                    {
+                        float enemyDistance = overlaps[i].gameObject.GetComponent<Enemy_AI>().CurrentPercentage;
+                        if (enemyDistance > FurthestDistance)
+                        {
+                            FurthestDistance = enemyDistance;
+                            FurthestTarget = overlaps[i].transform;
+                        }
+                    }
+                }
+            }
+            if (FurthestTarget != null)
+            {
+                Vector3 directionBetween = (FurthestTarget.position - checkingObject.position).normalized;
+                directionBetween.y *= 0;
+
+                float angle = Vector3.Angle(checkingObject.forward, directionBetween); //Rotate to face target
+                Vector3 LookatPosition = FurthestTarget.position;
+                LookatPosition.y += FurthestTarget.localScale.y / 2;
+                checkingObject.LookAt(LookatPosition);
+
+                setRotation(checkingObject);
+                if (angle <= maxAngle)
+                {
+                    Vector3 direction = FurthestTarget.transform.position - checkingObject.position;
+                    Ray ray = new Ray(checkingObject.position, direction);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadius)) //If raycast collides with target
+                    {
+                        if (hit.transform == FurthestTarget.transform)
                         {
                             return hit.transform;
                         }
