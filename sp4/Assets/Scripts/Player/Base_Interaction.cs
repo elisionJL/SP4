@@ -67,6 +67,8 @@ public class Base_Interaction : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        DisableSword();
+
                         UpgradeUI.SetActive(true);
                         UpgradePrompt.SetActive(false);
 
@@ -108,6 +110,14 @@ public class Base_Interaction : MonoBehaviour
         //}
     }
 
+    public void DisableSword()
+    {
+        PlayerSword.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
+        PlayerSword.transform.localPosition = new Vector3(1.5f, 0f, 0.22f);
+        PlayerSword.transform.localRotation = Quaternion.Euler(90, 0, -90);
+        PlayerSword.SetActive(false);
+    }
+
     public void CloseShopUI()
     {
         upgrade = false;
@@ -117,8 +127,10 @@ public class Base_Interaction : MonoBehaviour
     {
         if (TowerToSpawn != null && CanPlace == false) //If there is an object to place and user didn't place it down yet
         {
+            DisableSword();
+
             //If distance of tower from player is less than 5.0f and is a place that can be placed down onto
-            if(distance <= 5.0f && hit.collider.gameObject.tag == "PlaceableArea")
+            if (distance <= 5.0f && hit.collider.gameObject.tag == "PlaceableArea")
             {
                 TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y + (TowerToSpawn.transform.localScale.y / 2), hit.point.z);
 
@@ -290,19 +302,11 @@ public class Base_Interaction : MonoBehaviour
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
-
         }
 
         if(Attack == true)
         {
-            if(Attack_Dir == false)
-            {
-                PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
-            }
-            else if(Attack_Dir == true)
-            {
-                PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, 360 * Time.deltaTime);
-            }
+            PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
 
             AttackTime += 1f * Time.deltaTime;
 
@@ -310,12 +314,8 @@ public class Base_Interaction : MonoBehaviour
             {
                 AttackTime = 0;
                 Attack = false;
-                PlayerSword.SetActive(false);
 
-                if (Attack_Dir == false)
-                    Attack_Dir = true;
-                else if (Attack_Dir == true)
-                    Attack_Dir = false;
+                DisableSword();
             }
         }
     }

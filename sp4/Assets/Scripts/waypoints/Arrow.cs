@@ -10,9 +10,9 @@ public class Arrow : MonoBehaviour
     {
     }
 
-    public void AssignWaypoints(GameObject WaypointGO)
+    public void AssignWaypoints(Transform WaypointGO)
     {
-        target = WaypointGO.transform;
+        target = WaypointGO;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Arrow : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
