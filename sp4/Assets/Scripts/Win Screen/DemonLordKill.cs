@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DemonLordKill : MonoBehaviour
 {
-    public GameObject PlayerSword, PlayerCharacter, TellPlayer, TimeCount, MainCamera, King, YouWin;
+    public GameObject PlayerSword, PlayerCharacter, TellPlayer, TimeCount, MainCamera, King, YouWin, CameraSong;
     private bool Attack = false, Attack_Dir, TimeFinished, AttackTimeBool = false;
     private float AttackTime, TimeLeftToAttack = 5f;
     public Animator DemonAnim;
@@ -14,7 +14,7 @@ public class DemonLordKill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        CameraSong = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -34,6 +34,7 @@ public class DemonLordKill : MonoBehaviour
                 Attack = true;
                 AttackTimeBool = true;
                 King.gameObject.GetComponent<Animation>().Play("resist");
+                CameraSong.GetComponent<AudioSource>().enabled = true;
             }
 
             if (AttackTimeBool == true)
@@ -55,8 +56,6 @@ public class DemonLordKill : MonoBehaviour
                 {
                     if (Attack_Dir == false)
                         PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -1000 * Time.deltaTime);
-                    else if (Attack_Dir == true)
-                        PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, 1000 * Time.deltaTime);
 
                     AttackTime += 1f * Time.deltaTime;
 
@@ -64,12 +63,11 @@ public class DemonLordKill : MonoBehaviour
                     {
                         AttackTime = 0;
                         Attack = false;
-                        PlayerSword.SetActive(false);
 
-                        if (Attack_Dir == false)
-                            Attack_Dir = true;
-                        else if (Attack_Dir == true)
-                            Attack_Dir = false;
+                        PlayerSword.transform.localPosition = new Vector3(-0.36f, 0.883f, 1.032f);
+                        PlayerSword.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                        
+                        PlayerSword.SetActive(false);
                     }
                 }
             }
@@ -87,7 +85,7 @@ public class DemonLordKill : MonoBehaviour
 
             TimeCount.gameObject.SetActive(false);
 
-            MainCamera.transform.position = new Vector3(-3.41f, 1.56f, -9.71f);
+            MainCamera.transform.position = new Vector3(Random.Range(-3.66f, -3.16f), Random.Range(1.31f, 1.81f), -9.71f);
             MainCamera.transform.rotation = Quaternion.Euler(0, 90, 0);
 
         }
