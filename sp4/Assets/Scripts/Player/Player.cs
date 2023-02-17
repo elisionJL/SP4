@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Tower_Shop PlayerTowerShop;
     public GameObject RespawnText;
     public GameObject PlayerModel;
+    public GameObject PausePanel;
     private float RespawnCount;
     float RotationX = 0f;
     public int Health = 0;
@@ -30,23 +31,38 @@ public class Player : MonoBehaviour
         RespawnText.SetActive(false);
         CameraPPL.enabled = false;
         RespawnCount = 0;
+        PausePanel.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(Health < 0 && RespawnCount <= 0)
+        if (Input.GetKeyDown(KeyCode.F10))
         {
-            PlayerModel.SetActive(false);
-            RespawnText.SetActive(true);
-            Crosshair.SetActive(false);
-            PlayerMoveScript.enabled = false;
-            PlayerBaseInteraction.enabled = false;
-            PlayerTowerShop.enabled = false;
-            CameraPPL.enabled = true;
-            RespawnCount = 5;
-            RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
-            Health = 0;
+            if (Time.timeScale != 0)
+            {
+                Time.timeScale = 0;
+                PausePanel.SetActive(true);
+                UnlockMouse();
+            }
+            else
+            {
+                Time.timeScale = 1;
+                PausePanel.SetActive(false);
+                LockMouse();
+            }
+        }
+            if (Health < 0 && RespawnCount <= 0)
+            {
+                PlayerModel.SetActive(false);
+                RespawnText.SetActive(true);
+                Crosshair.SetActive(false);
+                PlayerMoveScript.enabled = false;
+                PlayerBaseInteraction.enabled = false;
+                PlayerTowerShop.enabled = false;
+                CameraPPL.enabled = true;
+                RespawnCount = 5;
+                RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
+                Health = 0;
 
         }
         else if(RespawnCount > 0)
@@ -63,13 +79,10 @@ public class Player : MonoBehaviour
             CameraPPL.enabled = false;
             PlayerBaseInteraction.enabled = true;
             PlayerTowerShop.enabled = true;
-            Health = 100;
-            Mana = 100;
             RespawnCount = 0;
         }
         MouseControls();
     }
-
     public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
     {
         Cursor.lockState = CursorLockMode.Locked;

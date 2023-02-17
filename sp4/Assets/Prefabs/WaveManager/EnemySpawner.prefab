@@ -48,9 +48,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - enemyPrefab: {fileID: 1244539903904722007, guid: fdc2b853e184c794d91e137955bfeb6d, type: 3}
-    cost: 1
+    cost: 2
     waveRequired: 0
   - enemyPrefab: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    cost: 5
+    waveRequired: 0
+  - enemyPrefab: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+    cost: 10
+    waveRequired: 0
+  - enemyPrefab: {fileID: 7647134206250791342, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
+    cost: 10
+    waveRequired: 0
+  - enemyPrefab: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
     cost: 3
     waveRequired: 0
   valueScalar: 1.5
@@ -58,7 +67,6 @@ MonoBehaviour:
   TimeBetweenSpawn: 2
   EnemiesToSpawn: []
   allSpawned: 0
-  arrow: {fileID: 8298255777208768287, guid: 5e5db54ac05127d4cb3454b76791e674, type: 3}
   Waypoints: {fileID: 0}
 --- !u!23 &4782320506637155474
 MeshRenderer:
