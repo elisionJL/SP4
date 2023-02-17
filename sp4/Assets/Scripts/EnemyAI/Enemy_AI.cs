@@ -15,11 +15,43 @@ public class Enemy_AI : MonoBehaviour
     public List<Transform> targets;
     public float CurrentPercentage;
     private Transform objectRotation;
+    private bool GravityMagicUsed = false;
+    private bool DamageDealt = false;
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void DisableScript()
+    {
+        GravityMagicUsed = true;
+        if (gameObject.GetComponent<Priest>() != null)
+            gameObject.GetComponent<Priest>().enabled = false;
+        else if (gameObject.GetComponent<Knight>() != null)
+            gameObject.GetComponent<Knight>().enabled = false;
+        else if (gameObject.GetComponent<Heroine>() != null)
+            gameObject.GetComponent<Heroine>().enabled = false;
+        else if (gameObject.GetComponent<Villager>() != null)
+            gameObject.GetComponent<Villager>().enabled = false;
+    }
+    public void EnableScript()
+    {
+        GravityMagicUsed = false;
+        if (gameObject.GetComponent<Priest>() != null)
+            gameObject.GetComponent<Priest>().enabled = true;
+        else if (gameObject.GetComponent<Knight>() != null)
+            gameObject.GetComponent<Knight>().enabled = true;
+        else if (gameObject.GetComponent<Heroine>() != null)
+            gameObject.GetComponent<Heroine>().enabled = true;
+        else if (gameObject.GetComponent<Villager>() != null)
+            gameObject.GetComponent<Villager>().enabled = true;
+
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        GetComponent<Rigidbody>().AddForce(0, -100, 0);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        DamageDealt = false;
     }
 
 
@@ -40,6 +72,15 @@ public class Enemy_AI : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (IsGrounded() && !GravityMagicUsed && !DamageDealt)
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            Debug.Log("HitGround");
+            DamageDealt = true;
+            MinusHP(30);
+        }
+
         Collider[] overlaps = new Collider[999];
         int count = Physics.OverlapSphereNonAlloc(this.transform.position, maxRadius, overlaps);
         if (TargetObject == null && count > 0)
@@ -170,6 +211,36 @@ public class Enemy_AI : MonoBehaviour
     public void setRotation(Transform currRotate)
     {
         objectRotation = currRotate;
+    }
+
+    public bool IsGrounded() // Check if player is close or touching a grounded area
+    {
+        Vector3 origin = transform.position;
+        origin.y -= 0; //Minus by size of radius to move origin down to bottom part of player
+
+
+        Vector3 direction = -Vector3.up; //Direction that points down on the y axis to only check the ground
+        Ray ray = new Ray(origin, direction);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)) //if sees ground
+        {
+            float distance = hit.distance; //Get the distance from the ray to the landable area
+
+            Debug.DrawRay(origin, direction * distance, Color.red);
+
+            if (distance <= (0.1f)) //If distance from bottom of player to ground is close enough
+            {
+                return true; //Let Player jump
+            }
+            else
+            {
+                Debug.Log("Jumping");
+                return false;
+            }
+        }
+
+        return false;
     }
 
     public Transform getRotation()
