@@ -22,7 +22,6 @@ namespace DigitalRuby.PyroParticles
         private float seed;
         private FireBaseScript fireBaseScript;
         private float baseY;
-
         private void Awake()
         {
             // find a point light

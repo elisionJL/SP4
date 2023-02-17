@@ -81,7 +81,7 @@ namespace DigitalRuby.PyroParticles
         {
             Starting = true;
             int fireLayer = UnityEngine.LayerMask.NameToLayer("FireLayer");
-            UnityEngine.Physics.IgnoreLayerCollision(2, 32);
+            UnityEngine.Physics.IgnoreLayerCollision(2, 30);
         }
 
         protected virtual void Start()

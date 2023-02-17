@@ -16,7 +16,8 @@ public class Enemy_AI : MonoBehaviour
     public float CurrentPercentage;
     private Transform objectRotation;
     private bool GravityMagicUsed = false;
-    private bool DamageDealt = false;
+    private bool DamageDealt = true;
+    public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -36,17 +37,10 @@ public class Enemy_AI : MonoBehaviour
         else if (gameObject.GetComponent<Villager>() != null)
             gameObject.GetComponent<Villager>().enabled = false;
     }
-    public void EnableScript()
+    public void EnableScript(GameObject ExplosionPrefab)
     {
+        Explosion = ExplosionPrefab;
         GravityMagicUsed = false;
-        if (gameObject.GetComponent<Priest>() != null)
-            gameObject.GetComponent<Priest>().enabled = true;
-        else if (gameObject.GetComponent<Knight>() != null)
-            gameObject.GetComponent<Knight>().enabled = true;
-        else if (gameObject.GetComponent<Heroine>() != null)
-            gameObject.GetComponent<Heroine>().enabled = true;
-        else if (gameObject.GetComponent<Villager>() != null)
-            gameObject.GetComponent<Villager>().enabled = true;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         GetComponent<Rigidbody>().AddForce(0, -100, 0);
@@ -74,11 +68,22 @@ public class Enemy_AI : MonoBehaviour
     {
         if (IsGrounded() && !GravityMagicUsed && !DamageDealt)
         {
+            if (gameObject.GetComponent<Priest>() != null)
+                gameObject.GetComponent<Priest>().enabled = true;
+            else if (gameObject.GetComponent<Knight>() != null)
+                gameObject.GetComponent<Knight>().enabled = true;
+            else if (gameObject.GetComponent<Heroine>() != null)
+                gameObject.GetComponent<Heroine>().enabled = true;
+            else if (gameObject.GetComponent<Villager>() != null)
+                gameObject.GetComponent<Villager>().enabled = true;
+
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             Debug.Log("HitGround");
             DamageDealt = true;
             MinusHP(30);
+            Explosion.transform.position = transform.position;
+            Instantiate(Explosion);
         }
 
         Collider[] overlaps = new Collider[999];
