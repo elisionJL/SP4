@@ -72,7 +72,7 @@ public class DemonLordKill : MonoBehaviour
             }
         } 
 
-        else //When Timer hits 0, turn king to skeleton
+        else if(TimeLeftToAttack <= 0f) //When Timer hits 0, turn king to skeleton
         {
             if (PlayerSword.gameObject.activeSelf == true)
                 PlayerSword.gameObject.SetActive(false);
@@ -87,7 +87,6 @@ public class DemonLordKill : MonoBehaviour
 
             MainCamera.transform.position = new Vector3(Random.Range(-3.66f, -3.16f), Random.Range(1.31f, 1.81f), -9.71f);
             MainCamera.transform.rotation = Quaternion.Euler(0, 90, 0);
-
         }
     }
 }
