@@ -9,12 +9,16 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject Waypoint = GameObject.Find("Waypoints");
-        foreach (Transform child in Waypoint.transform)
+        current = 0;
+    }
+
+    public void AssignWaypoints(GameObject WaypointGO)
+    {
+        target.Clear();
+        foreach (Transform child in WaypointGO.transform)
         {
             target.Add(child.transform);
         }
-        current = 0;
     }
 
     // Update is called once per frame

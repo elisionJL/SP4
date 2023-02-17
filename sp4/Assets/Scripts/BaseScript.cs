@@ -29,6 +29,8 @@ public class BaseScript : MonoBehaviour
             Destroy(other.gameObject);
         }
         else if (other.tag == "Arrow")
+        {
             Destroy(other.gameObject);
+        }
     }
 }
