@@ -9,6 +9,7 @@ public class DemonLordKill : MonoBehaviour
     public GameObject PlayerSword, PlayerCharacter, TellPlayer, TimeCount, MainCamera, King, YouWin;
     private bool Attack = false, Attack_Dir, TimeFinished, AttackTimeBool = false;
     private float AttackTime, TimeLeftToAttack = 5f;
+    public Animator DemonAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -77,10 +78,9 @@ public class DemonLordKill : MonoBehaviour
         else //When Timer hits 0, turn king to skeleton
         {
             if (PlayerSword.gameObject.activeSelf == true)
-                PlayerSword.gameObject.SetActive(false);
-            if (PlayerCharacter.gameObject.activeSelf == true)
             {
-                PlayerCharacter.SetActive(false);
+                PlayerSword.gameObject.SetActive(false);
+                DemonAnim.SetTrigger("die");
                 King.gameObject.GetComponent<Animation>().Play("die");
                 YouWin.SetActive(true);
             }
