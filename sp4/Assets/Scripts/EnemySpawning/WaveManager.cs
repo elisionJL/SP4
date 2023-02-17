@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class WaveManager : MonoBehaviour
 {
     public int wave;
@@ -9,12 +9,12 @@ public class WaveManager : MonoBehaviour
     public float waveCooldown;
     public bool waveDone;
     private int finishedSpawnPoints;
+    public TextMeshProUGUI CountDownText;
     public List<EnemySpawner> SpawnPoints = new List<EnemySpawner>();
     public List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        //SpawnPoints[0].GenerateWave();
     }
 
     // Update is called once per frame
@@ -22,11 +22,13 @@ public class WaveManager : MonoBehaviour
     {
         if(wave > maxWave)
         {
+            CountDownText.enabled = false;
             return;
         }
         if (waveCooldown > 0 && waveDone == true)
         {
             waveCooldown -= Time.deltaTime;
+            CountDownText.text = "Countdown: " + Mathf.Ceil(waveCooldown).ToString();
         }
         else if (waveDone == true)
         {
@@ -37,6 +39,7 @@ public class WaveManager : MonoBehaviour
             }
             waveDone = false;
             enemies.Clear();
+            CountDownText.enabled = false;
         }
         if (waveDone == false)
         {
@@ -69,6 +72,7 @@ public class WaveManager : MonoBehaviour
                         waveDone = true;
                         waveCooldown = 40;
                         ++wave;
+                        CountDownText.enabled = true;
                     }
                 }
             }
