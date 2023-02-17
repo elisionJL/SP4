@@ -76,6 +76,10 @@ public class Base_Interaction : MonoBehaviour
                         upgrade = true;
                         gameObject.GetComponent<Player>().UnlockMouse();
                     }
+                    if (Input.GetKeyDown(KeyCode.C))
+                    {
+                        hit.transform.gameObject.GetComponent<Tower_AI>().UpdateTargeting();
+                    }
                 }
             }
         }

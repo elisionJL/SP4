@@ -12,12 +12,29 @@ public class Enemy_AI : MonoBehaviour
     public int ArmorType = 0;
     public Slider HPSlider;
     private bool isInFov = false;
-
+    public List<Transform> targets;
+    public float CurrentPercentage;
     private Transform objectRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+
+    public void GetWaypoints(GameObject WaypointGO)
+    {
+        targets.Clear();
+        foreach (Transform child in WaypointGO.transform)
+        {
+            targets.Add(child.transform);
+        }
+    }
+
+    public List<Transform> ReturnWaypoints()
+    {
+        return targets;
     }
 
     // Update is called once per frame

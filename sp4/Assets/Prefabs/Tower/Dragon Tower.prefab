@@ -1566,7 +1566,7 @@ GameObject:
   - component: {fileID: 3751133243402728168}
   - component: {fileID: 5845954481410383062}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: TargetingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2666,6 +2666,7 @@ MonoBehaviour:
   HP: 0
   Canvas: {fileID: 174411740375533197}
   HPSlider: {fileID: 8415598849061276425}
+  TargetingText: {fileID: 5845954481410383062}
   countt: 0
   targetObject: {fileID: 0}
   targetingMode: 0

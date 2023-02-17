@@ -22,11 +22,7 @@ class Priest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject Waypoint = GameObject.Find("Waypoints");
-        foreach (Transform child in Waypoint.transform)
-        {
-            target.Add(child.transform);
-        }
+        target = enemy_AI.ReturnWaypoints();
         for (int i = 0; i < target.Count - 1; ++i)
         {
             totaldistance += Vector3.Distance(target[i].position, target[i + 1].position);
@@ -110,6 +106,7 @@ class Priest : MonoBehaviour
                 {
                     currentdistanceontrack += Time.deltaTime * speed;
                     percentageofdistance = (currentdistanceontrack / totaldistance) * 100;
+                    enemy_AI.CurrentPercentage = percentageofdistance;
                 }
                 else
                 {

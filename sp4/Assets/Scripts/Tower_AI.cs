@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Tower_AI : MonoBehaviour
 {
     public Transform playerTransform;
@@ -11,6 +11,7 @@ public class Tower_AI : MonoBehaviour
     public int HP;
     public GameObject Canvas;
     public Slider HPSlider;
+    public TMP_Text TargetingText;
     private bool isInFov = false;
     public int countt;
     private Transform objectRotation;
@@ -19,7 +20,8 @@ public class Tower_AI : MonoBehaviour
     {
         CLOSEST,
         STRONGEST,
-        FIRST
+        FIRST,
+        RESET
     }
     public TARGETING targetingMode = TARGETING.CLOSEST;
     //private void OnEnable()
@@ -38,7 +40,6 @@ public class Tower_AI : MonoBehaviour
     {
         if (Canvas.activeSelf)
             Canvas.transform.LookAt(Camera.main.transform.position);
-
 
         if (playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
@@ -361,5 +362,28 @@ public class Tower_AI : MonoBehaviour
     public Transform getPlayer()
     {
         return playerTransform;
+    }
+    private string getTargetingName()
+    {
+        switch (targetingMode)
+        {
+            case TARGETING.CLOSEST:
+                return "CLOSEST";
+            case TARGETING.STRONGEST:
+                return "STRONGEST";
+            case TARGETING.FIRST:
+                return "FIRST";
+            default:
+                return null;
+        }
+    }
+    public void UpdateTargeting()
+    {
+        targetingMode++;
+        if (targetingMode == TARGETING.RESET)
+        {
+            targetingMode = TARGETING.CLOSEST;
+        }
+        TargetingText.text = "Targeting: " + getTargetingName();
     }
 }
