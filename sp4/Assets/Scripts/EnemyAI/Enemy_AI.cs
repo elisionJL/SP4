@@ -13,7 +13,7 @@ public class Enemy_AI : MonoBehaviour
     public Slider HPSlider;
     private bool isInFov = false;
     public List<Transform> targets;
-
+    public float CurrentPercentage;
     private Transform objectRotation;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class Enemy_AI : MonoBehaviour
     {
 
     }
+
 
     public void GetWaypoints(GameObject WaypointGO)
     {
