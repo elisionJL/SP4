@@ -22,7 +22,7 @@ public class Enemy_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        HPSlider.maxValue = HP;
     }
 
     public void DisableScript()
@@ -240,7 +240,6 @@ public class Enemy_AI : MonoBehaviour
             }
             else
             {
-                Debug.Log("Jumping");
                 return false;
             }
         }

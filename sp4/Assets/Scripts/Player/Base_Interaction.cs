@@ -110,6 +110,7 @@ public class Base_Interaction : MonoBehaviour
     public void DisableSword()
     {
         PlayerSword.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
+        PlayerSword.transform.GetChild(1).GetComponent<TrailRenderer>().Clear();
         PlayerSword.transform.localPosition = new Vector3(1.5f, 0f, 0.22f);
         PlayerSword.transform.localRotation = Quaternion.Euler(90, 0, -90);
         PlayerSword.SetActive(false);

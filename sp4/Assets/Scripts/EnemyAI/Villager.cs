@@ -61,10 +61,13 @@ class Villager : MonoBehaviour
         //finish the animtion
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.32f)
             {
                 //hit the enemy here
-                enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                if (enemy_AI.TargetObject != null)
+                    enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                else
+                    Debug.Log("Cannot Find Enemy");
                 CanShoot = true;
             }
         }
@@ -95,10 +98,6 @@ class Villager : MonoBehaviour
                     current = 0;
                 }
             }
-        }
-        else
-        {
-            m_Animator.SetTrigger("Idle");
         }
     }
 }

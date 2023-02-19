@@ -11,6 +11,7 @@ TagManager:
   - Arrow
   - Fire
   - Fireball
+  - EnemySpawners
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Water
   - UI
   - PostProcessVolumes
-  - 
+  - Enemy
   - 
   - 
   - 

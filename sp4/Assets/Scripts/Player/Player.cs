@@ -51,18 +51,18 @@ public class Player : MonoBehaviour
                 LockMouse();
             }
         }
-            if (Health < 0 && RespawnCount <= 0)
-            {
-                PlayerModel.SetActive(false);
-                RespawnText.SetActive(true);
-                Crosshair.SetActive(false);
-                PlayerMoveScript.enabled = false;
-                PlayerBaseInteraction.enabled = false;
-                PlayerTowerShop.enabled = false;
-                CameraPPL.enabled = true;
-                RespawnCount = 5;
-                RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
-                Health = 0;
+        if (Health < 0 && RespawnCount <= 0)
+        {
+            PlayerModel.SetActive(false);
+            RespawnText.SetActive(true);
+            Crosshair.SetActive(false);
+            PlayerMoveScript.enabled = false;
+            PlayerBaseInteraction.enabled = false;
+            PlayerTowerShop.enabled = false;
+            CameraPPL.enabled = true;
+            RespawnCount = 5;
+            RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
+            Health = 0;
 
         }
         else if(RespawnCount > 0)

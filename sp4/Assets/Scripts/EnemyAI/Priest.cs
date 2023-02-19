@@ -89,8 +89,8 @@ class Priest : MonoBehaviour
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && !CanShoot)
             {
-                Debug.Log("Heal");
-                HealAll();
+                if (enemy_AI.TargetObject != null)
+                    HealAll();
                 CanShoot = true;
             }
         }

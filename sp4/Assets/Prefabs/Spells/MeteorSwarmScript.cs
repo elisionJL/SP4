@@ -127,6 +127,7 @@ namespace DigitalRuby.PyroParticles
             }
         }
 
+
         private void SpawnMeteors()
         {
             int count = (int)UnityEngine.Random.Range(MeteorsPerSecondRange.Minimum, MeteorsPerSecondRange.Maximum);
@@ -162,7 +163,10 @@ namespace DigitalRuby.PyroParticles
 
             int index = UnityEngine.Random.Range(0, ExplosionSounds.Length);
             AudioClip clip = ExplosionSounds[index];
-            s.PlayOneShot(clip, obj.transform.localScale.x);
+            float soundintensity = obj.transform.localScale.x;
+            if (soundintensity > 0.5f)
+                soundintensity = 0.5f;
+            s.PlayOneShot(clip, soundintensity);
         }
 
         private IEnumerator CleanupMeteor(float delay, GameObject obj)

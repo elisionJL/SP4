@@ -9732,7 +9732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7955952284886235148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.142044, y: 1.0862777, z: -0.0000015730038}
+  m_LocalPosition: {x: 56.073807, y: 1.1407373, z: 0.00000015414757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9754,7 +9754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb4b036759befb44adb7543192710db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 0}
+  AudioSource: {fileID: 6547074504468274640, guid: 72986eae35c0e6c469fbdad214c45aaf, type: 3}
   StartTime: 0.25
   StopTime: 0.5
   Duration: 0.35
@@ -9778,4 +9778,4 @@ MonoBehaviour:
   IntensityModifier: 2
   IntensityMaxRange:
     Minimum: 0
-    Maximum: 8
+    Maximum: 100

@@ -60,10 +60,11 @@ class Heroine : MonoBehaviour
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.43f)
             {
                 //hit the enemy here
-                enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                if (enemy_AI.TargetObject != null)
+                    enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
                 CanShoot = true;
             }
         }
