@@ -92,6 +92,7 @@ public class Upgrade_Tower : MonoBehaviour
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+        Player.gameObject.GetComponent<Base_Interaction>().SetUpgradeBool(false);
     }
 
     public void SellTower() //Give back some souls to destroy tower
@@ -100,6 +101,7 @@ public class Upgrade_Tower : MonoBehaviour
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+        Player.gameObject.GetComponent<Base_Interaction>().SetUpgradeBool(false);
     }
 
     public void UpgradeTower()
@@ -132,5 +134,6 @@ public class Upgrade_Tower : MonoBehaviour
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+        Player.gameObject.GetComponent<Base_Interaction>().SetUpgradeBool(false);
     }
 }
