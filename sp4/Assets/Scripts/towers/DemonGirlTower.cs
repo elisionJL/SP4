@@ -22,21 +22,31 @@ class DemonGirlTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        CanShoot = false;
         //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
         //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
     }
     public override void OnUpdate()
     {
+        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        if (target != null && target.gameObject.GetComponent<Priest>() == null && target.gameObject.GetComponent<Heroine>() == null)
+        {
+            target.gameObject.GetComponent<Animator>().SetTrigger("Idle");
+        }
+        //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle00") && CanShoot)
         {
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.36f)
             {
-                //hit the enemy here
-                tower_AI.MinusHP(10);
+                if (target != null)
+                {
+                    target.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                    target.gameObject.transform.position = gameObject.transform.position + gameObject.transform.forward * 2;
+                }
                 CanShoot = true;
             }
         }

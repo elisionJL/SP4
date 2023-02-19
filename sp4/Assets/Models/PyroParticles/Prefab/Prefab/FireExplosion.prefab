@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: 0
-  IntensityModifier: 2
+  IntensityModifier: 38.69
   IntensityMaxRange:
     Minimum: 0
     Maximum: 8
