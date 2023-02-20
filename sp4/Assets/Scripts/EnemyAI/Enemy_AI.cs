@@ -258,6 +258,8 @@ public class Enemy_AI : MonoBehaviour
         HPSlider.value = HP;
         if (HP <= 0)
         {
+            //gets the enemy container than get the wave manager game obejct
+            transform.parent.transform.parent.GetComponent<WaveManager>().TotalEnemies -= 1;
             Destroy(this.gameObject);
         }
     }

@@ -25,7 +25,7 @@ class MageTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
     }

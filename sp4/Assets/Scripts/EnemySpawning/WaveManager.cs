@@ -13,6 +13,7 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI CountDownText;
     public List<EnemySpawner> SpawnPoints = new List<EnemySpawner>();
     public List<GameObject> enemies = new List<GameObject>();
+    public int TotalEnemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,7 @@ public class WaveManager : MonoBehaviour
             //generate the waves for the spawnpoints
             for (int i = 0; i < SpawnPoints.Count; ++i)
             {
-                SpawnPoints[i].GenerateWave(wave);
+                TotalEnemies += SpawnPoints[i].GenerateWave(wave);
             }
             waveDone = false;
             enemies.Clear();
@@ -49,7 +50,7 @@ public class WaveManager : MonoBehaviour
         if (waveDone == false)
         {
             finishedSpawnPoints = 0;
-            CountDownText.text = "Enemies: " + EnemyContainer.transform.childCount.ToString();
+            CountDownText.text = "Enemies: " + TotalEnemies;
             for (int i = 0; i < SpawnPoints.Count; ++i)
             {
                 if (SpawnPoints[i].allSpawned == false)

@@ -23,6 +23,7 @@ class SkeletonTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
     }
     public override void OnUpdate()
@@ -32,7 +33,6 @@ class SkeletonTower : TowerBase
         Debug.Log(target);
         if (target != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)
         {
-            Debug.Log("Attacking");
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Attack01") && !CanShoot)

@@ -11,7 +11,6 @@ class DragonTower : TowerBase
         CanShoot = true;
         damage = 30;
         attackSpd = 2;
-        atkspd = 2;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
@@ -23,7 +22,7 @@ class DragonTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
-        m_Animator.SetFloat("attackSpeed", atkspd);
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
     }
     public override void OnUpdate()

@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
     }
-    public void GenerateWave(int waveNum)
+    public int GenerateWave(int waveNum)
     {
         waveValue = (int)Mathf.Ceil(waveValue * valueScalar);
         List<GameObject> GeneratedEnemies = new List<GameObject>();
@@ -62,6 +62,7 @@ public class EnemySpawner : MonoBehaviour
         EnemiesToSpawn = GeneratedEnemies;
         baseTime = TimeBetweenSpawn;
         spawn = 0;
+        return EnemiesToSpawn.Count;
     } 
     public GameObject SpawnEnemy()
     {
