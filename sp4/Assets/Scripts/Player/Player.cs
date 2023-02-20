@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
             RespawnCount -= Time.deltaTime;
             RespawnText.GetComponent<TMP_Text>().text = Mathf.Ceil(RespawnCount).ToString();
         }
-        else
+        else if (Health == 0)
         {
             RespawnText.SetActive(false);
             PlayerModel.SetActive(true);
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
             PlayerBaseInteraction.enabled = true;
             PlayerTowerShop.enabled = true;
             RespawnCount = 0;
+            Health = 100;
         }
         MouseControls();
     }
@@ -118,5 +119,11 @@ public class Player : MonoBehaviour
         }
 
         return false;
+    }
+    public void MinusHP(int Damage)
+    {
+        Health -= Damage;
+        if (Health <= 0)
+            Health = -1;
     }
 }

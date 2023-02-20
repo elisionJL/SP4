@@ -20,12 +20,19 @@ public class Enemy_AI : MonoBehaviour
     private bool isDebuffed = false;
     private float DebuffTime = 0;
 
+    private float timebetweenhearts;
+    public List<ParticleSystem> Hearts;
+    public List<GameObject> GOofHearts;
     public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < GOofHearts.Count; ++i)
+        {
+        }
         HPSlider.maxValue = HP;
+        timebetweenhearts = 0.0f;
     }
 
     public void DisableScript()
@@ -66,6 +73,29 @@ public class Enemy_AI : MonoBehaviour
         return targets;
     }
 
+    public void SpawnHearts()
+    {
+        timebetweenhearts += Time.deltaTime;
+        if (timebetweenhearts > 2 && !GOofHearts[2].GetComponent<ParticleSystem>().isPlaying)
+        {
+            GOofHearts[2].transform.position = transform.position;
+            GOofHearts[2].GetComponent<ParticleSystem>().Play();
+            Debug.Log("CALLED 2");
+        }
+        else if (timebetweenhearts > 1 && !GOofHearts[1].GetComponent<ParticleSystem>().isPlaying)
+        {
+            GOofHearts[1].transform.position = transform.position;
+            GOofHearts[1].GetComponent<ParticleSystem>().Play();
+            Debug.Log("CALLED 1");
+        }
+        else if (timebetweenhearts > 0 && !GOofHearts[0].GetComponent<ParticleSystem>().isPlaying)
+        {
+            GOofHearts[0].transform.position = transform.position;
+            GOofHearts[0].GetComponent<ParticleSystem>().Play();
+            Debug.Log("CALLED 0");
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -104,12 +134,26 @@ public class Enemy_AI : MonoBehaviour
                             TargetObject = overlaps[i].transform;
                         }
                     }
+                    else if (overlaps[i].tag == "Player")
+                    {
+                        if (overlaps[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health > 0)
+                        {
+                            TargetObject = overlaps[i].transform;
+                        }
+                    }
                 }
             }
         }
         else
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
+            if (TargetObject.tag == "Player")
+            {
+                if (TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health <= 0)
+                {
+                    TargetObject = null;
+                }
+            }
         }
         #region ToBeTested
 

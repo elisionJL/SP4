@@ -67,7 +67,13 @@ class Heroine : MonoBehaviour
             {
                 //hit the enemy here
                 if (enemy_AI.TargetObject != null)
-                    enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                {
+                    if (enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>())
+                        enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                    else
+                        enemy_AI.TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
+
+                }
                 CanShoot = true;
             }
         }
