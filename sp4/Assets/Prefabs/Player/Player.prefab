@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 904287302079543442}
   - component: {fileID: 904287302079543452}
   - component: {fileID: 904287302079543453}
-  - component: {fileID: 2008978582104941833}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -136,18 +135,6 @@ MonoBehaviour:
   Jump: 0
   GroundDistance: 0
   Player_Anim: {fileID: 4554813032055269446}
---- !u!114 &2008978582104941833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904287302079543454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b79f379652586414b90101c09f995854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &904287302924885530
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,12 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 5
-  Towers:
-  - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
-  - {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  - {fileID: 2803820806472684270, guid: 58baab9f3d6663340bcc8e520484c9a6, type: 3}
-  - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
-  - {fileID: 6944860262563252257, guid: a735be435561595488292a4bab27cb31, type: 3}
+  Towers: []
   TowerToSpawn: {fileID: 0}
   CurrentTowerLookAt: {fileID: 0}
   EnemyToSpawn: {fileID: 0}
@@ -288,6 +270,7 @@ MonoBehaviour:
   UpgradeUI: {fileID: 0}
   PlayerSword: {fileID: 1812983888221091954}
   PlayerCharacter: {fileID: 7106132835155896454}
+  HostageUI: {fileID: 0}
 --- !u!114 &5524227699760898866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +297,7 @@ MonoBehaviour:
   PortalToComeOutOf: {fileID: 2837940318137945989, guid: 8949c4376b0cd0642bdd04462b0ba277, type: 3}
   PortalToDelete: {fileID: 0}
   SwordToLookAt: {fileID: 0}
-  SwordSpawn: {fileID: 8060231662447862468, guid: fc22659329330ac48879c910d687226b, type: 3}
+  SwordSpawn: {fileID: 1624047688248190055, guid: e9665a964dd4a884598a6dc30adc37ea, type: 3}
 --- !u!114 &904287302924885532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +381,10 @@ PrefabInstance:
     - target: {fileID: 1866560071247570, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
       propertyPath: m_Name
       value: sword_sample
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866560071247570, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544055715682306, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
       propertyPath: m_RootOrder

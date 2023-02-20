@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         }
         #endregion
     }
-    public void GenerateWave(int waveNum)
+    public int GenerateWave(int waveNum)
     {
         waveValue = (int)Mathf.Ceil(waveValue * valueScalar);
         List<GameObject> GeneratedEnemies = new List<GameObject>();
@@ -76,6 +76,7 @@ public class EnemySpawner : MonoBehaviour
         EnemiesToSpawn = GeneratedEnemies;
         baseTime = TimeBetweenSpawn;
         spawn = 0;
+        return EnemiesToSpawn.Count;
     } 
     public GameObject SpawnEnemy()
     {
@@ -92,7 +93,7 @@ public class EnemySpawner : MonoBehaviour
                     ++spawn;
                     TimeBetweenSpawn = baseTime;
                     EnemiesToSpawn[spawn - 1].gameObject.GetComponent<Enemy_AI>().GetWaypoints(Waypoints);
-                    Debug.Log("Enemy No" + spawn); //Yuki Test
+                    //Debug.Log("Enemy No" + spawn); //Yuki Test
                     return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
                 }
             }

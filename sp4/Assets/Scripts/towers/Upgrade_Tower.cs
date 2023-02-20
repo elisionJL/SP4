@@ -81,7 +81,8 @@ public class Upgrade_Tower : MonoBehaviour
         {
             Name.text = "" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetName();
             Cost.text = "Cost: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetUpgradeCost();
-            AttackDetails.text = "Souls Generated: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsGeneration() + "  ->  <color=green>" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsUpgraded() + "</color>";
+            HPDetails.text = "Souls Generated: " + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsGeneration() + "  ->  <color=green>" + Tower.gameObject.GetComponent<SoulGrinderTower>().GetSoulsUpgraded() + "</color>";
+            AttackDetails.text = "";
         }
 
         TowerGotten = Tower;

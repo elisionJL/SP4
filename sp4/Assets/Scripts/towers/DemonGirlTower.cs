@@ -22,6 +22,7 @@ class DemonGirlTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
         //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
         //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);
@@ -32,6 +33,7 @@ class DemonGirlTower : TowerBase
         if (target != null && target.gameObject.GetComponent<Priest>() == null && target.gameObject.GetComponent<Heroine>() == null)
         {
             target.gameObject.GetComponent<Animator>().SetTrigger("Idle");
+            target.gameObject.GetComponent<Enemy_AI>().IsSeduced();
         }
         //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle00") && CanShoot)

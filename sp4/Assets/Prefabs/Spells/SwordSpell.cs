@@ -7,6 +7,7 @@ public class SwordSpell : MonoBehaviour
     public Vector3 Destination;
     private float speed = 30;
     public GameObject Explosion;
+    public GameObject ExplosionRadius;
     private float countup = -1;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,8 @@ public class SwordSpell : MonoBehaviour
             {
                 Explosion.transform.position = transform.position;
                 Instantiate(Explosion);
+                ExplosionRadius.transform.position = transform.position;
+                Instantiate(ExplosionRadius);
                 countup = 0.0f;
                 
             }

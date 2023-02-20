@@ -8,6 +8,7 @@ class Cavalier : MonoBehaviour
     public Animator m_Animator;
     public bool CanShoot;
     public int Damage = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +46,13 @@ class Cavalier : MonoBehaviour
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.33f)
             {
-                //hit the enemy here
                 if (HitThisGuy != null)
-                    HitThisGuy.GetComponent<Tower_AI>().MinusHP(Damage);
+                {
+                    if (HitThisGuy.gameObject.GetComponent<Tower_AI>())
+                        HitThisGuy.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                    else
+                        HitThisGuy.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
+                }
 
                 CanShoot = true;
             }

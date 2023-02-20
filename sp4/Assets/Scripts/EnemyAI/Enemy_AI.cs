@@ -20,12 +20,16 @@ public class Enemy_AI : MonoBehaviour
     private bool isDebuffed = false;
     private float DebuffTime = 0;
 
+    private float timebetweenhearts;
+    private float instantiateCoolDown = 0.3f;
+    public GameObject GOofHearts;
     public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
     {
         HPSlider.maxValue = HP;
+        timebetweenhearts = 0.0f;
     }
 
     public void DisableScript()
@@ -39,6 +43,8 @@ public class Enemy_AI : MonoBehaviour
             gameObject.GetComponent<Heroine>().enabled = false;
         else if (gameObject.GetComponent<Villager>() != null)
             gameObject.GetComponent<Villager>().enabled = false;
+        else if (gameObject.GetComponent<Bear>() != null)
+            gameObject.GetComponent<Bear>().enabled = false;
     }
     public void EnableScript(GameObject ExplosionPrefab)
     {
@@ -46,7 +52,7 @@ public class Enemy_AI : MonoBehaviour
         GravityMagicUsed = false;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        GetComponent<Rigidbody>().AddForce(0, -100, 0);
+        GetComponent<Rigidbody>().AddForce(0, -400, 0);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         DamageDealt = false;
     }
@@ -66,6 +72,29 @@ public class Enemy_AI : MonoBehaviour
         return targets;
     }
 
+    public void SpawnHearts()
+    {
+        if (timebetweenhearts > 0f)
+        {
+            timebetweenhearts -= Time.deltaTime;
+
+            instantiateCoolDown -= 1 * Time.deltaTime;
+        }
+        else if(timebetweenhearts <= 0f)
+        {
+            timebetweenhearts = 0;
+        }
+    }
+    public void IsSeduced()
+    {
+        if(instantiateCoolDown <= 0)
+        {
+            Instantiate(GOofHearts, new Vector3(transform.position.x, transform.position.y + gameObject.transform.localScale.y + 2f, transform.position.z), Quaternion.identity);
+            instantiateCoolDown = 0.3f;
+        }
+        timebetweenhearts = 3f;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -78,7 +107,11 @@ public class Enemy_AI : MonoBehaviour
             else if (gameObject.GetComponent<Heroine>() != null)
                 gameObject.GetComponent<Heroine>().enabled = true;
             else if (gameObject.GetComponent<Villager>() != null)
+            {
                 gameObject.GetComponent<Villager>().enabled = true;
+            }
+            else if (gameObject.GetComponent<Bear>() != null)
+                gameObject.GetComponent<Bear>().enabled = true;
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
@@ -104,12 +137,26 @@ public class Enemy_AI : MonoBehaviour
                             TargetObject = overlaps[i].transform;
                         }
                     }
+                    else if (overlaps[i].tag == "Player")
+                    {
+                        if (overlaps[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health > 0)
+                        {
+                            TargetObject = overlaps[i].transform;
+                        }
+                    }
                 }
             }
         }
         else
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
+            if (TargetObject.tag == "Player")
+            {
+                if (TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health <= 0)
+                {
+                    TargetObject = null;
+                }
+            }
         }
         #region ToBeTested
 
@@ -123,6 +170,8 @@ public class Enemy_AI : MonoBehaviour
             isDebuffed = false;
         }
         #endregion
+
+        SpawnHearts();
     }
 
     /*    private void OnDrawGizmos()
@@ -273,6 +322,8 @@ public class Enemy_AI : MonoBehaviour
         HPSlider.value = HP;
         if (HP <= 0)
         {
+            //gets the enemy container than get the wave manager game obejct
+            transform.parent.transform.parent.GetComponent<WaveManager>().TotalEnemies -= 1;
             Destroy(this.gameObject);
         }
     }

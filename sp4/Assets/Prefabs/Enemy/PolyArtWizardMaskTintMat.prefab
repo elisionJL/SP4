@@ -2472,6 +2472,7 @@ MonoBehaviour:
   ArmorType: 0
   Damage: 3
   HealingFX: {fileID: 9059300568293874952, guid: f6db09fcd51be1a42b8d33e52b3f5b92, type: 3}
+  DebuffFX: {fileID: 9059300568293874952, guid: 48f2871fa98d3af46bad7b488ca7034b, type: 3}
 --- !u!54 &5568028442780175568
 Rigidbody:
   m_ObjectHideFlags: 0

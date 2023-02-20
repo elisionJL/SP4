@@ -19,6 +19,9 @@ class Bear : MonoBehaviour
     public int Damage = 10;
     public bool CanRun = true;
     public GameObject CavalierKnight;
+    public GameObject DebuffFX;
+    float DebuffFXSpawnTime = 2.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +60,7 @@ class Bear : MonoBehaviour
     public void Update()
     {  
         //check if there is an enemy in the radius ,if there is ,trigger animation 
-        if (enemy_AI.TargetObject != null)
+        if (enemy_AI.TargetObject != null && FindDistance(transform, enemy_AI.TargetObject) <= enemy_AI.maxRadius)
         {
             m_Animator.SetTrigger("Idle");
             if (CavalierKnight.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("infantry_01_idle"))
@@ -75,7 +78,7 @@ class Bear : MonoBehaviour
             }
         }
         //else walk to the next waypoint
-        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
+        else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
         {
             if (CanRun)
                 m_Animator.SetTrigger("Run");
@@ -106,5 +109,28 @@ class Bear : MonoBehaviour
                 }
             }
         }
+
+        #region ToBeTested
+        if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
+        {
+            speed = 7;
+            Damage = 5;
+
+            DebuffFXSpawnTime -= 1f * Time.deltaTime;
+
+            if(DebuffFXSpawnTime <= 0f)
+            {
+                Instantiate(DebuffFX, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                DebuffFXSpawnTime = 2.5f;
+            }
+        }
+        else
+        {
+            speed = 15;
+            Damage = 10;
+
+            DebuffFXSpawnTime = 2.5f;
+        }
+        #endregion
     }
 }

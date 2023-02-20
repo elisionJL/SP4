@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   maxAngle: 360
-  maxRadius: 4
+  maxRadius: 3
   HP: 100
   ArmorType: 1
   HPSlider: {fileID: 9161556881741698500}
@@ -2203,6 +2203,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   CurrentPercentage: 0
+  GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
 --- !u!114 &-7066950565147069523
 MonoBehaviour:
@@ -2231,6 +2232,7 @@ MonoBehaviour:
   Damage: 10
   CanRun: 1
   CavalierKnight: {fileID: 1004867643080373185}
+  DebuffFX: {fileID: 9059300568293874952, guid: 48f2871fa98d3af46bad7b488ca7034b, type: 3}
 --- !u!65 &7981910390723267672
 BoxCollider:
   m_ObjectHideFlags: 0
