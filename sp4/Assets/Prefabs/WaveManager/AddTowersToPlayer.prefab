@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6318831105357849093}
-  - component: {fileID: 6318831105357849092}
+  - component: {fileID: 3130804208493965232}
   m_Layer: 0
   m_Name: AddTowersToPlayer
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6318831105357849092
+--- !u!114 &3130804208493965232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Towers:
-  - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
-  - {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  - {fileID: 2803820806472684270, guid: 58baab9f3d6663340bcc8e520484c9a6, type: 3}
-  - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
-  - {fileID: 2109361366178841800, guid: 1352130327e565b4a8db2a393ff908ff, type: 3}
-  - {fileID: 2304546843680361707, guid: 41eaecfe6e12eac46b48111aa057c7f0, type: 3}
-  - {fileID: 6944860262563252257, guid: a735be435561595488292a4bab27cb31, type: 3}
-  - {fileID: 5493680483164348897, guid: 0fb46963577f26e49956fb4437739d82, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

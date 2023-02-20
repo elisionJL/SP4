@@ -15,7 +15,7 @@ public class ShockWave : MonoBehaviour
     void Update()
     {
 
-        if (transform.localScale.x < 750)
+        if (transform.localScale.x < 550)
         {
             Vector3 CurrScale = transform.localScale;
             transform.localScale = new Vector3(CurrScale.x + 1.5f, CurrScale.y + 1.6f, CurrScale.z + 1.5f);
