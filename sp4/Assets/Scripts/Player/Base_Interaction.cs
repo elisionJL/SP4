@@ -317,4 +317,14 @@ public class Base_Interaction : MonoBehaviour
             }
         }
     }
+
+    public bool GetUpgradeBool()
+    {
+        return upgrade;
+    }
+
+    public void SetUpgradeBool(bool newUpgrade)
+    {
+        upgrade = newUpgrade;
+    }
 }
