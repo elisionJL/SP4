@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23796699575786816}
   - component: {fileID: 95711299030348656}
   - component: {fileID: -6224133729863197971}
+  - component: {fileID: 1472825243089271005}
   m_Layer: 0
   m_Name: sword_sample
   m_TagString: Untagged
@@ -119,6 +120,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33488bc4677c0de4692ebca50cc1014c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1472825243089271005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866560071247570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.404944, y: 16.371454, z: 2.2225902}
+  m_Center: {x: -0.000013684334, y: 3.852431, z: 0.00000045924568}
 --- !u!1 &1733450661863617682
 GameObject:
   m_ObjectHideFlags: 0

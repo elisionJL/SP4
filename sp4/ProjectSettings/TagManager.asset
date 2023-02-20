@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Fireball
   - EnemySpawners
+  - Rider
   layers:
   - Default
   - TransparentFX
