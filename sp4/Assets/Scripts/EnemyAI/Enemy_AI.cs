@@ -21,16 +21,13 @@ public class Enemy_AI : MonoBehaviour
     private float DebuffTime = 0;
 
     private float timebetweenhearts;
-    public List<ParticleSystem> Hearts;
-    public List<GameObject> GOofHearts;
+    private float instantiateCoolDown = 0.3f;
+    public GameObject GOofHearts;
     public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < GOofHearts.Count; ++i)
-        {
-        }
         HPSlider.maxValue = HP;
         timebetweenhearts = 0.0f;
     }
@@ -75,25 +72,25 @@ public class Enemy_AI : MonoBehaviour
 
     public void SpawnHearts()
     {
-        timebetweenhearts += Time.deltaTime;
-        if (timebetweenhearts > 2 && !GOofHearts[2].GetComponent<ParticleSystem>().isPlaying)
+        if (timebetweenhearts > 0f)
         {
-            GOofHearts[2].transform.position = transform.position;
-            GOofHearts[2].GetComponent<ParticleSystem>().Play();
-            Debug.Log("CALLED 2");
+            timebetweenhearts -= Time.deltaTime;
+
+            instantiateCoolDown -= 1 * Time.deltaTime;
         }
-        else if (timebetweenhearts > 1 && !GOofHearts[1].GetComponent<ParticleSystem>().isPlaying)
+        else if(timebetweenhearts <= 0f)
         {
-            GOofHearts[1].transform.position = transform.position;
-            GOofHearts[1].GetComponent<ParticleSystem>().Play();
-            Debug.Log("CALLED 1");
+            timebetweenhearts = 0;
         }
-        else if (timebetweenhearts > 0 && !GOofHearts[0].GetComponent<ParticleSystem>().isPlaying)
+    }
+    public void IsSeduced()
+    {
+        if(instantiateCoolDown <= 0)
         {
-            GOofHearts[0].transform.position = transform.position;
-            GOofHearts[0].GetComponent<ParticleSystem>().Play();
-            Debug.Log("CALLED 0");
+            Instantiate(GOofHearts, new Vector3(transform.position.x, transform.position.y + gameObject.transform.localScale.y + 2f, transform.position.z), Quaternion.identity);
+            instantiateCoolDown = 0.3f;
         }
+        timebetweenhearts = 3f;
     }
 
     // Update is called once per frame
@@ -167,6 +164,8 @@ public class Enemy_AI : MonoBehaviour
             isDebuffed = false;
         }
         #endregion
+
+        SpawnHearts();
     }
 
     /*    private void OnDrawGizmos()

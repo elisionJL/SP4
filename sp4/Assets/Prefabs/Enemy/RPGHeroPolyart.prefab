@@ -2190,11 +2190,7 @@ MonoBehaviour:
   HPSlider: {fileID: 6615301372315992884}
   targets: []
   CurrentPercentage: 0
-  Hearts: []
-  GOofHearts:
-  - {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
-  - {fileID: 8920463490220493371, guid: 6370c76a7459ae74887f1864264e63e0, type: 3}
-  - {fileID: 117429543307339551, guid: 75f90f5dcf34ba848adc8c314d36cfb3, type: 3}
+  GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
 --- !u!114 &6496413526374891814
 MonoBehaviour:
