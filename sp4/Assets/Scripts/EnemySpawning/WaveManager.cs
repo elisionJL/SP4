@@ -11,9 +11,11 @@ public class WaveManager : MonoBehaviour
     public GameObject EnemyContainer;
     private int finishedSpawnPoints;
     public TextMeshProUGUI CountDownText;
+    public GameObject readyText;
     public List<EnemySpawner> SpawnPoints = new List<EnemySpawner>();
     public List<GameObject> enemies = new List<GameObject>();
     public int TotalEnemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,10 @@ public class WaveManager : MonoBehaviour
         if(wave > maxWave)
         {
             return;
+        }
+        if (Input.GetKeyDown(KeyCode.G) && waveCooldown > 0)
+        {
+            waveCooldown = -1;
         }
         if (waveCooldown > 0 && waveDone == true)
         {

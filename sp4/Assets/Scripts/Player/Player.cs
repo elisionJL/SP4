@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
                 LockMouse();
             }
         }
+        //check if dead
         if (Health < 0 && RespawnCount <= 0)
         {
             PlayerModel.SetActive(false);
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
             CameraPPL.enabled = false;
             PlayerBaseInteraction.enabled = true;
             PlayerTowerShop.enabled = true;
-            RespawnCount = 0;
+            RespawnCount = -1;
         }
         MouseControls();
     }
