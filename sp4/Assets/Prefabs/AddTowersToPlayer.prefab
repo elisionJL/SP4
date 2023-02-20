@@ -41,10 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6318831105357849091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 749b63fe91a050547b3994f6223c6af0, type: 3}
+  m_Script: {fileID: 11500000, guid: a7b574cabced79147a69ce15a3edba7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerString: 
   Player: {fileID: 0}
   Towers:
   - {fileID: 8881721948545628925, guid: d16f9a24e1318e542a304a3374bdd517, type: 3}
@@ -53,7 +52,7 @@ MonoBehaviour:
   - {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
   - {fileID: 2109361366178841800, guid: 1352130327e565b4a8db2a393ff908ff, type: 3}
   - {fileID: 2304546843680361707, guid: 41eaecfe6e12eac46b48111aa057c7f0, type: 3}
-  - {fileID: 6944860262563252257, guid: 7dd74b9c48fe76b45bc2a6009982ec9e, type: 3}
+  - {fileID: 6944860262563252257, guid: a735be435561595488292a4bab27cb31, type: 3}
   - {fileID: 5493680483164348897, guid: 0fb46963577f26e49956fb4437739d82, type: 3}
   - {fileID: 0}
   - {fileID: 0}
