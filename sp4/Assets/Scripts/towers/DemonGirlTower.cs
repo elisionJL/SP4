@@ -22,6 +22,7 @@ class DemonGirlTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
         //GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
         //test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f);

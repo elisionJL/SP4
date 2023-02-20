@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class BudgetExplosionHandler : MonoBehaviour
 {
-    private bool startcamshake = true;
-    private float duration = 1.5f;
+    private bool changeview;
+    private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
     {
+        changeview = false;
+        startPosition = Camera.main.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startcamshake)
+        if (changeview)
         {
-            startcamshake = false;
-            StartCoroutine(Shaking());
+            Camera.main.transform.position = startPosition + Random.insideUnitSphere;
+            changeview = false;
         }
+        else
+        {
+            Camera.main.transform.position = startPosition;
+            changeview = true;
+        }
+
         if (transform.localScale.x < 150)
         {
             Vector3 CurrScale = transform.localScale;
@@ -27,21 +35,9 @@ public class BudgetExplosionHandler : MonoBehaviour
         }
         else
         {
+            Camera.main.transform.position = startPosition;
             Destroy(gameObject);
         }
-    }
-
-    IEnumerator Shaking()
-    {
-        Vector3 startPosition = Camera.main.transform.position;
-        float ElapsedTime = 0.0f;
-        while (ElapsedTime < duration)
-        {
-            ElapsedTime += Time.deltaTime;
-            Camera.main.transform.position = startPosition + Random.insideUnitSphere;
-            yield return null;
-        }
-        Camera.main.transform.position = startPosition;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -21,6 +21,7 @@ class ZombieTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("Attack");
+        m_Animator.SetFloat("attackSpeed", attackSpd);
         CanShoot = false;
     }
     public override void OnUpdate()

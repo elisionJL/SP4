@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
                 LockMouse();
             }
         }
+        //check if dead
         if (Health < 0 && RespawnCount <= 0)
         {
             PlayerModel.SetActive(false);

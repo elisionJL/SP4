@@ -297,7 +297,7 @@ MonoBehaviour:
   PortalToComeOutOf: {fileID: 2837940318137945989, guid: 8949c4376b0cd0642bdd04462b0ba277, type: 3}
   PortalToDelete: {fileID: 0}
   SwordToLookAt: {fileID: 0}
-  SwordSpawn: {fileID: 8060231662447862468, guid: fc22659329330ac48879c910d687226b, type: 3}
+  SwordSpawn: {fileID: 1624047688248190055, guid: e9665a964dd4a884598a6dc30adc37ea, type: 3}
 --- !u!114 &904287302924885532
 MonoBehaviour:
   m_ObjectHideFlags: 0

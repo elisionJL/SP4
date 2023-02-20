@@ -52,10 +52,14 @@ public class projectile : MonoBehaviour
     {
         if (other.tag != "Player" && other.tag != "interactable")
         {
-            if (Source == 0 && other.tag == "Enemy")
-            {
+            if (Source <= 0 && other.tag == "Enemy")
+                {
                 if (ProjectileType >= other.gameObject.GetComponent<Enemy_AI>().ArmorType)
                     other.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+            }
+            if(Source == -1)
+            {
+                GetComponent<FireBall>().Explode(transform);
             }
             Destroy(gameObject);
         }
