@@ -32,6 +32,7 @@ class DemonGirlTower : TowerBase
         if (target != null && target.gameObject.GetComponent<Priest>() == null && target.gameObject.GetComponent<Heroine>() == null)
         {
             target.gameObject.GetComponent<Animator>().SetTrigger("Idle");
+            target.gameObject.GetComponent<Enemy_AI>().SpawnHearts();
         }
         //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle00") && CanShoot)

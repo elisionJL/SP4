@@ -60,7 +60,7 @@ class Bear : MonoBehaviour
     public void Update()
     {  
         //check if there is an enemy in the radius ,if there is ,trigger animation 
-        if (enemy_AI.TargetObject != null)
+        if (enemy_AI.TargetObject != null && FindDistance(transform, enemy_AI.TargetObject) <= enemy_AI.maxRadius)
         {
             m_Animator.SetTrigger("Idle");
             if (CavalierKnight.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("infantry_01_idle"))
@@ -78,7 +78,7 @@ class Bear : MonoBehaviour
             }
         }
         //else walk to the next waypoint
-        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
+        else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
         {
             if (CanRun)
                 m_Animator.SetTrigger("Run");
