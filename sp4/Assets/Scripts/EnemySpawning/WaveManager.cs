@@ -29,7 +29,6 @@ public class WaveManager : MonoBehaviour
     {
         if(wave > maxWave)
         {
-            CountDownText.enabled = false;
             return;
         }
         if (waveCooldown > 0 && waveDone == true)
@@ -46,11 +45,11 @@ public class WaveManager : MonoBehaviour
             }
             waveDone = false;
             enemies.Clear();
-            CountDownText.enabled = false;
         }
         if (waveDone == false)
         {
             finishedSpawnPoints = 0;
+            CountDownText.text = "Enemies: " + EnemyContainer.transform.childCount.ToString();
             for (int i = 0; i < SpawnPoints.Count; ++i)
             {
                 if (SpawnPoints[i].allSpawned == false)
@@ -73,7 +72,6 @@ public class WaveManager : MonoBehaviour
                     waveDone = true;
                     waveCooldown = 40;
                     ++wave;
-                    CountDownText.enabled = true;
                 }
             }
         }

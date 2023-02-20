@@ -4,12 +4,14 @@ using UnityEngine;
 class DragonTower : TowerBase
 {
     // Start is called before the first frame update
+    public float atkspd;
     void Start()
     {
         cost = 500;
         CanShoot = true;
         damage = 30;
-        attackSpd = 1;
+        attackSpd = 2;
+        atkspd = 2;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
@@ -21,8 +23,8 @@ class DragonTower : TowerBase
     public override void Fire()
     {
         m_Animator.SetTrigger("shoot");
+        m_Animator.SetFloat("attackSpeed", atkspd);
         CanShoot = false;
-        // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
     }
     public override void OnUpdate()
     {
