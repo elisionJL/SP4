@@ -51,11 +51,11 @@ public class AddTower : MonoBehaviour
                 }
                 else
                 {
-                    GlobalStuffs.Tower[0] = 1;
-                    GlobalStuffs.Tower[1] = 2;
-                    GlobalStuffs.Tower[2] = 3;
-                    GlobalStuffs.Tower[3] = 4;
-                    GlobalStuffs.Tower[4] = 5;
+                    GlobalStuffs.Tower[0] = 0;
+                    GlobalStuffs.Tower[1] = 1;
+                    GlobalStuffs.Tower[2] = 2;
+                    GlobalStuffs.Tower[3] = 3;
+                    GlobalStuffs.Tower[4] = 4;
                 }
 
                 for (int i = 0; i < 5; i++)

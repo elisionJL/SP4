@@ -34,7 +34,7 @@ public class PlayerSpells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L) && !UsingMagic && PlayerCharacter.gameObject.transform.parent.GetChild(0).GetComponent<Player>().Mana >= 10)
+        if (Input.GetKeyUp(KeyCode.L) && !UsingMagic && GetComponent<Player>().Mana >= 10)
         {
             ListOfEnemies.Clear();
             ListOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
