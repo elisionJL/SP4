@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Knight : MonoBehaviour
+class Bear : MonoBehaviour
 {
     public List<Transform> target;
     public float totaldistance = 0;
@@ -12,11 +12,13 @@ class Knight : MonoBehaviour
     public Animator m_Animator;
     public bool CanShoot;
     public Enemy_AI enemy_AI;
-    public string Name = "Knight";
-    public int CashDrop = 1000;
+    public string Name = "Bear";
+    public int CashDrop = 400;
     public GameObject rootObject;
-    public int speed = 10;
-    public int Damage = 30;
+    public int speed = 5;
+    public int Damage = 10;
+    public bool CanRun = true;
+    public GameObject CavalierKnight;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ class Knight : MonoBehaviour
         CanShoot = true;
         //enemy_AI.HP = 100;
         enemy_AI.ArmorType = 1;
+        CanRun = true;
+        speed = 15;
     }
 
     public void Fire()
@@ -51,26 +55,33 @@ class Knight : MonoBehaviour
         }
     }
     public void Update()
-    {
-        //Transform target = Enemy_AI.GetQuaternionTarget(rootObject.transform, Enemy_AI.maxRadius);
-        if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || 
-            m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk")) && CanShoot)
+    {  
+        //check if there is an enemy in the radius ,if there is ,trigger animation 
+        if (enemy_AI.TargetObject != null)
         {
-            Fire();
-        }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
-        {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.45f)
+            m_Animator.SetTrigger("Idle");
+            if (CavalierKnight.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("infantry_01_idle"))
             {
-                //hit the enemy here
-                if (enemy_AI.TargetObject != null)
-                    enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
-                CanShoot = true;
+                if (CanRun)
+                {
+                    CavalierKnight.GetComponent<Cavalier>().Fire(enemy_AI.TargetObject.gameObject, Damage * 2);
+                    CanRun = false;
+                    speed = 9;
+                }
+                else
+                {
+                    CavalierKnight.GetComponent<Cavalier>().Fire(enemy_AI.TargetObject.gameObject, Damage);
+                }
             }
         }
-        else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius) //if there is no enemy and the distance
+        //else walk to the next waypoint
+        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
         {
-            m_Animator.SetTrigger("Walk");
+            if (CanRun)
+                m_Animator.SetTrigger("Run");
+            else
+                m_Animator.SetTrigger("Walk");
+
             if (Vector3.Distance(transform.position, target[current].position) > 0.1f) //target is waypoints
             {
                 transform.LookAt(target[current]);

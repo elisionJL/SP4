@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
     {
         waveValue = (int)Mathf.Ceil(waveValue * valueScalar);
         List<GameObject> GeneratedEnemies = new List<GameObject>();
-
         List<Enemy> tempEnemyList = new List<Enemy>();
         for(int i = 0; i < enemyList.Count; ++i)
         {

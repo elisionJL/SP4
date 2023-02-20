@@ -8,6 +8,7 @@ public class SpawnerOfArrows : MonoBehaviour
     private float timer;
     public GameObject Arrows;
     public GameObject ArrowContainer;
+    public bool StartWave = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,13 @@ public class SpawnerOfArrows : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+            StartWave = true;
+        else
+            StartWave = false;
+
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 2 && !StartWave)
         {
             for (int i = 0; i < Waypoints.Count - 1; ++i)
             {
