@@ -92,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
                     ++spawn;
                     TimeBetweenSpawn = baseTime;
                     EnemiesToSpawn[spawn - 1].gameObject.GetComponent<Enemy_AI>().GetWaypoints(Waypoints);
-                    Debug.Log("Enemy No" + spawn); //Yuki Test
+                    //Debug.Log("Enemy No" + spawn); //Yuki Test
                     return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
                 }
             }

@@ -2231,6 +2231,7 @@ MonoBehaviour:
   Damage: 10
   CanRun: 1
   CavalierKnight: {fileID: 1004867643080373185}
+  DebuffFX: {fileID: 9059300568293874952, guid: 48f2871fa98d3af46bad7b488ca7034b, type: 3}
 --- !u!65 &7981910390723267672
 BoxCollider:
   m_ObjectHideFlags: 0

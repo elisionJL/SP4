@@ -17,6 +17,8 @@ class Heroine : MonoBehaviour
     public GameObject rootObject;
     public int speed = 10;
     public int Damage = 30;
+    public GameObject DebuffFX;
+    float DebuffFXSpawnTime = 2.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -97,15 +99,27 @@ class Heroine : MonoBehaviour
             }
         }
 
+        #region ToBeTested
         if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
         {
-            speed = 5;
-            Damage = 15;
+            speed = 7;
+            Damage = 5;
+
+            DebuffFXSpawnTime -= 1f * Time.deltaTime;
+
+            if (DebuffFXSpawnTime <= 0f)
+            {
+                Instantiate(DebuffFX, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                DebuffFXSpawnTime = 2.5f;
+            }
         }
         else
         {
-            speed = 10;
-            Damage = 30;
+            speed = 15;
+            Damage = 10;
+
+            DebuffFXSpawnTime = 2.5f;
         }
+        #endregion
     }
 }

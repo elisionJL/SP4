@@ -8,6 +8,7 @@ class Cavalier : MonoBehaviour
     public Animator m_Animator;
     public bool CanShoot;
     public int Damage = 10;
+
     // Start is called before the first frame update
     void Start()
     {
