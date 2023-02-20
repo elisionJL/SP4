@@ -17,12 +17,19 @@ public class Enemy_AI : MonoBehaviour
     private Transform objectRotation;
     private bool GravityMagicUsed = false;
     private bool DamageDealt = true;
+    private bool isDebuffed = false;
+    private float DebuffTime = 0;
+
+    private float timebetweenhearts;
+    private float instantiateCoolDown = 0.3f;
+    public GameObject GOofHearts;
     public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
     {
         HPSlider.maxValue = HP;
+        timebetweenhearts = 0.0f;
     }
 
     public void DisableScript()
@@ -36,6 +43,8 @@ public class Enemy_AI : MonoBehaviour
             gameObject.GetComponent<Heroine>().enabled = false;
         else if (gameObject.GetComponent<Villager>() != null)
             gameObject.GetComponent<Villager>().enabled = false;
+        else if (gameObject.GetComponent<Bear>() != null)
+            gameObject.GetComponent<Bear>().enabled = false;
     }
     public void EnableScript(GameObject ExplosionPrefab)
     {
@@ -43,7 +52,7 @@ public class Enemy_AI : MonoBehaviour
         GravityMagicUsed = false;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        GetComponent<Rigidbody>().AddForce(0, -100, 0);
+        GetComponent<Rigidbody>().AddForce(0, -400, 0);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         DamageDealt = false;
     }
@@ -63,6 +72,29 @@ public class Enemy_AI : MonoBehaviour
         return targets;
     }
 
+    public void SpawnHearts()
+    {
+        if (timebetweenhearts > 0f)
+        {
+            timebetweenhearts -= Time.deltaTime;
+
+            instantiateCoolDown -= 1 * Time.deltaTime;
+        }
+        else if(timebetweenhearts <= 0f)
+        {
+            timebetweenhearts = 0;
+        }
+    }
+    public void IsSeduced()
+    {
+        if(instantiateCoolDown <= 0)
+        {
+            Instantiate(GOofHearts, new Vector3(transform.position.x, transform.position.y + gameObject.transform.localScale.y + 2f, transform.position.z), Quaternion.identity);
+            instantiateCoolDown = 0.3f;
+        }
+        timebetweenhearts = 3f;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -75,7 +107,11 @@ public class Enemy_AI : MonoBehaviour
             else if (gameObject.GetComponent<Heroine>() != null)
                 gameObject.GetComponent<Heroine>().enabled = true;
             else if (gameObject.GetComponent<Villager>() != null)
+            {
                 gameObject.GetComponent<Villager>().enabled = true;
+            }
+            else if (gameObject.GetComponent<Bear>() != null)
+                gameObject.GetComponent<Bear>().enabled = true;
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
@@ -101,41 +137,69 @@ public class Enemy_AI : MonoBehaviour
                             TargetObject = overlaps[i].transform;
                         }
                     }
+                    else if (overlaps[i].tag == "Player")
+                    {
+                        if (overlaps[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health > 0)
+                        {
+                            TargetObject = overlaps[i].transform;
+                        }
+                    }
                 }
             }
         }
         else
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
+            if (TargetObject.tag == "Player")
+            {
+                if (TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().Health <= 0)
+                {
+                    TargetObject = null;
+                }
+            }
         }
-    }
+        #region ToBeTested
 
-/*    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, maxRadius);
-
-        Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, fovLine2);
-
-        if(!isInFov)
+        if (DebuffTime >= 0f)
         {
-            Gizmos.color = Color.red;
+            DebuffTime -= 1 * Time.deltaTime;
         }
-
         else
         {
-            Gizmos.color = Color.green;
+            DebuffTime = 0f;
+            isDebuffed = false;
         }
+        #endregion
 
-        Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
-        Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
-    }*/ //Draw field of view for debugging purposes
+        SpawnHearts();
+    }
+
+    /*    private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, maxRadius);
+
+            Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
+            Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, fovLine1);
+            Gizmos.DrawRay(transform.position, fovLine2);
+
+            if(!isInFov)
+            {
+                Gizmos.color = Color.red;
+            }
+
+            else
+            {
+                Gizmos.color = Color.green;
+            }
+
+            Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
+            Gizmos.color = Color.black;
+            Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
+        }*/ //Draw field of view for debugging purposes
     public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
@@ -263,4 +327,18 @@ public class Enemy_AI : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    #region ToBeTested
+
+    public void SetEnemyDebuffed()
+    {
+        DebuffTime = 5f;
+        isDebuffed = true;
+    }
+
+    public bool GetEnemyDebuff()
+    {
+        return isDebuffed;
+    }
+
+    #endregion
 }

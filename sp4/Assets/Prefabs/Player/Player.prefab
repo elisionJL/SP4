@@ -275,6 +275,7 @@ MonoBehaviour:
   UpgradeUI: {fileID: 0}
   PlayerSword: {fileID: 1812983888221091954}
   PlayerCharacter: {fileID: 7106132835155896454}
+  HostageUI: {fileID: 0}
 --- !u!114 &5524227699760898866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,12 +296,13 @@ MonoBehaviour:
   LightOfScene: {fileID: 0}
   BigUlt: 0
   CreatedDomain: 0
+  SpawnedSword: 0
   Universe: {fileID: 5472850005119261975, guid: dd9d89a651ef5ca4b992c991c0ec010a, type: 3}
   ClonedUniverse: {fileID: 0}
   PortalToComeOutOf: {fileID: 2837940318137945989, guid: 8949c4376b0cd0642bdd04462b0ba277, type: 3}
   PortalToDelete: {fileID: 0}
   SwordToLookAt: {fileID: 0}
-  SwordSpawn: {fileID: 8060231662447862468, guid: fc22659329330ac48879c910d687226b, type: 3}
+  SwordSpawn: {fileID: 1624047688248190055, guid: e9665a964dd4a884598a6dc30adc37ea, type: 3}
 --- !u!114 &904287302924885532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 1866560071247570, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
       propertyPath: m_Name
       value: sword_sample
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866560071247570, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544055715682306, guid: a96277e2e8acb9d4b83adf17a87141bf, type: 3}
       propertyPath: m_RootOrder

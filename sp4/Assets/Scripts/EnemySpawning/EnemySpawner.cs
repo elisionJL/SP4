@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour
     int spawn;
     private GameObject EnemyContainer;
     public GameObject Waypoints;
+
+    public bool stallSpawn = false;
+    public float StallTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +26,22 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region ToBeTested
+        if (StallTime >= 0)
+        {
+            StallTime -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            stallSpawn = false;
+            StallTime = 0f;
+        }
+        #endregion
     }
     public int GenerateWave(int waveNum)
     {
         waveValue = (int)Mathf.Ceil(waveValue * valueScalar);
         List<GameObject> GeneratedEnemies = new List<GameObject>();
-
         List<Enemy> tempEnemyList = new List<Enemy>();
         for(int i = 0; i < enemyList.Count; ++i)
         {
@@ -68,16 +82,20 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawn < EnemiesToSpawn.Count)
         {
-            if (TimeBetweenSpawn > 0)
+            if(stallSpawn == false)
             {
-                TimeBetweenSpawn -= Time.deltaTime;
-            }
-            else
-            {
-                ++spawn;
-                TimeBetweenSpawn = baseTime;
-                EnemiesToSpawn[spawn - 1].gameObject.GetComponent<Enemy_AI>().GetWaypoints(Waypoints);
-                return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
+                if (TimeBetweenSpawn > 0)
+                {
+                    TimeBetweenSpawn -= Time.deltaTime;
+                }
+                else
+                {
+                    ++spawn;
+                    TimeBetweenSpawn = baseTime;
+                    EnemiesToSpawn[spawn - 1].gameObject.GetComponent<Enemy_AI>().GetWaypoints(Waypoints);
+                    //Debug.Log("Enemy No" + spawn); //Yuki Test
+                    return Instantiate(EnemiesToSpawn[spawn - 1], transform.position, transform.rotation);
+                }
             }
         }
         else
@@ -86,10 +104,18 @@ public class EnemySpawner : MonoBehaviour
         }
         return null;
     }
+    #region ToBeTested
     public void setContainer(GameObject container)
     {
         EnemyContainer = container;
     }
+
+    public void SetStallSpawn()
+    {
+        StallTime = 5f;
+        stallSpawn = true;
+    }
+    #endregion
 }
 
 [System.Serializable]

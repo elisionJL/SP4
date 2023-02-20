@@ -2190,6 +2190,7 @@ MonoBehaviour:
   HPSlider: {fileID: 6615301372315992884}
   targets: []
   CurrentPercentage: 0
+  GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
 --- !u!114 &6496413526374891814
 MonoBehaviour:
@@ -2216,6 +2217,7 @@ MonoBehaviour:
   rootObject: {fileID: 1835885862194036}
   speed: 8
   Damage: 20
+  DebuffFX: {fileID: 9059300568293874952, guid: 48f2871fa98d3af46bad7b488ca7034b, type: 3}
 --- !u!65 &3852676181579943425
 BoxCollider:
   m_ObjectHideFlags: 0

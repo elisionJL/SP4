@@ -17,6 +17,9 @@ class Villager : MonoBehaviour
     public GameObject rootObject;
     public int speed = 5;
     public int Damage = 10;
+    public GameObject DebuffFX;
+    float DebuffFXSpawnTime = 2.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,14 +68,18 @@ class Villager : MonoBehaviour
             {
                 //hit the enemy here
                 if (enemy_AI.TargetObject != null)
-                    enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
-                else
-                    Debug.Log("Cannot Find Enemy");
+                {
+                    if (enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>())
+                        enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
+                    else
+                        enemy_AI.TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
+
+                }
                 CanShoot = true;
             }
         }
         //else walk to the next waypoint
-        else if (enemy_AI.TargetObject == null && FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
+        else if (FindDistance(transform, enemy_AI.TargetObject) > enemy_AI.maxRadius)
         {
             m_Animator.SetTrigger("Walking");
             if (Vector3.Distance(transform.position, target[current].position) > 0.1f) //target is waypoints
@@ -99,5 +106,28 @@ class Villager : MonoBehaviour
                 }
             }
         }
+
+        #region ToBeTested
+        if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
+        {
+            speed = 7;
+            Damage = 5;
+
+            DebuffFXSpawnTime -= 1f * Time.deltaTime;
+
+            if (DebuffFXSpawnTime <= 0f)
+            {
+                Instantiate(DebuffFX, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                DebuffFXSpawnTime = 2.5f;
+            }
+        }
+        else
+        {
+            speed = 15;
+            Damage = 10;
+
+            DebuffFXSpawnTime = 2.5f;
+        }
+        #endregion
     }
 }

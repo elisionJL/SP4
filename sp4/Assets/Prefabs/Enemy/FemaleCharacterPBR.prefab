@@ -2494,6 +2494,7 @@ MonoBehaviour:
   rootObject: {fileID: 7647134206250791342}
   speed: 10
   Damage: 30
+  DebuffFX: {fileID: 9059300568293874952, guid: 48f2871fa98d3af46bad7b488ca7034b, type: 3}
 --- !u!65 &6645421418624544615
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class BudgetExplosionHandler : MonoBehaviour
 {
+    private bool changeview;
+    private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
     {
+        changeview = false;
+        startPosition = Camera.main.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (changeview)
+        {
+            Camera.main.transform.position = startPosition + Random.insideUnitSphere;
+            changeview = false;
+        }
+        else
+        {
+            Camera.main.transform.position = startPosition;
+            changeview = true;
+        }
+
         if (transform.localScale.x < 150)
         {
             Vector3 CurrScale = transform.localScale;
@@ -20,6 +35,7 @@ public class BudgetExplosionHandler : MonoBehaviour
         }
         else
         {
+            Camera.main.transform.position = startPosition;
             Destroy(gameObject);
         }
     }

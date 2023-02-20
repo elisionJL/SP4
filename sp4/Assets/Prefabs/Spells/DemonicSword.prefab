@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destination: {x: 0, y: 0, z: 0}
   Explosion: {fileID: 9133075884604307288, guid: b2db787cc7a13b1488d8bcfb26395991, type: 3}
-  music: {fileID: 0}
+  ExplosionRadius: {fileID: 8389003025977567807, guid: 3353eba7b09cd7d438e70c9106ba944d, type: 3}
 --- !u!1 &2659372956977112739
 GameObject:
   m_ObjectHideFlags: 0
