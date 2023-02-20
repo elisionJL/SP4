@@ -43,6 +43,8 @@ public class Enemy_AI : MonoBehaviour
             gameObject.GetComponent<Heroine>().enabled = false;
         else if (gameObject.GetComponent<Villager>() != null)
             gameObject.GetComponent<Villager>().enabled = false;
+        else if (gameObject.GetComponent<Bear>() != null)
+            gameObject.GetComponent<Bear>().enabled = false;
     }
     public void EnableScript(GameObject ExplosionPrefab)
     {
@@ -50,7 +52,7 @@ public class Enemy_AI : MonoBehaviour
         GravityMagicUsed = false;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        GetComponent<Rigidbody>().AddForce(0, -100, 0);
+        GetComponent<Rigidbody>().AddForce(0, -400, 0);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         DamageDealt = false;
     }
@@ -105,7 +107,11 @@ public class Enemy_AI : MonoBehaviour
             else if (gameObject.GetComponent<Heroine>() != null)
                 gameObject.GetComponent<Heroine>().enabled = true;
             else if (gameObject.GetComponent<Villager>() != null)
+            {
                 gameObject.GetComponent<Villager>().enabled = true;
+            }
+            else if (gameObject.GetComponent<Bear>() != null)
+                gameObject.GetComponent<Bear>().enabled = true;
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;

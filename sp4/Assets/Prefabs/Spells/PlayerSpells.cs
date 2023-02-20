@@ -54,7 +54,7 @@ public class PlayerSpells : MonoBehaviour
                 ElapsedVariableForMagic += Time.deltaTime;
                 for (int i = 0; i < ListOfEnemies.Count; ++i)
                 {
-                    ListOfEnemies[i].transform.position = new Vector3(ListOfEnemies[i].transform.position.x, ListOfEnemies[i].transform.position.y + (Time.deltaTime * 2), ListOfEnemies[i].transform.position.z);
+                    ListOfEnemies[i].transform.position = new Vector3(ListOfEnemies[i].transform.position.x, ListOfEnemies[i].transform.position.y + (Time.deltaTime * 5), ListOfEnemies[i].transform.position.z);
                 }
             }
             else
