@@ -17,6 +17,9 @@ public class Enemy_AI : MonoBehaviour
     private Transform objectRotation;
     private bool GravityMagicUsed = false;
     private bool DamageDealt = true;
+    private bool isDebuffed = false;
+    private float DebuffTime = 0;
+
     public GameObject Explosion;
 
     // Start is called before the first frame update
@@ -108,34 +111,46 @@ public class Enemy_AI : MonoBehaviour
         {
             isInFov = inFov(transform, TargetObject, maxAngle, maxRadius);
         }
-    }
+        #region ToBeTested
 
-/*    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, maxRadius);
-
-        Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, fovLine2);
-
-        if(!isInFov)
+        if (DebuffTime >= 0f)
         {
-            Gizmos.color = Color.red;
+            DebuffTime -= 1 * Time.deltaTime;
         }
-
         else
         {
-            Gizmos.color = Color.green;
+            DebuffTime = 0f;
+            isDebuffed = false;
         }
+        #endregion
+    }
 
-        Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
-        Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
-    }*/ //Draw field of view for debugging purposes
+    /*    private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, maxRadius);
+
+            Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
+            Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, fovLine1);
+            Gizmos.DrawRay(transform.position, fovLine2);
+
+            if(!isInFov)
+            {
+                Gizmos.color = Color.red;
+            }
+
+            else
+            {
+                Gizmos.color = Color.green;
+            }
+
+            Gizmos.DrawRay(transform.position, (TargetObject.position - transform.position).normalized * maxRadius);
+            Gizmos.color = Color.black;
+            Gizmos.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * maxRadius);
+        }*/ //Draw field of view for debugging purposes
     public bool inFov (Transform checkingObject, Transform target, float maxAngle, float maxRadius) //Detection Range
     {
         Collider[] overlaps = new Collider[999];
@@ -261,4 +276,18 @@ public class Enemy_AI : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    #region ToBeTested
+
+    public void SetEnemyDebuffed()
+    {
+        DebuffTime = 5f;
+        isDebuffed = true;
+    }
+
+    public bool GetEnemyDebuff()
+    {
+        return isDebuffed;
+    }
+
+    #endregion
 }

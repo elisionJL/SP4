@@ -17,6 +17,7 @@ class Villager : MonoBehaviour
     public GameObject rootObject;
     public int speed = 5;
     public int Damage = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,5 +100,18 @@ class Villager : MonoBehaviour
                 }
             }
         }
+
+        #region ToBeTested
+        if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
+        {
+            speed = 2;
+            Damage = 5;
+        }
+        else
+        {
+            speed = 5;
+            Damage = 10;
+        }
+        #endregion
     }
 }

@@ -17,6 +17,7 @@ class Knight : MonoBehaviour
     public GameObject rootObject;
     public int speed = 10;
     public int Damage = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +96,17 @@ class Knight : MonoBehaviour
                     current = 0;
                 }
             }
+        }
+
+        if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
+        {
+            speed = 5;
+            Damage = 15;
+        }
+        else
+        {
+            speed = 10;
+            Damage = 30;
         }
     }
 }

@@ -123,5 +123,16 @@ class Priest : MonoBehaviour
                 }
             }
         }
+
+        if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
+        {
+            speed = 3;
+            Damage = 1;
+        }
+        else
+        {
+            speed = 6;
+            Damage = 3;
+        }
     }
 }
