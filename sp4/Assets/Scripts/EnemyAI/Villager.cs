@@ -110,7 +110,7 @@ class Villager : MonoBehaviour
         #region ToBeTested
         if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
         {
-            speed = 7;
+            speed = 2;
             Damage = 5;
 
             DebuffFXSpawnTime -= 1f * Time.deltaTime;
@@ -123,7 +123,7 @@ class Villager : MonoBehaviour
         }
         else
         {
-            speed = 15;
+            speed = 5;
             Damage = 10;
 
             DebuffFXSpawnTime = 2.5f;
