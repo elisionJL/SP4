@@ -1711,6 +1711,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7772463546513979640, guid: a6cba5348e046c441ac5d20fa89160dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8022753713460629748, guid: a6cba5348e046c441ac5d20fa89160dd, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -13344,6 +13348,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5134537802356897764, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8380610783384488864, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
       propertyPath: SpawnPoints.Array.size
       value: 2
@@ -30180,6 +30188,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7772463546513979640, guid: a6cba5348e046c441ac5d20fa89160dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8022753713460629748, guid: a6cba5348e046c441ac5d20fa89160dd, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -30664,7 +30676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2340901904123537708, guid: fd2f2656b45528e4f846adfed389c144, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.4381523
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 2340901904123537708, guid: fd2f2656b45528e4f846adfed389c144, type: 3}
       propertyPath: m_LocalRotation.w
