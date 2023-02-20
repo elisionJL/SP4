@@ -29,7 +29,9 @@ public class Base_Interaction : MonoBehaviour
     private int random = 0;
     #endregion
 
-
+    #region Hostage Panel
+    public GameObject HostageUI;
+    #endregion
     // Update is called once per frame
     void Update()
     {
@@ -99,7 +101,14 @@ public class Base_Interaction : MonoBehaviour
         if (TowerToSpawn == null && CanPlace == false)
             Player_Attack();
 
-        
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            DisableSword();
+
+            HostageUI.SetActive(true);
+            upgrade = true;
+            gameObject.GetComponent<Player>().UnlockMouse();
+        }
 
         //if(UpgradeUI.activeSelf == true && upgrade == true)
         //{

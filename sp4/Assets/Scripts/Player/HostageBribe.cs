@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class HostageBribe : MonoBehaviour
 {
-    private void Update()
+    public GameObject Player;
+
+    public void CloseUI()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-            DebuffEnemies();
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-            StallEnemySpawn();
+        gameObject.SetActive(false);
+        Player.gameObject.GetComponent<Player>().LockMouse();
+        Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
+        Player.gameObject.GetComponent<Base_Interaction>().SetUpgradeBool(false);
     }
 
     public void DebuffEnemies()
@@ -20,6 +22,8 @@ public class HostageBribe : MonoBehaviour
         {
             Enemies[i].SetEnemyDebuffed();
         }
+
+        CloseUI();
     }
 
     public void StallEnemySpawn()
@@ -30,6 +34,8 @@ public class HostageBribe : MonoBehaviour
         {
             SpawnEnemies[i].SetStallSpawn();
         }
+
+        CloseUI();
     }
 
     public void BuffTowers()
