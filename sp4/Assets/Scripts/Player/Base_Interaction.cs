@@ -63,7 +63,8 @@ public class Base_Interaction : MonoBehaviour
                     if(CurrentTowerLookAt != hit.collider.gameObject)
                     {
                         UpgradePrompt.SetActive(false);
-                        CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
+                        if (CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>())
+                            CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
                         UpgradePrompt.SetActive(false);
                     }
                     if (Input.GetKeyDown(KeyCode.E))
