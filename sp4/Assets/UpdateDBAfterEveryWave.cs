@@ -39,9 +39,11 @@ public class UpdateDBAfterEveryWave : MonoBehaviour
             {
                 case UnityWebRequest.Result.Success:
                     Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
+                    webreq.Dispose();
                     break;
                 default:
                     Debug.Log("baderror");
+                    webreq.Dispose();
                     break;
             }
         }

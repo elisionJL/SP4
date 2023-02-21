@@ -68,6 +68,7 @@ public class AddTower : MonoBehaviour
                 {
                     Player.transform.GetChild(0).gameObject.GetComponent<Base_Interaction>().Towers.Add(Towers[GlobalStuffs.Tower[i]]);
                 }
+                webRequest1.Dispose();
                 break;
             default:
                 GlobalStuffs.Tower[0] = 0;
@@ -80,9 +81,9 @@ public class AddTower : MonoBehaviour
                 {
                     Player.transform.GetChild(0).gameObject.GetComponent<Base_Interaction>().Towers.Add(Towers[GlobalStuffs.Tower[i]]);
                 }
+                webRequest1.Dispose();
                 break;
         }
-        webRequest1.Dispose();
     }
     IEnumerator GetSkin(string playername)
     {
@@ -110,11 +111,12 @@ public class AddTower : MonoBehaviour
                     ChooseThisSkin = 2;
                 }
                 Player.transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.transform.GetComponent<SkinnedMeshRenderer>().material = SkinMaterials[ChooseThisSkin];
+                webRequest1.Dispose();
                 break;
             default:
+                webRequest1.Dispose();
                 break;
         }
-        webRequest1.Dispose();
     }
     IEnumerator GetTime(string playername)
     {
@@ -130,10 +132,11 @@ public class AddTower : MonoBehaviour
             case UnityWebRequest.Result.Success:
                 Debug.Log("Received: " + webRequest1.downloadHandler.text);
                 gameObject.GetComponent<UpdateDBAfterEveryWave>().timecountup = float.Parse(webRequest1.downloadHandler.text);
+                webRequest1.Dispose();
                 break;
             default:
+                webRequest1.Dispose();
                 break;
         }
-        webRequest1.Dispose();
     }
 }
