@@ -77,6 +77,7 @@ public class WaveManager : MonoBehaviour
             {
                 if(EnemyContainer.transform.childCount == 0)
                 {
+                    GameObject.Find("AddTowersToPlayer").GetComponent<UpdateDBAfterEveryWave>().UpdateTime();
                     waveDone = true;
                     readyText.SetActive(true);
                     waveCooldown = 40;

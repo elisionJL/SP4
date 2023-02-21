@@ -11,9 +11,8 @@ public class BudgetExplosionHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //changeview = false;
-        startPosition = Camera.main.transform.position;
-        StartCoroutine(ShakeCamera());
+        changeview = false;
+        startPosition = Camera.main.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -21,16 +20,13 @@ public class BudgetExplosionHandler : MonoBehaviour
     {
         if (changeview)
         {
-            //StartCoroutine(ShakeCamera());
+            Camera.main.transform.localPosition = startPosition + Random.insideUnitSphere;
         }
-        //    Camera.main.transform.position = startPosition + Random.insideUnitSphere;
-            
-        //}
-        //else
-        //{
-        //    Camera.main.transform.position = startPosition;
-        //    changeview = true;
-        //}
+        else
+        {
+            Camera.main.transform.localPosition = startPosition;
+            changeview = true;
+        }
 
         if (transform.localScale.x < 100)
         {
@@ -40,7 +36,7 @@ public class BudgetExplosionHandler : MonoBehaviour
         }
         else
         {
-            Camera.main.transform.position = startPosition;
+            Camera.main.transform.localPosition = startPosition;
             Destroy(gameObject);
         }
     }

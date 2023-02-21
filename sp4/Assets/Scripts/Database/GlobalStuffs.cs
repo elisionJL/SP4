@@ -13,6 +13,8 @@ public static class GlobalStuffs {
     public static int level=0;
     public static int TotalTimesPlayed = 0;
     public static int[] Tower = new int[5];
+    public static string PlayerSkins = "B";
+    public static int TotalTime = 0;
 
     public static string baseURL= "http://localhost/Database/"; //rename this to your server path
 
@@ -21,6 +23,7 @@ public static class GlobalStuffs {
     static string GetTowersURL = baseURL + "ReadTowers.php";
     public static string UpdateSettingsURL = baseURL + "UpdateSettings.php";
     public static string ReadSettingsURL = baseURL + "ReadSettings.php";
+    static string URLSendSkins = baseURL + "ReadPlayerSkins.php";
     #region settings
     public static int sfxVolume;
     public static int bgmVolume;

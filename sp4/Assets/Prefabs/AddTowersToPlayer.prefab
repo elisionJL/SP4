@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318831105357849093}
   - component: {fileID: 6318831105357849092}
+  - component: {fileID: 5294557947929538287}
   m_Layer: 0
   m_Name: AddTowersToPlayer
   m_TagString: Untagged
@@ -56,3 +57,20 @@ MonoBehaviour:
   - {fileID: 5493680483164348897, guid: 0fb46963577f26e49956fb4437739d82, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  SkinMaterials:
+  - {fileID: 2100000, guid: df8c8fcb497c3014db8b8a1ba36af39a, type: 2}
+  - {fileID: 2100000, guid: 21b8dbeedf4c2194ca218c1cd23d77f7, type: 2}
+  - {fileID: 2100000, guid: 094b4466de1c5ad4eb56522d5c9aaf5e, type: 2}
+--- !u!114 &5294557947929538287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318831105357849091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7660a6920f0646b469f48b49a2cb1d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timecountup: 0

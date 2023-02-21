@@ -8,6 +8,7 @@ public class ChangeSkins : MonoBehaviour
     public Material Text1;
     public Material Text2;
     public Material Text3;
+    public string CurrentSkin = "B";
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,21 @@ public class ChangeSkins : MonoBehaviour
     public void ChangeSkinToRed()
     {
         Player.transform.GetComponent<SkinnedMeshRenderer>().material = Text1;
+        CurrentSkin = "R";
     }
     public void ChangeSkinToBlack()
     {
         Player.transform.GetComponent<SkinnedMeshRenderer>().material = Text2;
+        CurrentSkin = "B";
     }
     public void ChangeSkinToGalaxy()
     {
         Player.transform.GetComponent<SkinnedMeshRenderer>().material = Text3;
+        CurrentSkin = "G";
+    }
+    public void StartButton()
+    {
+        GlobalStuffs.PlayerSkins = CurrentSkin;
+        gameObject.GetComponent<SendPlayerSkins>().UpdateSkins();
     }
 }
