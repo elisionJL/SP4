@@ -10,6 +10,7 @@ public class DemonLordKill : MonoBehaviour
     private bool Attack = false, Attack_Dir, TimeFinished, AttackTimeBool = false;
     private float AttackTime, TimeLeftToAttack = 5f;
     public Animator DemonAnim;
+    private float DelayStart = 4.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -79,15 +80,23 @@ public class DemonLordKill : MonoBehaviour
             {
                 DemonAnim.SetTrigger("die");
                 King.gameObject.GetComponent<Animation>().Play("die");
-                YouWin.SetActive(true);
                 PlayerSword.gameObject.SetActive(false);
                 TimeFinished = true;
+                YouWin.SetActive(true);
             }
 
             TimeCount.gameObject.SetActive(false);
 
             MainCamera.transform.position = new Vector3(Random.Range(-3.66f, -3.16f), Random.Range(1.31f, 1.81f), -9.71f);
             MainCamera.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+            if (DelayStart > 0f)
+                DelayStart -= 1 * Time.deltaTime;
+            if (DelayStart <= 0f)
+            {
+                MainCamera.GetComponent<AudioSource>().enabled = false;
+                MainCamera.transform.GetChild(0).GetComponent<AudioSource>().enabled = true;
+            }
         }
     }
 }

@@ -44,4 +44,8 @@ class DragonTower : TowerBase
         }
     }
 
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

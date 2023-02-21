@@ -5,6 +5,7 @@ using UnityEngine;
 public class HostageBribe : MonoBehaviour
 {
     public GameObject Player;
+    private float cooldown = 0f;
 
     public void CloseUI()
     {
@@ -14,39 +15,57 @@ public class HostageBribe : MonoBehaviour
         Player.gameObject.GetComponent<Base_Interaction>().SetUpgradeBool(false);
     }
 
+    private void Update()
+    {
+        if (cooldown > 0)
+            cooldown -= 1 * Time.deltaTime;
+    }
+
     public void DebuffEnemies()
     {
-        Enemy_AI[] Enemies = FindObjectsOfType<Enemy_AI>();
-
-        for(int i = 0; i < Enemies.Length; i++)
+        if(cooldown <= 0f)
         {
-            Enemies[i].SetEnemyDebuffed();
-        }
+            Enemy_AI[] Enemies = FindObjectsOfType<Enemy_AI>();
 
-        CloseUI();
+            for (int i = 0; i < Enemies.Length; i++)
+            {
+                Enemies[i].SetEnemyDebuffed();
+            }
+
+            CloseUI();
+            cooldown = 15f;
+        }
     }
 
     public void StallEnemySpawn()
     {
-        EnemySpawner[] SpawnEnemies = FindObjectsOfType<EnemySpawner>();
-
-        for(int i = 0; i < SpawnEnemies.Length; i++)
+        if(cooldown <= 0f)
         {
-            SpawnEnemies[i].SetStallSpawn();
-        }
+            EnemySpawner[] SpawnEnemies = FindObjectsOfType<EnemySpawner>();
 
-        CloseUI();
+            for (int i = 0; i < SpawnEnemies.Length; i++)
+            {
+                SpawnEnemies[i].SetStallSpawn();
+            }
+
+            CloseUI();
+            cooldown = 15f;
+        }
     }
 
     public void BuffTowers()
     {
-        Tower_AI[] TowersFound = FindObjectsOfType<Tower_AI>();
-
-        for(int i = 0; i < TowersFound.Length; i++)
+        if(cooldown <= 0f)
         {
-            TowersFound[i].BuffTowers();
-        }
+            Tower_AI[] TowersFound = FindObjectsOfType<Tower_AI>();
 
-        CloseUI();
+            for (int i = 0; i < TowersFound.Length; i++)
+            {
+                TowersFound[i].BuffTowers();
+            }
+
+            CloseUI();
+            cooldown = 15f;
+        }
     }
 }

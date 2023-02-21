@@ -45,4 +45,9 @@ class MageTower : TowerBase
             }
         }
     }
+
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

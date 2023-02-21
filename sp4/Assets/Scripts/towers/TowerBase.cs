@@ -18,8 +18,7 @@ abstract class TowerBase : MonoBehaviour
     protected int cost;
     protected int UpgradeCost;
     protected int sellValue;
-    protected int DamageMultiplier;
-    protected int attackSpdMultiplier;
+    protected float BuffTime;
 
     public Animator m_Animator;
     public Tower_AI tower_AI;
@@ -65,6 +64,11 @@ abstract class TowerBase : MonoBehaviour
         return damage;
     }
 
+    public float getAttackSpd()
+    {
+        return attackSpd;
+    }
+
     public int GetDamageUpgraded()
     {
         return Mathf.RoundToInt(damage * 1.5f);
@@ -88,10 +92,6 @@ abstract class TowerBase : MonoBehaviour
     {
         Lvl += 1;
     }
-    //public void NewUpgradeCost()
-    //{
-    //    UpgradeCost = (int)Mathf.Ceil(UpgradeCost * 1.5f);
-    //}
 
     public void UpgradeStats()
     {
@@ -100,5 +100,28 @@ abstract class TowerBase : MonoBehaviour
         Lvl += 1;
         sellValue = Mathf.RoundToInt(sellValue * 1.3f);
         UpgradeCost = Mathf.RoundToInt(UpgradeCost * 1.5f);
+    }
+
+    public void Multipliers()
+    {
+        damage *= 2;
+        attackSpd *= 1.3f;
+        BuffTime = 5f;
+    }
+
+    public void BuffedTower()
+    {
+        if (gameObject.GetComponent<Tower_AI>().GetTowerBuffBool() == true)
+        {
+            BuffTime -= 1 * Time.deltaTime;
+
+            if (BuffTime <= 0f)
+            {
+                damage /= 2;
+                attackSpd /= 1.3f;
+                gameObject.GetComponent<Tower_AI>().StopBuffs();
+                Debug.Log(attackSpd + ", " + damage);
+            }
+        }
     }
 }
