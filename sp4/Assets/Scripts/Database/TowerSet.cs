@@ -97,7 +97,7 @@ public class TowerSet : MonoBehaviour
         //webreq.Dispose();    
     }
 
-
+    //Left Over Stuff{
     //public void GuestLogin()
     //{
     //    GlobalStuffs.username = "GuestPlayer";
@@ -160,6 +160,7 @@ public class TowerSet : MonoBehaviour
     //            break;
     //    }
     //    webreq.Dispose();
+    //}
     //}
 }
 

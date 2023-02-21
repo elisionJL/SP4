@@ -1,0 +1,17 @@
+Things you need before you start, php82 and the three batchfiles provided
+
+place startmysqlcli and startmysqlsvr inside of the place that you would create and execute commands (e.g. Desktop/SQL/Bin)
+
+place startphpsvr inside of your php82 folder
+
+Run startphpsvr and startmysqlsvr first
+
+Then run startmysqlcli
+
+Create a folder called www inside of C: drive or any similar drive
+
+Create a folder in it called Database and place the entire Database file inside of it (e.g. C:/www/Database/...)
+
+type: "http://localhost/Database/SetupDB.php" in chrome
+
+You should be greeted with 3 Table created

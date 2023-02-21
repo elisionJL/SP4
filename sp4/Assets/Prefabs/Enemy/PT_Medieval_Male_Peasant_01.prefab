@@ -1291,6 +1291,7 @@ MonoBehaviour:
   CurrentPercentage: 0
   GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
+  Waves: {fileID: 0}
 --- !u!114 &1390207199657732143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,8 +1329,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.81015825, y: 1.8112895, z: 1}
-  m_Center: {x: -0.011180863, y: 0.9146904, z: 0}
+  m_Size: {x: 0.81015825, y: 1.8340415, z: 1}
+  m_Center: {x: -0.011180878, y: 0.9033144, z: 0}
 --- !u!54 &1991931803507937507
 Rigidbody:
   m_ObjectHideFlags: 0

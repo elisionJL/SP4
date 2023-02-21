@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 5811c62d219f60e4d81f684bc03312dc
+  - enabled: 1
+    path: Assets/Scenes/TowerSelectScene.unity
+    guid: f2afc6a45085b404d968c8782f95f94f
   m_configObjects: {}

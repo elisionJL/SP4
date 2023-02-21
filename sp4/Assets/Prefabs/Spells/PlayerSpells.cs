@@ -24,11 +24,21 @@ public class PlayerSpells : MonoBehaviour
     public GameObject PortalToDelete;
     public GameObject SwordToLookAt;
     public GameObject SwordSpawn;
+    public GameObject ShockWaveForEnemies;
     private float countup;
-    #endregion
+    #endregion Player Magic
+
+    #region cameraShaking
+    //for camera shakes
+    private Vector3 startPosition;
+    private float shakeDuration = 3;
+    public AnimationCurve Curve;
+    #endregion cameraShaking
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = Camera.main.transform.localPosition;
+
     }
 
     // Update is called once per frame
@@ -45,7 +55,8 @@ public class PlayerSpells : MonoBehaviour
             }
             AntiGravity = true;
             UsingMagic = true;
-            PlayerCharacter.gameObject.transform.parent.GetChild(0).GetComponent<Player>().Mana -= 10;
+            StartCoroutine(ShakeCamera());
+            GetComponent<Player>().Mana -= 10;
         }
         if (AntiGravity)
         {
@@ -61,7 +72,7 @@ public class PlayerSpells : MonoBehaviour
             {
                 for (int i = 0; i < ListOfEnemies.Count; ++i)
                 {
-                    ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion);
+                    ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion, ShockWaveForEnemies);
                 }
                 UsingMagic = false;
                 AntiGravity = false;
@@ -155,6 +166,18 @@ public class PlayerSpells : MonoBehaviour
             Destroy(SwordToLookAt);
             BigUlt = false;
         }
-
+    }
+    IEnumerator ShakeCamera()
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < shakeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float strength = Curve.Evaluate(elapsedTime / shakeDuration);
+            Camera.main.transform.localPosition = startPosition + Random.insideUnitSphere * strength;
+            yield return null;
+        }
+        //reset to start position
+        Camera.main.transform.localPosition = startPosition;
     }
 }

@@ -24,6 +24,7 @@ public class Enemy_AI : MonoBehaviour
     private float instantiateCoolDown = 0.3f;
     public GameObject GOofHearts;
     public GameObject Explosion;
+    public GameObject Waves;
 
     // Start is called before the first frame update
     void Start()
@@ -46,9 +47,10 @@ public class Enemy_AI : MonoBehaviour
         else if (gameObject.GetComponent<Bear>() != null)
             gameObject.GetComponent<Bear>().enabled = false;
     }
-    public void EnableScript(GameObject ExplosionPrefab)
+    public void EnableScript(GameObject ExplosionPrefab, GameObject ShockWavePrefab)
     {
         Explosion = ExplosionPrefab;
+        Waves = ShockWavePrefab;
         GravityMagicUsed = false;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -120,6 +122,8 @@ public class Enemy_AI : MonoBehaviour
             MinusHP(30);
             Explosion.transform.position = transform.position;
             Instantiate(Explosion);
+            Waves.transform.position = transform.position;
+            Instantiate(Waves);
         }
 
         Collider[] overlaps = new Collider[999];
@@ -298,7 +302,7 @@ public class Enemy_AI : MonoBehaviour
 
             Debug.DrawRay(origin, direction * distance, Color.red);
 
-            if (distance <= (0.1f)) //If distance from bottom of player to ground is close enough
+            if (distance <= (0.1f) && hit.transform.gameObject.tag == "PlaceableArea") //If distance from bottom of player to ground is close enough
             {
                 return true; //Let Player jump
             }
