@@ -298,6 +298,7 @@ MonoBehaviour:
   PortalToDelete: {fileID: 0}
   SwordToLookAt: {fileID: 0}
   SwordSpawn: {fileID: 1624047688248190055, guid: e9665a964dd4a884598a6dc30adc37ea, type: 3}
+  ShockWaveForEnemies: {fileID: 2152071253941069527, guid: 1b79d61997722d542b9d2ae4a8fdf16e, type: 3}
 --- !u!114 &904287302924885532
 MonoBehaviour:
   m_ObjectHideFlags: 0

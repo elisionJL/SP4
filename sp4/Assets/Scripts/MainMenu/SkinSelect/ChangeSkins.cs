@@ -16,7 +16,6 @@ public class ChangeSkins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player.transform.parent.gameObject.GetComponent<Animator>().SetTrigger("die");
     }
 
     public void ChangeSkinToRed()

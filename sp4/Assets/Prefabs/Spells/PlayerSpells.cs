@@ -24,6 +24,7 @@ public class PlayerSpells : MonoBehaviour
     public GameObject PortalToDelete;
     public GameObject SwordToLookAt;
     public GameObject SwordSpawn;
+    public GameObject ShockWaveForEnemies;
     private float countup;
     #endregion
     // Start is called before the first frame update
@@ -61,7 +62,7 @@ public class PlayerSpells : MonoBehaviour
             {
                 for (int i = 0; i < ListOfEnemies.Count; ++i)
                 {
-                    ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion);
+                    ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion, ShockWaveForEnemies);
                 }
                 UsingMagic = false;
                 AntiGravity = false;
