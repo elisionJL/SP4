@@ -91,6 +91,7 @@ public class TowerSet : MonoBehaviour
                     break;
                 default:
                     Debug.Log("baderror");
+                    SceneManager.LoadScene("LevelOne");
                     break;
             }
         }
