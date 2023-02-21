@@ -27,6 +27,7 @@ public class BaseScript : MonoBehaviour
             HP -= 10;
             HP_Bar.GetComponent<Slider>().value = HP;
             Destroy(other.gameObject);
+            GameObject.Find("WaveManager").GetComponent<WaveManager>().TotalEnemies -= 1;
         }
         else if (other.tag == "Arrow")
         {
