@@ -14,8 +14,10 @@ CREATE TABLE tb_towerselect (
 );
 ","
 CREATE TABLE tb_playerstats (
-            HostagesLeft INT NOT NULL,
-            LvlCleared INT NOT NULL
+    username varchar(100) NOT NULL,
+    HostagesLeft INT Default 100,
+    LvlCleared TinyINT Default 0,
+    TimePlayed INT Default 0
 );
 ","
 CREATE TABLE tb_OwnedSkins (
