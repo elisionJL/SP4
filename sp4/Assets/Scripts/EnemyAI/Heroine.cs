@@ -108,8 +108,8 @@ class Heroine : MonoBehaviour
         #region ToBeTested
         if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
         {
-            speed = 7;
-            Damage = 5;
+            speed = 5;
+            Damage = 15;
 
             DebuffFXSpawnTime -= 1f * Time.deltaTime;
 
@@ -121,8 +121,8 @@ class Heroine : MonoBehaviour
         }
         else
         {
-            speed = 15;
-            Damage = 10;
+            speed = 10;
+            Damage = 30;
 
             DebuffFXSpawnTime = 2.5f;
         }

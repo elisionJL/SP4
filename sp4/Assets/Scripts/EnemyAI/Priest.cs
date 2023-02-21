@@ -129,8 +129,8 @@ class Priest : MonoBehaviour
         #region ToBeTested
         if (gameObject.GetComponent<Enemy_AI>().GetEnemyDebuff() == true)
         {
-            speed = 7;
-            Damage = 5;
+            speed = 3;
+            Damage = 1;
 
             DebuffFXSpawnTime -= 1f * Time.deltaTime;
 
@@ -142,8 +142,8 @@ class Priest : MonoBehaviour
         }
         else
         {
-            speed = 15;
-            Damage = 10;
+            speed = 6;
+            Damage = 3;
 
             DebuffFXSpawnTime = 2.5f;
         }

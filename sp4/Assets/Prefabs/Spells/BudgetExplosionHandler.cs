@@ -32,7 +32,7 @@ public class BudgetExplosionHandler : MonoBehaviour
         //    changeview = true;
         //}
 
-        if (transform.localScale.x < 150)
+        if (transform.localScale.x < 100)
         {
             Vector3 CurrScale = transform.localScale;
             transform.localScale = new Vector3(CurrScale.x + 0.3f, CurrScale.y + 0.3f, CurrScale.z + 0.3f);

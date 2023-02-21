@@ -82,6 +82,11 @@ public class TowerSelect : MonoBehaviour
 
     public void GoNextScene()
     {
-        SceneManager.LoadScene("WhateverNextSceneIs"); //To be changed when we have decided on a scene
+        GlobalStuffs.Tower[0] = Monster_ID[0];
+        GlobalStuffs.Tower[1] = Monster_ID[1];
+        GlobalStuffs.Tower[2] = Monster_ID[2];
+        GlobalStuffs.Tower[3] = Monster_ID[3];
+        GlobalStuffs.Tower[4] = Monster_ID[4];
+        gameObject.GetComponent<TowerSet>().FinishTowerSelect();
     }
 }
