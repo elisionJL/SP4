@@ -6,11 +6,14 @@ public class BudgetExplosionHandler : MonoBehaviour
 {
     private bool changeview;
     private Vector3 startPosition;
+    private float shakeDuration = 1;
+    public AnimationCurve Curve;
     // Start is called before the first frame update
     void Start()
     {
-        changeview = false;
+        //changeview = false;
         startPosition = Camera.main.transform.position;
+        StartCoroutine(ShakeCamera());
     }
 
     // Update is called once per frame
@@ -18,14 +21,16 @@ public class BudgetExplosionHandler : MonoBehaviour
     {
         if (changeview)
         {
-            Camera.main.transform.position = startPosition + Random.insideUnitSphere;
-            changeview = false;
+            //StartCoroutine(ShakeCamera());
         }
-        else
-        {
-            Camera.main.transform.position = startPosition;
-            changeview = true;
-        }
+        //    Camera.main.transform.position = startPosition + Random.insideUnitSphere;
+            
+        //}
+        //else
+        //{
+        //    Camera.main.transform.position = startPosition;
+        //    changeview = true;
+        //}
 
         if (transform.localScale.x < 100)
         {
@@ -39,7 +44,24 @@ public class BudgetExplosionHandler : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    IEnumerator ShakeCamera()
+    {
+        float elapsedTime = 0;
+        Debug.Log("shake1");
+        Debug.Log(elapsedTime + " : " + shakeDuration);
+        while (elapsedTime < shakeDuration)
+        {
+            Debug.Log("shake2");
+            elapsedTime += Time.deltaTime;
+            float strength = Curve.Evaluate(elapsedTime / shakeDuration);
+            Camera.main.transform.position = startPosition + Random.insideUnitSphere * strength;
+            yield return null;
+        }
+        //reset to start position
+        Camera.main.transform.position = startPosition;
+        changeview = false;
 
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
