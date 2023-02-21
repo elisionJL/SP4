@@ -58,4 +58,9 @@ class ArcherTower : TowerBase
         //    }
         //}
     }
+
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

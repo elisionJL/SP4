@@ -41,4 +41,9 @@ class ZombieTower : TowerBase
             }
         }
     }
+
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

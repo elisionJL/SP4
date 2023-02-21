@@ -483,7 +483,33 @@ public class Tower_AI : MonoBehaviour
 
     public void BuffTowers()
     {
+        if (gameObject.GetComponent<DragonTower>() != null)
+        {
+            gameObject.GetComponent<DragonTower>().Multipliers();
+            Debug.Log(gameObject.GetComponent<DragonTower>().getAttackSpd() + ", " + gameObject.GetComponent<DragonTower>().GetDamage());
+        }
+
+        else if (gameObject.GetComponent<MageTower>() != null)
+            gameObject.GetComponent<MageTower>().Multipliers();
+        else if (gameObject.GetComponent<SkeletonTower>() != null)
+            gameObject.GetComponent<SkeletonTower>().Multipliers();
+        else if (gameObject.GetComponent<DemonGirlTower>() != null)
+            gameObject.GetComponent<DemonGirlTower>().Multipliers();
+        else if (gameObject.GetComponent<ZombieTower>() != null)
+            gameObject.GetComponent<ZombieTower>().Multipliers();
+        else if (gameObject.GetComponent<ArcherTower>() != null)
+            gameObject.GetComponent<ArcherTower>().Multipliers();
+        else if (gameObject.GetComponent<GroundDragonTower>() != null)
+            gameObject.GetComponent<GroundDragonTower>().Multipliers();
+        else if (gameObject.GetComponent<SoulGrinderTower>() != null)
+            gameObject.GetComponent<SoulGrinderTower>().Multipliers();
+
         DoubleStat = true;
+    }
+
+    public void StopBuffs()
+    {
+        DoubleStat = false;
     }
 
     public bool GetTowerBuffBool()

@@ -54,4 +54,9 @@ class DemonGirlTower : TowerBase
             }
         }
     }
+
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

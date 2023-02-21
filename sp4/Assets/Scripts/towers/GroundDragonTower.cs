@@ -55,4 +55,9 @@ class GroundDragonTower : TowerBase
         //    }
         //}
     }
+
+    public void Update()
+    {
+        BuffedTower();
+    }
 }

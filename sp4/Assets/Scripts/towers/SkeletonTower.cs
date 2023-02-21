@@ -31,7 +31,6 @@ class SkeletonTower : TowerBase
     {
         Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         //Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
-        Debug.Log(target);
         if (target != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton@Idle01") && CanShoot)
         {
             Fire();
@@ -47,5 +46,10 @@ class SkeletonTower : TowerBase
                 CanShoot = true;
             }
         }
+    }
+
+    public void Update()
+    {
+        BuffedTower();
     }
 }
