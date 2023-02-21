@@ -40,6 +40,13 @@ public class HostageBribe : MonoBehaviour
 
     public void BuffTowers()
     {
+        Tower_AI[] TowersFound = FindObjectsOfType<Tower_AI>();
 
+        for(int i = 0; i < TowersFound.Length; i++)
+        {
+            TowersFound[i].BuffTowers();
+        }
+
+        CloseUI();
     }
 }

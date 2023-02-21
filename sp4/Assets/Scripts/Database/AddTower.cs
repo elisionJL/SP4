@@ -64,6 +64,16 @@ public class AddTower : MonoBehaviour
                 }
                 break;
             default:
+                GlobalStuffs.Tower[0] = 0;
+                GlobalStuffs.Tower[1] = 1;
+                GlobalStuffs.Tower[2] = 2;
+                GlobalStuffs.Tower[3] = 3;
+                GlobalStuffs.Tower[4] = 4;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Player.transform.GetChild(0).gameObject.GetComponent<Base_Interaction>().Towers.Add(Towers[GlobalStuffs.Tower[i]]);
+                }
                 break;
         }
         webRequest1.Dispose();

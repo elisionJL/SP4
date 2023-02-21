@@ -11,7 +11,7 @@ class MageTower : TowerBase
         damage = 10;
 
         attackSpd = 1;
-
+        Lvl = 1;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;

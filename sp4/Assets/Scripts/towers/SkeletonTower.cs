@@ -10,6 +10,7 @@ class SkeletonTower : TowerBase
         CanShoot = true;
         damage = 10;
         attackSpd = 1;
+        Lvl = 1;
         radius = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;

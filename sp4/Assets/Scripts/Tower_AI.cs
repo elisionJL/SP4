@@ -16,6 +16,9 @@ public class Tower_AI : MonoBehaviour
     public int countt;
     private Transform objectRotation;
     public Transform targetObject;
+
+    private bool DoubleStat = false;
+
     public enum TARGETING
     {
         CLOSEST,
@@ -476,5 +479,15 @@ public class Tower_AI : MonoBehaviour
             targetingMode = TARGETING.CLOSEST;
         }
         TargetingText.text = "Targeting: " + getTargetingName();
+    }
+
+    public void BuffTowers()
+    {
+        DoubleStat = true;
+    }
+
+    public bool GetTowerBuffBool()
+    {
+        return DoubleStat;
     }
 }

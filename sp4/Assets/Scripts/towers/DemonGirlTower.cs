@@ -12,6 +12,7 @@ class DemonGirlTower : TowerBase
         attackSpd = 1;
         cost = 300;
         hp = 10;
+        Lvl = 1;
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
         UpgradeCost = 150;

@@ -18,6 +18,9 @@ abstract class TowerBase : MonoBehaviour
     protected int cost;
     protected int UpgradeCost;
     protected int sellValue;
+    protected int DamageMultiplier;
+    protected int attackSpdMultiplier;
+
     public Animator m_Animator;
     public Tower_AI tower_AI;
     //prefab for the projectile model
@@ -76,6 +79,15 @@ abstract class TowerBase : MonoBehaviour
         return UpgradeCost;
     }
 
+    public int GetLvl()
+    {
+        return Lvl;
+    }
+
+    public void RaiseLvl()
+    {
+        Lvl += 1;
+    }
     //public void NewUpgradeCost()
     //{
     //    UpgradeCost = (int)Mathf.Ceil(UpgradeCost * 1.5f);
@@ -86,6 +98,7 @@ abstract class TowerBase : MonoBehaviour
         hp = Mathf.RoundToInt(hp * 1.5f);
         damage = Mathf.RoundToInt(damage * 1.5f);
         Lvl += 1;
+        sellValue = Mathf.RoundToInt(sellValue * 1.3f);
         UpgradeCost = Mathf.RoundToInt(UpgradeCost * 1.5f);
     }
 }

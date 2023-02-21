@@ -14,6 +14,7 @@ class ZombieTower : TowerBase
         tower_AI.maxRadius = 10;
         tower_AI.HP = 1000;
         cost = 250;
+        Lvl = 1;
         CanShoot = true;
         Name = "Zombie";
     }

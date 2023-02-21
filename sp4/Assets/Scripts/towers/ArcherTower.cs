@@ -13,6 +13,7 @@ class ArcherTower : TowerBase
         CanShoot = true;
         damage = 10;
         attackSpd = 2;
+        Lvl = 1;
         hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 20;

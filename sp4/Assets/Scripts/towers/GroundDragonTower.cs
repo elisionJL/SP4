@@ -13,6 +13,7 @@ class GroundDragonTower : TowerBase
         tower_AI.maxRadius = 10;
         tower_AI.HP = 750;
         cost = 500;
+        Lvl = 1;
         UpgradeCost = 250;
         CanShoot = true;
         Name = "GroundDragon";
