@@ -3419,6 +3419,7 @@ MonoBehaviour:
   AttackDetails: {fileID: 855663299122993569}
   HPDetails: {fileID: 9139370096220797279}
   Player: {fileID: 0}
+  TowerValue: 0
 --- !u!1 &5525913243002977007
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,7 +5220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.1504686}
   m_AnchorMax: {x: 1, y: 0.2893285}
-  m_AnchoredPosition: {x: 0.000030517578, y: 1.5}
+  m_AnchoredPosition: {x: 0.000030517578, y: -31}
   m_SizeDelta: {x: 0, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5147763835660462924
@@ -5244,7 +5245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
