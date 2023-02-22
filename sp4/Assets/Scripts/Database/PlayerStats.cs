@@ -4,9 +4,7 @@ using UnityEngine;
 public class PlayerStats
 {
     public string username;
-    public int xp;
     public int level;
-    public int cash;
     public int hostages;
     public int TotalTimesPlayed;
     public static PlayerStats CreateFromJSON(string jsonString)

@@ -20,7 +20,7 @@ public static class GlobalStuffs {
     public static string baseURL= "http://localhost/Database/"; //rename this to your server path
 
     static string addscorebackendURL=baseURL+"addscorebackend.php";
-    static string UpdatePlayerStatsURL = baseURL + ".php";
+    static string UpdatePlayerStatsURL = baseURL + "UpdatePlayerStatsBackend.php";
     static string GetTowersURL = baseURL + "ReadTowers.php";
     public static string UpdateSettingsURL = baseURL + "UpdateSettings.php";
     public static string ReadSettingsURL = baseURL + "ReadSettings.php";
@@ -124,8 +124,11 @@ public static class GlobalStuffs {
     public static IEnumerator UpdatePlayerStats(){
         WWWForm form=new WWWForm();
         form.AddField("username",username);
+        form.AddField("Hostage", Hostages);
+        form.AddField("LevelCleared", level);
+        form.AddField("TimesPlayed", TotalTimesPlayed);
 
-        using(UnityWebRequest webreq=UnityWebRequest.Post(UpdatePlayerStatsURL,form)){
+        using (UnityWebRequest webreq=UnityWebRequest.Post(UpdatePlayerStatsURL,form)){
         yield return webreq.SendWebRequest();
         switch (webreq.result)
             {
@@ -180,10 +183,10 @@ public static class GlobalStuffs {
                     ps = PlayerSettings.CreateFromJSON(webRequest.downloadHandler.text);
                 if (ps != null)
                 {
-                    GlobalStuffs.username = ps.username;
-                    GlobalStuffs.sfxVolume = ps.sfxVolume;
-                    GlobalStuffs.bgmVolume = ps.bgmVolume;
-                    GlobalStuffs.masterVolume = ps.masterVolume;
+                    username = ps.username;
+                    sfxVolume = ps.sfxVolume;
+                    bgmVolume = ps.bgmVolume;
+                    masterVolume = ps.masterVolume;
                 }                
                 break;
             default:
