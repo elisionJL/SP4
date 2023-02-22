@@ -36,6 +36,7 @@ class MageTower : TowerBase
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("attack01") && !CanShoot)
         {
+            
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
                 GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
