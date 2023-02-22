@@ -87,11 +87,11 @@ public class TowerSet : MonoBehaviour
             {
                 case UnityWebRequest.Result.Success:
                     Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
-                    SceneManager.LoadScene("LevelOne");
+                    SceneManager.LoadScene("LevelSelect");
                     break;
                 default:
                     Debug.Log("baderror");
-                    SceneManager.LoadScene("LevelOne");
+                    SceneManager.LoadScene("LevelSelect");
                     break;
             }
         }

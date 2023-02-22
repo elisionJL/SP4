@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerSkinSelect.unity
     guid: 8e00965943dfe8e4f8e67dcb3025a116
+  - enabled: 1
+    path: Assets/Scenes/FinalLevel.unity
+    guid: bd5bcf85cf3ce0c489a5c2fa719604c1
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: ff541afc4f1f3ec4c8942b37d6a39e6d
+  - enabled: 1
+    path: Assets/Scenes/LevelThree.unity
+    guid: f112d4b5058afcb49abda2ceb24bb713
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: f61ec549ca34bca429710d47e3f00ac8
   m_configObjects: {}

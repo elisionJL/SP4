@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelSelect : MonoBehaviour
 {
+    public Transform Locks;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        for (int i = 0; i < GlobalStuffs.level + 1;++i)
+        {
+            Locks.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
