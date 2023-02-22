@@ -15,6 +15,7 @@ public static class GlobalStuffs {
     public static int[] Tower = new int[5];
     public static string PlayerSkins = "B";
     public static int TotalTime = 0;
+    public static string LastLogin = "";
 
     public static string baseURL= "http://localhost/Database/"; //rename this to your server path
 

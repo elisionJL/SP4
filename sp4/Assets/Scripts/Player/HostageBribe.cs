@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HostageBribe : MonoBehaviour
 {
     public GameObject Player;
     private float cooldown = 0f;
-
+    public TextMeshProUGUI cooldownText;
     public void CloseUI()
     {
         gameObject.SetActive(false);
@@ -18,7 +19,14 @@ public class HostageBribe : MonoBehaviour
     private void Update()
     {
         if (cooldown > 0)
+        {
             cooldown -= 1 * Time.deltaTime;
+            cooldownText.text = "Cooldown: " + Mathf.RoundToInt(cooldown) + "s";
+        }
+        else
+        {
+            cooldownText.text = "";
+        }
     }
 
     public void DebuffEnemies()

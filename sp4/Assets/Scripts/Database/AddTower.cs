@@ -14,12 +14,15 @@ public class AddTower : MonoBehaviour
     string URLReadTowers = GlobalStuffs.baseURL + "ReadTowers.php";
     string URLReadSkins = GlobalStuffs.baseURL + "ReadSkins.php";
     string URLReadTime = GlobalStuffs.baseURL + "ReadTime.php";
+    string URLReadDate = GlobalStuffs.baseURL + "ReadDate.php";
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player");
+
         StartCoroutine(GetTowers(GlobalStuffs.username));
+        StartCoroutine(GetDateTime(GlobalStuffs.username));
         StartCoroutine(GetSkin(GlobalStuffs.username));
         StartCoroutine(GetTime(GlobalStuffs.username));
     }
@@ -42,7 +45,7 @@ public class AddTower : MonoBehaviour
         switch (webRequest1.result)
         {
             case UnityWebRequest.Result.Success:
-                Debug.Log("Received: " + webRequest1.downloadHandler.text);
+                Debug.Log("Tower Received: " + webRequest1.downloadHandler.text);
 
                 TowerStats TS = TowerStats.CreateFromJSON(webRequest1.downloadHandler.text);
                 if (TS != null)
@@ -97,7 +100,7 @@ public class AddTower : MonoBehaviour
         switch (webRequest1.result)
         {
             case UnityWebRequest.Result.Success:
-                Debug.Log("Received: " + webRequest1.downloadHandler.text);
+                Debug.Log("Skin Received: " + webRequest1.downloadHandler.text);
                 if (webRequest1.downloadHandler.text == "R")
                 {
                     ChooseThisSkin = 0;
@@ -130,8 +133,29 @@ public class AddTower : MonoBehaviour
         switch (webRequest1.result)
         {
             case UnityWebRequest.Result.Success:
-                Debug.Log("Received: " + webRequest1.downloadHandler.text);
+                Debug.Log("Time Received: " + webRequest1.downloadHandler.text);
                 gameObject.GetComponent<UpdateDBAfterEveryWave>().timecountup = float.Parse(webRequest1.downloadHandler.text);
+                webRequest1.Dispose();
+                break;
+            default:
+                webRequest1.Dispose();
+                break;
+        }
+    }
+    IEnumerator GetDateTime(string playername)
+    {
+        WWWForm form1 = new WWWForm();
+        form1.AddField("username", playername);
+        UnityWebRequest webRequest1 = UnityWebRequest.Post(URLReadDate, form1);
+
+        // Request and wait for the desired page.
+        yield return webRequest1.SendWebRequest();
+
+        switch (webRequest1.result)
+        {
+            case UnityWebRequest.Result.Success:
+                Debug.Log("Date Received: " + webRequest1.downloadHandler.text);
+                GlobalStuffs.LastLogin = webRequest1.downloadHandler.text;
                 webRequest1.Dispose();
                 break;
             default:
