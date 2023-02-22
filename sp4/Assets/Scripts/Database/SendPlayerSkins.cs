@@ -38,7 +38,7 @@ public class SendPlayerSkins : MonoBehaviour
             {
                 case UnityWebRequest.Result.Success:
                     Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
-                    SceneManager.LoadScene("LevelOne");
+                    SceneManager.LoadScene("TowerSelectScene");
                     break;
                 default:
                     Debug.Log("baderror");
