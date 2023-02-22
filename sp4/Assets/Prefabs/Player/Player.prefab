@@ -301,7 +301,43 @@ MonoBehaviour:
   ShockWaveForEnemies: {fileID: 2152071253941069527, guid: 1b79d61997722d542b9d2ae4a8fdf16e, type: 3}
   Curve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.48822242
+      value: 0.0024547
+      inSlope: -0.0038980774
+      outSlope: -0.0038980774
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.36922252
+    - serializedVersion: 3
+      time: 0.61259437
+      value: 0.25237232
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9921559
+      value: 0.0004745731
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
