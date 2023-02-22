@@ -13,13 +13,22 @@ public static class GlobalStuffs {
     public static int level=0;
     public static int TotalTimesPlayed = 0;
     public static int[] Tower = new int[5];
+    public static string PlayerSkins = "B";
+    public static int TotalTime = 0;
 
     public static string baseURL= "http://localhost/Database/"; //rename this to your server path
 
     static string addscorebackendURL=baseURL+"addscorebackend.php";
     static string UpdatePlayerStatsURL = baseURL + ".php";
     static string GetTowersURL = baseURL + "ReadTowers.php";
-
+    public static string UpdateSettingsURL = baseURL + "UpdateSettings.php";
+    public static string ReadSettingsURL = baseURL + "ReadSettings.php";
+    static string URLSendSkins = baseURL + "ReadPlayerSkins.php";
+    #region settings
+    public static int sfxVolume;
+    public static int bgmVolume;
+    public static int masterVolume;
+    #endregion settings
     //public static IEnumerator DoSendScore(string pname,int score){
     //    WWWForm form=new WWWForm();
     //    form.AddField("sPlayerName",pname);
@@ -121,6 +130,30 @@ public static class GlobalStuffs {
             {
                 case UnityWebRequest.Result.Success:
                     Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
+                    webreq.Dispose();
+                    //GetScoreBoard();
+                    break;
+                default:
+                    Debug.Log("baderror");
+                    webreq.Dispose();
+                    break;
+            }
+        }
+    }
+    public static IEnumerator UpdatePlayerSettings()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("username", username);
+        form.AddField("newbgm", bgmVolume);
+        form.AddField("newsfx", sfxVolume);
+        form.AddField("newmaster", masterVolume);
+        using (UnityWebRequest webreq = UnityWebRequest.Post(UpdatePlayerStatsURL, form))
+        {
+            yield return webreq.SendWebRequest();
+            switch (webreq.result)
+            {
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
                     //GetScoreBoard();
                     break;
                 default:
@@ -131,6 +164,33 @@ public static class GlobalStuffs {
         //webreq.Dispose();    
     }
 
+    public static IEnumerator GetPlayerSettings(string playername)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("username", playername);
+        UnityWebRequest webRequest = UnityWebRequest.Post(ReadSettingsURL, form);
+        // Request and wait for the desired page.
+        yield return webRequest.SendWebRequest();
+        switch (webRequest.result)
+        {
+            case UnityWebRequest.Result.Success:
+                PlayerSettings ps = null;
+                if (webRequest.downloadHandler.text != " ")
+                    ps = PlayerSettings.CreateFromJSON(webRequest.downloadHandler.text);
+                if (ps != null)
+                {
+                    GlobalStuffs.username = ps.username;
+                    GlobalStuffs.sfxVolume = ps.sfxVolume;
+                    GlobalStuffs.bgmVolume = ps.bgmVolume;
+                    GlobalStuffs.masterVolume = ps.masterVolume;
+                }                
+                break;
+            default:
+                break;
+        }
+        webRequest.Dispose();
+
+    }
     //    public static IEnumerator DeleteCurrentUser(){
     //    WWWForm form=new WWWForm();
     //    form.AddField("sUsername", username);        

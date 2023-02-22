@@ -26,6 +26,7 @@ public class PlayerSpells : MonoBehaviour
     public GameObject SwordSpawn;
     public GameObject ShockWaveForEnemies;
     private float countup;
+    private float GravMagicCoolDown;
     #endregion Player Magic
 
     #region cameraShaking
@@ -38,13 +39,13 @@ public class PlayerSpells : MonoBehaviour
     void Start()
     {
         startPosition = Camera.main.transform.localPosition;
-
+        GravMagicCoolDown = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L) && !UsingMagic && GetComponent<Player>().Mana >= 10)
+        if (Input.GetKeyUp(KeyCode.L) && !UsingMagic && GetComponent<Player>().Mana >= 10 && GravMagicCoolDown <= 0)
         {
             ListOfEnemies.Clear();
             ListOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -57,6 +58,10 @@ public class PlayerSpells : MonoBehaviour
             UsingMagic = true;
             StartCoroutine(ShakeCamera());
             GetComponent<Player>().Mana -= 10;
+        }
+        else
+        {
+            GravMagicCoolDown -= Time.deltaTime;
         }
         if (AntiGravity)
         {
@@ -77,6 +82,7 @@ public class PlayerSpells : MonoBehaviour
                 UsingMagic = false;
                 AntiGravity = false;
                 ElapsedVariableForMagic = 0;
+                GravMagicCoolDown = 1;
             }
         }
         else if (BigUlt)

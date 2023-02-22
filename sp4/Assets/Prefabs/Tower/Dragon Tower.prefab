@@ -2689,6 +2689,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 906990218797040019, guid: 088d3e978d071a24eaf44d8fd63b9035, type: 3}
   rootObject: {fileID: 726643150202735200}
   CanShoot: 0
+  atkspd: 0
 --- !u!65 &3250152629794095016
 BoxCollider:
   m_ObjectHideFlags: 0

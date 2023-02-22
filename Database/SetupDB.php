@@ -1,4 +1,4 @@
-<?php //DeleteAllScores.php
+<?php //SetupDB.php
 //check if POST fields are received, else quit
 // Connect database 
 include("dbconninc.php");
@@ -14,8 +14,22 @@ CREATE TABLE tb_towerselect (
 );
 ","
 CREATE TABLE tb_playerstats (
-            HostagesLeft INT NOT NULL,
-            LvlCleared INT NOT NULL
+    username varchar(100) NOT NULL,
+    HostagesLeft INT Default 100,
+    LvlCleared TinyINT Default 0,
+    TimePlayed INT Default 0
+);
+","
+CREATE TABLE tb_OwnedSkins (
+            username varchar(100) NOT NULL,
+            PlayerSkins varchar(10) DEFAULT 'B'
+);
+","
+CREATE TABLE tb_Settings (
+    username varchar(100) NOT NULL,
+    MasterVolume TINYINT DEFAULT 100,
+    SFXVolume TINYINT DEFAULT 100,
+    BGMVolume TINYINT DEFAULT 100
 );
 "];
 foreach($query as $a){

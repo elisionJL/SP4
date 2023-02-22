@@ -37,6 +37,7 @@ public class WaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G) && waveCooldown > 0)
         {
             waveCooldown = -1;
+            readyText.SetActive(false);
         }
         if (waveCooldown > 0 && waveDone == true)
         {
@@ -76,7 +77,9 @@ public class WaveManager : MonoBehaviour
             {
                 if(EnemyContainer.transform.childCount == 0)
                 {
+                    GameObject.Find("AddTowersToPlayer").GetComponent<UpdateDBAfterEveryWave>().UpdateTime();
                     waveDone = true;
+                    readyText.SetActive(true);
                     waveCooldown = 40;
                     ++wave;
                 }
