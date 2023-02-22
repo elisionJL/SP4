@@ -90,7 +90,7 @@ public class LogInRegScript : MonoBehaviour
                         GlobalStuffs.username = SignInUsername.text;
                         //Assign Your GlobalStuffs variable here
                         Debug.Log(GlobalStuffs.username);
-                        SceneManager.LoadScene("PlayerSkinSelect");
+                        SceneManager.LoadScene("MainMenu");
                     }
                     webreq.Dispose();
                     break;
