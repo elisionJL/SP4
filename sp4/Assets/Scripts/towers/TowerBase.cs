@@ -120,7 +120,6 @@ abstract class TowerBase : MonoBehaviour
                 damage /= 2;
                 attackSpd /= 1.3f;
                 gameObject.GetComponent<Tower_AI>().StopBuffs();
-                Debug.Log(attackSpd + ", " + damage);
             }
         }
     }
