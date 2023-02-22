@@ -6,18 +6,20 @@ include("dbconninc.php");
 $query=["
 CREATE TABLE tb_towerselect (
             username varchar(100) NOT NULL,
-            Tower1 INT NULL,
-            Tower2 INT NULL,
-            Tower3 INT NULL,
-            Tower4 INT NULL,
-            Tower5 INT NULL
+            Tower1 INT Default 1,
+            Tower2 INT Default 2,
+            Tower3 INT Default 3,
+            Tower4 INT Default 4,
+            Tower5 INT Default 5
 );
 ","
 CREATE TABLE tb_playerstats (
-    username varchar(100) NOT NULL,
-    HostagesLeft INT Default 100,
-    LvlCleared TinyINT Default 0,
-    TimePlayed INT Default 0
+            username varchar(100) NOT NULL,
+            password varchar(100) NOT NULL,
+            HostagesLeft INT Default 100,
+            LvlCleared TinyINT Default 0,
+            TimePlayed INT Default 0,
+            LastLogin DATETIME DEFAULT NOW()
 );
 ","
 CREATE TABLE tb_OwnedSkins (
