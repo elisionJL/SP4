@@ -63,6 +63,7 @@ public class PlayerSpells : MonoBehaviour
         {
             GravMagicCoolDown -= Time.deltaTime;
         }
+
         if (AntiGravity)
         {
             if (ElapsedVariableForMagic < 1)
@@ -171,6 +172,17 @@ public class PlayerSpells : MonoBehaviour
             Destroy(PortalToDelete);
             Destroy(SwordToLookAt);
             BigUlt = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            ListOfEnemies.Clear();
+            ListOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+
+            for (int i = 0; i < ListOfEnemies.Count; ++i)
+            {
+                ListOfEnemies[i].GetComponent<Enemy_AI>().MinusHP(500);
+            }
         }
     }
     IEnumerator ShakeCamera()

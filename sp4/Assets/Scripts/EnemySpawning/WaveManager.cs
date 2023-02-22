@@ -101,6 +101,7 @@ public class WaveManager : MonoBehaviour
                             GlobalStuffs.level++;
                             waveDone = true;
                             waveCooldown = 10;
+                            win = true; //added win or else it wont go to the bottom code and go back to levelselect
                             StartCoroutine(UpdatePlayerStats());
                         }
                     }
@@ -113,8 +114,7 @@ public class WaveManager : MonoBehaviour
             CountDownText.text = "Level Complete!\nReturning in: " + Mathf.Ceil(waveCooldown).ToString();
             if (waveCooldown <= 0)
             {
-                SceneManager.LoadScene("LevelSelect");
-                
+                SceneManager.LoadScene("LevelSelect");                
             }
         }
     }
