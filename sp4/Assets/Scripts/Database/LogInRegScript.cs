@@ -85,10 +85,13 @@ public class LogInRegScript : MonoBehaviour
             {
                 case UnityWebRequest.Result.Success:
                     ResponseLogin.text = webreq.downloadHandler.text;
-                    GlobalStuffs.username = SignInUsername.text;
-                    //Assign Your GlobalStuffs variable here
-                    Debug.Log(GlobalStuffs.username);
-                    SceneManager.LoadScene("PlayerSkinSelect");
+                    if (webreq.downloadHandler.text == "Login Success")
+                    {
+                        GlobalStuffs.username = SignInUsername.text;
+                        //Assign Your GlobalStuffs variable here
+                        Debug.Log(GlobalStuffs.username);
+                        SceneManager.LoadScene("PlayerSkinSelect");
+                    }
                     webreq.Dispose();
                     break;
                 default:
