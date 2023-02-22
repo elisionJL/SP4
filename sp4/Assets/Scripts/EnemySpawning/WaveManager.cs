@@ -98,7 +98,7 @@ public class WaveManager : MonoBehaviour
                         }
                         else
                         {
-                            GlobalStuffs.level++;
+                            GlobalStuffs.level =  maxWave - 2;
                             waveDone = true;
                             waveCooldown = 10;
                             win = true; //added win or else it wont go to the bottom code and go back to levelselect
