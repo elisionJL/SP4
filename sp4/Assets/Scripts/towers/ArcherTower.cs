@@ -29,6 +29,7 @@ class ArcherTower : TowerBase
     }
     public override void OnUpdate()
     {
+
         if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
         {
             Debug.Log("GOBLIN SHOOT");

@@ -27,7 +27,6 @@ class DragonTower : TowerBase
     }
     public override void OnUpdate()
     {
-        Transform target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
         if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
         {
             Fire();
