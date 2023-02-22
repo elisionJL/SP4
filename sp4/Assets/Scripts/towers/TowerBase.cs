@@ -52,12 +52,12 @@ abstract class TowerBase : MonoBehaviour
 
     public int GetHP()
     {
-        return hp;
+        return tower_AI.HP;
     }
 
     public int GetHPUpgraded()
     {
-        return Mathf.RoundToInt(hp * 1.5f);
+        return Mathf.RoundToInt(tower_AI.HP * 1.5f);
     }
     public int GetDamage()
     {

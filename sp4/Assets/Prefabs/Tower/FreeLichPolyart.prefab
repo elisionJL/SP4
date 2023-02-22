@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 4751695986741030247}
   - component: {fileID: -6338960374154220695}
   - component: {fileID: 1626274065750847100}
-  - component: {fileID: 3064248089680799137}
+  - component: {fileID: -8089906093069904654}
   m_Layer: 0
   m_Name: FreeLichPolyart
   m_TagString: Untagged
@@ -455,7 +455,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 2.4955282, z: 1.2}
   m_Center: {x: 0, y: 1.2, z: 0.1}
---- !u!82 &3064248089680799137
+--- !u!82 &-8089906093069904654
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,10 +465,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6702475318683993451, guid: 16edc60a0217a5244aeb44ebbad8d85b, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 103ce3540982cd145b53990d029a6bcc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0a1c8512ec0ce824fa0485eaaccf700f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.355
+  m_Pitch: 0.1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -479,21 +479,21 @@ AudioSource:
   MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.008356858
-      value: 1
-      inSlope: -0.93318933
-      outSlope: -0.93318933
+      time: 0.00811081
+      value: 0.9943886
+      inSlope: -0.97840905
+      outSlope: -0.97840905
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.13998705
+      outWeight: 0.27285317
     - serializedVersion: 3
       time: 1
       value: 0
@@ -511,7 +511,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -526,7 +526,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.027777778
       inSlope: 0
       outSlope: 0
       tangentMode: 0

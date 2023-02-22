@@ -340,6 +340,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2859015362511942745, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.00003
+      objectReference: {fileID: 0}
     - target: {fileID: 3318619867718526606, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 7.500183
@@ -452,6 +456,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5228288967328716126, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 2071938709}
     - target: {fileID: 5608616344400715397, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1764,7 +1772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380610783384488878, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8380610783384488879, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
       propertyPath: m_RootOrder
@@ -2293,6 +2301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1786e68980c3551499a1eb10435fde8c, type: 3}
+--- !u!1 &2071938709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 904287302924885530, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+  m_PrefabInstance: {fileID: 1201350006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130378238
 GameObject:
   m_ObjectHideFlags: 0

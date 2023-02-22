@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 class MageTower : TowerBase
 {
+    AudioSource m_AudioSource;
     // Start is called before the first frame update
     void Start()
     {
         CanShoot = true;
-
+        m_AudioSource = GetComponent<AudioSource>();
         damage = 10;
 
         attackSpd = 1;
@@ -19,6 +20,7 @@ class MageTower : TowerBase
         Name = "Lich";
         cost = 400;
         UpgradeCost = 300;
+
     }
 
     public override void Fire()
@@ -39,6 +41,8 @@ class MageTower : TowerBase
             
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
+                
+
                 GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 100, radius * 1.2f, 0, 1);
                 CanShoot = true;
