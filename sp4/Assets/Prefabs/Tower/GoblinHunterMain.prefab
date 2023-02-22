@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 2304546843670986617}
   - component: {fileID: 5059516013951895561}
   - component: {fileID: 8753298340429351052}
-  - component: {fileID: 1940045537949782037}
+  - component: {fileID: 2063247031876872602}
   m_Layer: 0
   m_Name: GoblinHunterMain
   m_TagString: Untagged
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   rootObject: {fileID: 7466644020818641333}
   CanShoot: 0
   target: {fileID: 0}
---- !u!65 &1940045537949782037
+--- !u!65 &2063247031876872602
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1414,8 +1414,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8889937, y: 1.4635389, z: 1}
-  m_Center: {x: 0.005229503, y: 0.72980464, z: 0}
+  m_Size: {x: 1.3127925, y: 1.4937674, z: 1}
+  m_Center: {x: 0.0080037415, y: 0.71824485, z: 0}
 --- !u!1 &2304546843680361709
 GameObject:
   m_ObjectHideFlags: 0
