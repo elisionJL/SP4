@@ -4,6 +4,7 @@ using UnityEngine;
 
 class ArcherTower : TowerBase
 {
+    AudioSource m_AudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ class ArcherTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
         tower_AI.HP = 100;
-
+        m_AudioSource = GetComponent<AudioSource>();
         Name = "Archer";
     }
 
@@ -39,6 +40,10 @@ class ArcherTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
             {
+                if (!m_AudioSource.isPlaying)
+                {
+                    m_AudioSource.Play();
+                }
                 GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 100, tower_AI.maxRadius * 1.2f, 0);
                 CanShoot = true;
