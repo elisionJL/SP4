@@ -1374,8 +1374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  maxAngle: 0
-  maxRadius: 180
+  maxAngle: 360
+  maxRadius: 10
   HP: 0
   Canvas: {fileID: 8930233606985009391}
   HPSlider: {fileID: 918193942291020762}
@@ -1402,7 +1402,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7164652177951073645, guid: ad05594990230ec4ca377e55951287b3, type: 3}
   rootObject: {fileID: 7466644020818641333}
   CanShoot: 0
-  target: {fileID: 0}
 --- !u!65 &2063247031876872602
 BoxCollider:
   m_ObjectHideFlags: 0
