@@ -12,7 +12,6 @@ class MageTower : TowerBase
 
         attackSpd = 1;
         Lvl = 1;
-        hp = 10;
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
         tower_AI.HP = 100;
@@ -40,7 +39,7 @@ class MageTower : TowerBase
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
                 GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-                test.GetComponent<projectile>().Set(damage, 10, radius * 1.2f, 0, 1);
+                test.GetComponent<projectile>().Set(damage, 100, radius * 1.2f, 0, 1);
                 CanShoot = true;
             }
         }

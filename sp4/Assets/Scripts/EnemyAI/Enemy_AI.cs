@@ -92,7 +92,7 @@ public class Enemy_AI : MonoBehaviour
         if(instantiateCoolDown <= 0)
         {
             Instantiate(GOofHearts, new Vector3(transform.position.x, transform.position.y + gameObject.transform.localScale.y + 2f, transform.position.z), Quaternion.identity);
-            instantiateCoolDown = 0.3f;
+            instantiateCoolDown = 3;
         }
         timebetweenhearts = 3f;
     }

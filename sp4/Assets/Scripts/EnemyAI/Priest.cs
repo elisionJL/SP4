@@ -84,7 +84,6 @@ class Priest : MonoBehaviour
         if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") || 
             m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle01")) && CanShoot)
         {
-            Debug.Log("Firing");
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null)

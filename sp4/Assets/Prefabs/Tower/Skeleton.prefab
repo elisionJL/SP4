@@ -1157,7 +1157,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   maxAngle: 180
   maxRadius: 7.5
-  HP: 0
+  HP: 200
   Canvas: {fileID: 5075480895399103868}
   HPSlider: {fileID: 8418684083927190118}
   TargetingText: {fileID: 3212088697250971251}
