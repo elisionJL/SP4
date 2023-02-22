@@ -8,6 +8,7 @@ class Cavalier : MonoBehaviour
     public Animator m_Animator;
     public bool CanShoot;
     public int Damage = 10;
+    public AudioSource RiderHitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,8 @@ class Cavalier : MonoBehaviour
                         HitThisGuy.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
                     else
                         HitThisGuy.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
+
+                    RiderHitSound.Play();
                 }
 
                 CanShoot = true;

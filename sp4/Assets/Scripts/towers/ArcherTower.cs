@@ -4,7 +4,6 @@ using UnityEngine;
 
 class ArcherTower : TowerBase
 {
-    public Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,37 +25,36 @@ class ArcherTower : TowerBase
     {
         m_Animator.SetTrigger("Attack");
         m_Animator.SetFloat("attackSpeed", attackSpd);
-        GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f);
         attackSpd = 2;
         CanShoot = false;
         // tower_AI.GetQuaternionTarget(rootObject.transform,radius);
     }
     public override void OnUpdate()
     {
-        target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
-        if (target != null && attackSpd < 0)
-        {
-            Fire();
-        }
-        else if (attackSpd > 0)
-        {
-            attackSpd -= Time.deltaTime;
-        }
-        //if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
+        //target = tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius);
+        //if (target != null && attackSpd < 0)
         //{
-        //    Debug.Log("GOBLIN SHOOT");
         //    Fire();
         //}
-        //else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
+        //else if (attackSpd > 0)
         //{
-        //    if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
-        //    {
-        //        GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
-        //        test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f, 0);
-        //        CanShoot = true;
-        //    }
+        //    attackSpd -= Time.deltaTime;
+        //    Debug.Log(attackSpd);
         //}
+        if (tower_AI.GetQuaternionTarget(rootObject.transform, tower_AI.maxRadius) != null && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && CanShoot)
+        {
+            Debug.Log("GOBLIN SHOOT");
+            Fire();
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !CanShoot)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            {
+                GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
+                test.GetComponent<projectile>().Set(damage, 10, tower_AI.maxRadius * 1.2f, 0);
+                CanShoot = true;
+            }
+        }
     }
 
     public void Update()
