@@ -10,7 +10,7 @@ public class DemonLordKill : MonoBehaviour
     private bool Attack = false, Attack_Dir, TimeFinished, AttackTimeBool = false;
     private float AttackTime, TimeLeftToAttack = 5f;
     public Animator DemonAnim;
-    private float DelayStart = 4.5f;
+    private float DelayStart = 9f;
 
     // Start is called before the first frame update
     void Start()

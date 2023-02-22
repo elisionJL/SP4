@@ -13,6 +13,8 @@ public class Destroy_Base : MonoBehaviour
     public Image Background;
     public TextMeshProUGUI YouSuck;
     public TextMeshProUGUI Insult;
+    public GameObject MainMenuBtn;
+
     private float alphaColour_B, alphaColour_TXT;
 
     public GameObject[] Explosions;
@@ -99,6 +101,7 @@ public class Destroy_Base : MonoBehaviour
                 alphaColour_TXT = 255;
                 YouSuck.color = new Color(YouSuck.color.r, YouSuck.color.g, YouSuck.color.b, alphaColour_TXT / 255);
                 Insult.color = new Color(Insult.color.r, Insult.color.g, Insult.color.b, alphaColour_TXT / 255);
+                MainMenuBtn.SetActive(true);
             }
         }
 
