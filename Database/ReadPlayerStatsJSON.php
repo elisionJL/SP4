@@ -4,14 +4,9 @@ include("dbconninc.php");
 // Prepare Statement (SQL query)
 if(!isset($_POST["username"]))die("not posted!");
 $sPlayerName=$_POST["username"];
-$iLevel=1;
-$iXP=0;
-$iCash=0;
+$iHostages=100;
+$iLvlCleared=0;
 $iTimesPlayed=0;
-$iJumpUpgrade=0;
-$iTimeUpgrade=0;
-$ColourChange=0;
-$MusicPlaying=0;
 
 $query="select Username from tb_playerstats where Username=?";
 $stmt=$conn->prepare($query);
@@ -25,19 +20,19 @@ if($row==0){
 
 }
 else{
-    $query2="select Username,Level,XP,cash,timesplayed,jumpUpgrade,timeUpgrade,ChangeColour,CurrentlyPlaying from tb_playerstats where Username=?";
+    $query2="select username,HostagesLeft,LvlCleared,TimePlayed from tb_playerstats where Username=?";
     $stmt=$conn->prepare($query2);
     //s - string, i - integer...make sure it matches the data types!
     $stmt->bind_param("s", $sPlayerName);
     // Execute Statement
     $stmt->execute();
     //Link results to variables
-    $stmt->bind_result($sPlayerName, $iLevel, $iXP, $iCash, $iTimesPlayed, $iJumpUpgrade, $iTimeUpgrade, $ChangeColour, $MusicPlaying);   
+    $stmt->bind_result($sPlayerName, $iHostages, $iLvlCleared, $iTimesPlayed);   
     $arr=Array(); //JSON use: create main array
     //Fetch results
     while($stmt->fetch()){
     //JSON use: create associative array for each record //4json
-    $oneScore=array("username"=>$sPlayerName,"level"=>$iLevel,"xp"=>$iXP,"cash"=>$iCash,"TotalTimesPlayed"=>$iTimesPlayed,"JumpUP"=>$iJumpUpgrade,"TimeUP"=>$iTimeUpgrade,"CanChangeColour"=>$ChangeColour,"MusicCurrentlyPlaying"=>$MusicPlaying);
+    $oneScore=array("username"=>$sPlayerName,"hostages"=>$iHostages,"level"=>$iLvlCleared,"TotalTimesPlayed"=>$iTimesPlayed);
     //JSON use: add to main index array
     array_push($arr,$oneScore); //corrected typo
     }
