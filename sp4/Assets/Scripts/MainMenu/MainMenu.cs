@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("TowerSelectScene");
+        SceneManager.LoadScene("PlayerSkinSelect");
     }
     public void SettingsButton()
     {
