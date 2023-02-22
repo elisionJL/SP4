@@ -40,7 +40,7 @@ public class Base_Interaction : MonoBehaviour
         Ray ray = new Ray(origin, direction);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) //if Object is hit
+        if (Physics.Raycast(ray, out hit) && upgrade == false) //if Object is hit
         {
             float distance = hit.distance; //Get the distance from the ray to the hit object
 
@@ -62,7 +62,7 @@ public class Base_Interaction : MonoBehaviour
                         CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
                     }
 
-                    if(CurrentTowerLookAt != hit.collider.gameObject)
+                    if(CurrentTowerLookAt != hit.collider.gameObject && CurrentTowerLookAt != null)
                     {
                         UpgradePrompt.SetActive(false);
                         if (CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>())
@@ -71,6 +71,8 @@ public class Base_Interaction : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        CurrentTowerLookAt = null;
+                        Destroy(CurrentTowerLookAt);
                         DisableSword();
 
                         UpgradeUI.SetActive(true);
@@ -93,6 +95,9 @@ public class Base_Interaction : MonoBehaviour
 
             if (CanvasToGet != null && CanvasToGet.activeSelf == true)
                 CanvasToGet.SetActive(false);
+
+            CurrentTowerLookAt = null;
+            Destroy(CurrentTowerLookAt);
         }
 
         if(CanPlace == true && TowerToSpawn != null)
@@ -297,6 +302,7 @@ public class Base_Interaction : MonoBehaviour
                 //Otherwise if user presses right mouse trigger instead
                 else if(Input.GetKeyDown(KeyCode.Mouse1))
                 {
+                    TowerToSpawn = null;
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
                 }

@@ -154,6 +154,7 @@ public class Upgrade_Tower : MonoBehaviour
     public void SellTower() //Give back some souls to destroy tower
     {
         Destroy(TowerGotten);
+        TowerGotten = null;
         gameObject.SetActive(false);
         Player.gameObject.GetComponent<Player>().LockMouse();
         Player.gameObject.GetComponent<Base_Interaction>().CloseShopUI();
