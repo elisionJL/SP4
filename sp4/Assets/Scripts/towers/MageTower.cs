@@ -41,7 +41,10 @@ class MageTower : TowerBase
             
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
-                
+                if (!m_AudioSource.isPlaying)
+                {
+                    m_AudioSource.Play();
+                }
 
                 GameObject test = Instantiate(projectilePrefab, rootObject.transform.position, rootObject.transform.rotation);
                 test.GetComponent<projectile>().Set(damage, 100, radius * 1.2f, 0, 1);
