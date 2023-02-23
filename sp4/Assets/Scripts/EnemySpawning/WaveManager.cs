@@ -98,8 +98,9 @@ public class WaveManager : MonoBehaviour
                         }
                         else
                         {
-                            win = true;
-                            GlobalStuffs.level++;
+                            if(GlobalStuffs.level < maxWave - 2){
+                                GlobalStuffs.level =  maxWave - 2;
+                            }
                             waveDone = true;
                             waveCooldown = 10;
                             StartCoroutine(UpdatePlayerStats());
