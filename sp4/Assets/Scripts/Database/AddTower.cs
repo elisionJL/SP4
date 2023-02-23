@@ -29,7 +29,6 @@ public class AddTower : MonoBehaviour
         Inventory = GameObject.Find("_Inventory_");
 
         StartCoroutine(GetPlayerStats(GlobalStuffs.username));
-        StartCoroutine(GetTowers(GlobalStuffs.username));
         StartCoroutine(GetDateTime(GlobalStuffs.username));
         StartCoroutine(GetSkin(GlobalStuffs.username));
         StartCoroutine(GetTime(GlobalStuffs.username));
@@ -55,6 +54,7 @@ public class AddTower : MonoBehaviour
             case UnityWebRequest.Result.Success:
                 Debug.Log("Yes");
                 TowerStats TS = TowerStats.CreateFromJSON(webRequest1.downloadHandler.text);
+                Debug.Log(webRequest1.downloadHandler.text);
                 if (TS != null)
                 {
                     GlobalStuffs.Tower[0] = TS.Tower1 - 1;
@@ -196,16 +196,17 @@ public class AddTower : MonoBehaviour
                 }
                 else
                 {
-                    GlobalStuffs.username = "Guest";
+                    GlobalStuffs.username = "GuestPlayer";
                     GlobalStuffs.Hostages = 100;
                     GlobalStuffs.level = 0;
                     GlobalStuffs.TotalTimesPlayed = 0;
                 }
 
+                StartCoroutine(GetTowers(GlobalStuffs.username));
                 webRequest.Dispose();
                 break;
             default:
-                GlobalStuffs.username = "Guest";
+                GlobalStuffs.username = "GuestPlayer";
                 GlobalStuffs.Hostages = 100;
                 GlobalStuffs.level = 0;
                 GlobalStuffs.TotalTimesPlayed = 0;
