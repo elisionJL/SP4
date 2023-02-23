@@ -42,7 +42,7 @@ public class Tower_AI : MonoBehaviour
     private void Update()
     {
         if (Canvas.activeSelf)
-            Canvas.transform.LookAt(Camera.main.transform.position);
+            Canvas.transform.LookAt(Camera.main.transform.position + Camera.main.transform.localPosition);
 
         if (playerTransform == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             playerTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
