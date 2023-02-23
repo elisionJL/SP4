@@ -18,11 +18,14 @@ public class MainMenu : MonoBehaviour
     public Slider SFXVolumeSlider;
     public TMP_InputField SFXVolumeText;
     public AudioMixer audioMixer;
+    public TMP_Text Name;
+    public TMP_Text LevelsCleared;
     // Start is called before the first frame update
     void Start()
     {
         if (TOF)
             SettingsPanel.SetActive(false);
+        StartCoroutine("GetPlayerSettings");
     }
 
     public void StartButton()
@@ -32,6 +35,7 @@ public class MainMenu : MonoBehaviour
     public void SettingsButton()
     {
         StartCoroutine("GetPlayerSettings");
+        SettingsPanel.SetActive(true);
     }
     public void ExitButton()
     {
@@ -40,6 +44,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ClosePanel()
     {
+        Time.timeScale = 1;
         StartCoroutine("UpdatePlayerSettings");
     }
     public  IEnumerator UpdatePlayerSettings()
@@ -86,7 +91,13 @@ public class MainMenu : MonoBehaviour
                     GlobalStuffs.sfxVolume = ps.sfxVolume;
                     GlobalStuffs.bgmVolume = ps.bgmVolume;
                     GlobalStuffs.masterVolume = ps.masterVolume;
-                    SettingsPanel.SetActive(true);
+                    SFXVolumeSlider.value = ps.sfxVolume;
+                    BGMVolumeSlider.value = ps.bgmVolume;
+                    MasterVolumeSlider.value = ps.masterVolume;
+                    if(SceneManager.GetActiveScene().name == "MainMenu"){
+                        Name.text = "Username: " + GlobalStuffs.username;
+                        LevelsCleared.text = "Levels Cleared: " + GlobalStuffs.level.ToString();
+                    }
                 }
                 break;
             default:
@@ -222,6 +233,5 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

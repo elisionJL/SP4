@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class AddTower : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Inventory;
+    public Sprite[] TowerImages = new Sprite[8];
+
     public GameObject[] Towers;
     public Material[] SkinMaterials;
     private int ChooseThisSkin;
+
 
     string URLReadTowers = GlobalStuffs.baseURL + "ReadTowers.php";
     string URLReadSkins = GlobalStuffs.baseURL + "ReadSkins.php";
@@ -21,6 +26,7 @@ public class AddTower : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player");
+        Inventory = GameObject.Find("_Inventory_");
 
         StartCoroutine(GetPlayerStats(GlobalStuffs.username));
         StartCoroutine(GetTowers(GlobalStuffs.username));
@@ -47,6 +53,7 @@ public class AddTower : MonoBehaviour
         switch (webRequest1.result)
         {
             case UnityWebRequest.Result.Success:
+                Debug.Log("Yes");
                 TowerStats TS = TowerStats.CreateFromJSON(webRequest1.downloadHandler.text);
                 if (TS != null)
                 {
@@ -70,10 +77,12 @@ public class AddTower : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     Player.transform.GetChild(0).gameObject.GetComponent<Base_Interaction>().Towers.Add(Towers[GlobalStuffs.Tower[i]]);
+                    Inventory.transform.GetChild(i).transform.GetChild(0).gameObject.GetComponent<Image>().sprite = TowerImages[GlobalStuffs.Tower[i]];
                 }
                 webRequest1.Dispose();
                 break;
             default:
+                Debug.Log("No");
                 GlobalStuffs.Tower[0] = 0;
                 GlobalStuffs.Tower[1] = 1;
                 GlobalStuffs.Tower[2] = 2;
@@ -83,6 +92,7 @@ public class AddTower : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     Player.transform.GetChild(0).gameObject.GetComponent<Base_Interaction>().Towers.Add(Towers[GlobalStuffs.Tower[i]]);
+                    Inventory.transform.GetChild(i).transform.GetChild(0).gameObject.GetComponent<Image>().sprite = TowerImages[GlobalStuffs.Tower[i]];
                 }
                 webRequest1.Dispose();
                 break;

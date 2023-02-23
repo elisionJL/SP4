@@ -8,7 +8,9 @@ public class TowerSelect : MonoBehaviour
 {
     public GameObject[] Selected_Towers;
     [SerializeField]
-    private int[] Monster_ID;
+    public int[] Monster_ID;
+    List<int> valuesToFind = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+    List<int> valuesFound = new List<int>();
 
     public void Start()
     {
@@ -82,11 +84,159 @@ public class TowerSelect : MonoBehaviour
 
     public void GoNextScene()
     {
-        GlobalStuffs.Tower[0] = Monster_ID[0];
-        GlobalStuffs.Tower[1] = Monster_ID[1];
-        GlobalStuffs.Tower[2] = Monster_ID[2];
-        GlobalStuffs.Tower[3] = Monster_ID[3];
-        GlobalStuffs.Tower[4] = Monster_ID[4];
+        foreach (int value in valuesToFind) //Find all values from array that player selected
+        {
+            if (System.Array.Exists(Monster_ID, element => element == value))
+            {
+                valuesFound.Add(value);
+            }
+        }
+
+        for (int i = 0; i < GlobalStuffs.Tower.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    if (Monster_ID[i] == 0) //If No towers are selected
+                    {
+                        if(valuesFound.Count == 0)
+                        {
+                            GlobalStuffs.Tower[0] = 1;
+                            valuesFound.Add(1);
+                        }
+                        else
+                        {
+                            for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                            {
+                                bool ValueExists = false;
+
+                                for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                                {
+                                    if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
+                                        ValueExists = true;
+                                }
+
+                                if (ValueExists != true) //If we reach the end of the valuesfound list and value to add is not = to any value in the list
+                                {
+                                    GlobalStuffs.Tower[1] = ValueToAdd; //Set first value to valuetoadd
+                                    valuesFound.Add(ValueToAdd); //Then push it to valuesfound for check of next line
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GlobalStuffs.Tower[0] = Monster_ID[0];
+                    }                
+                    break;
+                case 1:
+                    if (Monster_ID[i] == 0) //If No towers are selected
+                    {
+                        for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                        {
+                            bool ValueExists = false;
+
+                            for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                            {
+                                if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
+                                    ValueExists = true;
+                            }
+
+                            if (ValueExists != true) //If we reach the end of the valuesfound list and value to add is not = to any value in the list
+                            {
+                                GlobalStuffs.Tower[1] = ValueToAdd; //Set first value to valuetoadd
+                                valuesFound.Add(ValueToAdd); //Then push it to valuesfound for check of next line
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GlobalStuffs.Tower[1] = Monster_ID[1];
+                    }
+                    break;
+                case 2:
+                    if (Monster_ID[i] == 0) //If No towers are selected
+                    {
+                        for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                        {
+                            bool ValueExists = false;
+
+                            for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                            {
+                                if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
+                                    ValueExists = true;
+                            }
+
+                            if (ValueExists != true) //If we reach the end of the valuesfound list and value to add is not = to any value in the list
+                            {
+                                GlobalStuffs.Tower[2] = ValueToAdd; //Set first value to valuetoadd
+                                valuesFound.Add(ValueToAdd); //Then push it to valuesfound for check of next line
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GlobalStuffs.Tower[2] = Monster_ID[2];
+                    }
+                    break;
+                case 3:
+                    if (Monster_ID[i] == 0) //If No towers are selected
+                    {
+                        for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                        {
+                            bool ValueExists = false;
+
+                            for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                            {
+                                if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
+                                    ValueExists = true;
+                            }
+
+                            if (ValueExists != true) //If we reach the end of the valuesfound list and value to add is not = to any value in the list
+                            {
+                                GlobalStuffs.Tower[3] = ValueToAdd; //Set first value to valuetoadd
+                                valuesFound.Add(ValueToAdd); //Then push it to valuesfound for check of next line
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GlobalStuffs.Tower[3] = Monster_ID[3];
+                    }
+                    break;
+                case 4:
+                    if (Monster_ID[i] == 0) //If No towers are selected
+                    {
+                        for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                        {
+                            bool ValueExists = false;
+
+                            for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                            {
+                                if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
+                                    ValueExists = true;
+                            }
+
+                            if (ValueExists != true) //If we reach the end of the valuesfound list and value to add is not = to any value in the list
+                            {
+                                GlobalStuffs.Tower[4] = ValueToAdd; //Set first value to valuetoadd
+                                valuesFound.Add(ValueToAdd); //Then push it to valuesfound for check of next line
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GlobalStuffs.Tower[4] = Monster_ID[4];
+                    }
+                    break;
+            }
+        }
+
         gameObject.GetComponent<TowerSet>().FinishTowerSelect();
     }
 }

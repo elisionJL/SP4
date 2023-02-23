@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
             PlayerTowerShop.enabled = true;
             RespawnCount = 0;
             Health = 100;
+            transform.parent.transform.position = new Vector3(0, 10, 0);
         }
         MouseControls();
     }
