@@ -11,9 +11,9 @@ public class Upgrade_Tower : MonoBehaviour
     private GameObject TowerGotten;
     public int TowerValue;
 
-    private void OnEnable()
+    public void Start()
     {
-        
+        Player = GameObject.Find("Main Camera");
     }
 
     public void GetTowerInfo(GameObject Tower)
