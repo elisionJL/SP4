@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
     public void SettingsButton()
     {
         StartCoroutine("GetPlayerSettings");
+        SettingsPanel.SetActive(true);
     }
     public void ExitButton()
     {
@@ -93,7 +94,6 @@ public class MainMenu : MonoBehaviour
                     SFXVolumeSlider.value = ps.sfxVolume;
                     BGMVolumeSlider.value = ps.bgmVolume;
                     MasterVolumeSlider.value = ps.masterVolume;
-                    SettingsPanel.SetActive(true);
                     if(SceneManager.GetActiveScene().name == "MainMenu"){
                         Name.text = "Username: " + GlobalStuffs.username;
                         LevelsCleared.text = "Levels Cleared: " + GlobalStuffs.level.ToString();

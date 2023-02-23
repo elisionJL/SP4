@@ -20,9 +20,11 @@ public class WaveManager : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public int TotalEnemies;
     public BGMManager bgmManager;
+    AudioSource countdownSFX;
     // Start is called before the first frame update
     void Start()
     {
+        countdownSFX = GetComponent<AudioSource>();
         win = false;
         GameObject[] tempSpawnPoints;
         tempSpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawners");
@@ -64,9 +66,14 @@ public class WaveManager : MonoBehaviour
             {
                 waveCooldown -= Time.deltaTime;
                 CountDownText.text = "Countdown: " + Mathf.Ceil(waveCooldown).ToString();
+                if (!countdownSFX.isPlaying && waveCooldown <= 5)
+                {
+                    countdownSFX.Play();
+                }
             }
             else if (waveDone == true)
             {
+                countdownSFX.Stop();
                 TotalEnemies = 0;
                 //generate the waves for the spawnpoints
                 for (int i = 0; i < SpawnPoints.Count; ++i)
