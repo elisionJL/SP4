@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         if (TOF)
             SettingsPanel.SetActive(false);
+        StartCoroutine("GetPlayerSettings");
     }
 
     public void StartButton()
@@ -42,6 +43,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ClosePanel()
     {
+        Time.timeScale = 1;
         StartCoroutine("UpdatePlayerSettings");
     }
     public  IEnumerator UpdatePlayerSettings()
@@ -88,9 +90,14 @@ public class MainMenu : MonoBehaviour
                     GlobalStuffs.sfxVolume = ps.sfxVolume;
                     GlobalStuffs.bgmVolume = ps.bgmVolume;
                     GlobalStuffs.masterVolume = ps.masterVolume;
+                    SFXVolumeSlider.value = ps.sfxVolume;
+                    BGMVolumeSlider.value = ps.bgmVolume;
+                    MasterVolumeSlider.value = ps.masterVolume;
                     SettingsPanel.SetActive(true);
-                    Name.text = "Username: " + GlobalStuffs.username;
-                    LevelsCleared.text = "Levels Cleared: " + GlobalStuffs.level.ToString();
+                    if(SceneManager.GetActiveScene().name == "MainMenu"){
+                        Name.text = "Username: " + GlobalStuffs.username;
+                        LevelsCleared.text = "Levels Cleared: " + GlobalStuffs.level.ToString();
+                    }
                 }
                 break;
             default:
