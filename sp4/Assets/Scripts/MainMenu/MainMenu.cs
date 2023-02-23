@@ -18,6 +18,8 @@ public class MainMenu : MonoBehaviour
     public Slider SFXVolumeSlider;
     public TMP_InputField SFXVolumeText;
     public AudioMixer audioMixer;
+    public TMP_Text Name;
+    public TMP_Text LevelsCleared;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +89,8 @@ public class MainMenu : MonoBehaviour
                     GlobalStuffs.bgmVolume = ps.bgmVolume;
                     GlobalStuffs.masterVolume = ps.masterVolume;
                     SettingsPanel.SetActive(true);
+                    Name.text = "Username: " + GlobalStuffs.username;
+                    LevelsCleared.text = "Levels Cleared: " + GlobalStuffs.level.ToString();
                 }
                 break;
             default:
@@ -222,6 +226,5 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
