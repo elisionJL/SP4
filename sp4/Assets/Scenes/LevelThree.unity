@@ -10222,6 +10222,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 197329234}
     - target: {fileID: 8380610783384488864, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
+      propertyPath: waveCooldown
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380610783384488864, guid: 4d1d4e96b83214f4eb3d6228385f68ae, type: 3}
       propertyPath: CountDownText
       value: 
       objectReference: {fileID: 1413480999}
