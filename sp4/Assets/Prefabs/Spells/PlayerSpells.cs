@@ -64,6 +64,23 @@ public class PlayerSpells : MonoBehaviour
             GravMagicCoolDown -= Time.deltaTime;
         }
 
+
+        if (Input.GetKeyUp(KeyCode.K) && !UsingMagic && GetComponent<Player>().Mana >= 5)
+        {
+            GetComponent<Player>().Mana -= 5;
+            FireBalls.GetComponent<MeteorSwarmScript>().FindPlayer(gameObject);
+            Instantiate(FireBalls);
+
+        }
+        if (Input.GetKeyUp(KeyCode.P) && !BigUlt && !UsingMagic && GetComponent<Player>().Mana >= 50)
+        {
+            GetComponent<Player>().Mana -= 50;
+            BigUlt = true;
+            CreatedDomain = false;
+            UsingMagic = true;
+        }
+
+
         if (AntiGravity)
         {
             if (ElapsedVariableForMagic < 1)
@@ -71,14 +88,16 @@ public class PlayerSpells : MonoBehaviour
                 ElapsedVariableForMagic += Time.deltaTime;
                 for (int i = 0; i < ListOfEnemies.Count; ++i)
                 {
-                    ListOfEnemies[i].transform.position = new Vector3(ListOfEnemies[i].transform.position.x, ListOfEnemies[i].transform.position.y + (Time.deltaTime * 5), ListOfEnemies[i].transform.position.z);
+                    if (ListOfEnemies[i] != null)
+                        ListOfEnemies[i].transform.position = new Vector3(ListOfEnemies[i].transform.position.x, ListOfEnemies[i].transform.position.y + (Time.deltaTime * 5), ListOfEnemies[i].transform.position.z);
                 }
             }
             else
             {
                 for (int i = 0; i < ListOfEnemies.Count; ++i)
                 {
-                    ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion, ShockWaveForEnemies);
+                    if (ListOfEnemies[i] != null)
+                        ListOfEnemies[i].GetComponent<Enemy_AI>().EnableScript(Explosion, ShockWaveForEnemies);
                 }
                 UsingMagic = false;
                 AntiGravity = false;
@@ -150,28 +169,10 @@ public class PlayerSpells : MonoBehaviour
                         Destroy(ClonedUniverse);
                         Destroy(PortalToDelete);
                         BigUlt = false;
+                        UsingMagic = false;
                     }
                 }
             }
-        }
-
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            FireBalls.GetComponent<MeteorSwarmScript>().FindPlayer(gameObject);
-            Instantiate(FireBalls);
-        }
-        if (Input.GetKeyUp(KeyCode.P) && !BigUlt)
-        {
-            BigUlt = true;
-            CreatedDomain = false;
-        }
-        else if (Input.GetKeyUp(KeyCode.P) && BigUlt)
-        {
-            LightOfScene.intensity = 1;
-            Destroy(ClonedUniverse);
-            Destroy(PortalToDelete);
-            Destroy(SwordToLookAt);
-            BigUlt = false;
         }
 
         if (Input.GetKeyUp(KeyCode.M))

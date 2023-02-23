@@ -6122,6 +6122,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: HostageUI
+      value: 
+      objectReference: {fileID: 510945938}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
       propertyPath: UpgradeUI
       value: 
       objectReference: {fileID: 1766185109}
@@ -7749,6 +7753,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &510945938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5877996652972176496, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+  m_PrefabInstance: {fileID: 510945935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &513385310
 PrefabInstance:
   m_ObjectHideFlags: 0
