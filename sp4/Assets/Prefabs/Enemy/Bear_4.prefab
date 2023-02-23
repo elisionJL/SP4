@@ -2204,6 +2204,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   CurrentPercentage: 0
+  Cash: 0
+  Player: {fileID: 0}
   GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
   Waves: {fileID: 0}
@@ -2228,7 +2230,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 8575202979567786582}
   Name: Bear
-  CashDrop: 400
+  CashDrop: 1200
   rootObject: {fileID: 7962199819078159310}
   speed: 15
   Damage: 10

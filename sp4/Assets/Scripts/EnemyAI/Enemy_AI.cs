@@ -329,7 +329,7 @@ public class Enemy_AI : MonoBehaviour
         HPSlider.value = HP;
         if (HP <= 0)
         {
-            Player.transform.GetChild(0).gameObject.GetComponent<Player>().Souls += Cash;
+            Player.transform.GetChild(0).gameObject.GetComponent<Player>().MinusSouls(-Cash);
             //gets the enemy container than get the wave manager game obejct
             transform.parent.transform.parent.GetComponent<WaveManager>().TotalEnemies -= 1;
             Destroy(this.gameObject);

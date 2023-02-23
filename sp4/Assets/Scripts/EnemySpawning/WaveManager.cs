@@ -124,7 +124,7 @@ public class WaveManager : MonoBehaviour
                             readyText.SetActive(true);
                             waveCooldown = 40;
                             ++wave;
-                            GameObject.Find("Player").transform.GetChild(0).GetComponent<Player>().Souls += 250 * wave;
+                            GameObject.Find("Player").transform.GetChild(0).GetComponent<Player>().MinusSouls(-(250 * wave));
                             if(wave == maxWave)
                             {
                                 bgmManager.ChangeBGM(BGMManager.BGM.FINALPREP);

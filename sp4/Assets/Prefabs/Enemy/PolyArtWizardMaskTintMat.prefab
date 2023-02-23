@@ -2445,6 +2445,8 @@ MonoBehaviour:
   HPSlider: {fileID: 5031571591975375774}
   targets: []
   CurrentPercentage: 0
+  Cash: 0
+  Player: {fileID: 0}
   GOofHearts: {fileID: 0}
   Explosion: {fileID: 0}
   Waves: {fileID: 0}
@@ -2469,7 +2471,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 5343640540885497534}
   Name: Priest
-  CashDrop: 300
+  CashDrop: 200
   rootObject: {fileID: 1953271650171834}
   speed: 6
   ArmorType: 0

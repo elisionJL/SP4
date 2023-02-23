@@ -35,7 +35,6 @@ public class Tower_AI : MonoBehaviour
     void Start()
     {
         Canvas.SetActive(false);
-        HP = 100;
     }
 
     // Update is called once per frame

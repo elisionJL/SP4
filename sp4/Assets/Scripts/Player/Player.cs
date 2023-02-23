@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public GameObject RespawnText;
     public GameObject PlayerModel;
     public GameObject PausePanel;
+    public PlayerUI Canvas;
+    private float timerbeforecolorreturns;
     private float RespawnCount;
     float RotationX = 0f;
     public int Health = 0;
@@ -32,10 +34,21 @@ public class Player : MonoBehaviour
         CameraPPL.enabled = false;
         RespawnCount = 0;
         PausePanel.SetActive(false);
+        Canvas = GameObject.Find("Canvas").GetComponent<PlayerUI>();
+        timerbeforecolorreturns = 0;
     }
     // Update is called once per frame
     void Update()
     {
+        if (timerbeforecolorreturns > 0)
+        {
+            timerbeforecolorreturns -= Time.deltaTime;
+            if (timerbeforecolorreturns <= 0)
+            {
+                Canvas.SoulChange.enabled = false;
+                Canvas.Soul.color = Color.white;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             if (Time.timeScale != 0)
@@ -116,6 +129,21 @@ public class Player : MonoBehaviour
     {
         if(SoulsNeeded <= Souls)
         {
+            Canvas.SoulChange.enabled = true;
+            if (SoulsNeeded < 0)
+            {
+                Canvas.Soul.color = Color.green;
+                Canvas.SoulChange.color = Color.green;
+                Canvas.SoulChange.text = "+"+(-SoulsNeeded).ToString();
+                timerbeforecolorreturns = 0.5f;
+            }
+            else
+            {
+                Canvas.Soul.color = Color.red;
+                Canvas.SoulChange.color = Color.red;
+                Canvas.SoulChange.text = (-SoulsNeeded).ToString();
+                timerbeforecolorreturns = 0.5f;
+            }
             Souls -= SoulsNeeded;
             return true;
         }

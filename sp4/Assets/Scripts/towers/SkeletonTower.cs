@@ -16,6 +16,7 @@ class SkeletonTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 7.5f;
         tower_AI.HP = 100;
+        tower_AI.HPSlider.maxValue = tower_AI.HP;
         tower_AI.targetingMode = Tower_AI.TARGETING.CLOSEST;
         Name = "Skeleton";
         cost = 200;

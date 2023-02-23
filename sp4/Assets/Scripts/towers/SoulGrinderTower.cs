@@ -16,13 +16,15 @@ class SoulGrinderTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 0;
         tower_AI.HP = 10;
+        tower_AI.HPSlider.maxValue = tower_AI.HP;
+        tower_AI.HPSlider.value = tower_AI.HP;
         Name = "SoulGrinder";
         cost = 450;
         UpgradeCost = 225;
     }
     public override void Fire()
     {
-        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Player>().Souls += soulsGenerated;
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Player>().MinusSouls(-soulsGenerated);
 
         switch (Lvl)
         {

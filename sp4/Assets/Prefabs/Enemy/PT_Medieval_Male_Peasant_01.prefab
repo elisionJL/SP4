@@ -1290,6 +1290,8 @@ MonoBehaviour:
   HPSlider: {fileID: 4930571175071079130}
   targets: []
   CurrentPercentage: 0
+  Cash: 0
+  Player: {fileID: 0}
   GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
   Waves: {fileID: 0}
@@ -1314,7 +1316,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 7983781730023472819}
   Name: Villager
-  CashDrop: 100
+  CashDrop: 10
   rootObject: {fileID: 1244539903904722007}
   speed: 5
   Damage: 10

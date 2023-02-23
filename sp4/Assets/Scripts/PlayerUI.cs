@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     public Slider slider;
     public Slider slider2;
     public TMP_Text Soul;
+    public TMP_Text SoulChange;
     // Start is called before the first frame update
     void Start()
     {
