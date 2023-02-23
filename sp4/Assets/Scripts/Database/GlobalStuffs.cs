@@ -25,6 +25,7 @@ public static class GlobalStuffs {
     public static string UpdateSettingsURL = baseURL + "UpdateSettings.php";
     public static string ReadSettingsURL = baseURL + "ReadSettings.php";
     static string URLSendSkins = baseURL + "ReadPlayerSkins.php";
+    public static string URLReadPlayerStats = baseURL + "ReadPlayerStatsJSON.php";
     #region settings
     public static int sfxVolume;
     public static int bgmVolume;
