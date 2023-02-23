@@ -2722,28 +2722,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1213198419}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: valueScalar
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[1].cost
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[2].cost
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[3].cost
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[4].cost
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[5].cost
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[1].enemyPrefab
@@ -2765,6 +2773,18 @@ PrefabInstance:
       propertyPath: enemyList.Array.data[5].enemyPrefab
       value: 
       objectReference: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[1].waveRequired
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[2].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[3].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
 --- !u!1001 &337551809
@@ -7810,28 +7830,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 638697232}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: valueScalar
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[1].cost
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[2].cost
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[3].cost
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[4].cost
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[5].cost
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[6].cost
@@ -7861,6 +7889,18 @@ PrefabInstance:
       propertyPath: enemyList.Array.data[6].enemyPrefab
       value: 
       objectReference: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[1].waveRequired
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[2].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[3].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
 --- !u!1001 &940961900
