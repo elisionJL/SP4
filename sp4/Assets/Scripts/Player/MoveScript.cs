@@ -47,7 +47,6 @@ public class MoveScript : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
         //Apply inputs to move
         Vector3 move = (transform.right * x + transform.forward * z) * Spd * Time.deltaTime; 
 

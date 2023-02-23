@@ -14,7 +14,7 @@ $stmt=$conn->prepare($query);
 $stmt->bind_param("s", $sPlayerName);
 $stmt->execute();
 $stmt->store_result();
-$row=$stmt->num_rows();
+$row=$stmt->affected_rows;
 $stmt->bind_result($sPlayerName);
 $stmt->fetch();
 

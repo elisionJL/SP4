@@ -19,7 +19,7 @@ public class WaveManager : MonoBehaviour
     public List<EnemySpawner> SpawnPoints = new List<EnemySpawner>();
     public List<GameObject> enemies = new List<GameObject>();
     public int TotalEnemies;
-
+    public BGMManager bgmManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +31,7 @@ public class WaveManager : MonoBehaviour
             SpawnPoints.Add(tempSpawnPoints[i].GetComponent<EnemySpawner>());
         }
         waveText.text = "wave: " + wave.ToString() + "/" + maxWave.ToString();
+        bgmManager.ChangeBGM(BGMManager.BGM.WAVEPREP);
     }
 
     // Update is called once per frame
@@ -39,6 +40,18 @@ public class WaveManager : MonoBehaviour
         if(wave > maxWave)
         {
             return;
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            wave = maxWave;
+            if (GlobalStuffs.level < maxWave - 2)
+            {
+                GlobalStuffs.level = maxWave - 2;
+            }
+            waveDone = true;
+            win = true;
+            waveCooldown = 10;
+            StartCoroutine(UpdatePlayerStats());
         }
         if (!win)
         {
@@ -51,7 +64,6 @@ public class WaveManager : MonoBehaviour
             {
                 waveCooldown -= Time.deltaTime;
                 CountDownText.text = "Countdown: " + Mathf.Ceil(waveCooldown).ToString();
-
             }
             else if (waveDone == true)
             {
@@ -63,6 +75,14 @@ public class WaveManager : MonoBehaviour
                 }
                 waveDone = false;
                 enemies.Clear();
+                if (wave == maxWave)
+                {
+                    bgmManager.ChangeBGM(BGMManager.BGM.FINALBATTLE);
+                }
+                else
+                {
+                    bgmManager.ChangeBGM(BGMManager.BGM.WAVEBATTLE);
+                }
             }
             if (waveDone == false)
             {
@@ -94,14 +114,24 @@ public class WaveManager : MonoBehaviour
                             readyText.SetActive(true);
                             waveCooldown = 40;
                             ++wave;
+                            if (wave == maxWave)
+                            {
+                                bgmManager.ChangeBGM(BGMManager.BGM.FINALPREP);
+                            }
+                            else
+                            {
+                                bgmManager.ChangeBGM(BGMManager.BGM.WAVEPREP);
+                            }
                             waveText.text = "wave: " + wave.ToString() + "/" + maxWave.ToString();
                         }
                         else
                         {
-                            GlobalStuffs.level =  maxWave - 2;
+                            if(GlobalStuffs.level < maxWave - 2){
+                                GlobalStuffs.level =  maxWave - 2;
+                            }
                             waveDone = true;
+                            win = true;
                             waveCooldown = 10;
-                            win = true; //added win or else it wont go to the bottom code and go back to levelselect
                             StartCoroutine(UpdatePlayerStats());
                         }
                     }
@@ -114,7 +144,14 @@ public class WaveManager : MonoBehaviour
             CountDownText.text = "Level Complete!\nReturning in: " + Mathf.Ceil(waveCooldown).ToString();
             if (waveCooldown <= 0)
             {
-                SceneManager.LoadScene("LevelSelect");                
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.name == "FinalLevel")
+                {
+                    SceneManager.LoadScene("WinScene");
+                }
+                else {
+                    SceneManager.LoadScene("LevelSelect");
+                }
             }
         }
     }
@@ -132,7 +169,6 @@ public class WaveManager : MonoBehaviour
             switch (webreq.result)
             {
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
                     webreq.Dispose();
                     break;
                 default:
