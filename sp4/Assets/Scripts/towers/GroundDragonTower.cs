@@ -4,6 +4,7 @@ using UnityEngine;
 
 class GroundDragonTower : TowerBase
 {
+    AudioSource m_AudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ class GroundDragonTower : TowerBase
         UpgradeCost = 250;
         CanShoot = true;
         Name = "GroundDragon";
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     public override void Fire()
@@ -35,8 +37,15 @@ class GroundDragonTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
             {
-                //hit the enemy here
-                tower_AI.playerTransform.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                if (tower_AI.playerTransform)
+                {
+                    if (!m_AudioSource.isPlaying)
+                    {
+                        m_AudioSource.Play();
+                    }
+                    //hit the enemy here
+                    tower_AI.playerTransform.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                }
                 CanShoot = true;
             }
         }

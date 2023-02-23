@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
     public TMP_Text VolumePercentageText;
     public TMP_Text TimePlayedText;
     public TMP_Text DateText;
+    public TMP_Text Username;
+    public TMP_Text HighestLevelCleared;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,9 @@ public class PauseMenu : MonoBehaviour
             hours = minutes / 60;
             TimePlayedText.text = "Total Time Played: " + ((int)hours).ToString() + "h " + ((int)(minutes % 60)).ToString() + "min " + ((int)(seconds % 60)) + "sec";
 
-            DateText.text = GlobalStuffs.LastLogin;
+            DateText.text = "Last Login: " + GlobalStuffs.LastLogin;
+            Username.text = "Username: " + GlobalStuffs.username;
+            HighestLevelCleared.text = "Highest Level Cleared: " + GlobalStuffs.level.ToString();
         }
     }
 }

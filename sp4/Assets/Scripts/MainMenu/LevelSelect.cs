@@ -8,6 +8,7 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(GlobalStuffs.level);
         Cursor.lockState = CursorLockMode.Confined;
         for (int i = 0; i < GlobalStuffs.level + 1;++i)
         {

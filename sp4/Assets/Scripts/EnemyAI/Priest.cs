@@ -34,6 +34,7 @@ class Priest : MonoBehaviour
         CanShoot = true;
         //enemy_AI.HP = 100;
         enemy_AI.ArmorType = 0;
+        enemy_AI.Cash = CashDrop;
     }
 
     public void Fire()
