@@ -36,6 +36,7 @@ class Bear : MonoBehaviour
         enemy_AI.ArmorType = 1;
         CanRun = true;
         speed = 15;
+        enemy_AI.Cash = CashDrop;
     }
 
     public void Fire()
