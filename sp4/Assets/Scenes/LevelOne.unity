@@ -3779,7 +3779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[0].cost
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[1].cost
@@ -13358,7 +13358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328947817114547247, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 509406936779683763, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchoredPosition.x

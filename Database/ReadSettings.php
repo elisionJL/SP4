@@ -10,7 +10,7 @@ $stmt->bind_param("s", $sUsername);
 // Execute Statement
 $stmt->execute();
 // Bind results(Select)/parameters (insert/delete/update)
-$stmt->bind_result($sUsername, $sNewMaster,$sNewSFX,$sNewSFX);
+$stmt->bind_result($sUsername, $sNewMaster,$sNewSFX,$sNewBGM);
 $stmt->store_result();
 $rows = $stmt->num_rows();
 if ($rows != 0) {
@@ -19,7 +19,7 @@ if ($rows != 0) {
   // Fetch Results (select) / Get Rows affected (ins/del/upd)
   while ($stmt->fetch()) {
     //JSON use: create associative array for each record //4json
-    $playerStats = array("username" => $sUsername, "masterVolume" => $sNewMaster, "sfxVolume" => $sNewSFX, "bgmVolume" => $sNewSFX);
+    $playerStats = array("username" => $sUsername, "masterVolume" => $sNewMaster, "sfxVolume" => $sNewSFX, "bgmVolume" => $sNewBGM);
     array_push($arr, $playerStats);
   }
 }

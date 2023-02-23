@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Health = 100;
         Mana = 100;
-        Souls = 100000;
+        Souls = 1000;
         RespawnText.SetActive(false);
         CameraPPL.enabled = false;
         RespawnCount = 0;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F10))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             if (Time.timeScale != 0)
             {

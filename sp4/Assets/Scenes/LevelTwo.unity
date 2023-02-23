@@ -8057,7 +8057,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 328947817114547247, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 631551908814978808, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -13563,7 +13563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[2].cost
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[3].cost
@@ -13571,7 +13571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[4].cost
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.data[2].enemyPrefab
@@ -13585,6 +13585,26 @@ PrefabInstance:
       propertyPath: enemyList.Array.data[4].enemyPrefab
       value: 
       objectReference: {fileID: 7647134206250791342, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[0].waveRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[1].waveRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[2].waveRequired
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[3].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: enemyList.Array.data[4].waveRequired
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
 --- !u!114 &1813435242 stripped
