@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 527580192}
   - component: {fileID: 527580194}
   - component: {fileID: 527580193}
+  - component: {fileID: 527580195}
   m_Layer: 5
   m_Name: '"Inventory"'
   m_TagString: Untagged
@@ -1141,6 +1142,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527580191}
   m_CullTransparentMesh: 1
+--- !u!114 &527580195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527580191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a9cef600e537f44823c3d52f2be1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tower_Images:
+  - {fileID: 569629026}
+  - {fileID: 1254384819}
+  - {fileID: 193192359}
+  - {fileID: 368058033}
+  - {fileID: 639046885}
+  - {fileID: 740524981}
+  - {fileID: 2062616523}
+  - {fileID: 223241117}
 --- !u!1 &569629024
 GameObject:
   m_ObjectHideFlags: 0
