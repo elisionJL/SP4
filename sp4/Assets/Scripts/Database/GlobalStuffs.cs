@@ -36,7 +36,7 @@ public static class GlobalStuffs {
     public static IEnumerator GetTowers(string TowersToGet)
     {
         WWWForm form = new WWWForm();
-        form.AddField("username", username);
+        form.AddField("username", TowersToGet);
 
         using (UnityWebRequest webreq = UnityWebRequest.Post(GetTowersURL, form))
         {
@@ -44,7 +44,20 @@ public static class GlobalStuffs {
             switch (webreq.result)
             {
                 case UnityWebRequest.Result.Success:
-                    Deserialize(webreq.downloadHandler.text); //added
+                    TowerStats TS = TowerStats.CreateFromJSON(webreq.downloadHandler.text);
+                    if (TS != null)
+                    {
+                        Tower[0] = TS.Tower1;
+                        Tower[1] = TS.Tower2;
+                        Tower[2] = TS.Tower3;
+                        Tower[3] = TS.Tower4;
+                        Tower[4] = TS.Tower5;
+                    }
+
+                    GetSelectedTowers GST = GameObject.FindObjectOfType<GetSelectedTowers>();
+
+                    GST.SetSuccess();
+
                     break;
                 default:
                     Debug.Log("error" + webreq.error);
