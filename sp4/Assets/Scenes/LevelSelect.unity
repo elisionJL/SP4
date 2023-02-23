@@ -1057,9 +1057,8 @@ GameObject:
   - component: {fileID: 653781607}
   - component: {fileID: 653781606}
   - component: {fileID: 653781605}
-  - component: {fileID: 653781604}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,27 +1085,6 @@ RectTransform:
   m_AnchoredPosition: {x: -298, y: -135}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &653781604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653781602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480e9eddef38c944aa2b79249ee813fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TOF: 0
-  SettingsPanel: {fileID: 0}
-  MasterVolumeSlider: {fileID: 0}
-  MasterVolumeText: {fileID: 0}
-  BGMVolumeSlider: {fileID: 0}
-  BGMVolumeText: {fileID: 0}
-  SFXVolumeSlider: {fileID: 0}
-  SFXVolumeText: {fileID: 0}
-  audioMixer: {fileID: 0}
 --- !u!114 &653781605
 MonoBehaviour:
   m_ObjectHideFlags: 0
