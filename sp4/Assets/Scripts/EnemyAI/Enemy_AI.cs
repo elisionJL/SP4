@@ -19,6 +19,8 @@ public class Enemy_AI : MonoBehaviour
     private bool DamageDealt = true;
     private bool isDebuffed = false;
     private float DebuffTime = 0;
+    public int Cash = 0;
+    public GameObject Player;
 
     private float timebetweenhearts;
     private float instantiateCoolDown = 0.3f;
@@ -31,6 +33,7 @@ public class Enemy_AI : MonoBehaviour
     {
         HPSlider.maxValue = HP;
         timebetweenhearts = 0.0f;
+        Player = GameObject.Find("Player");
     }
 
     public void DisableScript()
@@ -326,6 +329,7 @@ public class Enemy_AI : MonoBehaviour
         HPSlider.value = HP;
         if (HP <= 0)
         {
+            Player.transform.GetChild(0).gameObject.GetComponent<Player>().Souls += Cash;
             //gets the enemy container than get the wave manager game obejct
             transform.parent.transform.parent.GetComponent<WaveManager>().TotalEnemies -= 1;
             Destroy(this.gameObject);
