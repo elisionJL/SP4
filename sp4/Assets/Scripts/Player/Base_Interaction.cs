@@ -7,6 +7,10 @@ public class Base_Interaction : MonoBehaviour
 {
     public float maxDistance = 5.0f;
     // Start is called before the first frame update
+    private void Start()
+    {
+
+    }
 
     #region Towers
     public List<GameObject> Towers;
@@ -348,6 +352,11 @@ public class Base_Interaction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Attack == false)
         {
+            if (!gameObject.GetComponent<AudioSource>().isPlaying)
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+            }
+
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
             Attack = true;
@@ -355,6 +364,7 @@ public class Base_Interaction : MonoBehaviour
 
         if(Attack == true)
         {
+
             PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
 
             AttackTime += 1f * Time.deltaTime;
