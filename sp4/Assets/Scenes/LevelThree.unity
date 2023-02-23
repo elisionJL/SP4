@@ -1634,6 +1634,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &197329237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5877996652972176496, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+  m_PrefabInstance: {fileID: 197329232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &197376499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9565,6 +9570,10 @@ PrefabInstance:
       propertyPath: FireBalls
       value: 
       objectReference: {fileID: 6209556153406282187, guid: 9f55d92f033cb8648a7f4430f9698d55, type: 3}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: HostageUI
+      value: 
+      objectReference: {fileID: 197329237}
     - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
       propertyPath: UpgradeUI
       value: 

@@ -8087,6 +8087,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5228288965977163619, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5228288965977163631, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11215,6 +11219,11 @@ Transform:
   m_Father: {fileID: 1662559780}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1446301351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5877996652972176496, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+  m_PrefabInstance: {fileID: 1053125418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1462037460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11930,6 +11939,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: HostageUI
+      value: 
+      objectReference: {fileID: 1446301351}
+    - target: {fileID: 904287302924885533, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
       propertyPath: UpgradeUI
       value: 
       objectReference: {fileID: 1053125419}
@@ -11953,6 +11966,10 @@ PrefabInstance:
       propertyPath: RespawnText
       value: 
       objectReference: {fileID: 1053125420}
+    - target: {fileID: 5524227699760898866, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: LightOfScene
+      value: 
+      objectReference: {fileID: 302966167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
 --- !u!1001 &1556115983
