@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public Slider VolumeSlider;
     public TMP_Text VolumePercentageText;
+    public TMP_Text TimePlayedText;
+    public TMP_Text DateText;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,17 @@ public class PauseMenu : MonoBehaviour
         {
             AudioListener.volume = VolumeSlider.value;
             VolumePercentageText.text = Mathf.Ceil(VolumeSlider.value * 100).ToString() + "%";
+        }
+
+        if (gameObject.activeSelf)
+        {
+            int seconds, hours, minutes;
+            seconds = (int)GameObject.Find("AddTowersToPlayer").GetComponent<UpdateDBAfterEveryWave>().timecountup;
+            minutes = seconds / 60;
+            hours = minutes / 60;
+            TimePlayedText.text = "Total Time Played: " + ((int)hours).ToString() + "h " + ((int)(minutes % 60)).ToString() + "min " + ((int)(seconds % 60)) + "sec";
+
+            DateText.text = GlobalStuffs.LastLogin;
         }
     }
 }

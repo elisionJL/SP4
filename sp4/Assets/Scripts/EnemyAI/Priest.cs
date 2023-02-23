@@ -20,6 +20,7 @@ class Priest : MonoBehaviour
     public int Damage = 3;
     public GameObject HealingFX, DebuffFX;
     float DebuffFXSpawnTime = 2.5f;
+    public AudioSource HealingAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +85,6 @@ class Priest : MonoBehaviour
         if (enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null && (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") || 
             m_Animator.GetCurrentAnimatorStateInfo(0).IsName("idle01")) && CanShoot)
         {
-            Debug.Log("Firing");
             Fire();
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && enemy_AI.GetQuaternionTarget(rootObject.transform, enemy_AI.maxRadius) != null)
@@ -93,6 +93,8 @@ class Priest : MonoBehaviour
             {
                 if (enemy_AI.TargetObject != null)
                     HealAll();
+
+                HealingAudio.Play();
                 CanShoot = true;
             }
         }

@@ -19,6 +19,7 @@ class Villager : MonoBehaviour
     public int Damage = 10;
     public GameObject DebuffFX;
     float DebuffFXSpawnTime = 2.5f;
+    public AudioSource VillagerHit;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +75,7 @@ class Villager : MonoBehaviour
                     else
                         enemy_AI.TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
 
+                    VillagerHit.Play();
                 }
                 CanShoot = true;
             }

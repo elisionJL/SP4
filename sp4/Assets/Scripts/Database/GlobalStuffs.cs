@@ -15,11 +15,12 @@ public static class GlobalStuffs {
     public static int[] Tower = new int[5];
     public static string PlayerSkins = "B";
     public static int TotalTime = 0;
+    public static string LastLogin = "";
 
     public static string baseURL= "http://localhost/Database/"; //rename this to your server path
 
     static string addscorebackendURL=baseURL+"addscorebackend.php";
-    static string UpdatePlayerStatsURL = baseURL + ".php";
+    public static string UpdatePlayerStatsURL = baseURL + "UpdatePlayerStatsBackend.php";
     static string GetTowersURL = baseURL + "ReadTowers.php";
     public static string UpdateSettingsURL = baseURL + "UpdateSettings.php";
     public static string ReadSettingsURL = baseURL + "ReadSettings.php";
@@ -29,24 +30,7 @@ public static class GlobalStuffs {
     public static int bgmVolume;
     public static int masterVolume;
     #endregion settings
-    //public static IEnumerator DoSendScore(string pname,int score){
-    //    WWWForm form=new WWWForm();
-    //    form.AddField("sPlayerName",pname);
-    //    form.AddField("iScore",score);
-    //    UnityWebRequest webreq=UnityWebRequest.Post(addscorebackendURL,form);
-    //    yield return webreq.SendWebRequest();
-    //    switch (webreq.result)
-    //        {
-    //            case UnityWebRequest.Result.Success:
-    //                Debug.Log(":\nReceived: " + webreq.downloadHandler.text);
-    //                //GetScoreBoard();
-    //                break;
-    //            default:
-    //                Debug.Log("error");
-    //                break;
-    //        }
-    //        webreq.Dispose();            
-    //}
+
 
     public static IEnumerator GetTowers(string TowersToGet)
     {
@@ -123,8 +107,11 @@ public static class GlobalStuffs {
     public static IEnumerator UpdatePlayerStats(){
         WWWForm form=new WWWForm();
         form.AddField("username",username);
+        form.AddField("Hostage", Hostages);
+        form.AddField("LevelCleared", level);
+        form.AddField("TimesPlayed", TotalTimesPlayed);
 
-        using(UnityWebRequest webreq=UnityWebRequest.Post(UpdatePlayerStatsURL,form)){
+        using (UnityWebRequest webreq=UnityWebRequest.Post(UpdatePlayerStatsURL,form)){
         yield return webreq.SendWebRequest();
         switch (webreq.result)
             {
@@ -179,10 +166,10 @@ public static class GlobalStuffs {
                     ps = PlayerSettings.CreateFromJSON(webRequest.downloadHandler.text);
                 if (ps != null)
                 {
-                    GlobalStuffs.username = ps.username;
-                    GlobalStuffs.sfxVolume = ps.sfxVolume;
-                    GlobalStuffs.bgmVolume = ps.bgmVolume;
-                    GlobalStuffs.masterVolume = ps.masterVolume;
+                    username = ps.username;
+                    sfxVolume = ps.sfxVolume;
+                    bgmVolume = ps.bgmVolume;
+                    masterVolume = ps.masterVolume;
                 }                
                 break;
             default:

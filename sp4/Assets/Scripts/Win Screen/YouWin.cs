@@ -19,5 +19,8 @@ public class YouWin : MonoBehaviour
             AlphaChannel += 25 * Time.deltaTime;
             Background.color = new Color(Background.color.r, Background.color.g, Background.color.b, AlphaChannel / 255);
         }
+
+        if (AlphaChannel >= 255)
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 class SkeletonTower : TowerBase
 {
+    AudioSource m_AudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ class SkeletonTower : TowerBase
         Name = "Skeleton";
         cost = 200;
         UpgradeCost = 100;
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     public override void Fire()
@@ -39,9 +41,14 @@ class SkeletonTower : TowerBase
         {
             if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
             {
-                if (target != null)
+                if (tower_AI.playerTransform)
                 {
-                    target.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
+                    if (!m_AudioSource.isPlaying)
+                    {
+                        m_AudioSource.Play();
+                    }
+                    //hit the enemy here
+                    tower_AI.playerTransform.gameObject.GetComponent<Enemy_AI>().MinusHP(damage);
                 }
                 CanShoot = true;
             }

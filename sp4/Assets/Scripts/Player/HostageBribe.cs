@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HostageBribe : MonoBehaviour
 {
     public GameObject Player;
     private float cooldown = 0f;
-
+    public TextMeshProUGUI cooldownText;
     public void CloseUI()
     {
         gameObject.SetActive(false);
@@ -18,54 +20,83 @@ public class HostageBribe : MonoBehaviour
     private void Update()
     {
         if (cooldown > 0)
+        {
             cooldown -= 1 * Time.deltaTime;
+            cooldownText.text = "Cooldown: " + Mathf.RoundToInt(cooldown) + "s";
+        }
+        else
+        {
+            cooldownText.text = "";
+        }
     }
 
     public void DebuffEnemies()
     {
-        if(cooldown <= 0f)
+        if(GlobalStuffs.Hostages >= 0)
         {
-            Enemy_AI[] Enemies = FindObjectsOfType<Enemy_AI>();
-
-            for (int i = 0; i < Enemies.Length; i++)
+            if (cooldown <= 0f)
             {
-                Enemies[i].SetEnemyDebuffed();
-            }
+                Enemy_AI[] Enemies = FindObjectsOfType<Enemy_AI>();
 
-            CloseUI();
-            cooldown = 15f;
+                for (int i = 0; i < Enemies.Length; i++)
+                {
+                    Enemies[i].SetEnemyDebuffed();
+                }
+
+                GlobalStuffs.Hostages -= 5;
+                CheckIfNoHostages();
+                CloseUI();
+                cooldown = 15f;
+            }
         }
     }
 
     public void StallEnemySpawn()
     {
-        if(cooldown <= 0f)
+
+        if(GlobalStuffs.Hostages >= 0)
         {
-            EnemySpawner[] SpawnEnemies = FindObjectsOfType<EnemySpawner>();
-
-            for (int i = 0; i < SpawnEnemies.Length; i++)
+            if (cooldown <= 0f)
             {
-                SpawnEnemies[i].SetStallSpawn();
-            }
+                EnemySpawner[] SpawnEnemies = FindObjectsOfType<EnemySpawner>();
 
-            CloseUI();
-            cooldown = 15f;
+                for (int i = 0; i < SpawnEnemies.Length; i++)
+                {
+                    SpawnEnemies[i].SetStallSpawn();
+                }
+
+                GlobalStuffs.Hostages -= 10;
+                CheckIfNoHostages();
+                CloseUI();
+                cooldown = 15f;
+            }
         }
     }
 
     public void BuffTowers()
     {
-        if(cooldown <= 0f)
+        if(GlobalStuffs.Hostages >= 0)
         {
-            Tower_AI[] TowersFound = FindObjectsOfType<Tower_AI>();
-
-            for (int i = 0; i < TowersFound.Length; i++)
+            if (cooldown <= 0f)
             {
-                TowersFound[i].BuffTowers();
-            }
+                Tower_AI[] TowersFound = FindObjectsOfType<Tower_AI>();
 
-            CloseUI();
-            cooldown = 15f;
+                for (int i = 0; i < TowersFound.Length; i++)
+                {
+                    TowersFound[i].BuffTowers();
+                }
+
+                GlobalStuffs.Hostages -= 15;
+                CheckIfNoHostages();
+                CloseUI();
+                cooldown = 15f;
+            }
         }
+    }
+
+    public void CheckIfNoHostages()
+    {
+        if (GlobalStuffs.Hostages <= 0)
+            SceneManager.LoadScene("LoseScene");
     }
 }

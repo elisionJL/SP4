@@ -19,6 +19,7 @@ class Knight : MonoBehaviour
     public int Damage = 30;
     public GameObject DebuffFX;
     float DebuffFXSpawnTime = 2.5f;
+    public AudioSource HitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,8 @@ class Knight : MonoBehaviour
                         enemy_AI.TargetObject.gameObject.GetComponent<Tower_AI>().MinusHP(Damage);
                     else
                         enemy_AI.TargetObject.gameObject.transform.GetChild(0).gameObject.GetComponent<Player>().MinusHP(Damage);
+
+                    HitSound.Play();
 
                 }
                 CanShoot = true;

@@ -17,7 +17,7 @@ public class UpdateDBAfterEveryWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timecountup += Time.deltaTime;
+        timecountup += Time.unscaledDeltaTime;
     }
 
     public void UpdateTime()

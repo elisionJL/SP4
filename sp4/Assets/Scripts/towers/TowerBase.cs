@@ -52,12 +52,12 @@ abstract class TowerBase : MonoBehaviour
 
     public int GetHP()
     {
-        return hp;
+        return tower_AI.HP;
     }
 
     public int GetHPUpgraded()
     {
-        return Mathf.RoundToInt(hp * 1.5f);
+        return Mathf.RoundToInt(tower_AI.HP * 1.5f);
     }
     public int GetDamage()
     {
@@ -120,7 +120,6 @@ abstract class TowerBase : MonoBehaviour
                 damage /= 2;
                 attackSpd /= 1.3f;
                 gameObject.GetComponent<Tower_AI>().StopBuffs();
-                Debug.Log(attackSpd + ", " + damage);
             }
         }
     }

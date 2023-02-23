@@ -40,7 +40,7 @@ public class Base_Interaction : MonoBehaviour
         Ray ray = new Ray(origin, direction);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) //if Object is hit
+        if (Physics.Raycast(ray, out hit) && upgrade == false) //if Object is hit
         {
             float distance = hit.distance; //Get the distance from the ray to the hit object
 
@@ -62,7 +62,7 @@ public class Base_Interaction : MonoBehaviour
                         CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
                     }
 
-                    if(CurrentTowerLookAt != hit.collider.gameObject)
+                    if(CurrentTowerLookAt != hit.collider.gameObject && CurrentTowerLookAt != null)
                     {
                         UpgradePrompt.SetActive(false);
                         if (CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>())
@@ -71,6 +71,8 @@ public class Base_Interaction : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        CurrentTowerLookAt = null;
+                        Destroy(CurrentTowerLookAt);
                         DisableSword();
 
                         UpgradeUI.SetActive(true);
@@ -93,6 +95,9 @@ public class Base_Interaction : MonoBehaviour
 
             if (CanvasToGet != null && CanvasToGet.activeSelf == true)
                 CanvasToGet.SetActive(false);
+
+            CurrentTowerLookAt = null;
+            Destroy(CurrentTowerLookAt);
         }
 
         if(CanPlace == true && TowerToSpawn != null)
@@ -145,6 +150,17 @@ public class Base_Interaction : MonoBehaviour
                 //Until user presses Left Mouse Trigger to place it down
                 if (Input.GetMouseButtonDown(0))
                 {
+                    #region Towers Component
+                    DragonTower Dragon_Tower = null;
+                    MageTower Mage_Tower = null;
+                    SkeletonTower Skeleton_Tower = null;
+                    DemonGirlTower Demon_Girl_Tower = null;
+                    ZombieTower Zombie_Tower = null;
+                    ArcherTower Archer_Tower = null;
+                    GroundDragonTower Ground_Dragon_Tower = null;
+                    SoulGrinderTower Soul_Grinder_Tower = null;
+
+                    #endregion
                     //Debug.Log("pressed click");
                     //Set it's final position from when user pressed E
                     TowerToSpawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
@@ -153,21 +169,45 @@ public class Base_Interaction : MonoBehaviour
                     TowerToSpawn.gameObject.GetComponent<Tower_AI>().enabled = true;
 
                     if(TowerToSpawn.gameObject.GetComponent<MageTower>() != null) //Mage
-                        TowerToSpawn.gameObject.GetComponent<MageTower>().enabled = true;
+                    {
+                        Mage_Tower = TowerToSpawn.gameObject.GetComponent<MageTower>();
+                        Mage_Tower.enabled = true;
+                    }
                     else if(TowerToSpawn.gameObject.GetComponent<DragonTower>() != null) //Dragon
-                        TowerToSpawn.gameObject.GetComponent<DragonTower>().enabled = true;
+                    {
+                        Dragon_Tower = TowerToSpawn.gameObject.GetComponent<DragonTower>();
+                        Dragon_Tower.enabled = true;
+                    }
                     else if(TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null) //Skeleton
-                        TowerToSpawn.gameObject.GetComponent<SkeletonTower>().enabled = true;
+                    {
+                        Skeleton_Tower = TowerToSpawn.gameObject.GetComponent<SkeletonTower>();
+                        Skeleton_Tower.enabled = true;
+                    }
                     else if(TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null) //Succubus
-                        TowerToSpawn.gameObject.GetComponent<DemonGirlTower>().enabled = true;
+                    {
+                        Demon_Girl_Tower = TowerToSpawn.gameObject.GetComponent<DemonGirlTower>();
+                        Demon_Girl_Tower.enabled = true;
+                    }
                     else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null) //Zombie
-                        TowerToSpawn.gameObject.GetComponent<ZombieTower>().enabled = true;
+                    {
+                        Zombie_Tower = TowerToSpawn.gameObject.GetComponent<ZombieTower>();
+                        Zombie_Tower.enabled = true;
+                    }
                     else if (TowerToSpawn.gameObject.GetComponent<ArcherTower>() != null) //Archer
-                        TowerToSpawn.gameObject.GetComponent<ArcherTower>().enabled = true;
+                    {
+                        Archer_Tower = TowerToSpawn.gameObject.GetComponent<ArcherTower>();
+                        Archer_Tower.enabled = true;
+                    }
                     else if (TowerToSpawn.gameObject.GetComponent<GroundDragonTower>() != null) //Ground Dragon
-                        TowerToSpawn.gameObject.GetComponent<GroundDragonTower>().enabled = true;
+                    {
+                        Ground_Dragon_Tower = TowerToSpawn.gameObject.GetComponent<GroundDragonTower>();
+                        Ground_Dragon_Tower.enabled = true;
+                    }
                     else if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null) //Money Maker
-                        TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>().enabled = true;
+                    {
+                        Soul_Grinder_Tower = TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>();
+                        Soul_Grinder_Tower.enabled = true;
+                    }
 
                     //Turn on box collision
                     TowerToSpawn.gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -179,7 +219,7 @@ public class Base_Interaction : MonoBehaviour
                         TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color = new Color(TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.r, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.g, TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material.color.b, 1);
                         SetTransparentToOpaque(TowerToSpawn.gameObject.GetComponent<MeshRenderer>().material);
 
-                        if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null)
+                        if (Soul_Grinder_Tower != null)
                         {
                             TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color.b, 1);
                             SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material);
@@ -211,7 +251,7 @@ public class Base_Interaction : MonoBehaviour
 
                         else if(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).GetComponent<SkinnedMeshRenderer>() != null)
                         {
-                            if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null) //Succubus
+                            if (Demon_Girl_Tower != null) //Succubus
                             {
                                 TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color = new Color(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.r, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.g, TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material.color.b, 1);
                                 SetTransparentToOpaque(TowerToSpawn.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<SkinnedMeshRenderer>().material);
@@ -234,21 +274,21 @@ public class Base_Interaction : MonoBehaviour
                     TowerToSpawn.gameObject.tag = "interactable";
 
                     //Lastly, instantiate a clone of the "ghost" object
-                    if (TowerToSpawn.gameObject.GetComponent<MageTower>() != null && gameObject.GetComponent<Player>().MinusSouls(400) == true) //Mage 
+                    if (Mage_Tower != null && gameObject.GetComponent<Player>().MinusSouls(400) == true) //Mage 
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<DragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Dragon
+                    else if (Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Dragon
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<SkeletonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Skeleton
+                    else if (Skeleton_Tower != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Skeleton
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<ZombieTower>() != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Zombie
+                    else if (Zombie_Tower != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Zombie
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<DemonGirlTower>() != null && gameObject.GetComponent<Player>().MinusSouls(100) == true) //Succubus
+                    else if (Demon_Girl_Tower != null && gameObject.GetComponent<Player>().MinusSouls(100) == true) //Succubus
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<ArcherTower>() != null && gameObject.GetComponent<Player>().MinusSouls(250) == true) //Archer
+                    else if (Archer_Tower != null && gameObject.GetComponent<Player>().MinusSouls(250) == true) //Archer
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<GroundDragonTower>() != null && gameObject.GetComponent<Player>().MinusSouls(300) == true) //Ground Dragon
+                    else if (Ground_Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(300) == true) //Ground Dragon
                         Instantiate(TowerToSpawn);
-                    else if (TowerToSpawn.gameObject.GetComponent<SoulGrinderTower>() != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Money Maker
+                    else if (Soul_Grinder_Tower != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Money Maker
                         Instantiate(TowerToSpawn);
                     Particlewhenplaced.transform.position = TowerToSpawn.transform.position;
                     Instantiate(Particlewhenplaced);
@@ -262,6 +302,7 @@ public class Base_Interaction : MonoBehaviour
                 //Otherwise if user presses right mouse trigger instead
                 else if(Input.GetKeyDown(KeyCode.Mouse1))
                 {
+                    TowerToSpawn = null;
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
                 }
