@@ -9363,10 +9363,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5294557947929538287, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: timecountup
+      value: -0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 6318831105357849091, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
       propertyPath: m_Name
       value: AddTowersToPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 67e585a7d192ae547a7fe87b96b4b3cf, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f151b9a99a4e504e8b68a68cb6b1d69, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 99c6ac2e9a0c30c49821a70a414989a5, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: be9c3f8ffd9b96543a1b6605ad94b5a1, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: cb79fbed59d08fa4b831aa4cdc4cc560, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: a427994890a79354baa497f41e8b106c, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 046c42508dba49f479ad89788be56664, type: 3}
+    - target: {fileID: 6318831105357849092, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
+      propertyPath: TowerImages.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e20275248bda7144b530a9c11865e84, type: 3}
     - target: {fileID: 6318831105357849093, guid: 2eab672d9ba92634d95297a10f8f1837, type: 3}
       propertyPath: m_RootOrder
       value: 10
