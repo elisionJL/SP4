@@ -3831,6 +3831,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1248777565}
     - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
+      propertyPath: waveValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782320506637155477, guid: 0b2d8147a49c8c24b8d74086ad0323fa, type: 3}
       propertyPath: enemyList.Array.size
       value: 3
       objectReference: {fileID: 0}
