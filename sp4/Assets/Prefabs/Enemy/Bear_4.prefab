@@ -2314,7 +2314,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 8575202979567786582}
   Name: Bear
-  CashDrop: 1200
+  CashDrop: 800
   rootObject: {fileID: 7962199819078159310}
   speed: 15
   Damage: 10

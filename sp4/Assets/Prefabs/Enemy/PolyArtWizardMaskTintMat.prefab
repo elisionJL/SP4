@@ -2472,7 +2472,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 5343640540885497534}
   Name: Priest
-  CashDrop: 200
+  CashDrop: 100
   rootObject: {fileID: 1953271650171834}
   speed: 6
   ArmorType: 0

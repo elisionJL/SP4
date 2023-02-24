@@ -2708,7 +2708,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 2514373484134652532}
   Name: Hero
-  CashDrop: 1000
+  CashDrop: 500
   rootObject: {fileID: 8189980434977739222}
   speed: 12
   Damage: 30

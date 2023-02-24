@@ -2496,7 +2496,7 @@ MonoBehaviour:
   CanShoot: 0
   enemy_AI: {fileID: 6532850783689380759}
   Name: Heroine
-  CashDrop: 1000
+  CashDrop: 500
   rootObject: {fileID: 7647134206250791342}
   speed: 10
   Damage: 30
