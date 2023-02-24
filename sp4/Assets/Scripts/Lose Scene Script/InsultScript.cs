@@ -8,9 +8,9 @@ public class InsultScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int InsultNumber = Random.Range(0, 25);
+        int InsultNumber = Random.Range(0, 25); //Get random int
 
-        switch(InsultNumber)
+        switch(InsultNumber) //Based on the random value, choose between the random text insults to put into
         {
             case 0:
                 gameObject.GetComponent<TextMeshProUGUI>().text = "Gronk: Gronk maternal parent do better!";
@@ -56,7 +56,7 @@ public class InsultScript : MonoBehaviour
                 gameObject.GetComponent<TextMeshProUGUI>().text = "Developer C: Placing towers is good civ - San Tzu, the art of war";
                 break;
             case 14:
-                gameObject.GetComponent<TextMeshProUGUI>().text = "Developer C: Famous Quote - I cant wait to go home and commit mass Genocide";
+                gameObject.GetComponent<TextMeshProUGUI>().text = "Developer C: DO YOU KNOW LAHEE";
                 break;
             case 15:
                 gameObject.GetComponent<TextMeshProUGUI>().text = "Developer D: Github Sucks";

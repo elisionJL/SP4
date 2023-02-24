@@ -8,7 +8,7 @@ class ArcherTower : TowerBase
     // Start is called before the first frame update
     void Start()
     {
-        cost = 200;
+        cost = 450;
         UpgradeCost = 225;
         CanShoot = true;
         damage = 10;
