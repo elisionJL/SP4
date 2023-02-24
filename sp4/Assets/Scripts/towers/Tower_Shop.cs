@@ -26,14 +26,14 @@ public class Tower_Shop : MonoBehaviour
         {
             Delay -= 1 * Time.deltaTime;
         }
-        if(Delay <= 0 && isDelayed == true)
+        if(Delay <= 0 && isDelayed == true && Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn)
         {
             CostUI.text = "Cost: " + GetTowerComponent(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
             isDelayed = false;
             isDisabled = true;
             Delay = 0.1f;
         }
-        else if(Delay <= 0 && isDisabled == true)
+        else if(Delay <= 0 && isDisabled == true && Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn != null)
         {
             DisableTower(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
             isDisabled = false;
