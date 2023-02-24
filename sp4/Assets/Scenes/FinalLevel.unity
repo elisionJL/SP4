@@ -7646,6 +7646,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8978773302031683604, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9075986114054268417, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.6
@@ -13259,6 +13263,10 @@ PrefabInstance:
     - target: {fileID: 6831743035172676677, guid: 51ccb2f89e9a8c44e81b89b3a505d121, type: 3}
       propertyPath: m_Name
       value: MiniMapCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743035172676677, guid: 51ccb2f89e9a8c44e81b89b3a505d121, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9062933783592498041, guid: 51ccb2f89e9a8c44e81b89b3a505d121, type: 3}
       propertyPath: m_RootOrder
