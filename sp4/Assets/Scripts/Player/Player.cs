@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         CameraPPL.enabled = false;
         RespawnCount = 0;
         PausePanel.SetActive(false);
-        Canvas = GameObject.Find("Canvas").GetComponent<PlayerUI>();
+        Canvas = GameObject.Find("/Canvas").GetComponent<PlayerUI>();
         timerbeforecolorreturns = 0;
     }
     // Update is called once per frame

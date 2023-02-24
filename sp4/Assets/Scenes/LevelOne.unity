@@ -4019,6 +4019,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5372cec2307ab449a3173fdb56cae9, type: 3}
+--- !u!114 &670546192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8555401492400974976, guid: 0c76e2431fba677449d68b85b7bde891, type: 3}
+  m_PrefabInstance: {fileID: 1954175090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a7cb012f838924ea8637d3f6d392d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &675611644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10336,6 +10347,10 @@ PrefabInstance:
       propertyPath: UpgradePrompt
       value: 
       objectReference: {fileID: 1954175092}
+    - target: {fileID: 904287302924885534, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 670546192}
     - target: {fileID: 904287302924885534, guid: f48c286cfab78154b841e1bc57361f4b, type: 3}
       propertyPath: Crosshair
       value: 
