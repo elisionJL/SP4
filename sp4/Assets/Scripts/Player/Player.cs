@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool MinusSouls(int SoulsNeeded)
+    public bool MinusSouls(int SoulsNeeded) //Minus sousl from current souls in player
     {
         if(SoulsNeeded <= Souls)
         {
