@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         //check if dead
         if (Health < 0 && RespawnCount <= 0)
         {
+            gameObject.GetComponent<Base_Interaction>().DisableSword();
             PlayerModel.SetActive(false);
             RespawnText.SetActive(true);
             Crosshair.SetActive(false);
@@ -129,20 +130,23 @@ public class Player : MonoBehaviour
     {
         if(SoulsNeeded <= Souls)
         {
-            Canvas.SoulChange.enabled = true;
-            if (SoulsNeeded < 0)
+            if (Canvas != null)
             {
-                Canvas.Soul.color = Color.green;
-                Canvas.SoulChange.color = Color.green;
-                Canvas.SoulChange.text = "+"+(-SoulsNeeded).ToString();
-                timerbeforecolorreturns = 0.5f;
-            }
-            else
-            {
-                Canvas.Soul.color = Color.red;
-                Canvas.SoulChange.color = Color.red;
-                Canvas.SoulChange.text = (-SoulsNeeded).ToString();
-                timerbeforecolorreturns = 0.5f;
+                Canvas.SoulChange.enabled = true;
+                if (SoulsNeeded < 0)
+                {
+                    Canvas.Soul.color = Color.green;
+                    Canvas.SoulChange.color = Color.green;
+                    Canvas.SoulChange.text = "+" + (-SoulsNeeded).ToString();
+                    timerbeforecolorreturns = 0.5f;
+                }
+                else
+                {
+                    Canvas.Soul.color = Color.red;
+                    Canvas.SoulChange.color = Color.red;
+                    Canvas.SoulChange.text = (-SoulsNeeded).ToString();
+                    timerbeforecolorreturns = 0.5f;
+                }
             }
             Souls -= SoulsNeeded;
             return true;
