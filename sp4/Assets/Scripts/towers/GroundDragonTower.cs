@@ -17,7 +17,7 @@ class GroundDragonTower : TowerBase
         tower_AI.HP = 750;
         cost = 500;
         Lvl = 1;
-        UpgradeCost = 250;
+        UpgradeCost = 375;
         CanShoot = true;
         Name = "GroundDragon";
         m_AudioSource = GetComponent<AudioSource>();

@@ -16,7 +16,7 @@ class DragonTower : TowerBase
         tower_AI.maxRadius = 10;
         tower_AI.HP = 100;
         tower_AI.HPSlider.maxValue = tower_AI.HP;
-        UpgradeCost = 750;
+        UpgradeCost = 300;
         Name = "Dragon";
     }
 

@@ -278,21 +278,21 @@ public class Base_Interaction : MonoBehaviour
                     TowerToSpawn.gameObject.tag = "interactable";
 
                     //Lastly, instantiate a clone of the "ghost" object
-                    if (Mage_Tower != null && gameObject.GetComponent<Player>().MinusSouls(400) == true) //Mage 
+                    if (Mage_Tower != null && gameObject.GetComponent<Player>().MinusSouls(250) == true) //Mage 
                         Instantiate(TowerToSpawn);
-                    else if (Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Dragon
+                    else if (Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(600) == true) //Dragon
                         Instantiate(TowerToSpawn);
                     else if (Skeleton_Tower != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Skeleton
                         Instantiate(TowerToSpawn);
-                    else if (Zombie_Tower != null && gameObject.GetComponent<Player>().MinusSouls(200) == true) //Zombie
+                    else if (Zombie_Tower != null && gameObject.GetComponent<Player>().MinusSouls(550) == true) //Zombie
                         Instantiate(TowerToSpawn);
-                    else if (Demon_Girl_Tower != null && gameObject.GetComponent<Player>().MinusSouls(100) == true) //Succubus
+                    else if (Demon_Girl_Tower != null && gameObject.GetComponent<Player>().MinusSouls(300) == true) //Succubus
                         Instantiate(TowerToSpawn);
-                    else if (Archer_Tower != null && gameObject.GetComponent<Player>().MinusSouls(250) == true) //Archer
+                    else if (Archer_Tower != null && gameObject.GetComponent<Player>().MinusSouls(450) == true) //Archer
                         Instantiate(TowerToSpawn);
-                    else if (Ground_Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(300) == true) //Ground Dragon
+                    else if (Ground_Dragon_Tower != null && gameObject.GetComponent<Player>().MinusSouls(750) == true) //Ground Dragon
                         Instantiate(TowerToSpawn);
-                    else if (Soul_Grinder_Tower != null && gameObject.GetComponent<Player>().MinusSouls(500) == true) //Money Maker
+                    else if (Soul_Grinder_Tower != null && gameObject.GetComponent<Player>().MinusSouls(1000) == true) //Money Maker
                         Instantiate(TowerToSpawn);
                     Particlewhenplaced.transform.position = TowerToSpawn.transform.position;
                     Instantiate(Particlewhenplaced);
