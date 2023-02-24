@@ -13,8 +13,11 @@ class ZombieTower : TowerBase
         radius = 10;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
+        tower_AI.HPSlider.maxValue = 1000;
+        tower_AI.HPSlider.value = 1000;
         tower_AI.HP = 1000;
         cost = 250;
+        UpgradeCost = 275;
         Lvl = 1;
         CanShoot = true;
         Name = "Zombie";

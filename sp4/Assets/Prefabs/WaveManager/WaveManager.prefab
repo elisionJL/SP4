@@ -526,6 +526,7 @@ MonoBehaviour:
   enemies: []
   TotalEnemies: 0
   bgmManager: {fileID: 5833051439353901905}
+  SpawnParticles: {fileID: 8389229441229120570, guid: 5e40749b51ecada4a9e4e62b16a1ef99, type: 3}
 --- !u!82 &8808144661736465805
 AudioSource:
   m_ObjectHideFlags: 0

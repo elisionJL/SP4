@@ -57,11 +57,12 @@ public class EnemySpawner : MonoBehaviour
             //since its minInclusive to maxExclusive it will generate a number between 0 - (count-1)
             randomEnemy = Random.Range(0, tempEnemyList.Count);
             //in the future if cannot afford the enemy remove from temp list to reduce processing speed
-            if (ValueToSpend - enemyList[randomEnemy].cost >= 0)
+            if (ValueToSpend - tempEnemyList[randomEnemy].cost >= 0)
             {
                 GeneratedEnemies.Add(tempEnemyList[randomEnemy].enemyPrefab);
-                ValueToSpend -= enemyList[randomEnemy].cost;
+                ValueToSpend -= tempEnemyList[randomEnemy].cost;
             }
+
             else
             {
                 tempEnemyList.RemoveAt(randomEnemy);

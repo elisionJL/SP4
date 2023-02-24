@@ -9,7 +9,7 @@ class ArcherTower : TowerBase
     void Start()
     {
         cost = 200;
-        UpgradeCost = 100;
+        UpgradeCost = 225;
         CanShoot = true;
         damage = 10;
         attackSpd = 2;
@@ -17,6 +17,7 @@ class ArcherTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
         tower_AI.HP = 100;
+        tower_AI.HPSlider.maxValue = tower_AI.HP;
         m_AudioSource = GetComponent<AudioSource>();
         Name = "Archer";
     }

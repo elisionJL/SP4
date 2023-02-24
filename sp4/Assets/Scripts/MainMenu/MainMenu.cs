@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine("GetPlayerSettings");
         SettingsPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public void ExitButton()
     {
@@ -61,6 +62,10 @@ public class MainMenu : MonoBehaviour
             {
                 case UnityWebRequest.Result.Success:
                     SettingsPanel.SetActive(false);
+                    if(SceneManager.GetActiveScene().name != "MainMenu")
+                    {
+                        Cursor.lockState = CursorLockMode.Locked;
+                    }
                     webreq.Dispose();
                     break;
                 default:

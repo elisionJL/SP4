@@ -16,10 +16,11 @@ class MageTower : TowerBase
         tower_AI = GetComponent<Tower_AI>();
         radius = tower_AI.maxRadius;
         tower_AI.HP = 100;
+        tower_AI.HPSlider.maxValue = tower_AI.HP;
 
         Name = "Lich";
         cost = 400;
-        UpgradeCost = 300;
+        UpgradeCost = 125;
 
     }
 

@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public int TotalEnemies;
     public BGMManager bgmManager;
+    public GameObject SpawnParticles;
     AudioSource countdownSFX;
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,7 @@ public class WaveManager : MonoBehaviour
                 {
                     TotalEnemies += SpawnPoints[i].GenerateWave(wave);
                 }
+                readyText.SetActive(false);
                 waveDone = false;
                 enemies.Clear();
                 if (wave == maxWave)
@@ -103,6 +105,7 @@ public class WaveManager : MonoBehaviour
                         if (Enemy != null)
                         {
                             Enemy.transform.SetParent(EnemyContainer.transform);
+                            Instantiate(SpawnParticles, Enemy.transform.position, Quaternion.identity);
                         }
                     }
                     else
@@ -121,7 +124,8 @@ public class WaveManager : MonoBehaviour
                             readyText.SetActive(true);
                             waveCooldown = 40;
                             ++wave;
-                            if (wave == maxWave)
+                            GameObject.Find("Player").transform.GetChild(0).GetComponent<Player>().MinusSouls(-(250 * wave));
+                            if(wave == maxWave)
                             {
                                 bgmManager.ChangeBGM(BGMManager.BGM.FINALPREP);
                             }

@@ -52,7 +52,6 @@ public class AddTower : MonoBehaviour
         switch (webRequest1.result)
         {
             case UnityWebRequest.Result.Success:
-                Debug.Log("Yes");
                 TowerStats TS = TowerStats.CreateFromJSON(webRequest1.downloadHandler.text);
                 Debug.Log(webRequest1.downloadHandler.text);
                 if (TS != null)
@@ -210,6 +209,7 @@ public class AddTower : MonoBehaviour
                 GlobalStuffs.Hostages = 100;
                 GlobalStuffs.level = 0;
                 GlobalStuffs.TotalTimesPlayed = 0;
+                StartCoroutine(GetTowers(GlobalStuffs.username));
                 webRequest.Dispose();
                 break;
         }

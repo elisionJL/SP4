@@ -205,7 +205,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
   RespawnText: {fileID: 0}
   PlayerModel: {fileID: 7106132835155896454}
   PausePanel: {fileID: 0}
+  Canvas: {fileID: 0}
   Health: 0
   Mana: 0
   Souls: 0
@@ -427,7 +428,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6702475318683993451, guid: 16edc60a0217a5244aeb44ebbad8d85b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9ba4135e5dc9f36409075f6ea7b321f7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

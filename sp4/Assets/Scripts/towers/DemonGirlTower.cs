@@ -17,6 +17,7 @@ class DemonGirlTower : TowerBase
         radius = tower_AI.maxRadius;
         UpgradeCost = 150;
         tower_AI.HP = 100;
+        tower_AI.HPSlider.maxValue = tower_AI.HP;
         Name = "Demon Girl";
     }
 

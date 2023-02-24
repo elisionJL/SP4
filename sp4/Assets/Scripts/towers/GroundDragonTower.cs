@@ -12,10 +12,12 @@ class GroundDragonTower : TowerBase
         attackSpd = 2;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 10;
+        tower_AI.HPSlider.maxValue = 750;
+        tower_AI.HPSlider.value = 750;
         tower_AI.HP = 750;
         cost = 500;
         Lvl = 1;
-        UpgradeCost = 250;
+        UpgradeCost = 375;
         CanShoot = true;
         Name = "GroundDragon";
         m_AudioSource = GetComponent<AudioSource>();

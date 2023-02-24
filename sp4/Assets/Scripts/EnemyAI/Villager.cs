@@ -13,7 +13,7 @@ class Villager : MonoBehaviour
     public bool CanShoot;
     public Enemy_AI enemy_AI;
     public string Name = "Villager";
-    public int CashDrop = 100;
+    public int CashDrop = 10;
     public GameObject rootObject;
     public int speed = 5;
     public int Damage = 10;
