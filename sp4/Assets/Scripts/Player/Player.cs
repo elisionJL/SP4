@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         //check if dead
         if (Health < 0 && RespawnCount <= 0)
         {
+            gameObject.GetComponent<Base_Interaction>().DisableSword();
             PlayerModel.SetActive(false);
             RespawnText.SetActive(true);
             Crosshair.SetActive(false);
