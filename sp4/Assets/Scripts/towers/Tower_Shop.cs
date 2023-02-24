@@ -26,7 +26,7 @@ public class Tower_Shop : MonoBehaviour
         {
             Delay -= 1 * Time.deltaTime;
         }
-        if(Delay <= 0 && isDelayed == true && Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn)
+        if(Delay <= 0 && isDelayed == true && Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn != null)
         {
             CostUI.text = "Cost: " + GetTowerComponent(Player.gameObject.GetComponent<Base_Interaction>().TowerToSpawn);
             isDelayed = false;
