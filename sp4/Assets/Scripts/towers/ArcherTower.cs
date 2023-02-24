@@ -9,7 +9,7 @@ class ArcherTower : TowerBase
     void Start()
     {
         cost = 200;
-        UpgradeCost = 100;
+        UpgradeCost = 225;
         CanShoot = true;
         damage = 10;
         attackSpd = 2;

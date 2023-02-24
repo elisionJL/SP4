@@ -96,7 +96,7 @@ abstract class TowerBase : MonoBehaviour
     public void UpgradeStats()
     {
         tower_AI.HP = Mathf.RoundToInt(tower_AI.HP * 1.5f);
-        damage = Mathf.RoundToInt(damage * 1.5f);
+        damage = Mathf.RoundToInt(damage * 1.25f);
         Lvl += 1;
         sellValue = Mathf.RoundToInt(sellValue * 1.3f);
         UpgradeCost = Mathf.RoundToInt(UpgradeCost * 1.5f);

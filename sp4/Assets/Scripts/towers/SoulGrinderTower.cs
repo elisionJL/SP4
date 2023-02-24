@@ -12,7 +12,7 @@ class SoulGrinderTower : TowerBase
     {
         damage = 0;
         Lvl = 1;
-        attackSpd = 5;
+        attackSpd = 8;
         tower_AI = GetComponent<Tower_AI>();
         tower_AI.maxRadius = 0;
         tower_AI.HP = 10;
@@ -20,7 +20,7 @@ class SoulGrinderTower : TowerBase
         tower_AI.HPSlider.value = tower_AI.HP;
         Name = "SoulGrinder";
         cost = 450;
-        UpgradeCost = 225;
+        UpgradeCost = 500;
     }
     public override void Fire()
     {
@@ -63,7 +63,7 @@ class SoulGrinderTower : TowerBase
         {
             attackSpd -= Time.deltaTime;
 
-            if(attackSpd <= 4.5f)
+            if(attackSpd <= 7.5f)
             {
                 SpawnParticles();
             }
@@ -71,7 +71,7 @@ class SoulGrinderTower : TowerBase
         else
         {
             Fire();
-            attackSpd = 5;
+            attackSpd = 8;
         }
     }
 
@@ -79,7 +79,7 @@ class SoulGrinderTower : TowerBase
     {
         Lvl += 1;
         soulsGenerated = Mathf.RoundToInt(soulsGenerated * 1.5f);
-        attackSpd = 5;
+        attackSpd = 8;
     }
 
     public int GetSoulsGeneration()
