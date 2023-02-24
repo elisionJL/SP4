@@ -17,64 +17,68 @@ public class TowerSelect : MonoBehaviour
         Monster_ID = new int[5];
     }
 
-    public void Select_Towers(GameObject ButtonPressed)
+    public void Select_Towers(GameObject ButtonPressed) //Get the object reference of button pressed
     {
-        for(int i = 0; i < Selected_Towers.Length; i++)
+        for(int i = 0; i < Selected_Towers.Length; i++) //Run through the loop of the 5 selection ui for towers 
         {
-            if(Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite == null)
+            if(Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite == null) //If a selection ui tower has no image set to it
             {
-                bool CardExist = false;
+                bool CardExist = false; //base to be set as false whenever loop iterates
 
-                for(int Check = 0; Check < i; Check++)
+                for(int Check = 0; Check < i; Check++) //Do another for loop that checks if every other selection ui towers out of the 5 has the same image as the button that is press
                 {
+                    //If it finds one, then set bool to true since a card exists in the selection ui
                     if (Selected_Towers[Check].transform.GetChild(0).gameObject.GetComponent<Image>().sprite == ButtonPressed.transform.GetChild(0).gameObject.GetComponent<Image>().sprite)
                         CardExist = true;
                 }
 
+                //If it finishes the loop and no duplicate card exists
                 if (CardExist == false)
                 {
+                    //Set the selection tower that has no image to the same image as the one that is attached to the button and set monster id to button monster id for database
                     Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = ButtonPressed.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
                     Monster_ID[i] = ButtonPressed.GetComponent<TowerCard>().Monster_ID;
                 }
-                break;
+                break; //End the loop as we only want to change the first empty selection ui found
             }
         }
     }
 
-    public void Deselect_Towers(GameObject ButtonPressed)
+    public void Deselect_Towers(GameObject ButtonPressed) //Get the object reference of button pressed
     {
-        for (int i = 0; i < Selected_Towers.Length; i++)
+        for (int i = 0; i < Selected_Towers.Length; i++) //Run through the loop of the 5 selection ui for towers 
         {
-            if(Selected_Towers[i] == ButtonPressed)
+            if(Selected_Towers[i] == ButtonPressed) //If the selection ui is the same object as the one that is pressed
             {
-                Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
-                Monster_ID[i] = 0;
+                Selected_Towers[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null; //Set it's image to null
+                Monster_ID[i] = 0; //And Monster ID to 0
 
-                for (int NewObj = i; NewObj < Selected_Towers.Length; NewObj++)
+                for (int NewObj = i; NewObj < Selected_Towers.Length; NewObj++) //Then run another loop starting from where the image pressed is found
                 {
                     Debug.Log("NewObj: " + NewObj);
                     Debug.Log("Selected Towers: " + (Selected_Towers.Length - 1));
 
-                    if((NewObj + 1) < Selected_Towers.Length)
+                    if((NewObj + 1) < Selected_Towers.Length) //If it has not reached the end of the list yet + 1
                     {
-                        if (Selected_Towers[NewObj + 1] != null)
+                        if (Selected_Towers[NewObj + 1] != null) //check if the last card is not null
                         {
+                            //Replace current NewObj to the next one
                             Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Selected_Towers[NewObj + 1].transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
-                            Monster_ID[NewObj] = Monster_ID[NewObj + 1];
+                            Monster_ID[NewObj] = Monster_ID[NewObj + 1]; //Replace Monster ID as well with the next one
                         }
 
-                        else if (Selected_Towers[NewObj + 1] == null)
+                        else if (Selected_Towers[NewObj + 1] == null) //Otherwise if the last one is null
                         {
-                            Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
-                            Monster_ID[NewObj] = 0;
+                            Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null; //Make current one null too
+                            Monster_ID[NewObj] = 0; //Same for Monster ID
                             break;
                         }
                     }
 
-                    else if (NewObj == Selected_Towers.Length - 1)
+                    else if (NewObj == Selected_Towers.Length - 1) //Once it has reached the end of the list
                     {
-                        Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
-                        Monster_ID[NewObj] = 0;
+                        Selected_Towers[NewObj].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null; //Set the last one to null
+                        Monster_ID[NewObj] = 0; //And it's monster id to zero
                         break;
                     }
                 }
@@ -86,9 +90,9 @@ public class TowerSelect : MonoBehaviour
     {
         foreach (int value in valuesToFind) //Find all values from array that player selected
         {
-            if (System.Array.Exists(Monster_ID, element => element == value))
+            if (System.Array.Exists(Monster_ID, element => element == value)) //If value to find is found
             {
-                valuesFound.Add(value);
+                valuesFound.Add(value); //Add found to values found then repeat until end of Valuestofind List
             }
         }
 
@@ -101,16 +105,16 @@ public class TowerSelect : MonoBehaviour
                     {
                         if(valuesFound.Count == 0)
                         {
-                            GlobalStuffs.Tower[0] = 1;
-                            valuesFound.Add(1);
+                            GlobalStuffs.Tower[0] = 1; //Set default to Dragon
+                            valuesFound.Add(1); //Push to values found in list
                         }
-                        else
+                        else //Otherwise if even 1 tower is selected
                         {
-                            for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++)
+                            for (int ValueToAdd = 1; ValueToAdd < 9; ValueToAdd++) //Use default towers to be put inside
                             {
                                 bool ValueExists = false;
 
-                                for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++)
+                                for (int CurrentNum = 0; CurrentNum < valuesFound.Count; CurrentNum++) //For loop to check if default tower value is already in the list
                                 {
                                     if (ValueToAdd == valuesFound[CurrentNum]) //If ValuetoAdd is found in any part of valuesfound, end the loop and do another valuetoadd
                                         ValueExists = true;
@@ -125,7 +129,7 @@ public class TowerSelect : MonoBehaviour
                             }
                         }
                     }
-                    else
+                    else //If player has already chosen
                     {
                         GlobalStuffs.Tower[0] = Monster_ID[0];
                     }                
@@ -237,6 +241,6 @@ public class TowerSelect : MonoBehaviour
             }
         }
 
-        gameObject.GetComponent<TowerSet>().FinishTowerSelect();
+        gameObject.GetComponent<TowerSet>().FinishTowerSelect(); //Move to pushing to database
     }
 }

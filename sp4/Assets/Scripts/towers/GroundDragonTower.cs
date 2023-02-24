@@ -15,7 +15,7 @@ class GroundDragonTower : TowerBase
         tower_AI.HPSlider.maxValue = 750;
         tower_AI.HPSlider.value = 750;
         tower_AI.HP = 750;
-        cost = 500;
+        cost = 750;
         Lvl = 1;
         UpgradeCost = 375;
         CanShoot = true;

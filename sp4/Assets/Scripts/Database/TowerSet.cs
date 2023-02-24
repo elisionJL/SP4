@@ -10,8 +10,6 @@ public class TowerSet : MonoBehaviour
     string URLReadTowers = GlobalStuffs.baseURL + "ReadTowers.php";
     static string UpdateTowersURL = GlobalStuffs.baseURL + "UpdateTowers.php";
 
-
-    public TextMeshProUGUI displayTxt; //must add using UnityEngine.UI   
     public void FinishTowerSelect()
     {
         StartCoroutine(UpdateTowers());

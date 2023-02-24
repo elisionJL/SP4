@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304546843680361707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
@@ -1475,13 +1475,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304546843680361707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c049ce99d08c024c9a6fcf239d2d579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 0
   Name: 
+  cost: 0
   m_Animator: {fileID: 2304546843670986617}
   tower_AI: {fileID: 5059516013951895561}
   projectilePrefab: {fileID: 7164652177951073645, guid: ad05594990230ec4ca377e55951287b3, type: 3}

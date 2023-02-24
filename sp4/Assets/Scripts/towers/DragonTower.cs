@@ -7,7 +7,7 @@ class DragonTower : TowerBase
     public float atkspd;
     void Start()
     {
-        cost = 500;
+        cost = 600;
         CanShoot = true;
         damage = 30;
         attackSpd = 2;

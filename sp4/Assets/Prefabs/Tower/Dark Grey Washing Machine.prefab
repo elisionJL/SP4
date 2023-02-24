@@ -191,15 +191,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944860262563252257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e72fdc37ab6f53e4b894305bfdf3a149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   maxAngle: 0
   maxRadius: 0
   HP: 0
+  Canvas: {fileID: 0}
   HPSlider: {fileID: 0}
+  TargetingText: {fileID: 0}
+  countt: 0
+  targetObject: {fileID: 0}
+  targetingMode: 0
 --- !u!114 &672048329039264747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,19 +213,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944860262563252257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e558bc35c093844bbca67410aed5618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 0
   Name: 
+  cost: 0
   m_Animator: {fileID: 0}
   tower_AI: {fileID: 6010044723709221855}
   projectilePrefab: {fileID: 0}
   rootObject: {fileID: 6944860262563252257}
   CanShoot: 0
   soulsGenerated: 100
+  ParticleSystems: []
 --- !u!1001 &5027694394227739197
 PrefabInstance:
   m_ObjectHideFlags: 0
