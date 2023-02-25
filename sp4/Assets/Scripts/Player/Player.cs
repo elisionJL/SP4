@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public GameObject PlayerModel;
     public GameObject PausePanel;
     public PlayerUI Canvas;
+    public TMP_Text ReadyText;
     private float timerbeforecolorreturns;
     private float RespawnCount;
     float RotationX = 0f;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         RespawnCount = 0;
         PausePanel.SetActive(false);
         Canvas = GameObject.Find("/Canvas").GetComponent<PlayerUI>();
+        ReadyText = GameObject.Find("ReadyText").GetComponent<TMP_Text>();
         timerbeforecolorreturns = 0;
     }
     // Update is called once per frame
@@ -53,12 +55,14 @@ public class Player : MonoBehaviour
         {
             if (Time.timeScale != 0)
             {
+                ReadyText.enabled = false;
                 Time.timeScale = 0;
                 PausePanel.SetActive(true);
                 UnlockMouse();
             }
             else
             {
+                ReadyText.enabled = true;
                 Time.timeScale = 1;
                 PausePanel.SetActive(false);
                 LockMouse();
@@ -98,6 +102,10 @@ public class Player : MonoBehaviour
             Health = 100;
             transform.parent.transform.position = new Vector3(0, 10, 0);
         }
+
+        if (transform.position.y < -20)
+            transform.parent.transform.position = new Vector3(0, 10, 0);
+
         MouseControls();
     }
     public void LockMouse() //Sets cursor to locked when in play mode, unlocked when in shop
