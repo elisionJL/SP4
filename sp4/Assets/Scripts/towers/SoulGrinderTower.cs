@@ -19,7 +19,7 @@ class SoulGrinderTower : TowerBase
         tower_AI.HPSlider.maxValue = tower_AI.HP;
         tower_AI.HPSlider.value = tower_AI.HP;
         Name = "SoulGrinder";
-        cost = 450;
+        cost = 1000;
         UpgradeCost = 500;
     }
     public override void Fire()

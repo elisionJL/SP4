@@ -19,7 +19,7 @@ class MageTower : TowerBase
         tower_AI.HPSlider.maxValue = tower_AI.HP;
 
         Name = "Lich";
-        cost = 400;
+        cost = 250;
         UpgradeCost = 125;
 
     }

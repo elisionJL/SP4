@@ -15,6 +15,7 @@ abstract class TowerBase : MonoBehaviour
     protected int Lvl;
     protected float attackSpd;
     protected float radius;
+    [SerializeField]
     protected int cost;
     protected int UpgradeCost;
     protected int sellValue;

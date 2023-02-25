@@ -57,45 +57,48 @@ public class Base_Interaction : MonoBehaviour
                 if (hit.transform.gameObject.tag == "interactable"
                 && distance <= 3.0f && upgrade == false) //If object tag is Interactable and it's close to the player
                 {
-                    if (UpgradePrompt.activeSelf == false)
+                    if (UpgradePrompt.activeSelf == false) //If the upgrade prompt is not yet actuve
                     {
-                        CurrentTowerLookAt = hit.collider.gameObject;
+                        CurrentTowerLookAt = hit.collider.gameObject; //Get the tower that is hit by the raycast
 
-                        UpgradePrompt.SetActive(true);
-                        hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true);
-                        CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas;
+                        UpgradePrompt.SetActive(true); //Show prompt that tells player to press 'E' to upgrade
+                        hit.transform.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(true); //Show the hp bar on top of the tower
+                        CanvasToGet = hit.transform.gameObject.GetComponent<Tower_AI>().Canvas; //Get the Canvas reference from said tower
                     }
 
-                    if(CurrentTowerLookAt != hit.collider.gameObject && CurrentTowerLookAt != null)
+                    //If no more towers are being hit and current tower being looked at DOES exist
+                    if (CurrentTowerLookAt != hit.collider.gameObject && CurrentTowerLookAt != null)
                     {
+                        //Then disable the upgrade prompt
                         UpgradePrompt.SetActive(false);
-                        if (CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>())
+                        if (CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>()) //Stop showing the hp bar from said tower
                             CurrentTowerLookAt.gameObject.GetComponent<Tower_AI>().Canvas.SetActive(false);
-                        UpgradePrompt.SetActive(false);
                     }
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.E)) //When Player presses the E button
                     {
-                        CurrentTowerLookAt = null;
-                        Destroy(CurrentTowerLookAt);
-                        DisableSword();
+                        CurrentTowerLookAt = null; //Get rid of the tower reference
+                        Destroy(CurrentTowerLookAt); //Then Destroy it
+                        DisableSword(); //And disable the sword if it is being used
 
+                        //Then show the shop upgrade ui while disabling the prompt
                         UpgradeUI.SetActive(true);
                         UpgradePrompt.SetActive(false);
 
+                        //Get the towers name, cost, hp, atk, and future hp/atk after it's upgraded
                         UpgradeUI.GetComponent<Upgrade_Tower>().GetTowerInfo(hit.collider.gameObject);
-                        upgrade = true;
-                        gameObject.GetComponent<Player>().UnlockMouse();
+                        upgrade = true; //Set bool that prevents player from moving when in upgrade shop to true
+                        gameObject.GetComponent<Player>().UnlockMouse(); //Let the player use the mouse to navigate through the ui
                     }
-                    if (Input.GetKeyDown(KeyCode.C))
+                    if (Input.GetKeyDown(KeyCode.C)) //If player presses c instead
                     {
-                        hit.transform.gameObject.GetComponent<Tower_AI>().UpdateTargeting();
+                        hit.transform.gameObject.GetComponent<Tower_AI>().UpdateTargeting(); //Change how the targeting of the tower works 
                     }
                 }
             }
         }
-        else
+        else //Code to get rid of current tower being looked at
         {
-            UpgradePrompt.SetActive(false);
+            UpgradePrompt.SetActive(false); 
 
             if (CanvasToGet != null && CanvasToGet.activeSelf == true)
                 CanvasToGet.SetActive(false);
@@ -104,15 +107,15 @@ public class Base_Interaction : MonoBehaviour
             Destroy(CurrentTowerLookAt);
         }
 
-        if(CanPlace == true && TowerToSpawn != null)
-            Destroy(TowerToSpawn);
+        if(CanPlace == true && TowerToSpawn != null) //If tower has been placed but tower hasn't been destroyed yet
+            Destroy(TowerToSpawn); //Destroy it
 
-        if (TowerToSpawn == null && CanPlace == false)
+        if (TowerToSpawn == null && CanPlace == false) //If player is able to attack then attack
             Player_Attack();
 
-        if(Input.GetKeyDown(KeyCode.H))
+        if(Input.GetKeyDown(KeyCode.H)) //If Player presses H
         {
-            DisableSword();
+            DisableSword(); //Disable the sword and display the bribery menu
 
             HostageUI.SetActive(true);
             upgrade = true;
@@ -126,7 +129,7 @@ public class Base_Interaction : MonoBehaviour
         //}
     }
 
-    public void DisableSword()
+    public void DisableSword() //Function to reset the sword to original position
     {
         PlayerSword.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
         PlayerSword.transform.GetChild(1).GetComponent<TrailRenderer>().Clear();
@@ -135,7 +138,7 @@ public class Base_Interaction : MonoBehaviour
         PlayerSword.SetActive(false);
     }
 
-    public void CloseShopUI()
+    public void CloseShopUI() //Function to let player move again if upgrade menu is closed
     {
         upgrade = false;
     }
@@ -144,6 +147,7 @@ public class Base_Interaction : MonoBehaviour
     {
         if (TowerToSpawn != null && CanPlace == false) //If there is an object to place and user didn't place it down yet
         {
+            //Disable the sword if player is currently attacking and tower is spawned
             DisableSword();
 
             //If distance of tower from player is less than 5.0f and is a place that can be placed down onto
@@ -294,6 +298,7 @@ public class Base_Interaction : MonoBehaviour
                         Instantiate(TowerToSpawn);
                     else if (Soul_Grinder_Tower != null && gameObject.GetComponent<Player>().MinusSouls(1000) == true) //Money Maker
                         Instantiate(TowerToSpawn);
+
                     Particlewhenplaced.transform.position = TowerToSpawn.transform.position;
                     Instantiate(Particlewhenplaced);
                     //Then delete the Ghost object
@@ -306,14 +311,14 @@ public class Base_Interaction : MonoBehaviour
                 //Otherwise if user presses right mouse trigger instead
                 else if(Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    TowerToSpawn = null;
                     //Then delete the Ghost object
                     Destroy(TowerToSpawn);
+                    TowerToSpawn = null;
                 }
 
             }
         }
-        else if (TowerToSpawn == null)
+        else if (TowerToSpawn == null) //If there are no towers to place, let player interact again
             CanPlace = false;
     }
 
@@ -350,27 +355,33 @@ public class Base_Interaction : MonoBehaviour
 
     private void Player_Attack()
     {
+        //If player presses the left mouse button and isn't already attacking
         if (Input.GetKeyDown(KeyCode.Mouse0) && Attack == false)
         {
-            if (!gameObject.GetComponent<AudioSource>().isPlaying)
+            if (!gameObject.GetComponent<AudioSource>().isPlaying) //If Attack SFX isn't playing
             {
-                gameObject.GetComponent<AudioSource>().Play();
+                gameObject.GetComponent<AudioSource>().Play(); //Play it
             }
 
+            //Then activate the sword and enable it's script to have it do damage
             PlayerSword.SetActive(true);
             PlayerSword.GetComponent<AttackScript>().enabled = true;
-            Attack = true;
+            Attack = true; //Set bool to true to prevent another mouse click until attack is finished
         }
 
+        //When attack is true
         if(Attack == true)
         {
-
+            //Rotate the sword around the player in front of them
             PlayerSword.transform.RotateAround(PlayerCharacter.transform.position, Vector3.up, -360 * Time.deltaTime);
 
+            //Timer to increase
             AttackTime += 1f * Time.deltaTime;
 
+            //When Timer reaches a certain amount
             if (AttackTime >= 0.495f)
             {
+                //Reset it then disable the sword and let player press left mouse button again to attack once more
                 AttackTime = 0;
                 Attack = false;
 

@@ -16,7 +16,7 @@ class ZombieTower : TowerBase
         tower_AI.HPSlider.maxValue = 1000;
         tower_AI.HPSlider.value = 1000;
         tower_AI.HP = 1000;
-        cost = 250;
+        cost = 550;
         UpgradeCost = 275;
         Lvl = 1;
         CanShoot = true;
