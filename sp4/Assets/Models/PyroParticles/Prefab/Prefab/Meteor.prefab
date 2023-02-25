@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8206854}
   - component: {fileID: 13509832}
   - component: {fileID: 1185137059670351160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Meteor
   m_TagString: Fireball
   m_Icon: {fileID: 0}

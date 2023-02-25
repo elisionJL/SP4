@@ -5908,8 +5908,9 @@ MonoBehaviour:
   SFXVolumeSlider: {fileID: 8707468024018662559}
   SFXVolumeText: {fileID: 8862185385591222815}
   audioMixer: {fileID: 24100000, guid: 16edc60a0217a5244aeb44ebbad8d85b, type: 2}
-  Name: {fileID: 0}
-  LevelsCleared: {fileID: 0}
+  Name: {fileID: 6372113110039889035}
+  LevelsCleared: {fileID: 7828000826355715350}
+  ReadyText: {fileID: 8169107789235398734}
 --- !u!1 &5228288966055689712
 GameObject:
   m_ObjectHideFlags: 0
