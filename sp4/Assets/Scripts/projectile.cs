@@ -50,7 +50,7 @@ public class projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && other.tag != "interactable")
+        if (other.tag != "Player" && other.tag != "interactable" && other.tag != "OOB")
         {
             if (Source <= 0 && other.tag == "Enemy")
                 {

@@ -34,6 +34,7 @@ public class Enemy_AI : MonoBehaviour
     void Start()
     {
         HPSlider.maxValue = HP;
+        HPSlider.value = HPSlider.maxValue;
         timebetweenhearts = 0.0f;
         Player = GameObject.Find("Player");
     }
@@ -60,6 +61,7 @@ public class Enemy_AI : MonoBehaviour
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         GetComponent<Rigidbody>().AddForce(0, -400, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         DamageDealt = false;
     }
