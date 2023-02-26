@@ -5311,7 +5311,7 @@ GameObject:
   - component: {fileID: 424326}
   - component: {fileID: 19843370}
   - component: {fileID: 19947910}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FireboltExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

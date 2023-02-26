@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public TMP_Text Name;
     public TMP_Text LevelsCleared;
+    public TMP_Text ReadyText;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ClosePanel()
     {
+        ReadyText.enabled = true;
         Time.timeScale = 1;
         StartCoroutine("UpdatePlayerSettings");
     }

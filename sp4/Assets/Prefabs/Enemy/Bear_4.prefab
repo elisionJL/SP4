@@ -2277,7 +2277,7 @@ MonoBehaviour:
   TargetObject: {fileID: 0}
   maxAngle: 360
   maxRadius: 4
-  HP: 100
+  HP: 150
   ArmorType: 1
   HPSlider: {fileID: 9161556881741698500}
   targets:
