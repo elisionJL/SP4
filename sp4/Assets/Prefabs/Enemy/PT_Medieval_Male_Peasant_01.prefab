@@ -1296,6 +1296,7 @@ MonoBehaviour:
   GOofHearts: {fileID: 2722724798582084674, guid: 20705d34c542fed4cb5d5e010011a032, type: 3}
   Explosion: {fileID: 0}
   Waves: {fileID: 0}
+  deathParticles: {fileID: 8389229441229120570, guid: 77580bc06042f2a4896ad79359402782, type: 3}
 --- !u!114 &1390207199657732143
 MonoBehaviour:
   m_ObjectHideFlags: 0
