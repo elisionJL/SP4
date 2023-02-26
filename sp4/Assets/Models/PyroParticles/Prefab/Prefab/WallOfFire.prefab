@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 487278}
   - component: {fileID: 19822242}
   - component: {fileID: 19964982}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4892,7 +4892,7 @@ GameObject:
   - component: {fileID: 494314}
   - component: {fileID: 11496392}
   - component: {fileID: 11456478}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4968,7 @@ GameObject:
   - component: {fileID: 467586}
   - component: {fileID: 19824636}
   - component: {fileID: 19951540}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireSecondaryFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9587,7 +9587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 438974}
   - component: {fileID: 10876068}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9681,7 +9681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471684}
   - component: {fileID: 8215432}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9864,7 +9864,7 @@ GameObject:
   - component: {fileID: 434192}
   - component: {fileID: 19883490}
   - component: {fileID: 19931762}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14529,7 +14529,7 @@ GameObject:
   - component: {fileID: 437362}
   - component: {fileID: 19861520}
   - component: {fileID: 19960416}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WallOfFireFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
