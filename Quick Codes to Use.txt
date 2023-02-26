@@ -1,9 +1,0 @@
-Launch php (change localhost to 0.0.0.0 when not on same computer to
-be tested)
-php -S localhost:80 -t Directive to put
-
-Launch MySQL Server
-mysqld -–console
-
-Launch MySQL Client
-mysql -u root

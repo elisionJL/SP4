@@ -2466,7 +2466,7 @@ MonoBehaviour:
   maxAngle: 360
   maxRadius: 3
   HP: 200
-  ArmorType: 0
+  ArmorType: 2
   HPSlider: {fileID: 839805995556453787}
   targets: []
   CurrentPercentage: 0
