@@ -28,6 +28,8 @@ public class Enemy_AI : MonoBehaviour
     public GameObject Explosion;
     public GameObject Waves;
 
+    public GameObject deathParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -332,7 +334,11 @@ public class Enemy_AI : MonoBehaviour
             Player.transform.GetChild(0).gameObject.GetComponent<Player>().MinusSouls(-Cash);
             //gets the enemy container than get the wave manager game obejct
             transform.parent.transform.parent.GetComponent<WaveManager>().TotalEnemies -= 1;
+
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+
             Destroy(this.gameObject);
+            
         }
     }
     #region ToBeTested
