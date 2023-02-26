@@ -4855,7 +4855,7 @@ MonoBehaviour:
     Maximum: 8
   EmissionSounds:
   - {fileID: 8300000, guid: da5aeec65dfce4d449024607b399a5ec, type: 3}
-  - {fileID: 8300000, guid: ca679721d8a1b6243acc9a7ce566789b, type: 3}
+  - {fileID: 8300000, guid: 9b10267aa06a7a74b8ab48d6f464f7bf, type: 3}
   - {fileID: 8300000, guid: 04f423841d9fff345a394fdb44f4bac4, type: 3}
   ExplosionSounds:
   - {fileID: 8300000, guid: 31dbe1f047a081845bd95a5b256ee829, type: 3}
