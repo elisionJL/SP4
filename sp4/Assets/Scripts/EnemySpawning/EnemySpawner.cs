@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     break;
                 }
-            }
+            }   
         }
         allSpawned = false;
         EnemiesToSpawn.Clear();
